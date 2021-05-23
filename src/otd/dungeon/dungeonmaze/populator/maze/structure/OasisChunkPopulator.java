@@ -29,7 +29,7 @@ import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import zhehe.util.BiomeDictionary;
+import otd.lib.BiomeDictionary;
 
 public class OasisChunkPopulator extends ChunkBlockPopulator {
 

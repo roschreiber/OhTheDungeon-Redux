@@ -25,7 +25,7 @@ import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Aug 28, 2016

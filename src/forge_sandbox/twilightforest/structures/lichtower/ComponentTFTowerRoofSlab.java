@@ -8,7 +8,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Slab;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 
 public class ComponentTFTowerRoofSlab extends ComponentTFTowerRoof {

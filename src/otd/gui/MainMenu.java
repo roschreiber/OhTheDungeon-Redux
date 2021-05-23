@@ -21,6 +21,7 @@ import otd.gui.dungeon_plot.RemoveDungeonWorld;
 import java.util.ArrayList;
 import java.util.List;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,7 +46,7 @@ public class MainMenu extends Content {
     public final static MainMenu instance = new MainMenu();
     
     public MainMenu() {
-        super(I18n.instance.Main_Menu, InventoryType.DISPENSER);
+        super(I18n.instance.Main_Menu, 9);
     }
     
     @Override
@@ -122,8 +123,8 @@ public class MainMenu extends Content {
             List<String> lores = new ArrayList<>();
             lores.add(I18n.instance.Require_WorldEdit);
             
+            im.setLore(lores);
             is.setItemMeta(im);
-            is.setLore(lores);
             
             addItem(5, is);
         }
@@ -145,7 +146,6 @@ public class MainMenu extends Content {
         Player p = (Player) e.getWhoClicked();
         MainMenu holder = (MainMenu) e.getInventory().getHolder();
         if(holder == null) return;
-        
         if(slot == 0) {
             WorldManager wm = new WorldManager();
             wm.openInventory(p);

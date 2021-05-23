@@ -108,6 +108,7 @@ public class MobListener implements Listener {
         
         if(WorldConfig.wc.dungeon_world.finished) {
             p.sendMessage(ChatColor.GREEN + I18n.instance.User_TP_Suggest);
+            p.sendMessage(ChatColor.GREEN + I18n.instance.User_PI_Suggest);
         }
     }
 //    private final static NamespacedKey root = new NamespacedKey(Main.instance, "dungeon/root");

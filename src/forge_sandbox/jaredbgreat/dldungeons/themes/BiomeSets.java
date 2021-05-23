@@ -10,8 +10,8 @@ package forge_sandbox.jaredbgreat.dldungeons.themes;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
-import zhehe.util.BiomeDictionary;
-import zhehe.util.BiomeDictionary.Type;
+import otd.lib.BiomeDictionary;
+import otd.lib.BiomeDictionary.Type;
 import org.bukkit.block.Biome;
 
 //import net.minecraft.world.biome.Biome;

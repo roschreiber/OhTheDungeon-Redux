@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Directional;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 public class ComponentTFMazeDeadEndPainting extends ComponentTFMazeDeadEnd {
 

@@ -9,7 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
-import shadow_lib.async.later.roguelike.Later;
+import otd.lib.async.later.roguelike.Later;
 //import net.minecraft.block.Block;
 //import net.minecraft.tileentity.TileEntity;
 

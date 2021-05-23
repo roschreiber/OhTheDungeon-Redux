@@ -9,7 +9,7 @@ import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import forge_sandbox.BlockPos;
 import org.bukkit.Material;
 
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Aug 28, 2016

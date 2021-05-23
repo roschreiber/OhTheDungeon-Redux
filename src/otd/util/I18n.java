@@ -59,7 +59,7 @@ public class I18n {
         }
     }
     
-    public int lang_version = 16;
+    public int lang_version = 17;
     
     public SpecialItem GREYMERK = new SpecialItem("Greymerk's Hatchet","Pointlessly sharp");
     public SpecialItem NEBRISCROWN = new SpecialItem("Nebrian Crown of Justice", "Adorned with precious gemstones");
@@ -411,6 +411,7 @@ public class I18n {
     
     public String User_TP_Suggest = "Use /otd_tp to explore the dungeon world!";
     public String User_TP_Suggest2 = "Use /otd_tp, and choose the bed to back to normal world!";
+    public String User_PI_Suggest = "Use /otd_pi to create your own dungeon universe with money/exp";
     
     public String Remove_All = "Remove all loots";
     public String Remove_All_Warn = "Make sure you want to do that!";
@@ -538,6 +539,15 @@ public class I18n {
         if(I18n.instance.lang_version == 15) {
             update15();
         }
+        if(I18n.instance.lang_version == 16) {
+            update16();
+        }
+    }
+    
+    public static void update16() {
+        I18n.instance.User_PI_Suggest = "Use /otd_pi to create your own dungeon universe with money/exp";
+        
+        I18n.instance.lang_version = 17;
     }
     
     public static void update15() {

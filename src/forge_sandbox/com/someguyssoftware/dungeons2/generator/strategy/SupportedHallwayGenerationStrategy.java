@@ -29,7 +29,7 @@ import forge_sandbox.AxisAlignedBB;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Sep 9, 2016

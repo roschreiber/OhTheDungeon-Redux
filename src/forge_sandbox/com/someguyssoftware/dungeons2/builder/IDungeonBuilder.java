@@ -11,7 +11,7 @@ import forge_sandbox.com.someguyssoftware.dungeonsengine.config.IDungeonConfig;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import forge_sandbox.AxisAlignedBB;
 import org.bukkit.ChunkSnapshot;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Aug 18, 2016

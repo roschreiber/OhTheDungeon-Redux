@@ -20,7 +20,7 @@ import forge_sandbox.com.someguyssoftware.dungeonsengine.config.ILevelConfig;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.Coords;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import org.bukkit.block.data.BlockData;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * Builds a structure using the base rule set ie. all blocks are generated regardless of location, adjacent blocks etc.

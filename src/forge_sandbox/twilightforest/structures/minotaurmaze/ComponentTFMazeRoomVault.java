@@ -7,7 +7,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.TFTreasure;
 
 public class ComponentTFMazeRoomVault extends ComponentTFMazeRoom {

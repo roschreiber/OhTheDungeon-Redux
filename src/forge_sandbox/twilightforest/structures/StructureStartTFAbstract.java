@@ -10,7 +10,7 @@ import forge_sandbox.StructureBoundingBox;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.TFFeature;
 
 public abstract class StructureStartTFAbstract {

@@ -85,12 +85,7 @@ public class Content implements InventoryHolder, Listener {
         this.title = title;
         inv = Bukkit.createInventory(this, slot, this.title);
     }
-    
-    public Content(String title, InventoryType type) {
-        this.title = title;
-        inv = Bukkit.createInventory(this, type);
-    }
-    
+        
     public void init() {
         
     }

@@ -40,7 +40,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.block.data.BlockData;
 import otd.Main;
-import shadow_lib.api.SpawnerDecryAPI;
+import otd.lib.api.SpawnerDecryAPI;
 import otd.dungeon.dungeonmaze.util.SpawnerUtils;
 
 public class BlazeSpawnerRoomPopulator extends MazeRoomBlockPopulator {

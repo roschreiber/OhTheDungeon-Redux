@@ -10,8 +10,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import forge_sandbox.com.someguyssoftware.dungeons2.Dungeons2;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
-import shadow_lib.async.later.dungeons2.Spawner_Later;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.later.dungeons2.Spawner_Later;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Jan 15, 2017

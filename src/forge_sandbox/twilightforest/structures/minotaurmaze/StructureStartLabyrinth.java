@@ -7,7 +7,7 @@ package forge_sandbox.twilightforest.structures.minotaurmaze;
 
 import forge_sandbox.twilightforest.TFFeature;
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 import static forge_sandbox.twilightforest.TFFeature.LABYRINTH;
 import forge_sandbox.twilightforest.structures.StructureStartTFAbstract;

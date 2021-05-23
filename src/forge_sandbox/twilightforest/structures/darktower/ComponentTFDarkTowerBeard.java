@@ -7,7 +7,7 @@ import forge_sandbox.StructureBoundingBox;
 
 import java.util.Random;
 import org.bukkit.Material;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 
 public class ComponentTFDarkTowerBeard extends StructureTFComponentOld {

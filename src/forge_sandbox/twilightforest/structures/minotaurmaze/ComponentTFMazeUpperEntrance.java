@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.structures.StructureTFComponent;
 
 public class ComponentTFMazeUpperEntrance extends StructureTFComponentOld {

@@ -2,7 +2,7 @@ package forge_sandbox.greymerk.roguelike.dungeon.settings;
 
 import java.util.List;
 import org.bukkit.block.Biome;
-import zhehe.util.BiomeDictionary;
+import otd.lib.BiomeDictionary;
 
 //import net.minecraft.util.ResourceLocation;
 //import net.minecraft.world.biome.Biome;

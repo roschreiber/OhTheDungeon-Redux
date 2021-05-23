@@ -12,7 +12,7 @@ import org.bukkit.block.data.BlockData;
 import otd.util.RotationMirror;
 import otd.util.RotationMirror.Mirror;
 import otd.util.RotationMirror.Rotation;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.TFFeature;
 
 

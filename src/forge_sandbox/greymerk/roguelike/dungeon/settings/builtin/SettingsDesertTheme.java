@@ -21,7 +21,7 @@ import forge_sandbox.greymerk.roguelike.theme.Theme;
 import forge_sandbox.greymerk.roguelike.treasure.loot.LootRuleManager;
 import forge_sandbox.greymerk.roguelike.treasure.loot.WeightedRandomLoot;
 import org.bukkit.Material;
-import zhehe.util.BiomeDictionary;
+import otd.lib.BiomeDictionary;
 //import net.minecraft.init.Items;
 //import net.minecraftforge.common.BiomeDictionary;
 

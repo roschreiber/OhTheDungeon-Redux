@@ -50,7 +50,7 @@ public class CreateDungeonWorld extends Content {
     public final static CreateDungeonWorld instance = new CreateDungeonWorld();
     
     public CreateDungeonWorld() {
-        super(I18n.instance.Menu_Remove_World, InventoryType.DISPENSER);
+        super(I18n.instance.Menu_Remove_World, 9);
     }
     
     @Override

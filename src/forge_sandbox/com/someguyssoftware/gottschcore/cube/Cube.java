@@ -6,7 +6,7 @@ package forge_sandbox.com.someguyssoftware.gottschcore.cube;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import forge_sandbox.BlockPos;
 import org.bukkit.Material;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * For Forge 1.8+

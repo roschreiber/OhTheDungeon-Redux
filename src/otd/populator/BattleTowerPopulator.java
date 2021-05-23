@@ -20,14 +20,18 @@ import otd.dungeon.battletower.BattleTower;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
+import otd.Main;
+import otd.api.event.DungeonGeneratedEvent;
 import otd.util.AsyncLog;
-import zhehe.util.BiomeDictionary;
-import zhehe.util.BiomeDictionary.Type;
+import otd.lib.BiomeDictionary;
+import otd.lib.BiomeDictionary.Type;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.world.DungeonType;
 
 /**
  *
@@ -83,6 +87,23 @@ public class BattleTowerPopulator implements IPopulator {
         if(ry > 50) under = random.nextBoolean();
         
         BattleTower.generate(world, random, rx, ry, rz, choose, under);
+        
+        Set<int[]> chunks0 = new HashSet<>();
+        int cx = chunk.getX(), cz = chunk.getZ();
+        chunks0.add(new int[] {cx-1, cz-1});
+        chunks0.add(new int[] {cx-1, cz});
+        chunks0.add(new int[] {cx-1, cz+1});
+        chunks0.add(new int[] {cx, cz-1});
+        chunks0.add(new int[] {cx, cz});
+        chunks0.add(new int[] {cx, cz+1});
+        chunks0.add(new int[] {cx+1, cz-1});
+        chunks0.add(new int[] {cx+1, cz});
+        chunks0.add(new int[] {cx+1, cz+1});
+
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            DungeonGeneratedEvent event = new DungeonGeneratedEvent(chunks0, DungeonType.BattleTower, rx, rz);
+            Bukkit.getServer().getPluginManager().callEvent(event);
+        }, 1L);
         
         AsyncLog.logMessage("[BattleTower Dungeon @ " + world.getName() + "] x=" + rx + ", z=" + rz);
         return true;

@@ -6,7 +6,7 @@ import forge_sandbox.twilightforest.structures.StructureTFComponentOld;
 
 import java.util.List;
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.structures.StructureTFComponent;
 
 public class ComponentTFMazeEntranceShaft extends StructureTFComponentOld {

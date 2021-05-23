@@ -10,7 +10,7 @@ import com.google.common.collect.Table;
 import forge_sandbox.com.someguyssoftware.dungeons2.Dungeons2;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
-import shadow_lib.ExceptionRepoter;
+import otd.lib.ExceptionRepoter;
 
 /**
  * @author Mark Gottschling on Dec 20, 2018

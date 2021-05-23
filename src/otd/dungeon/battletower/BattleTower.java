@@ -35,7 +35,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import otd.Main;
-import shadow_lib.api.SpawnerDecryAPI;
+import otd.lib.api.SpawnerDecryAPI;
 import otd.config.EnumType.ChestType;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;

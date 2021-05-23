@@ -3,8 +3,8 @@ authors: [shadow_wind]
 main: otd.Main
 load: startup
 api-version: 1.14
-version: 14.1
-softdepend: [WorldEdit]
+version: 15.0
+softdepend: [WorldEdit,Vault]
 commands:
   oh_the_dungeons:
     aliases: [otd]
@@ -22,6 +22,18 @@ commands:
     aliases: [otd_tp]
     description: open the dungeon plot teleport GUI
     usage: /<command>
+  otd_pi:
+    description: Open the PerPlayerDungeonInstance Menu
+    usage: /<command>
+  otd_pi_back:
+    description: Back to normal world
+    usage: /<command>
+  otd_pi_debug:
+    description: Show debug info
+    usage: /<command>
+  otd_pi_create:
+    description: Create a dungeon universe with command
+    usage: /<command> [player] [generator] [populator] [tower]
 permissions:
   oh_the_dungeons.admin:
     default: op
@@ -29,3 +41,12 @@ permissions:
   oh_the_dungeons.teleport:
     default: true
     description: open the dungeon plot teleport GUI
+  perplayerdungeoninstance.admin:
+    default: op
+    description: Using all PerPlayerDungeonInstance management command
+  perplayerdungeoninstance.back:
+    default: true
+    description: Permission for otd_pi_back
+  perplayerdungeoninstance.menu:
+    default: true
+    description: Permission for otd_pi

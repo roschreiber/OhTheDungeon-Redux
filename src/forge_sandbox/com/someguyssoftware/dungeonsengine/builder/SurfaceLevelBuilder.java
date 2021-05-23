@@ -4,7 +4,7 @@
 package forge_sandbox.com.someguyssoftware.dungeonsengine.builder;
 
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Jan 13, 2019

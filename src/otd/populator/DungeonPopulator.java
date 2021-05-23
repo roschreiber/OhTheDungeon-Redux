@@ -22,7 +22,7 @@ import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import otd.Main;
-import shadow_manager.DungeonWorldManager;
+import otd.lib.DungeonWorldManager;
 import otd.util.RandomCollection;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;

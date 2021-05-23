@@ -41,7 +41,7 @@ public class RemoveDungeonWorld extends Content {
     public final static RemoveDungeonWorld instance = new RemoveDungeonWorld();
     
     public RemoveDungeonWorld() {
-        super(I18n.instance.Menu_Remove_World, InventoryType.DISPENSER);
+        super(I18n.instance.Menu_Remove_World, 9);
     }
     
     @Override

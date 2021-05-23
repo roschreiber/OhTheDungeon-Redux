@@ -11,7 +11,7 @@ import forge_sandbox.com.someguyssoftware.dungeons2.model.Room;
 import forge_sandbox.com.someguyssoftware.dungeons2.style.StyleSheet;
 import forge_sandbox.com.someguyssoftware.dungeons2.style.Theme;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.config.ILevelConfig;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Aug 28, 2016

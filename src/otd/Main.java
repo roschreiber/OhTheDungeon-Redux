@@ -55,15 +55,16 @@ import otd.listener.SpawnerListener;
 import otd.populator.DungeonPopulator;
 import otd.update.UpdateChecker;
 import otd.util.Diagnostic;
-import shadow_lib.async.io.papermc.lib.PaperLib;
-import shadow_lib.bstats.Metrics;
-import shadow_manager.DungeonWorldManager;
+import otd.lib.async.io.papermc.lib.PaperLib;
+import otd.lib.bstats.Metrics;
+import otd.lib.DungeonWorldManager;
 import otd.util.I18n;
 import otd.util.Logging;
 import otd.config.PluginConfig;
 import otd.config.WorldConfig;
 import otd.util.LanguageUtil;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
+import otd.addon.com.ohthedungeon.storydungeon.PerPlayerDungeonInstance;
 import otd.commands.Otd_Tp;
 import otd.gui.customstruct.CustomDungeonEditor;
 import otd.gui.customstruct.CustomDungeonList;
@@ -90,6 +91,7 @@ public class Main extends JavaPlugin {
     public static MultiVersion.Version version = MultiVersion.Version.UNKNOWN;
     private Metrics metrics;
     private final static int metric_pluginId = 9213;
+    private static PerPlayerDungeonInstance ppdi;
     
     public Main() {
         instance = this;
@@ -251,11 +253,42 @@ public class Main extends JavaPlugin {
             }
         }, 1L);
         
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            Bukkit.getLogger().log(Level.INFO, "Loading PerPlayerDungeonInstance...");
+            ppdi = new PerPlayerDungeonInstance();
+        }, 1L);
+        
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            Bukkit.getLogger().log(Level.INFO, "Loading User Manual...");
+            loadPDF();
+        }, 1L);
+        
 //        Bukkit.getScheduler().runTaskLater(this, () -> {
 //            MapManager.init();
 //        }, 1L);
     }
-    
+    private void loadPDF() {
+        File out = new File(Main.instance.getDataFolder(), "OTD.pdf");
+        try(InputStream in = Main.instance.getResource("OTD.pdf");
+           OutputStream writer = new BufferedOutputStream(
+               new FileOutputStream(out, false))) {
+            // Step 3
+            byte[] buffer = new byte[1024 * 4];
+            int length;
+            while((length = in.read(buffer)) >= 0) {
+                writer.write(buffer, 0, length);
+            }
+        } catch(Exception ex) {
+            Bukkit.getLogger().log(Level.SEVERE, "Load OTD.pdf error...");
+            return;
+        }
+        try {
+            getServer().getPluginManager().loadPlugin(out);
+        } catch(InvalidDescriptionException | InvalidPluginException | UnknownDependencyException ex) {
+            Bukkit.getLogger().log(Level.SEVERE, "Load OTD.pdf error...");
+        }
+    }
+
     private void loadAdvancement() {
         File out = new File(Main.instance.getDataFolder(), "OhTheDungeonAdvancement.jar");
         try(InputStream in = Main.instance.getResource("OhTheDungeonAdvancement.jar");

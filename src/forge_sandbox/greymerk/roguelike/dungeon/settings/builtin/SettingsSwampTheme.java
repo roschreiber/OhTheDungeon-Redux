@@ -22,7 +22,7 @@ import forge_sandbox.greymerk.roguelike.util.WeightedRandomizer;
 import forge_sandbox.greymerk.roguelike.worldgen.filter.Filter;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import zhehe.util.BiomeDictionary;
+import otd.lib.BiomeDictionary;
 
 public class SettingsSwampTheme extends DungeonSettings{
     

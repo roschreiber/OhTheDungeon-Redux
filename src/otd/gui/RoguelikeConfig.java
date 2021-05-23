@@ -26,7 +26,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import shadow_manager.DungeonWorldManager;
+import otd.lib.DungeonWorldManager;
 import otd.util.I18n;
 import otd.config.RoguelikeLootNode;
 import otd.config.SimpleWorldConfig;

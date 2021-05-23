@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Random;
 import org.bukkit.World;
 import otd.Main;
-import shadow_lib.api.SpawnerDecryAPI;
+import otd.lib.api.SpawnerDecryAPI;
 import otd.dungeon.dungeonmaze.util.ChestUtils;
 import otd.dungeon.dungeonmaze.util.SpawnerUtils;
 

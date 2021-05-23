@@ -28,7 +28,7 @@ import java.util.Random;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
-import shadow_lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.io.papermc.lib.PaperLib;
 import otd.util.RandomCollection;
 
 /**

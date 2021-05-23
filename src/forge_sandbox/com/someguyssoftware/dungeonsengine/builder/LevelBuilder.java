@@ -17,7 +17,7 @@ import forge_sandbox.com.someguyssoftware.dungeonsengine.model.ILevel;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.model.IRoom;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.model.Level;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Dec 27, 2018

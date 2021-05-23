@@ -41,8 +41,8 @@ import org.bukkit.inventory.ItemStack;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.later.doomlike.Chest_Later;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.later.doomlike.Chest_Later;
 
 //import net.minecraft.world.World;
 //import net.minecraft.world.biome.Biome;

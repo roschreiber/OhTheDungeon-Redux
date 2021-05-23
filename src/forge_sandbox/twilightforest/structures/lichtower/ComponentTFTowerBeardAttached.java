@@ -4,7 +4,7 @@ import forge_sandbox.StructureBoundingBox;
 import forge_sandbox.twilightforest.TFFeature;
 
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.structures.StructureTFComponentOld;
 
 

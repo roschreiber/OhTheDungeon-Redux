@@ -9,7 +9,7 @@ import forge_sandbox.twilightforest.TFFeature;
 //import twilightforest.block.TFBlocks;
 
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 //import static twilightforest.enums.PlantVariant.ROOT_STRAND;
 

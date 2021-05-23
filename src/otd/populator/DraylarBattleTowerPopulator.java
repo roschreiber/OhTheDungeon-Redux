@@ -16,17 +16,12 @@
  */
 package otd.populator;
 
-import otd.dungeon.battletower.BattleTower;
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import org.bukkit.block.Biome;
 import otd.dungeon.draylar.BattleTowerSchematics;
 import otd.util.AsyncLog;
-import zhehe.util.BiomeDictionary;
-import zhehe.util.BiomeDictionary.Type;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 

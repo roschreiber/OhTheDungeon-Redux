@@ -23,11 +23,13 @@ import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import otd.Main;
-import shadow_lib.ZoneWorld;
-import shadow_lib.async.AsyncRoguelikeDungeon;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.io.papermc.lib.PaperLib;
-import shadow_lib.async.later.roguelike.Later;
+import otd.api.event.DungeonGeneratedEvent;
+import otd.world.DungeonType;
+import otd.lib.ZoneWorld;
+import otd.lib.async.AsyncRoguelikeDungeon;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.later.roguelike.Later;
 
 /**
  * A two dimensional map of the dungeon, including heights, blocks, and 
@@ -189,6 +191,8 @@ public class MapMatrix {
         Set<int[]> chunks0 = w.getAsyncWorld().getCriticalChunks();
         
         int delay = 0;
+        int eventDelay = 0;
+        boolean isPaper = PaperLib.isPaper();
         
         for(int[] chunk : chunks0) {
             int chunkX = chunk[0];
@@ -197,7 +201,8 @@ public class MapMatrix {
             List<ZoneWorld.CriticalNode> cn = w.getAsyncWorld().getCriticalBlock(chunkX, chunkZ);
             List<Later> later = w.getAsyncWorld().getCriticalLater(chunkX, chunkZ);
             
-            if(!PaperLib.isPaper()) delay++;
+            if(!isPaper) delay++;
+            eventDelay += 2;
             
             Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
                 try {
@@ -245,6 +250,13 @@ public class MapMatrix {
                 dungeon.addEntrances(w.getWorld());
             }, delay);
         }
+        
+        int x = dungeon.map.chunkX * 16 + 7;
+        int z = dungeon.map.chunkZ * 16 + 7;
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            DungeonGeneratedEvent event = new DungeonGeneratedEvent(chunks0, DungeonType.Doomlike, x, z);
+            Bukkit.getServer().getPluginManager().callEvent(event);
+        }, eventDelay);
     }
     
     

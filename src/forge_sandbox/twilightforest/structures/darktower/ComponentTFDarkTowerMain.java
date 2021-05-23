@@ -17,7 +17,7 @@ import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.block.data.Orientable;
 import otd.util.RotationMirror.Rotation;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.TFTreasure;
 import forge_sandbox.twilightforest.structures.RotationUtil;
 import forge_sandbox.twilightforest.structures.StructureTFComponent;

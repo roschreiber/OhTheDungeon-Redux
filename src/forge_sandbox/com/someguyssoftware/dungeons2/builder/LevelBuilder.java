@@ -39,11 +39,11 @@ import forge_sandbox.com.someguyssoftware.gottschcore.positional.Intersect;
 import forge_sandbox.com.someguyssoftware.gottschcore.random.RandomHelper;
 import forge_sandbox.AxisAlignedBB;
 
-import shadow_lib.io.github.jdiemke.triangulation.DelaunayTriangulator;
-import shadow_lib.io.github.jdiemke.triangulation.NotEnoughPointsException;
-import shadow_lib.io.github.jdiemke.triangulation.Triangle2D;
-import shadow_lib.io.github.jdiemke.triangulation.Vector2D;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.io.github.jdiemke.triangulation.DelaunayTriangulator;
+import otd.lib.io.github.jdiemke.triangulation.NotEnoughPointsException;
+import otd.lib.io.github.jdiemke.triangulation.Triangle2D;
+import otd.lib.io.github.jdiemke.triangulation.Vector2D;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Jul 9, 2016

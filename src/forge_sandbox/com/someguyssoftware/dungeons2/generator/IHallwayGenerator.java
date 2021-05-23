@@ -12,7 +12,7 @@ import forge_sandbox.com.someguyssoftware.dungeons2.model.LevelConfig;
 import forge_sandbox.com.someguyssoftware.dungeons2.model.Room;
 import forge_sandbox.com.someguyssoftware.dungeons2.style.StyleSheet;
 import forge_sandbox.com.someguyssoftware.dungeons2.style.Theme;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * @author Mark Gottschling on Aug 6, 2016

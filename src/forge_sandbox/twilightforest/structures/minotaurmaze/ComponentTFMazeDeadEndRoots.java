@@ -5,7 +5,7 @@ import forge_sandbox.twilightforest.TFFeature;
 
 import java.util.Random;
 import org.bukkit.block.BlockFace;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 public class ComponentTFMazeDeadEndRoots extends ComponentTFMazeDeadEnd {
 

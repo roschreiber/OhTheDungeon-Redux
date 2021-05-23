@@ -12,7 +12,7 @@ import forge_sandbox.jaredbgreat.dldungeons.pieces.chests.LootCategory;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashSet;
-import zhehe.util.BiomeDictionary.Type;
+import otd.lib.BiomeDictionary.Type;
 
 //import net.minecraftforge.common.BiomeDictionary.Type;
 

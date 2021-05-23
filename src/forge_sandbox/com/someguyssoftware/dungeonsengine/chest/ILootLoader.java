@@ -6,7 +6,7 @@ import forge_sandbox.com.someguyssoftware.dungeonsengine.config.IChestConfig;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.InventoryHolder;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * 

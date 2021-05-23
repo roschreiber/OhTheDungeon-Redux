@@ -19,12 +19,12 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import otd.Main;
-import shadow_lib.ZoneWorld;
-import shadow_lib.async.AsyncRoguelikeDungeon;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.io.papermc.lib.PaperLib;
-import shadow_lib.async.later.roguelike.Later;
-import shadow_lib.async.later.twilightforest.Art_Later;
+import otd.lib.ZoneWorld;
+import otd.lib.async.AsyncRoguelikeDungeon;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.later.roguelike.Later;
+import otd.lib.async.later.twilightforest.Art_Later;
 import forge_sandbox.twilightforest.structures.lichtower.StructureStartLichTower;
 import otd.config.WorldConfig;
 

@@ -30,7 +30,7 @@ import forge_sandbox.com.someguyssoftware.dungeons2.style.Theme;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.chest.BossLootLoader;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.chest.LootLoader;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.config.ILevelConfig;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 /**
  * This class is responsible for building the dungeon in game.

@@ -23,9 +23,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -40,10 +42,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import otd.Main;
-import shadow_lib.api.SpawnerDecryAPI;
+import otd.api.event.DungeonGeneratedEvent;
+import otd.lib.api.SpawnerDecryAPI;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.world.DungeonType;
 
 /**
  *
@@ -202,6 +206,7 @@ public class BattleTowerSchematic {
     };
     
     public boolean place(World world, int x, int y, int z, Random rand) {
+        int ox = x, oz = z;
         x -= offset_x_C;
         z -= offset_z_C;
         for(BlockNode node : json.blocks) {
@@ -228,6 +233,22 @@ public class BattleTowerSchematic {
                 }
             }
         }
+        
+        Set<int[]> chunks0 = new HashSet<>();
+        int cx = ox / 16, cz = oz / 16;
+        chunks0.add(new int[] {cx-1, cz-1});
+        chunks0.add(new int[] {cx-1, cz});
+        chunks0.add(new int[] {cx-1, cz+1});
+        chunks0.add(new int[] {cx, cz-1});
+        chunks0.add(new int[] {cx, cz});
+        chunks0.add(new int[] {cx, cz+1});
+        chunks0.add(new int[] {cx+1, cz-1});
+        chunks0.add(new int[] {cx+1, cz});
+        chunks0.add(new int[] {cx+1, cz+1});
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            DungeonGeneratedEvent event = new DungeonGeneratedEvent(chunks0, DungeonType.Draylar, ox, oz);
+            Bukkit.getServer().getPluginManager().callEvent(event);
+        }, 1L);
 //        if(!this.is_top) placeLadder(world, rand, x + offset_x_C, y, z + offset_z_C);
         return true;
     }

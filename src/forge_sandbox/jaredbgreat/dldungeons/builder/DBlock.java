@@ -13,8 +13,8 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.later.doomlike.Spawner_Later;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.later.doomlike.Spawner_Later;
 
 public final class DBlock {
     private final String id;   // The name

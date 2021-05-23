@@ -16,7 +16,7 @@ import forge_sandbox.greymerk.roguelike.dungeon.settings.base.SettingsBase;
 import forge_sandbox.greymerk.roguelike.dungeon.towers.Tower;
 import forge_sandbox.greymerk.roguelike.theme.Theme;
 import forge_sandbox.greymerk.roguelike.worldgen.filter.Filter;
-import zhehe.util.BiomeDictionary;
+import otd.lib.BiomeDictionary;
 
 public class SettingsBunkerTheme extends DungeonSettings{
 

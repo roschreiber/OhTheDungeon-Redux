@@ -38,11 +38,13 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import otd.Main;
-import shadow_lib.ZoneWorld;
-import shadow_lib.async.AsyncRoguelikeDungeon;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.io.papermc.lib.PaperLib;
-import shadow_lib.async.later.roguelike.Later;
+import otd.api.event.DungeonGeneratedEvent;
+import otd.world.DungeonType;
+import otd.lib.ZoneWorld;
+import otd.lib.async.AsyncRoguelikeDungeon;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.later.roguelike.Later;
 
 /**
  *
@@ -125,6 +127,8 @@ public class BukkitDungeonGenerator {
         Set<int[]> chunks0 = w.getAsyncWorld().getCriticalChunks();
         
         int delay = 0;
+        int eventDelay = 0;
+        boolean isPaper = PaperLib.isPaper();
         
         for(int[] chunk : chunks0) {
             int chunkX = chunk[0];
@@ -133,7 +137,8 @@ public class BukkitDungeonGenerator {
             List<ZoneWorld.CriticalNode> cn = w.getAsyncWorld().getCriticalBlock(chunkX, chunkZ);
             List<Later> later = w.getAsyncWorld().getCriticalLater(chunkX, chunkZ);
             
-            if(!PaperLib.isPaper()) delay++;
+            if(!isPaper) delay++;
+            eventDelay += 2;
             
             Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
                 try {
@@ -171,9 +176,12 @@ public class BukkitDungeonGenerator {
             }, delay);
         }
         
-//        w.zone_world.commitAll(world);
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            DungeonGeneratedEvent event = new DungeonGeneratedEvent(chunks0, DungeonType.AntMan, location.getBlockX(), location.getBlockZ());
+            Bukkit.getServer().getPluginManager().callEvent(event);
+        }, eventDelay);
+        
         return true;
-
     }
     
     private static class RandomBuildPattern implements IRandomProbabilityItem {

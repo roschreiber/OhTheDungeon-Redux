@@ -36,6 +36,7 @@ public class WorldGenOptimization implements Listener {
                e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
                e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
                e.getWorld().setDifficulty(Difficulty.HARD);
+               e.getWorld().setSpawnFlags(true, false);
          }
     }
     @EventHandler
@@ -46,6 +47,7 @@ public class WorldGenOptimization implements Listener {
                e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
                e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
                e.getWorld().setDifficulty(Difficulty.HARD);
+               e.getWorld().setSpawnFlags(true, false);
          }
     }
 }

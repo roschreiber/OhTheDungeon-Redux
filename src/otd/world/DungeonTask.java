@@ -40,7 +40,7 @@ import otd.config.WorldConfig.CustomDungeon;
 import otd.world.task.DungeonChunkTask;
 import otd.world.task.DungeonPlaceTask;
 import otd.world.task.DungeonWorldTask;
-import shadow_lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.io.papermc.lib.PaperLib;
 import otd.util.I18n;
 import otd.populator.IPopulator;
 import otd.struct.SchematicLoader;

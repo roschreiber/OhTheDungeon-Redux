@@ -8,7 +8,7 @@ import forge_sandbox.twilightforest.structures.lichtower.ComponentTFTowerWing;
 
 import java.util.List;
 import java.util.Random;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.structures.StructureTFComponent;
 
 public class ComponentTFDarkTowerRoof extends ComponentTFTowerRoof {

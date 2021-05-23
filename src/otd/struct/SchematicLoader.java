@@ -43,18 +43,20 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import otd.Main;
+import otd.api.event.DungeonGeneratedEvent;
 import otd.config.CustomDungeonType;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.util.RandomCollection;
-import shadow_lib.ZoneWorld;
-import shadow_lib.async.AsyncRoguelikeDungeon;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.io.papermc.lib.PaperLib;
-import shadow_lib.async.later.customstruct.Chest_Later;
-import shadow_lib.async.later.customstruct.Spawner_Later;
-import shadow_lib.async.later.roguelike.Later;
+import otd.world.DungeonType;
+import otd.lib.ZoneWorld;
+import otd.lib.async.AsyncRoguelikeDungeon;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.io.papermc.lib.PaperLib;
+import otd.lib.async.later.customstruct.Chest_Later;
+import otd.lib.async.later.customstruct.Spawner_Later;
+import otd.lib.async.later.roguelike.Later;
 
 
 /**
@@ -119,7 +121,7 @@ public class SchematicLoader {
     private static void createInWorld(AsyncWorldEditor w, CustomDungeon dungeon, Location loc, Random random) throws FileNotFoundException, IOException {
         Clipboard c = load(new File(getSchematicDir(), dungeon.file));
         applyAsync(w, loc, c, dungeon, random);
-        addToWorld(w);
+        addToWorld(w, loc.getBlockX(), loc.getBlockZ(), dungeon);
     }
     
     public static void createInWorldAsync(CustomDungeon dungeon, Location loc, Random random) {
@@ -176,10 +178,13 @@ public class SchematicLoader {
          }
     }
     
-    public static void addToWorld(AsyncWorldEditor w) {
+    public static void addToWorld(AsyncWorldEditor w, int x, int z, CustomDungeon dungeon) {
         Set<int[]> chunks0 = w.getAsyncWorld().getCriticalChunks();
         
         int delay = 0;
+        int eventDelay = 0;
+        
+        boolean isPaper = PaperLib.isPaper();
         
         for(int[] chunk : chunks0) {
             int chunkX = chunk[0];
@@ -188,7 +193,8 @@ public class SchematicLoader {
             List<ZoneWorld.CriticalNode> cn = w.getAsyncWorld().getCriticalBlock(chunkX, chunkZ);
             List<Later> later = w.getAsyncWorld().getCriticalLater(chunkX, chunkZ);
             
-            if(!PaperLib.isPaper()) delay++;
+            if(!isPaper) delay++;
+            eventDelay += 2;
             
             Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
                 try {
@@ -229,5 +235,10 @@ public class SchematicLoader {
                 }
             }, delay);
         }
+        
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            DungeonGeneratedEvent event = new DungeonGeneratedEvent(chunks0, DungeonType.CustomDungeon, x, z, dungeon.file);
+            Bukkit.getServer().getPluginManager().callEvent(event);
+        }, eventDelay);
     }
 }

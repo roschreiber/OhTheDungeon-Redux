@@ -7,7 +7,7 @@ import forge_sandbox.com.someguyssoftware.dungeons2.generator.blockprovider.IDun
 import forge_sandbox.com.someguyssoftware.dungeons2.model.Room;
 import forge_sandbox.com.someguyssoftware.dungeons2.style.DesignElement;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.BlockPos;
 import org.bukkit.Material;
 

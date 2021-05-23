@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 
 
 /**

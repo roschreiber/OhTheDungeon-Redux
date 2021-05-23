@@ -32,7 +32,7 @@ import otd.dungeon.dungeonmaze.populator.maze.MazeRoomBlockPopulatorArgs;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import otd.Main;
-import shadow_lib.api.SpawnerDecryAPI;
+import otd.lib.api.SpawnerDecryAPI;
 import otd.dungeon.dungeonmaze.util.SpawnerUtils;
 
 public class BossRoomEasyPopulator extends MazeRoomBlockPopulator {

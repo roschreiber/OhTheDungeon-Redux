@@ -21,10 +21,10 @@ import org.bukkit.block.data.type.TripwireHook;
 import org.bukkit.entity.EntityType;
 import otd.util.RotationMirror.Mirror;
 import otd.util.RotationMirror.Rotation;
-import shadow_lib.async.AsyncWorldEditor;
-import shadow_lib.async.later.twilightforest.Chest_Later;
-import shadow_lib.async.later.twilightforest.SpawnerBoss_Later;
-import shadow_lib.async.later.twilightforest.Spawner_Later;
+import otd.lib.async.AsyncWorldEditor;
+import otd.lib.async.later.twilightforest.Chest_Later;
+import otd.lib.async.later.twilightforest.SpawnerBoss_Later;
+import otd.lib.async.later.twilightforest.Spawner_Later;
 import forge_sandbox.twilightforest.TFBoss;
 import forge_sandbox.twilightforest.TFTreasure;
 

@@ -17,7 +17,7 @@ import forge_sandbox.com.someguyssoftware.dungeons2.spawner.SpawnSheet;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.chest.ILootLoader;
 import forge_sandbox.com.someguyssoftware.dungeonsengine.config.ILevelConfig;
 import forge_sandbox.com.someguyssoftware.gottschcore.positional.ICoords;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.BlockPos;
 import forge_sandbox.GroupHelper;
 import org.bukkit.Material;

@@ -7,7 +7,7 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
-import shadow_lib.async.AsyncWorldEditor;
+import otd.lib.async.AsyncWorldEditor;
 import forge_sandbox.twilightforest.TFTreasure;
 
 public class ComponentTFMazeDeadEndTrappedChest extends ComponentTFMazeDeadEnd {

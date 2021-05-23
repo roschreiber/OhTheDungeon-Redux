@@ -25,8 +25,8 @@ import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.java.JavaPlugin;
-import zhehe.util.BiomeDictionary;
-import zhehe.util.BiomeDictionary.Type;
+import otd.lib.BiomeDictionary;
+import otd.lib.BiomeDictionary.Type;
 
 /**
  *
