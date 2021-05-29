@@ -35,11 +35,13 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import otd.Main;
+import otd.api.event.ChestEvent;
 import otd.lib.api.SpawnerDecryAPI;
 import otd.config.EnumType.ChestType;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.world.DungeonType;
 
 public class BattleTower
 {
@@ -376,42 +378,45 @@ public class BattleTower
             world.getBlockAt(l).setType(m, true);
             
             if(m == Material.SHULKER_BOX || m == Material.CHEST) {
-                    Block block = world.getBlockAt(l);
-                    Inventory inv;
-                    if(m == Material.SHULKER_BOX) {
-                        ShulkerBox sb = (ShulkerBox) block.getState();
-                        inv = sb.getInventory();
-                    } else {
-                        Chest ch = (Chest) block.getState();
-                        inv = ch.getInventory();
-                    }
-                    String world_name = world.getName();
-                    boolean builtin = true;
-                    if(WorldConfig.wc.dict.containsKey(world_name)) {
-                        SimpleWorldConfig swc = WorldConfig.wc.dict.get(world_name);
-                        if(!swc.battletower.builtinLoot) builtin = false;
-                    }
-                    if(builtin) {
-                        for(ItemStackNode isn : TreasureList.TOP) {
-                            if(random.nextDouble() < isn.chance) {
-                                int amount = isn.min + random.nextInt(isn.max - isn.min + 1);
-                                ItemStack is = isn.is.clone();
-                                is.setAmount(amount);
-                                inv.addItem(is);
-                            }
+                Block block = world.getBlockAt(l);
+                Inventory inv;
+                if(m == Material.SHULKER_BOX) {
+                    ShulkerBox sb = (ShulkerBox) block.getState();
+                    inv = sb.getInventory();
+                } else {
+                    Chest ch = (Chest) block.getState();
+                    inv = ch.getInventory();
+                }
+                String world_name = world.getName();
+                boolean builtin = true;
+                if(WorldConfig.wc.dict.containsKey(world_name)) {
+                    SimpleWorldConfig swc = WorldConfig.wc.dict.get(world_name);
+                    if(!swc.battletower.builtinLoot) builtin = false;
+                }
+                if(builtin) {
+                    for(ItemStackNode isn : TreasureList.TOP) {
+                        if(random.nextDouble() < isn.chance) {
+                            int amount = isn.min + random.nextInt(isn.max - isn.min + 1);
+                            ItemStack is = isn.is.clone();
+                            is.setAmount(amount);
+                            inv.addItem(is);
                         }
                     }
-                    if(WorldConfig.wc.dict.containsKey(world_name)) {
-                        SimpleWorldConfig swc = WorldConfig.wc.dict.get(world_name);
-                        for(LootNode ln : swc.battletower.loots) {
-                            if(random.nextDouble() < ln.chance) {
-                                ItemStack is = ln.getItem();
-                                int amount = ln.min + random.nextInt(ln.max - ln.min + 1);
-                                is.setAmount(amount);
-                                inv.addItem(is);
-                            }
+                }
+                if(WorldConfig.wc.dict.containsKey(world_name)) {
+                    SimpleWorldConfig swc = WorldConfig.wc.dict.get(world_name);
+                    for(LootNode ln : swc.battletower.loots) {
+                        if(random.nextDouble() < ln.chance) {
+                            ItemStack is = ln.getItem();
+                            int amount = ln.min + random.nextInt(ln.max - ln.min + 1);
+                            is.setAmount(amount);
+                            inv.addItem(is);
                         }
                     }
+                }
+                
+                ChestEvent event = new ChestEvent(DungeonType.BattleTower, "", l);
+                Bukkit.getServer().getPluginManager().callEvent(event);
             }
         }
     }

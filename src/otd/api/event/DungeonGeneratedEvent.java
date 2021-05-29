@@ -58,6 +58,10 @@ public class DungeonGeneratedEvent extends Event {
     }
     
     public String getExtra() {
+        return getCustomStructureName();
+    }
+    
+    public String getCustomStructureName() {
         return this.extra;
     }
     

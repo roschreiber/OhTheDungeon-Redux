@@ -48,7 +48,7 @@ import otd.lib.async.later.roguelike.Later;
  */
 public class AsyncWorldEditor implements IWorldEditor {
     
-    private World world;
+    private final World world;
 //    public List<Later> later_task = new ArrayList<>();
     private TreasureManager chests;
     private Map<Material, Integer> stats;

@@ -22,7 +22,9 @@ import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -32,11 +34,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
+import otd.api.event.ChestEvent;
 import otd.lib.async.AsyncWorldEditor;
 import otd.lib.async.later.roguelike.Later;
 import otd.util.RandomCollection;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.world.DungeonType;
 
 /**
  *
@@ -177,5 +181,9 @@ public class Chest_Later extends Later {
     @Override
     public void doSomethingInChunk(Chunk c) {
         Chest_Later.generate(c, random, coords, rarity, state);
+        
+        Location loc = new Location(c.getWorld(), coords.getX(), coords.getY(), coords.getZ());
+        ChestEvent event = new ChestEvent(DungeonType.Aether, "", loc);
+        Bukkit.getServer().getPluginManager().callEvent(event);
     }
 }

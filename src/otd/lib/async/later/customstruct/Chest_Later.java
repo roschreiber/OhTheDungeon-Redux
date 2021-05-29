@@ -18,6 +18,7 @@ package otd.lib.async.later.customstruct;
 
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import java.util.Random;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -25,10 +26,12 @@ import org.bukkit.block.BlockState;
 import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import otd.api.event.ChestEvent;
 import otd.config.LootNode;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.lib.async.AsyncWorldEditor;
 import otd.lib.async.later.roguelike.Later;
+import otd.world.DungeonType;
 
 /**
  *
@@ -92,6 +95,9 @@ public class Chest_Later extends Later {
                     inv.setItem(index, item);
                 }
             }
+            
+            ChestEvent event = new ChestEvent(DungeonType.CustomDungeon, dungeon.file, block.getLocation());
+            Bukkit.getServer().getPluginManager().callEvent(event);
         }
     }
 }

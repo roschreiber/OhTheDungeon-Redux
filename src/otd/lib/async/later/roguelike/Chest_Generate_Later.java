@@ -19,7 +19,11 @@ package otd.lib.async.later.roguelike;
 import forge_sandbox.greymerk.roguelike.treasure.TreasureChest;
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import forge_sandbox.greymerk.roguelike.worldgen.IWorldEditor;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Location;
+import otd.api.event.ChestEvent;
+import otd.world.DungeonType;
 
 /**
  *
@@ -45,10 +49,18 @@ public class Chest_Generate_Later extends Later {
     @Override
     public void doSomething() {
         tc.generate_later(editor, pos);
+        callEvent(editor, pos);
     }
     
     @Override
     public void doSomethingInChunk(Chunk c) {
         tc.generate_later_chunk(c, pos);
+        callEvent(editor, pos);
+    }
+    
+    private static void callEvent(IWorldEditor editor, Coord pos) {
+        Location loc = new Location(editor.getWorld(), pos.getX(), pos.getY(), pos.getZ());
+        ChestEvent event = new ChestEvent(DungeonType.Roguelike, "", loc);
+        Bukkit.getServer().getPluginManager().callEvent(event);
     }
 }

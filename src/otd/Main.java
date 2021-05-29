@@ -258,11 +258,6 @@ public class Main extends JavaPlugin {
             ppdi = new PerPlayerDungeonInstance();
         }, 1L);
         
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-            Bukkit.getLogger().log(Level.INFO, "Loading User Manual...");
-            loadPDF();
-        }, 1L);
-        
 //        Bukkit.getScheduler().runTaskLater(this, () -> {
 //            MapManager.init();
 //        }, 1L);

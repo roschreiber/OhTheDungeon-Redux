@@ -18,6 +18,7 @@ package otd.dungeon.dungeonmaze.util;
 
 import java.util.List;
 import java.util.Random;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import org.bukkit.block.Block;
@@ -25,9 +26,11 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import otd.api.event.ChestEvent;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.world.DungeonType;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ChestUtils {
@@ -192,6 +195,9 @@ public class ChestUtils {
                 inv.addItem(is);
             }
         }
+        
+        ChestEvent event = new ChestEvent(DungeonType.DungeonMaze, "", chest.getBlock().getLocation());
+        Bukkit.getServer().getPluginManager().callEvent(event);
     }
     
     public static void addCustomLoots(Block b, Random rand, World world) {

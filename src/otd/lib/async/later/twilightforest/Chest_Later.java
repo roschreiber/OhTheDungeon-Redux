@@ -35,6 +35,9 @@ import otd.lib.async.later.roguelike.Later;
 import forge_sandbox.twilightforest.TFTreasure;
 import forge_sandbox.twilightforest.treasure.Tower_Library;
 import forge_sandbox.twilightforest.treasure.Tower_Room;
+import org.bukkit.Bukkit;
+import otd.api.event.ChestEvent;
+import otd.world.DungeonType;
 
 /**
  *
@@ -124,6 +127,9 @@ public class Chest_Later extends Later {
 
                 }
             }
+            
+            ChestEvent event = new ChestEvent(DungeonType.Lich, "", block.getLocation());
+            Bukkit.getServer().getPluginManager().callEvent(event);
         }
         
         world = null;

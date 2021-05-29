@@ -42,6 +42,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import otd.Main;
+import otd.api.event.ChestEvent;
 import otd.api.event.DungeonGeneratedEvent;
 import otd.lib.api.SpawnerDecryAPI;
 import otd.config.LootNode;
@@ -341,6 +342,9 @@ public class BattleTowerSchematic {
                     }
                 }
             }
+            
+            ChestEvent event = new ChestEvent(DungeonType.Draylar, "", block.getLocation());
+            Bukkit.getServer().getPluginManager().callEvent(event);
         }
     }
     

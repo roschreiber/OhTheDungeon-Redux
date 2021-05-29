@@ -22,16 +22,20 @@ import forge_sandbox.jaredbgreat.dldungeons.pieces.chests.BasicChest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import otd.api.event.ChestEvent;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.lib.async.AsyncWorldEditor;
 import otd.lib.async.later.roguelike.Later;
+import otd.world.DungeonType;
 
 /**
  *
@@ -101,7 +105,13 @@ public class Chest_Later extends Later {
     @Override
     public void doSomethingInChunk(Chunk c) {
         Chest_Later.generate(world, c, random, chest, enable, coords);
+        callEvent(world, coords);
         this.world = null;
     }
+    
+    private static void callEvent(AsyncWorldEditor editor, Coord pos) {
+        Location loc = new Location(editor.getWorld(), pos.getX(), pos.getY(), pos.getZ());
+        ChestEvent event = new ChestEvent(DungeonType.Doomlike, "", loc);
+        Bukkit.getServer().getPluginManager().callEvent(event);
+    }
 }
-
