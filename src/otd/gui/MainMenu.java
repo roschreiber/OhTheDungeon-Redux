@@ -21,13 +21,11 @@ import otd.gui.dungeon_plot.RemoveDungeonWorld;
 import java.util.ArrayList;
 import java.util.List;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import otd.util.Diagnostic;
@@ -36,6 +34,7 @@ import otd.gui.customstruct.CustomDungeonList;
 import otd.integration.WorldEdit;
 import otd.world.DungeonTask;
 import otd.util.I18n;
+import otd.integration.PlaceholderAPI;
 
 /**
  *
@@ -128,6 +127,14 @@ public class MainMenu extends Content {
             
             addItem(5, is);
         }
+        {
+            ItemStack is = new ItemStack(Material.OAK_SIGN);
+            ItemMeta im = is.getItemMeta();
+            
+            im.setDisplayName(I18n.instance.PAPI_Title);
+            
+            addItem(6, is);
+        }
     }
     
     @EventHandler
@@ -179,6 +186,9 @@ public class MainMenu extends Content {
             if(!WorldEdit.isReady()) return;
             CustomDungeonList ci = new CustomDungeonList(this);
             ci.openInventory(p);
+        }
+        if(slot == 6) {
+            PlaceholderAPI.openBook(p);
         }
     }
 }

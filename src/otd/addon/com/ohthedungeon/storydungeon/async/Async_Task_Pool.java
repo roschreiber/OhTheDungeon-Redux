@@ -39,7 +39,7 @@ public class Async_Task_Pool {
             start();
         }, 1L, 20L);
         
-        plugin.getLogger().log(Level.INFO, "{0}Create PerPlayerDungeonInstance Task Pool Successful", ChatColor.BLUE);
+        plugin.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] Create PerPlayerDungeonInstance Task Pool Successful", ChatColor.BLUE);
     }
     
     public List<String> getPending() {

@@ -3,8 +3,8 @@ authors: [shadow_wind]
 main: otd.Main
 load: startup
 api-version: 1.14
-version: 15.0
-softdepend: [WorldEdit,Vault]
+version: 15.1
+softdepend: [WorldEdit,Vault,PlaceholderAPI]
 commands:
   oh_the_dungeons:
     aliases: [otd]

@@ -19,9 +19,7 @@ package otd.gui.customstruct;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
@@ -39,17 +37,6 @@ import otd.util.I18n;
  */
 public class MobSelect extends Content {
     public final static MobSelect instance = new MobSelect();
-    
-    private final static List<String> MOBLIST;
-    static {
-        MOBLIST = new ArrayList<>();
-        for(EntityType type : EntityType.values()) {
-            Class<? extends Entity> tc = type.getEntityClass();
-            if(tc != null && tc.isAssignableFrom(Monster.class)) {
-                MOBLIST.add(type.toString());
-            }
-        }
-    }
     
     private final static int SLOT = 54;
     public final Content parent;
@@ -72,6 +59,11 @@ public class MobSelect extends Content {
     
     @Override
     public void init() {
+        inv.clear();
+        List<String> MOBLIST = new ArrayList<>();
+        for(EntityType type : EntityType.values()) {
+                MOBLIST.add(type.toString());
+        }
         int index = offset * 45;
         int count = 0;
         while(count < 45 && index < MOBLIST.size()) {
@@ -84,7 +76,7 @@ public class MobSelect extends Content {
             im.setDisplayName(mob);
             is.setItemMeta(im);
             
-            addItem(9 + count, is);
+            addItem(count, is);
             
             count++;
             index++;
@@ -151,7 +143,7 @@ public class MobSelect extends Content {
         }
         
         if(slot == 53) {
-            parent.openInventory(p);
+            holder.parent.openInventory(p);
             return;
         }
         
@@ -161,13 +153,14 @@ public class MobSelect extends Content {
             ItemStack is = e.getInventory().getItem(slot);
             if(is != null && (is.getType() == Material.EGG || is.getType() == Material.BARRIER)) {
                 String mobName = is.getItemMeta().getDisplayName();
-                if(holder.dungeon.mobs.contains(mobName)) {
+                if(!holder.dungeon.mobs.contains(mobName)) {
                     holder.dungeon.mobs.add(mobName);
                     WorldConfig.save();
                 } else {
                     holder.dungeon.mobs.remove(mobName);
                     WorldConfig.save();
                 }
+                holder.init();
             }
         }
     }

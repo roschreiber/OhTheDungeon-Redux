@@ -36,10 +36,9 @@ public class ChestEvent extends Event {
         this.loc = loc;
         this.extra = extra;
     }
-
-    @Override
-    public HandlerList getHandlers() {
-        return handlers;
+    
+    public Location getLocation() {
+        return loc;
     }
     
     public DungeonType getType() {
@@ -52,5 +51,14 @@ public class ChestEvent extends Event {
     
     public String getCustomStructureName() {
         return this.extra;
+    }
+    
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 }

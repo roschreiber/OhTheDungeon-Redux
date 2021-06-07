@@ -59,7 +59,7 @@ public class I18n {
         }
     }
     
-    public int lang_version = 17;
+    public int lang_version = 18;
     
     public SpecialItem GREYMERK = new SpecialItem("Greymerk's Hatchet","Pointlessly sharp");
     public SpecialItem NEBRISCROWN = new SpecialItem("Nebrian Crown of Justice", "Adorned with precious gemstones");
@@ -462,6 +462,10 @@ public class I18n {
     public String Add_Custom_Dungeon = "Add Custom Dungeon";
     public String Custom_Dungeon_Err_Msg = "You must select a schematic file";
     
+    public String Status_True = "True";
+    public String Status_False = "False";
+    public String PAPI_Title = "PlaceHolderAPI";
+    
     public static final transient String configFileName = "lang.json";
     
     public static void init() {
@@ -542,6 +546,17 @@ public class I18n {
         if(I18n.instance.lang_version == 16) {
             update16();
         }
+        if(I18n.instance.lang_version == 17) {
+            update17();
+        }
+    }
+    
+    public static void update17() {
+        I18n.instance.Status_True = "True";
+        I18n.instance.Status_False = "False";
+        I18n.instance.PAPI_Title = "PlaceHolderAPI";
+        
+        I18n.instance.lang_version = 18;
     }
     
     public static void update16() {

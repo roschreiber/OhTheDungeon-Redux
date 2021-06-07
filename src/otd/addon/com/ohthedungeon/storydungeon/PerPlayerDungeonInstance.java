@@ -50,7 +50,7 @@ public class PerPlayerDungeonInstance {
         (new File(path)).mkdirs();
         DungeonConfig.load();
         if(!vault.setupEconomy()) {
-            Bukkit.getLogger().log(Level.INFO, "{0}Vault is not installed. Economy function is disabled", ChatColor.RED);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] Vault is not installed. Economy function is disabled", ChatColor.RED);
             DungeonConfig.setEnableMoneyPayment(false);
         }
         Main.instance.getCommand("otd_pi").setExecutor(new CommandMenu(this));

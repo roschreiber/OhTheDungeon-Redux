@@ -73,6 +73,7 @@ import otd.gui.customstruct.CustomDungeonSelect;
 import otd.gui.customstruct.MobSelect;
 import otd.gui.customstruct.SchematicSelect;
 import otd.gui.customstruct.WorldCustomDungeon;
+import otd.integration.PlaceholderAPI;
 import otd.integration.WorldEdit;
 import otd.struct.SchematicLoader;
 import otd.world.ChunkList;
@@ -86,6 +87,7 @@ import otd.world.WorldGenOptimization;
  */
 public class Main extends JavaPlugin {
     public static JavaPlugin instance;
+    public static Main mainInstance;
     public static boolean disabled = false;
     private static Integer api_version = 6;
     public static MultiVersion.Version version = MultiVersion.Version.UNKNOWN;
@@ -95,6 +97,7 @@ public class Main extends JavaPlugin {
     
     public Main() {
         instance = this;
+        mainInstance = this;
         if(MultiVersion.is114()) {
             version = MultiVersion.Version.V1_14_R1;
             Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.14.x", ChatColor.GREEN);
@@ -113,7 +116,7 @@ public class Main extends JavaPlugin {
         }
         else if(MultiVersion.is116R3()) {
             version = MultiVersion.Version.V1_16_R3;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.16.4", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.16.[4-5]", ChatColor.GREEN);
         }
         else version = MultiVersion.Version.UNKNOWN;
     }
@@ -201,6 +204,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SpawnerListener(), this);
         getServer().getPluginManager().registerEvents(new Lich(), this);
         getServer().getPluginManager().registerEvents(new WorldGenOptimization(), this);
+        
+        //getServer().getPluginManager().registerEvents(new ChestEventTest(), this);
 
         PluginConfig.instance.init();
         PluginConfig.instance.update();
@@ -209,7 +214,7 @@ public class Main extends JavaPlugin {
         
         String update = PluginConfig.instance.config.get("updater");
         if(update != null && update.equalsIgnoreCase("TRUE")) {
-            Bukkit.getLogger().log(Level.INFO, "[Oh The Dungeons You'll Go] Update checking...");
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] Update checking...", ChatColor.GREEN);
             asyncUpdateChecker();
         }
         
@@ -218,11 +223,20 @@ public class Main extends JavaPlugin {
             metrics = new Metrics(this, metric_pluginId);
         }
         
+//        String fps_opt = PluginConfig.instance.config.get("fps_opt");
+//        if(fps_opt != null && fps_opt.equalsIgnoreCase("TRUE")) {
+//            if(version == MultiVersion.Version.V1_16_R1 || version == MultiVersion.Version.V1_16_R2 || version == MultiVersion.Version.V1_16_R3) {
+//                
+//            }
+//        }
+        
         registerCommand();
         BattleTowerSchematics.init(this);
         
         LanguageUtil.init();
         Lich.init();
+        
+        PlaceholderAPI.enable();
         
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             Diagnostic.diagnostic();
@@ -248,13 +262,13 @@ public class Main extends JavaPlugin {
         
         Bukkit.getScheduler().runTaskLater(this, () -> {
             if(WorldConfig.wc.dungeon_world.finished) {
-                Bukkit.getLogger().log(Level.INFO, "Loading dungeon plot world...");
+                Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''''ll Go] Loading dungeon plot world...", ChatColor.GREEN);
                 DungeonWorld.loadDungeonWorld();
             }
         }, 1L);
         
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            Bukkit.getLogger().log(Level.INFO, "Loading PerPlayerDungeonInstance...");
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''''ll Go] Loading PerPlayerDungeonInstance...", ChatColor.GREEN);
             ppdi = new PerPlayerDungeonInstance();
         }, 1L);
         
