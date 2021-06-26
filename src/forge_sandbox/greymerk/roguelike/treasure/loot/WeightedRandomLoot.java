@@ -1,11 +1,11 @@
 package forge_sandbox.greymerk.roguelike.treasure.loot;
 
-
 import java.util.Random;
 
 import com.google.gson.JsonObject;
 
 import forge_sandbox.greymerk.roguelike.util.IWeighted;
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,12 +14,6 @@ import otd.Main;
 import otd.MultiVersion;
 import otd.util.FormatItem;
 import otd.util.nbt.JsonToNBT;
-//import net.minecraft.block.Block;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.nbt.JsonToNBT;
-//import net.minecraft.nbt.NBTTagCompound;
-//import net.minecraft.util.ResourceLocation;
 
 public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeighted<ItemStack>{
 	
@@ -75,7 +69,7 @@ public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeig
                     material = Material.valueOf(array[1].toUpperCase());
                 } catch (Exception ex) {
                     material = Material.AIR;
-                    Bukkit.getLogger().log(Level.SEVERE, "Invalid item: " + name);
+                    Bukkit.getLogger().log(Level.SEVERE, "Invalid item: {0}", name);
                 }
                 this.item = new ItemStack(material);
 //		ResourceLocation location = new ResourceLocation(name);
@@ -162,6 +156,33 @@ public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeig
                 return item;
             }
         }
+        
+        private static class Get117R1 {
+            public ItemStack get(ItemStack item, Object nbt) {
+                net.minecraft.world.item.ItemStack tmp = 
+                        org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack.asNMSCopy(item);
+                tmp.setTag((net.minecraft.nbt.NBTTagCompound) nbt);
+                item = org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack.asBukkitCopy(tmp);
+                return item;
+            }
+        }
+        
+        private static class GetUnknown {            
+            public ItemStack get(ItemStack item, Object nbt) {
+                
+                if(!MultiVersion.WeightedRandomLootTest.result) return item;
+                try {
+                    Object tmp = MultiVersion.WeightedRandomLootTest.asNMSCopy.invoke(null, item);
+                    MultiVersion.WeightedRandomLootTest.setTag.invoke(tmp, nbt);
+                    ItemStack is = (ItemStack) MultiVersion.WeightedRandomLootTest.asBukkitCopy.invoke(null, tmp);
+                    item = is;
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                    return item;
+                }
+                
+                return item;
+            }
+        }
 
 	@Override
 	public ItemStack get(Random rand) {
@@ -188,6 +209,12 @@ public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeig
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         item = (new Get116R3()).get(item, this.nbt);
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        item = (new Get117R1()).get(item, this.nbt);
+                    }
+                    if(Main.version == MultiVersion.Version.UNKNOWN) {
+                        item = (new GetUnknown()).get(item, this.nbt);
                     }
                 }
 		return item;

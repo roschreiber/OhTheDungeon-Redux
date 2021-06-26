@@ -71,14 +71,14 @@ public class TreasureChest extends BasicChest {
 		num = random.nextInt(Math.max(2, A2 + (level / B2))) + C2;
 		for(int i = 0; i < num; i++) {
 			treasure = category.getLoot(LootType.HEAL, level, random).getLoot();
-                        addToInventory(contents, slots.get(slot).intValue(), treasure);
+                        addToInventory(contents, slots.get(slot), treasure);
 //			contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 			slot++;
 		}
 		num = random.nextInt(Math.max(2, A2 + (level / B2))) + C2;
 		for(int i = 0; i < num; i++) {
 			treasure = category.getLoot(LootType.GEAR, level, random).getLoot();
-                        addToInventory(contents, slots.get(slot).intValue(), treasure);
+                        addToInventory(contents, slots.get(slot), treasure);
 //			contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 			slot++;
 		}
@@ -87,7 +87,7 @@ public class TreasureChest extends BasicChest {
 			LootResult lootResult = category.getLoot(LootType.LOOT, 
 					level + 1 + random.nextInt(2), random);
 			treasure = lootResult.getLoot();
-                        addToInventory(contents, slots.get(slot).intValue(), treasure);
+                        addToInventory(contents, slots.get(slot), treasure);
 //			contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 			if((lootResult.getLevel() > 6) && !withBoss) {
 				level--;
@@ -97,18 +97,18 @@ public class TreasureChest extends BasicChest {
 		if(random.nextInt(7) < level) {
 			if(level >= 6) {
 				treasure = category.getLists().special.getLoot(random).getStack(random);
-                                addToInventory(contents, slots.get(slot).intValue(), treasure);
+                                addToInventory(contents, slots.get(slot), treasure);
 //				contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 				slot++;
 				if(random.nextBoolean()) {
 					treasure = category.getLists().discs.getLoot(random).getStack(random);
-                                        addToInventory(contents, slots.get(slot).intValue(), treasure);
+                                        addToInventory(contents, slots.get(slot), treasure);
 //					contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 					slot++;
 				}
 			} else {
 				treasure = category.getLists().discs.getLoot(random).getStack(random);
-                                addToInventory(contents, slots.get(slot).intValue(), treasure);
+                                addToInventory(contents, slots.get(slot), treasure);
 //				contents.setInventorySlotContents(slots.get(slot).intValue(), treasure);
 				slot++;
 			}
@@ -139,6 +139,6 @@ public class TreasureChest extends BasicChest {
 	 * nut LootList.addDefaultLoot to populate the list.
 	 */
 	public static void initSlots() {
-		for(int i = 0; i < 27; i++) slots.add(new Integer(i));
+		for(int i = 0; i < 27; i++) slots.add(i);
 	}
 }

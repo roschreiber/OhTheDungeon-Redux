@@ -3,7 +3,7 @@ authors: [shadow_wind]
 main: otd.Main
 load: startup
 api-version: 1.14
-version: 15.1
+version: 15.3
 softdepend: [WorldEdit,Vault,PlaceholderAPI]
 commands:
   oh_the_dungeons:

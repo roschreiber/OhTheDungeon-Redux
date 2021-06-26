@@ -8,8 +8,11 @@ import forge_sandbox.greymerk.roguelike.treasure.loot.Enchant;
 import forge_sandbox.greymerk.roguelike.treasure.loot.Equipment;
 import forge_sandbox.greymerk.roguelike.treasure.loot.Quality;
 import forge_sandbox.greymerk.roguelike.treasure.loot.Slot;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import otd.Main;
 import otd.MultiVersion;
 
@@ -278,6 +281,46 @@ public class ItemArmour extends ItemBase {
                 return armor;
             }
         }
+        
+        private static class DyeArmor117R1 {
+            public ItemStack dyeArmor(ItemStack armor, int r, int g, int b){
+                int color = r << 16 | g << 8 | b;
+                net.minecraft.world.item.ItemStack ca = 
+                        org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack.asNMSCopy(armor);
+                net.minecraft.nbt.NBTTagCompound nbtdata = ca.getTag();
+
+                if (nbtdata == null)
+                {
+                    nbtdata = new net.minecraft.nbt.NBTTagCompound();
+                    ca.setTag(nbtdata);
+                    armor = org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack.asBukkitCopy(ca);
+                }
+
+                net.minecraft.nbt.NBTTagCompound nbtDisplay = nbtdata.getCompound("display");
+
+                if (!nbtdata.hasKey("display"))
+                {
+                    nbtdata.set("display", nbtDisplay);
+                }
+
+                nbtDisplay.setInt("color", color);
+                return armor;
+            }
+        }
+        
+        private static class DyeArmorUnknown {
+            public ItemStack dyeArmor(ItemStack armor, int r, int g, int b){
+                
+                ItemMeta im = armor.getItemMeta();
+                if(!(im instanceof LeatherArmorMeta)) return armor;
+                Color color = Color.fromBGR(b, g, r);
+                LeatherArmorMeta lam = (LeatherArmorMeta) im;
+                lam.setColor(color);
+                armor.setItemMeta(lam);
+                return armor;
+            }
+        }
+
 	
 	public static ItemStack dyeArmor(ItemStack armor, int r, int g, int b) {
             if(Main.version == MultiVersion.Version.V1_14_R1) {
@@ -298,6 +341,14 @@ public class ItemArmour extends ItemBase {
             }
             if(Main.version == MultiVersion.Version.V1_16_R3) {
                 DyeArmor116R3 da = new DyeArmor116R3();
+                armor = da.dyeArmor(armor, r, g, b);
+            }
+            if(Main.version == MultiVersion.Version.V1_17_R1) {
+                DyeArmor117R1 da = new DyeArmor117R1();
+                armor = da.dyeArmor(armor, r, g, b);
+            }
+            if(Main.version == MultiVersion.Version.UNKNOWN) {
+                DyeArmorUnknown da = new DyeArmorUnknown();
                 armor = da.dyeArmor(armor, r, g, b);
             }
             return armor;

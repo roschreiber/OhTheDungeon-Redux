@@ -31,6 +31,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import otd.util.Diagnostic;
 import otd.config.WorldConfig;
 import otd.gui.customstruct.CustomDungeonList;
+import otd.gui.storydungeon.PPDI_Config;
 import otd.integration.WorldEdit;
 import otd.world.DungeonTask;
 import otd.util.I18n;
@@ -135,6 +136,17 @@ public class MainMenu extends Content {
             
             addItem(6, is);
         }
+        {
+            ItemStack is = new ItemStack(Material.BOOKSHELF);
+            ItemMeta im = is.getItemMeta();
+            
+            im.setDisplayName(I18n.instance.PerPlayerDungeonInstance);
+            List<String> lores = new ArrayList<>();
+            lores.add(I18n.instance.PerPlayerDungeonInstance_Lore);
+            im.setLore(lores);
+            
+            addItem(7, is);
+        }
     }
     
     @EventHandler
@@ -189,6 +201,10 @@ public class MainMenu extends Content {
         }
         if(slot == 6) {
             PlaceholderAPI.openBook(p);
+        }
+        if(slot == 7) {
+            PPDI_Config cfg = new PPDI_Config();
+            cfg.openInventory(p);
         }
     }
 }

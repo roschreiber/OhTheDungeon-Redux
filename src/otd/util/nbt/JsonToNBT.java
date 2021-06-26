@@ -492,6 +492,20 @@ public class JsonToNBT
             return nbttagcompound;
         }
     }
+    
+    private static class CompoundParse117R1 {
+        public Object parse(Compound c) throws NBTException {
+            net.minecraft.nbt.NBTTagCompound nbttagcompound = 
+                    new net.minecraft.nbt.NBTTagCompound();
+
+            for (JsonToNBT.Any jsontonbt$any : c.tagList) {
+                nbttagcompound.set(jsontonbt$any.json, 
+                        (net.minecraft.nbt.NBTBase) jsontonbt$any.parse());
+            }
+
+            return nbttagcompound;
+        }
+    }
 
     static class Compound extends JsonToNBT.Any
     {
@@ -528,6 +542,10 @@ public class JsonToNBT
             
             if(Main.version == MultiVersion.Version.V1_16_R3) {
                 return (new CompoundParse116R3()).parse(this);
+            }
+            
+            if(Main.version == MultiVersion.Version.V1_17_R1) {
+                return (new CompoundParse117R1()).parse(this);
             }
                     
             return null;
@@ -603,6 +621,20 @@ public class JsonToNBT
             return nbttaglist;
         }
     }
+    
+    private static class ListParse117R1 {
+        public Object parse(List l) throws NBTException {
+            net.minecraft.nbt.NBTTagList nbttaglist = 
+                                new net.minecraft.nbt.NBTTagList();
+
+            for (JsonToNBT.Any jsontonbt$any : l.tagList)
+            {
+                nbttaglist.add((net.minecraft.nbt.NBTBase) jsontonbt$any.parse());
+            }
+
+            return nbttaglist;
+        }
+    }
 
     static class List extends JsonToNBT.Any
     {
@@ -635,6 +667,9 @@ public class JsonToNBT
             }
             if(Main.version == MultiVersion.Version.V1_16_R3) {
                 return (new ListParse116R3()).parse(this);
+            }
+            if(Main.version == MultiVersion.Version.V1_17_R1) {
+                return (new ListParse117R1()).parse(this);
             }
             return null;
         }
@@ -884,6 +919,55 @@ public class JsonToNBT
             return new net.minecraft.server.v1_16_R3.NBTTagIntArray(aint);
         }
     }
+    
+    private static class PrimitiveParse117R1 {
+        public Object parseDouble(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagDouble.a(
+                    Double.parseDouble(p.jsonValue.substring(0, p.jsonValue.length() - 1))
+            );
+        }
+        public Object parseFloat(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagFloat.a(
+                    Float.parseFloat(p.jsonValue.substring(0, p.jsonValue.length() - 1))
+            );
+        }
+        public Object parseByte(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagByte.a(
+                    Byte.parseByte(p.jsonValue.substring(0, p.jsonValue.length() - 1))
+            );
+        }
+        public Object parseLong(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagLong.a(
+                    Long.parseLong(p.jsonValue.substring(0, p.jsonValue.length() - 1))
+            );
+        }
+        public Object parseShort(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagShort.a(
+                    Short.parseShort(p.jsonValue.substring(0, p.jsonValue.length() - 1))
+            );
+        }
+        public Object parseInteger(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagInt.a(
+                    Integer.parseInt(p.jsonValue)
+            );
+        }
+        public Object parseDoubleUntyped(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagDouble.a(
+                    Double.parseDouble(p.jsonValue)
+            );
+        }
+        public Object parseBoolean(Primitive p) throws NBTException {
+            return net.minecraft.nbt.NBTTagByte.a(
+                    (byte)(Boolean.parseBoolean(p.jsonValue) ? 1 : 0)
+            );
+        }
+        public Object parseString(String str) throws NBTException {
+            return net.minecraft.nbt.NBTTagString.a(str);
+        }
+        public Object parseIntArray(Primitive p, int[] aint) throws NBTException {
+            return new net.minecraft.nbt.NBTTagIntArray(aint);
+        }
+    }
 
     static class Primitive extends JsonToNBT.Any
     {
@@ -931,6 +1015,9 @@ public class JsonToNBT
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return net.minecraft.server.v1_16_R3.NBTTagDouble.a(Double.parseDouble(this.jsonValue.substring(0, this.jsonValue.length() - 1)));
                     }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return net.minecraft.nbt.NBTTagDouble.a(Double.parseDouble(this.jsonValue.substring(0, this.jsonValue.length() - 1)));
+                    }
                     return null;
                 }
 
@@ -950,6 +1037,9 @@ public class JsonToNBT
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return net.minecraft.server.v1_16_R3.NBTTagFloat.a(Float.parseFloat(this.jsonValue.substring(0, this.jsonValue.length() - 1)));
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return net.minecraft.nbt.NBTTagFloat.a(Float.parseFloat(this.jsonValue.substring(0, this.jsonValue.length() - 1)));
                     }
                     return null;
                 }
@@ -971,6 +1061,9 @@ public class JsonToNBT
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseByte(this);
                     }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseByte(this);
+                    }
                     return null;
                 }
 
@@ -990,6 +1083,9 @@ public class JsonToNBT
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseLong(this);
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseLong(this);
                     }
                     return null;
                 }
@@ -1011,6 +1107,9 @@ public class JsonToNBT
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseShort(this);
                     }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseShort(this);
+                    }
                     return null;
                 }
 
@@ -1030,6 +1129,9 @@ public class JsonToNBT
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseInteger(this); 
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseInteger(this); 
                     }
                     return null;
                 }
@@ -1051,6 +1153,9 @@ public class JsonToNBT
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseDoubleUntyped(this);
                     }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseDoubleUntyped(this);
+                    }
                     return null;
                 }
 
@@ -1070,6 +1175,9 @@ public class JsonToNBT
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseBoolean(this);
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseBoolean(this);
                     }
                     return null;
                 }
@@ -1091,6 +1199,9 @@ public class JsonToNBT
                 }
                 if(Main.version == MultiVersion.Version.V1_16_R3) {
                     return (new PrimitiveParse116R3()).parseString(this.jsonValue);
+                }
+                if(Main.version == MultiVersion.Version.V1_17_R1) {
+                    return (new PrimitiveParse117R1()).parseString(this.jsonValue);
                 }
                 return null;
             }
@@ -1122,6 +1233,9 @@ public class JsonToNBT
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseIntArray(this, aint);
                     }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseIntArray(this, aint);
+                    }
                     return null;
                 }
                 catch (NumberFormatException var5)
@@ -1140,6 +1254,9 @@ public class JsonToNBT
                     }
                     if(Main.version == MultiVersion.Version.V1_16_R3) {
                         return (new PrimitiveParse116R3()).parseString(this.jsonValue);
+                    }
+                    if(Main.version == MultiVersion.Version.V1_17_R1) {
+                        return (new PrimitiveParse117R1()).parseString(this.jsonValue);
                     }
                     return null;
                 }
@@ -1180,6 +1297,9 @@ public class JsonToNBT
                 }
                 if(Main.version == MultiVersion.Version.V1_16_R3) {
                     return (new PrimitiveParse116R3()).parseString(stringbuilder.toString());
+                }
+                if(Main.version == MultiVersion.Version.V1_17_R1) {
+                    return (new PrimitiveParse117R1()).parseString(stringbuilder.toString());
                 }
                 return null;
             }

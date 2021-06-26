@@ -192,9 +192,12 @@ public class BossRoomHardPopulator extends MazeLayerBlockPopulator {
             spawnerBlock.setType(Material.SPAWNER, true);
             BlockState blockState = spawnerBlock.getState();
             CreatureSpawner spawner = ((CreatureSpawner)blockState);
-            if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
+            if(otd.Main.version == otd.MultiVersion.Version.UNKNOWN) {
+                spawner.setSpawnedType(otd.MultiVersion.getPigZombieForUnknownVersion());
+            } else if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
                     || otd.Main.version == otd.MultiVersion.Version.V1_16_R2
-                    || otd.Main.version == otd.MultiVersion.Version.V1_16_R3) {
+                    || otd.Main.version == otd.MultiVersion.Version.V1_16_R3
+                    || otd.Main.version == otd.MultiVersion.Version.V1_17_R1) {
                 spawner.setSpawnedType(EntityType.valueOf("ZOMBIFIED_PIGLIN"));
             } else {
                 spawner.setSpawnedType(EntityType.valueOf("PIG_ZOMBIE"));

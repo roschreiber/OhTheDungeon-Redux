@@ -32,6 +32,7 @@ import otd.dungeon.dungeonmaze.populator.maze.MazeRoomBlockPopulatorArgs;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import otd.Main;
+import otd.MultiVersion;
 import otd.lib.api.SpawnerDecryAPI;
 import otd.dungeon.dungeonmaze.util.SpawnerUtils;
 
@@ -89,9 +90,12 @@ public class BossRoomEasyPopulator extends MazeRoomBlockPopulator {
             spawnerBlock.setType(Material.SPAWNER, true);
             BlockState blockState = spawnerBlock.getState();
             CreatureSpawner spawner = ((CreatureSpawner)blockState);
-            if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
+            if(otd.Main.version == otd.MultiVersion.Version.UNKNOWN) {
+                spawner.setSpawnedType(MultiVersion.getPigZombieForUnknownVersion());
+            } else if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
                     || otd.Main.version == otd.MultiVersion.Version.V1_16_R2
-                    || otd.Main.version == otd.MultiVersion.Version.V1_16_R3) {
+                    || otd.Main.version == otd.MultiVersion.Version.V1_16_R3
+                    || otd.Main.version == otd.MultiVersion.Version.V1_17_R1) {
                 spawner.setSpawnedType(EntityType.valueOf("ZOMBIFIED_PIGLIN"));
             } else {
                 spawner.setSpawnedType(EntityType.valueOf("PIG_ZOMBIE"));

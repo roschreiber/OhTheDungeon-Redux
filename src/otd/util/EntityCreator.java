@@ -23,7 +23,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import otd.Main;
 import otd.MultiVersion;
-
+/*
 public class EntityCreator {
     
     private static class EntityCreator114 {
@@ -90,6 +90,19 @@ public class EntityCreator {
             cw.addEntity(ce.getHandle(), CreatureSpawnEvent.SpawnReason.CUSTOM);
         }
     }
+    private static class EntityCreator117R1 {
+        public Entity create(EntityType entityType, Location location) {
+            org.bukkit.craftbukkit.v1_17_R1.CraftWorld cw = (org.bukkit.craftbukkit.v1_17_R1.CraftWorld) location.getWorld();
+            net.minecraft.world.entity.Entity entity = cw.createEntity(location, entityType.getEntityClass());
+            
+            return (Entity) entity.getBukkitEntity();
+        }
+        public void spawn(World world, Entity entity) {
+            org.bukkit.craftbukkit.v1_17_R1.CraftWorld cw = (org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world;
+            org.bukkit.craftbukkit.v1_17_R1.entity.CraftEntity ce = (org.bukkit.craftbukkit.v1_17_R1.entity.CraftEntity) entity;
+            cw.addEntity(ce.getHandle(), CreatureSpawnEvent.SpawnReason.CUSTOM);
+        }
+    }
     
     public static Entity create(EntityType entityType, Location location) {
         if(Main.version == MultiVersion.Version.V1_14_R1) {
@@ -106,6 +119,9 @@ public class EntityCreator {
         }
         if(Main.version == MultiVersion.Version.V1_16_R3) {
             return (new EntityCreator116R3()).create(entityType, location);
+        }
+        if(Main.version == MultiVersion.Version.V1_17_R1) {
+            return (new EntityCreator117R1()).create(entityType, location);
         }
         return null;
     }
@@ -126,5 +142,9 @@ public class EntityCreator {
         if(Main.version == MultiVersion.Version.V1_16_R3) {
             (new EntityCreator116R3()).spawn(world, entity);
         }
+        if(Main.version == MultiVersion.Version.V1_17_R1) {
+            (new EntityCreator117R1()).spawn(world, entity);
+        }
     }
 }
+*/

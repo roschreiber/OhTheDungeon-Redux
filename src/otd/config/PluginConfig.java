@@ -51,12 +51,8 @@ public class PluginConfig {
             config.put("updater", "true");
             save = true;
         }
-        if(!config.containsKey("bstats")) {
-            config.put("bstats", "true");
-            save = true;
-        }
-        if(!config.containsKey("fps_opt")) {
-            config.put("fps_opt", "true");
+        if(config.containsKey("bstats")) {
+            config.remove("bstats", "true");
             save = true;
         }
         return save;

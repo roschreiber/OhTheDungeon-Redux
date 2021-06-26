@@ -59,7 +59,7 @@ public class I18n {
         }
     }
     
-    public int lang_version = 18;
+    public int lang_version = 19;
     
     public SpecialItem GREYMERK = new SpecialItem("Greymerk's Hatchet","Pointlessly sharp");
     public SpecialItem NEBRISCROWN = new SpecialItem("Nebrian Crown of Justice", "Adorned with precious gemstones");
@@ -466,6 +466,14 @@ public class I18n {
     public String Status_False = "False";
     public String PAPI_Title = "PlaceHolderAPI";
     
+    public String PerPlayerDungeonInstance = "PerPlayerDungeonInstance";
+    public String PerPlayerDungeonInstance_Lore = "Let player create their own dungeons with money/exp";
+    public String PPDI_Cfg = "PerPlayerDungeonInstance Cfg";
+    public String EnableMoneyPayment = "Enable Money Payment";
+    public String EnableLevelPayment = "Enable Level Payment";
+    public String Require_Vault = "Require Vault Installed";
+    public String Current_Value = "Current Value";
+    
     public static final transient String configFileName = "lang.json";
     
     public static void init() {
@@ -549,8 +557,22 @@ public class I18n {
         if(I18n.instance.lang_version == 17) {
             update17();
         }
+        if(I18n.instance.lang_version == 18) {
+            update18();
+        }
     }
     
+    public static void update18() {
+        I18n.instance.PerPlayerDungeonInstance = "PerPlayerDungeonInstance";
+        I18n.instance.PerPlayerDungeonInstance_Lore = "Let player create their own dungeons with money/exp";
+        I18n.instance.PPDI_Cfg = "PerPlayerDungeonInstance Cfg";
+        I18n.instance.EnableMoneyPayment = "Enable Money Payment";
+        I18n.instance.EnableLevelPayment = "Enable Level Payment";
+        I18n.instance.Require_Vault = "Require Vault Installed";
+        I18n.instance.Current_Value = "Current Value";
+
+        I18n.instance.lang_version = 19;
+    }
     public static void update17() {
         I18n.instance.Status_True = "True";
         I18n.instance.Status_False = "False";

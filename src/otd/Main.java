@@ -73,8 +73,10 @@ import otd.gui.customstruct.CustomDungeonSelect;
 import otd.gui.customstruct.MobSelect;
 import otd.gui.customstruct.SchematicSelect;
 import otd.gui.customstruct.WorldCustomDungeon;
+import otd.gui.storydungeon.PPDI_Config;
 import otd.integration.PlaceholderAPI;
 import otd.integration.WorldEdit;
+import otd.lib.async.AsyncRoguelikeDungeon;
 import otd.struct.SchematicLoader;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
@@ -100,25 +102,38 @@ public class Main extends JavaPlugin {
         mainInstance = this;
         if(MultiVersion.is114()) {
             version = MultiVersion.Version.V1_14_R1;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.14.x", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.14.x", ChatColor.GREEN);
         }
         else if(MultiVersion.is115()) {
             version = MultiVersion.Version.V1_15_R1;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.15.x", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.15.x", ChatColor.GREEN);
         }
         else if(MultiVersion.is116R1()) {
             version = MultiVersion.Version.V1_16_R1;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.16.[0-1]", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[0-1]", ChatColor.GREEN);
         }
         else if(MultiVersion.is116R2()) {
             version = MultiVersion.Version.V1_16_R2;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.16.[2-3]", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[2-3]", ChatColor.GREEN);
         }
         else if(MultiVersion.is116R3()) {
             version = MultiVersion.Version.V1_16_R3;
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] MC Version: 1.16.[4-5]", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[4-5]", ChatColor.GREEN);
         }
-        else version = MultiVersion.Version.UNKNOWN;
+        else if(MultiVersion.is117R1()) {
+            version = MultiVersion.Version.V1_17_R1;
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.17", ChatColor.GREEN);
+        }
+        else {
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Unknown Version...", ChatColor.GREEN);
+            version = MultiVersion.Version.UNKNOWN;
+        }
+        if(version == MultiVersion.Version.UNKNOWN) {
+            MultiVersion.checkForUnknownVersion();
+        }
+        
+        Sandbox.mkdir();
+        BackupGUI.initBackupFolder();
     }
     
     @Override
@@ -136,17 +151,14 @@ public class Main extends JavaPlugin {
             throw new UnsupportedOperationException("Unsupported Server Type");
         }
         
-        if(version == MultiVersion.Version.UNKNOWN) {
-            Bukkit.getLogger().log(Level.SEVERE, "[Oh The Dungeons You'll Go] Unsupported MC Version");
-            throw new UnsupportedOperationException("Unsupported MC Version");
-        }
+//        if(version == MultiVersion.Version.UNKNOWN) {
+//            Bukkit.getLogger().log(Level.SEVERE, "[Oh The Dungeons You'll Go] Unsupported MC Version");
+//            throw new UnsupportedOperationException("Unsupported MC Version");
+//        }
         
         //PaperLib.suggestPaper(this);
         disabled = false;
-        
-        Sandbox.mkdir();
-        BackupGUI.initBackupFolder();
-        
+
         I18n.init();
         {
             (new File(this.getDataFolder(), "schematics")).mkdirs();
@@ -199,6 +211,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(SchematicSelect.instance, this);
         getServer().getPluginManager().registerEvents(WorldCustomDungeon.instance, this);
         getServer().getPluginManager().registerEvents(CustomDungeonPlaceSelect.instance, this);
+        getServer().getPluginManager().registerEvents(PPDI_Config.instance, this);
         
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new SpawnerListener(), this);
@@ -218,10 +231,10 @@ public class Main extends JavaPlugin {
             asyncUpdateChecker();
         }
         
-        String bstats = PluginConfig.instance.config.get("bstats");
-        if(bstats != null && bstats.equalsIgnoreCase("TRUE")) {
+        //String bstats = PluginConfig.instance.config.get("bstats");
+        //if(bstats != null && bstats.equalsIgnoreCase("TRUE")) {
             metrics = new Metrics(this, metric_pluginId);
-        }
+        //}
         
 //        String fps_opt = PluginConfig.instance.config.get("fps_opt");
 //        if(fps_opt != null && fps_opt.equalsIgnoreCase("TRUE")) {
@@ -237,6 +250,8 @@ public class Main extends JavaPlugin {
         Lich.init();
         
         PlaceholderAPI.enable();
+        
+        AsyncRoguelikeDungeon.init();
         
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             Diagnostic.diagnostic();
@@ -257,18 +272,21 @@ public class Main extends JavaPlugin {
         }, 2L);
         
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            PaperLib.suggestPaper(Main.instance);
+            //PaperLib.suggestPaper(Main.instance);
+            if(!PaperLib.isPaper()) {
+                Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss", ChatColor.RED);
+            }
         }, 3L);
         
         Bukkit.getScheduler().runTaskLater(this, () -> {
             if(WorldConfig.wc.dungeon_world.finished) {
-                Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''''ll Go] Loading dungeon plot world...", ChatColor.GREEN);
+                Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Loading dungeon plot world...", ChatColor.GREEN);
                 DungeonWorld.loadDungeonWorld();
             }
         }, 1L);
         
         Bukkit.getScheduler().runTaskLater(this, () -> {
-            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''''ll Go] Loading PerPlayerDungeonInstance...", ChatColor.GREEN);
+            Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Loading PerPlayerDungeonInstance...", ChatColor.GREEN);
             ppdi = new PerPlayerDungeonInstance();
         }, 1L);
         

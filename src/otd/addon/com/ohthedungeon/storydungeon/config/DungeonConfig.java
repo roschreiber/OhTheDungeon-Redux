@@ -24,13 +24,13 @@ import otd.Main;
  * @author shadow_wind
  */
 public class DungeonConfig {
-    private static DungeonConfig instance;
+    public static DungeonConfig instance;
     
-    private boolean enableMoneyPayment = true;
-    private int money = 10000;
+    public boolean enableMoneyPayment = true;
+    public int money = 10000;
     
-    private boolean enableLevelPayment = true;
-    private int level = 30;
+    public boolean enableLevelPayment = true;
+    public int level = 30;
     
     private int version = 1;
     

@@ -87,6 +87,8 @@ public class AsyncRoguelikeDungeon {
     public static SettingsResolver settingsResolver;
     
     public static void initResolver() throws Exception{
+        Bukkit.getLogger().log(Level.INFO, "AsyncRoguelikeDungeon initResolver");
+        
         File settingsDir = new File(SETTINGS_DIRECTORY);
         
         if(settingsDir.exists() && !settingsDir.isDirectory()){
@@ -317,6 +319,10 @@ public class AsyncRoguelikeDungeon {
     }
     
     public static final String errfile = Main.instance.getDataFolder().toString() + File.separator + "err_rpt.txt";
+    
+    public static final boolean init() {
+        return errfile != null;
+    }
 
     
     public static void addLoot(AsyncWorldEditor editor, Random rand, Dungeon dungeon, ISettings setting) {

@@ -21,9 +21,12 @@ public enum MobType {
 		case CREEPER: return world.spawnEntity(loc, EntityType.CREEPER);
 		case WITHERSKELETON: return world.spawnEntity(loc, EntityType.WITHER_SKELETON);
 		case PIGZOMBIE: {
-                    if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
+                    if(otd.Main.version == otd.MultiVersion.Version.UNKNOWN) {
+                        return world.spawnEntity(loc, otd.MultiVersion.getPigZombieForUnknownVersion());
+                    } else if(otd.Main.version == otd.MultiVersion.Version.V1_16_R1
                             || otd.Main.version == otd.MultiVersion.Version.V1_16_R2
-                            || otd.Main.version == otd.MultiVersion.Version.V1_16_R3) {
+                            || otd.Main.version == otd.MultiVersion.Version.V1_16_R3
+                            || otd.Main.version == otd.MultiVersion.Version.V1_17_R1) {
                         return world.spawnEntity(loc, EntityType.valueOf("ZOMBIFIED_PIGLIN"));
                     } else {
                         return world.spawnEntity(loc, EntityType.valueOf("PIG_ZOMBIE"));
