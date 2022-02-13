@@ -31,3 +31,7 @@
 # Smoofy
 
 ![Image of Smoofy Dungeon](./sSmoofy.jpg)
+
+# Castle
+
+![Image of Castle Dungeon](./sCastle.jpg)
