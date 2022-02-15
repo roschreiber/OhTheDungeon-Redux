@@ -7,8 +7,11 @@ assignees: ''
 
 ---
 
+* You SHOULD use **English** or **Chinese** in an issue report.
+* Make sure you use the diagnostic tools first (under `/otd` -> `utils`)
+
 **Version**
-1. Spigot Version
+1. Spigot/Paper Version
 2. Plugin Version
 (Remember, `latest` is not a valid version)
 
