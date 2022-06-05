@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package forge_sandbox.com.someguyssoftware.dungeons2.config;
+
+/**
+ * @author Mark Gottschling on Jan 3, 2017
+ *
+ */
+public enum BuildSize {
+	SMALL, MEDIUM, LARGE, VAST;
+}
