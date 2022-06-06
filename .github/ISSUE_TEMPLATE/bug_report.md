@@ -9,6 +9,7 @@ assignees: ''
 
 * You SHOULD use **English** or **Chinese** in an issue report.
 * Make sure you use the diagnostic tools first (under `/otd` -> `utils`)
+* DONOT report issue related to the support of 1.19. It will be released when it's done.
 
 **Version**
 1. Spigot/Paper Version
