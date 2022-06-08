@@ -17,7 +17,6 @@
 package otd.util;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
@@ -25,7 +24,6 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.generator.BlockPopulator;
 
 import io.papermc.lib.PaperLib;
 import net.md_5.bungee.api.ChatColor;
@@ -33,9 +31,6 @@ import otd.Main;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.integration.MythicMobsImpl;
-import otd.lib.DungeonWorldManager;
-import otd.populator.DungeonPopulator;
-import otd.world.WorldDefine;
 
 /**
  *
@@ -44,23 +39,23 @@ import otd.world.WorldDefine;
 public class Diagnostic {
 
 	private static boolean isWorldHookReady() {
-		List<World> worlds = Bukkit.getWorlds();
-		for (World world : worlds) {
-			if (world.getName().equalsIgnoreCase(DungeonWorldManager.WORLD_NAME))
-				continue;
-			if (world.getName().equalsIgnoreCase(WorldDefine.WORLD_NAME))
-				continue;
-			List<BlockPopulator> populators = world.getPopulators();
-			boolean flag = false;
-			for (BlockPopulator populator : populators) {
-				if (populator instanceof DungeonPopulator) {
-					flag = true;
-					break;
-				}
-			}
-			if (!flag)
-				return false;
-		}
+//		List<World> worlds = Bukkit.getWorlds();
+//		for (World world : worlds) {
+//			if (world.getName().equalsIgnoreCase(DungeonWorldManager.WORLD_NAME))
+//				continue;
+//			if (world.getName().equalsIgnoreCase(WorldDefine.WORLD_NAME))
+//				continue;
+//			List<BlockPopulator> populators = world.getPopulators();
+//			boolean flag = false;
+//			for (BlockPopulator populator : populators) {
+//				if (populator instanceof DungeonPopulator) {
+//					flag = true;
+//					break;
+//				}
+//			}
+//			if (!flag)
+//				return false;
+//		}
 		return true;
 	}
 

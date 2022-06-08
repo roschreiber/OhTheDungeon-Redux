@@ -141,6 +141,20 @@ import otd.nms.v1_18_R2.GetSpawnPotentials118R2;
 import otd.nms.v1_18_R2.ListParse118R2;
 import otd.nms.v1_18_R2.PrimitiveParse118R2;
 import otd.nms.v1_18_R2.SpawnerLightRule118R2;
+import otd.nms.v1_19_R1.CompoundParse119R1;
+import otd.nms.v1_19_R1.EquipArmour119R1;
+import otd.nms.v1_19_R1.EquipHands119R1;
+import otd.nms.v1_19_R1.GenerateLaterOrigin119R1;
+import otd.nms.v1_19_R1.Get119R1;
+import otd.nms.v1_19_R1.GetItem119R1;
+import otd.nms.v1_19_R1.GetNBTTagCompound119R1;
+import otd.nms.v1_19_R1.GetNBTTagList119R1;
+import otd.nms.v1_19_R1.GetPotential119R1;
+import otd.nms.v1_19_R1.GetRoguelike119R1;
+import otd.nms.v1_19_R1.GetSpawnPotentials119R1;
+import otd.nms.v1_19_R1.ListParse119R1;
+import otd.nms.v1_19_R1.PrimitiveParse119R1;
+import otd.nms.v1_19_R1.SpawnerLightRule119R1;
 
 /**
  *
@@ -149,7 +163,7 @@ import otd.nms.v1_18_R2.SpawnerLightRule118R2;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_18_R2, V1_18_R1, V1_17_R1, V1_16_R3, V1_16_R2, V1_16_R1, V1_15_R1, V1_14_R1, UNKNOWN,
+		V1_19_R1, V1_18_R2, V1_18_R1, V1_17_R1, V1_16_R3, V1_16_R2, V1_16_R1, V1_15_R1, V1_14_R1, UNKNOWN,
 	};
 
 	private static EntityType PIGZOMBIE = null;
@@ -163,6 +177,15 @@ public class MultiVersion {
 			}
 		}
 		return PIGZOMBIE;
+	}
+
+	public static boolean is119R1() {
+		try {
+			Class clazz = Class.forName("org.bukkit.craftbukkit.v1_19_R1.CraftWorld");
+			return clazz != null;
+		} catch (ClassNotFoundException ex) {
+			return false;
+		}
 	}
 
 	public static boolean is118R2() {
@@ -256,7 +279,7 @@ public class MultiVersion {
 	public static boolean hasExtendedPos() {
 		if (newPos != null)
 			return newPos;
-		if (Main.version == Version.V1_18_R1 || Main.version == Version.V1_18_R2)
+		if (Main.version == Version.V1_18_R1 || Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R1)
 			newPos = true;
 		return newPos;
 	}
@@ -407,6 +430,21 @@ public class MultiVersion {
 			listParse = new ListParse118R2();
 			primitiveParse = new PrimitiveParse118R2();
 			spawnerLightRule = new SpawnerLightRule118R2();
+		} else if (Main.version == Version.V1_19_R1) {
+			getNBTTagCompound = new GetNBTTagCompound119R1();
+			getNBTTagList = new GetNBTTagList119R1();
+			getPotential = new GetPotential119R1();
+			equipHands = new EquipHands119R1();
+			equipArmour = new EquipArmour119R1();
+			getItem = new GetItem119R1();
+			getRoguelike = new GetRoguelike119R1();
+			generateLaterOrigin = new GenerateLaterOrigin119R1();
+			getSpawnPotentials = new GetSpawnPotentials119R1();
+			get = new Get119R1();
+			compoundParse = new CompoundParse119R1();
+			listParse = new ListParse119R1();
+			primitiveParse = new PrimitiveParse119R1();
+			spawnerLightRule = new SpawnerLightRule119R1();
 		}
 	}
 
@@ -435,7 +473,7 @@ public class MultiVersion {
 	}
 
 	public static int[] getWorldYRange() {
-		if (Main.version == Version.V1_18_R1 || Main.version == Version.V1_18_R2) {
+		if (Main.version == Version.V1_18_R1 || Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R1) {
 			return new int[] { -64, 320 };
 		} else {
 			return new int[] { 0, 256 };
@@ -446,6 +484,8 @@ public class MultiVersion {
 		if (Main.version == Version.V1_18_R1)
 			return true;
 		if (Main.version == Version.V1_18_R2)
+			return true;
+		if (Main.version == Version.V1_19_R1)
 			return true;
 		return false;
 	}

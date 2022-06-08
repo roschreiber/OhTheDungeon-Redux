@@ -34,7 +34,7 @@ import otd.addon.com.ohthedungeon.storydungeon.world.WorldManager;
  */
 public class PerPlayerDungeonInstance {
 	private FakeGenerator fakeGenerator = null;
-	private World world;
+	private World world = null;
 	private VaultManager vault;
 	private Database db;
 	private Async_Task_Pool async_task_pool;

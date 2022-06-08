@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.Random;
 import java.util.logging.Level;
 
 import org.bstats.bukkit.Metrics;
@@ -32,7 +33,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.world.WorldInitEvent;
+import org.bukkit.event.world.ChunkPopulateEvent;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.UnknownDependencyException;
@@ -100,7 +101,6 @@ import otd.integration.EcoBossesImpl;
 import otd.integration.MythicMobsImpl;
 import otd.integration.PlaceholderAPI;
 import otd.integration.WorldEdit;
-import otd.lib.DungeonWorldManager;
 import otd.lib.async.AsyncRoguelikeDungeon;
 import otd.listener.MobListener;
 import otd.listener.SpawnerListener;
@@ -114,10 +114,8 @@ import otd.util.Diagnostic;
 import otd.util.ExceptionReporter;
 import otd.util.I18n;
 import otd.util.LanguageUtil;
-import otd.util.Logging;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
-import otd.world.WorldDefine;
 import otd.world.WorldGenOptimization;
 
 /**
@@ -175,6 +173,9 @@ public class Main extends JavaPlugin {
 		} else if (MultiVersion.is118R2()) {
 			version = MultiVersion.Version.V1_18_R2;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.18.2", ChatColor.GREEN);
+		} else if (MultiVersion.is119R1()) {
+			version = MultiVersion.Version.V1_19_R1;
+			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.19", ChatColor.GREEN);
 		} else {
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Unknown Version...", ChatColor.RED);
 			version = MultiVersion.Version.UNKNOWN;
@@ -459,15 +460,12 @@ public class Main extends JavaPlugin {
 	}
 
 	private class DLDWorldListener implements Listener {
+		DungeonPopulator d = new DungeonPopulator();
+		Random rand = new Random();
+
 		@EventHandler(priority = EventPriority.LOW)
-		public void onWorldInit(WorldInitEvent event) {
-			String world_name = event.getWorld().getName();
-			if (world_name.equals(DungeonWorldManager.WORLD_NAME))
-				return;
-			if (world_name.equalsIgnoreCase(WorldDefine.WORLD_NAME))
-				return;
-			Logging.logInfo(ChatColor.BLUE + "[Oh The Dungeons You'll Go] Found world: " + world_name);
-			event.getWorld().getPopulators().add(new DungeonPopulator());
+		public void onChunk(ChunkPopulateEvent e) {
+			d.populate(e.getWorld(), rand, e.getChunk());
 		}
 	}
 
