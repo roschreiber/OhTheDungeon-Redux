@@ -9,7 +9,7 @@ public class EquipHands117R1 implements EquipHands {
 		hands.add((net.minecraft.nbt.NBTBase) sp.getItem(weapon));
 		hands.add((net.minecraft.nbt.NBTBase) sp.getItem(offhand));
 		net.minecraft.nbt.NBTTagCompound nbt = (net.minecraft.nbt.NBTTagCompound) mob;
-		nbt.set("HandItems", hands);
+		nbt.a("HandItems", hands);
 
 //		try {
 //			MultiVersion.NMS_1_17.NBTTagCompound_Set.invoke(mob, "HandItems", hands);

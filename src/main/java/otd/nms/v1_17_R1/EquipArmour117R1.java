@@ -18,7 +18,7 @@ public class EquipArmour117R1 implements EquipArmour {
 				.getItem(Equipment.getName(Equipment.CHEST, Quality.getArmourQuality(rand, level))));
 		armour.add((net.minecraft.nbt.NBTBase) sp
 				.getItem(Equipment.getName(Equipment.HELMET, Quality.getArmourQuality(rand, level))));
-		((net.minecraft.nbt.NBTTagCompound) mob).set("ArmorItems", armour);
+		((net.minecraft.nbt.NBTTagCompound) mob).a("ArmorItems", armour);
 //		try {
 //			MultiVersion.NMS_1_17.NBTTagCompound_Set.invoke(mob, "ArmorItems", armour);
 //		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {

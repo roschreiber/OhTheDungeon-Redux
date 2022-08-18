@@ -14,8 +14,8 @@ public class GetPotential117R1 implements GetPotential {
 	private Object getInner(Object mob, SpawnPotential sp) {
 		net.minecraft.nbt.NBTTagCompound potential = new net.minecraft.nbt.NBTTagCompound();
 
-		potential.set("Entity", (net.minecraft.nbt.NBTBase) mob);
-		potential.setInt("Weight", sp.weight);
+		potential.a("Entity", (net.minecraft.nbt.NBTBase) mob);
+		potential.a("Weight", sp.weight);
 
 		return potential;
 	}

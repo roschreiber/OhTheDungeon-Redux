@@ -10,7 +10,7 @@ public class CompoundParse117R1 implements CompoundParse {
 		net.minecraft.nbt.NBTTagCompound nbttagcompound = new net.minecraft.nbt.NBTTagCompound();
 
 		for (JsonToNBT.Any jsontonbt$any : c.tagList) {
-			nbttagcompound.set(jsontonbt$any.json, (net.minecraft.nbt.NBTBase) jsontonbt$any.parse());
+			nbttagcompound.a(jsontonbt$any.json, (net.minecraft.nbt.NBTBase) jsontonbt$any.parse());
 		}
 //		try {
 //			for (JsonToNBT.Any jsontonbt$any : c.tagList) {

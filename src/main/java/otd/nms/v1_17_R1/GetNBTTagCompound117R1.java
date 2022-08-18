@@ -9,7 +9,7 @@ public class GetNBTTagCompound117R1 implements GetNBTTagCompound {
 		if (inbt == null) {
 			nbt = new net.minecraft.nbt.NBTTagCompound();
 		} else {
-			nbt = ((net.minecraft.nbt.NBTTagCompound) inbt).clone();
+			nbt = ((net.minecraft.nbt.NBTTagCompound) inbt).g();
 		}
 		return sp.getPotential(sp.getRoguelike(level, name, nbt));
 	}

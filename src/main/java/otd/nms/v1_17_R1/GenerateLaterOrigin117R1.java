@@ -36,18 +36,18 @@ public class GenerateLaterOrigin117R1 implements GenerateLaterOrigin {
 
 		net.minecraft.world.level.block.entity.TileEntity te;
 
-		te = ws.getHandle().getTileEntity(new net.minecraft.core.BlockPosition(pos.getX(), pos.getY(), pos.getZ()));
+		te = ws.getHandle().c_(new net.minecraft.core.BlockPosition(pos.getX(), pos.getY(), pos.getZ()));
 		if (te == null)
 			return;
 
 		net.minecraft.nbt.NBTTagCompound nbt = new net.minecraft.nbt.NBTTagCompound();
-		nbt.setInt("x", pos.getX());
-		nbt.setInt("y", pos.getY());
-		nbt.setInt("z", pos.getZ());
+		nbt.a("x", pos.getX());
+		nbt.a("y", pos.getY());
+		nbt.a("z", pos.getZ());
 		net.minecraft.nbt.NBTBase csp = (net.minecraft.nbt.NBTBase) s.getSpawnPotentials(rand, level);
-		nbt.set("SpawnPotentials", csp);
+		nbt.a("SpawnPotentials", csp);
 
-		te.load(nbt);
+		te.a(nbt);
 
 //		try {
 //			te = (net.minecraft.world.level.block.entity.TileEntity) MultiVersion.NMS_1_17.World_getTileEntity
@@ -93,18 +93,18 @@ public class GenerateLaterOrigin117R1 implements GenerateLaterOrigin {
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.TileEntity te = ws.getHandle()
-				.getTileEntity(new net.minecraft.core.BlockPosition(pos.getX(), pos.getY(), pos.getZ()));
+				.c_(new net.minecraft.core.BlockPosition(pos.getX(), pos.getY(), pos.getZ()));
 		if (te == null)
 			return;
 
 		net.minecraft.nbt.NBTTagCompound nbt = new net.minecraft.nbt.NBTTagCompound();
-		nbt.setInt("x", pos.getX());
-		nbt.setInt("y", pos.getY());
-		nbt.setInt("z", pos.getZ());
+		nbt.a("x", pos.getX());
+		nbt.a("y", pos.getY());
+		nbt.a("z", pos.getZ());
 
-		nbt.set("SpawnPotentials", (net.minecraft.nbt.NBTBase) s.getSpawnPotentials(rand, level));
+		nbt.a("SpawnPotentials", (net.minecraft.nbt.NBTBase) s.getSpawnPotentials(rand, level));
 
-		te.load(nbt);
+		te.a(nbt);
 
 //		try {
 //			net.minecraft.world.level.block.entity.TileEntity te = (net.minecraft.world.level.block.entity.TileEntity) MultiVersion.NMS_1_17.World_getTileEntity

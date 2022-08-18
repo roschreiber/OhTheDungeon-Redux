@@ -23,8 +23,8 @@ public class GetItem117R1 implements GetItem {
 		net.minecraft.nbt.NBTTagCompound item = new net.minecraft.nbt.NBTTagCompound();
 		if (itemName == null)
 			return item;
-		item.setString("id", itemName);
-		item.setInt("Count", 1);
+		item.a("id", itemName);
+		item.a("Count", 1);
 //		MultiVersion.NMS_1_17.NBTTagCompound_SetString.invoke(item, "id", itemName);
 //		MultiVersion.NMS_1_17.NBTTagCompound_SetInt.invoke(item, "Count", 1);
 		// item.setString("id", itemName);
