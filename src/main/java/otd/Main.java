@@ -148,31 +148,23 @@ public class Main extends JavaPlugin {
 		if (MultiVersion.is114()) {
 			version = MultiVersion.Version.V1_14_R1;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.14.x", ChatColor.GREEN);
+
 		} else if (MultiVersion.is115()) {
 			version = MultiVersion.Version.V1_15_R1;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.15.x", ChatColor.GREEN);
-		} else if (MultiVersion.is116R1()) {
-			version = MultiVersion.Version.V1_16_R1;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[0-1]",
-					ChatColor.GREEN);
-		} else if (MultiVersion.is116R2()) {
-			version = MultiVersion.Version.V1_16_R2;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[2-3]",
-					ChatColor.GREEN);
+
 		} else if (MultiVersion.is116R3()) {
 			version = MultiVersion.Version.V1_16_R3;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[4-5]",
-					ChatColor.GREEN);
+			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.16.[4-5]", ChatColor.GREEN);
+
 		} else if (MultiVersion.is117R1()) {
 			version = MultiVersion.Version.V1_17_R1;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.17", ChatColor.GREEN);
-		} else if (MultiVersion.is118R1()) {
-			version = MultiVersion.Version.V1_18_R1;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.18.[0-1]",
-					ChatColor.GREEN);
+
 		} else if (MultiVersion.is118R2()) {
 			version = MultiVersion.Version.V1_18_R2;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.18.2", ChatColor.GREEN);
+
 		} else if (MultiVersion.is119R1()) {
 			version = MultiVersion.Version.V1_19_R1;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.19", ChatColor.GREEN);

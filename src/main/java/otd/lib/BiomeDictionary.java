@@ -311,9 +311,7 @@ public class BiomeDictionary {
 
 	private static void registerVanillaBiomes_v1() {
 		if (otd.Main.version != otd.MultiVersion.Version.UNKNOWN) {
-			if (otd.Main.version == otd.MultiVersion.Version.V1_16_R1
-					|| otd.Main.version == otd.MultiVersion.Version.V1_16_R2
-					|| otd.Main.version == otd.MultiVersion.Version.V1_16_R3
+			if (otd.Main.version == otd.MultiVersion.Version.V1_16_R3
 					|| otd.Main.version == otd.MultiVersion.Version.V1_17_R1) {
 				addTypes(Biome.valueOf("NETHER_WASTES"), HOT, DRY, NETHER);
 				addTypes(Biome.valueOf("SOUL_SAND_VALLEY"), HOT, DRY, NETHER);
