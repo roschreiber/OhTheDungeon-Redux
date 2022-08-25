@@ -58,7 +58,7 @@ import otd.api.MobManager;
 import otd.api.SpawnerManager;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
-import otd.integration.BossImpl;
+//import otd.integration.BossImpl;
 import otd.integration.EcoBossesImpl;
 import otd.integration.MythicMobsImpl;
 import otd.lib.spawner.SpawnerDecryAPI;
@@ -241,11 +241,11 @@ public class SpawnerListener implements Listener {
 					Location loc = entity.getLocation();
 					MythicMobsImpl.spawnSmallBoss(loc, RAND);
 				}
-				if (type == SimpleWorldConfig.BossType.Boss && BossImpl.isBossReady()) {
+				/*if (type == SimpleWorldConfig.BossType.Boss && BossImpl.isBossReady()) {
 					Entity entity = event.getEntity();
 					Location loc = entity.getLocation();
 					BossImpl.spawnSmallBoss(loc, RAND);
-				}
+				}*/
 			}
 		}
 	}
@@ -267,8 +267,8 @@ public class SpawnerListener implements Listener {
 		if (MythicMobsImpl.isMythicMobsReady() && type == SimpleWorldConfig.BossType.MythicMobs
 				&& MythicMobsImpl.lichBossReady()) {
 			MythicMobsImpl.spawnLich(loc);
-		} else if (BossImpl.isBossReady() && type == SimpleWorldConfig.BossType.Boss) {
-			BossImpl.spawnLich(loc);
+		/*} else if (BossImpl.isBossReady() && type == SimpleWorldConfig.BossType.Boss) {
+			BossImpl.spawnLich(loc);*/
 		} else if (EcoBossesImpl.isEcoBossesReady() && type == SimpleWorldConfig.BossType.EcoBosses) {
 			EcoBossesImpl.spawnLich(loc);
 		} else {
@@ -293,8 +293,8 @@ public class SpawnerListener implements Listener {
 		if (MythicMobsImpl.isMythicMobsReady() && type == SimpleWorldConfig.BossType.MythicMobs
 				&& MythicMobsImpl.kingCastleBossReady()) {
 			MythicMobsImpl.spawnCastleKing(loc);
-		} else if (BossImpl.isBossReady() && type == SimpleWorldConfig.BossType.Boss) {
-			BossImpl.spawnCastleKing(loc);
+		/*} else if (BossImpl.isBossReady() && type == SimpleWorldConfig.BossType.Boss) {
+			BossImpl.spawnCastleKing(loc);*/
 		} else if (EcoBossesImpl.isEcoBossesReady() && type == SimpleWorldConfig.BossType.EcoBosses) {
 			EcoBossesImpl.spawnCastleKing(loc);
 		} else {

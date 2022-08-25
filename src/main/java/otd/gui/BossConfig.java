@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import net.md_5.bungee.api.ChatColor;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
-import otd.integration.BossImpl;
+//import otd.integration.BossImpl;
 import otd.integration.EcoBossesImpl;
 import otd.integration.MythicMobsImpl;
 import otd.util.I18n;
@@ -93,7 +93,7 @@ public class BossConfig extends Content {
 				holder.init();
 			}
 		}
-		if (slot == 21) {
+		/*if (slot == 21) {
 			if (BossImpl.isBossReady()) {
 				if (swc.boss != SimpleWorldConfig.BossType.Boss) {
 					swc.boss = SimpleWorldConfig.BossType.Boss;
@@ -101,7 +101,7 @@ public class BossConfig extends Content {
 					holder.init();
 				}
 			}
-		}
+		}*/
 		if (slot == 22) {
 			if (MythicMobsImpl.isMythicMobsReady()) {
 				if (swc.boss != SimpleWorldConfig.BossType.MythicMobs) {

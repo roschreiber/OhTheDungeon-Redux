@@ -96,7 +96,7 @@ import otd.gui.dungeon_plot.CreateDungeonWorld;
 import otd.gui.dungeon_plot.RemoveDungeonWorld;
 import otd.gui.dungeon_plot.UserTeleport;
 import otd.gui.storydungeon.PPDI_Config;
-import otd.integration.BossImpl;
+//import otd.integration.BossImpl;
 import otd.integration.EcoBossesImpl;
 import otd.integration.MythicMobsImpl;
 import otd.integration.PlaceholderAPI;
@@ -323,7 +323,7 @@ public class Main extends JavaPlugin {
 
 		PlaceholderAPI.enable();
 		MythicMobsImpl.enable();
-		BossImpl.enable();
+		//BossImpl.enable();
 
 		AsyncRoguelikeDungeon.init();
 
@@ -369,11 +369,11 @@ public class Main extends JavaPlugin {
 			} else {
 				MythicMobsImpl.report();
 			}
-			if (!BossImpl.isBossReady()) {
+			/*if (!BossImpl.isBossReady()) {
 				Bukkit.getLogger().log(Level.INFO,
 						"{0}[Oh The Dungeons You'll Go] Boss not installed, will disable BossPlugin related features",
 						ChatColor.RED);
-			}
+			}*/
 			if (!EcoBossesImpl.isEcoBossesReady()) {
 				Bukkit.getLogger().log(Level.INFO,
 						"{0}[Oh The Dungeons You'll Go] EcoBosses not installed, will disable BossPlugin EcoBosses features",
