@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
 	<artifactId>OhTheDungeonsYoullGo</artifactId>
-	<version>1.19.2</version>
+	<version>1.19.3</version>
 	<properties>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>17</maven.compiler.source>
@@ -40,13 +40,13 @@
 		<dependency>
 			<groupId>io.papermc.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>1.19.2-R0.1-SNAPSHOT</version>
+			<version>1.19.3-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.spigotmc......</groupId>
 			<artifactId>spigot</artifactId>
-			<version>1.19.2-R0.1-SNAPSHOT</version>
+			<version>1.19.3-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
