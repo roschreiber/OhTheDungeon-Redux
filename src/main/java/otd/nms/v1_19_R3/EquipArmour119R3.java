@@ -1,4 +1,4 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import forge_sandbox.greymerk.roguelike.treasure.loot.Quality;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.nms.EquipArmour;
 
-public class EquipArmour119R2 implements EquipArmour {
+public class EquipArmour119R3 implements EquipArmour {
 	public Object get(Object mob, Random rand, int level, SpawnPotential sp) {
 		net.minecraft.nbt.NBTTagList armour = new net.minecraft.nbt.NBTTagList();
 		armour.add((net.minecraft.nbt.NBTBase) sp

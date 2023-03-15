@@ -1,9 +1,9 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.nms.GetPotential;
 
-public class GetPotential119R2 implements GetPotential {
+public class GetPotential119R3 implements GetPotential {
 
 	public Object get(Object mob, SpawnPotential sp) {
 		Object obj = null;

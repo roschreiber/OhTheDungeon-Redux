@@ -1,9 +1,9 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.nms.GetNBTTagCompound;
 
-public class GetNBTTagCompound119R2 implements GetNBTTagCompound {
+public class GetNBTTagCompound119R3 implements GetNBTTagCompound {
 	public Object get(int level, String name, Object inbt, SpawnPotential sp) {
 		Object nbt;
 		if (inbt == null) {

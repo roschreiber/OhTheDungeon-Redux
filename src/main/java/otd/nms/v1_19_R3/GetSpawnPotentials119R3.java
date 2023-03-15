@@ -1,4 +1,4 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawnable;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawner;
 import otd.nms.GetSpawnPotentials;
 
-public class GetSpawnPotentials119R2 implements GetSpawnPotentials {
+public class GetSpawnPotentials119R3 implements GetSpawnPotentials {
 	public Object get(Random rand, int level, Spawnable s) {
 		return getInner(rand, level, s);
 	}

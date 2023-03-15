@@ -101,20 +101,20 @@ import otd.nms.v1_18_R2.GetSpawnPotentials118R2;
 import otd.nms.v1_18_R2.ListParse118R2;
 import otd.nms.v1_18_R2.PrimitiveParse118R2;
 import otd.nms.v1_18_R2.SpawnerLightRule118R2;
-import otd.nms.v1_19_R2.CompoundParse119R2;
-import otd.nms.v1_19_R2.EquipArmour119R2;
-import otd.nms.v1_19_R2.EquipHands119R2;
-import otd.nms.v1_19_R2.GenerateLaterOrigin119R2;
-import otd.nms.v1_19_R2.Get119R2;
-import otd.nms.v1_19_R2.GetItem119R2;
-import otd.nms.v1_19_R2.GetNBTTagCompound119R2;
-import otd.nms.v1_19_R2.GetNBTTagList119R2;
-import otd.nms.v1_19_R2.GetPotential119R2;
-import otd.nms.v1_19_R2.GetRoguelike119R2;
-import otd.nms.v1_19_R2.GetSpawnPotentials119R2;
-import otd.nms.v1_19_R2.ListParse119R2;
-import otd.nms.v1_19_R2.PrimitiveParse119R2;
-import otd.nms.v1_19_R2.SpawnerLightRule119R2;
+import otd.nms.v1_19_R3.CompoundParse119R3;
+import otd.nms.v1_19_R3.EquipArmour119R3;
+import otd.nms.v1_19_R3.EquipHands119R3;
+import otd.nms.v1_19_R3.GenerateLaterOrigin119R3;
+import otd.nms.v1_19_R3.Get119R3;
+import otd.nms.v1_19_R3.GetItem119R3;
+import otd.nms.v1_19_R3.GetNBTTagCompound119R3;
+import otd.nms.v1_19_R3.GetNBTTagList119R3;
+import otd.nms.v1_19_R3.GetPotential119R3;
+import otd.nms.v1_19_R3.GetRoguelike119R3;
+import otd.nms.v1_19_R3.GetSpawnPotentials119R3;
+import otd.nms.v1_19_R3.ListParse119R3;
+import otd.nms.v1_19_R3.PrimitiveParse119R3;
+import otd.nms.v1_19_R3.SpawnerLightRule119R3;
 
 /**
  *
@@ -123,7 +123,7 @@ import otd.nms.v1_19_R2.SpawnerLightRule119R2;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_19_R2, V1_18_R2, V1_17_R1, V1_16_R3, V1_15_R1, V1_14_R1, UNKNOWN,
+		V1_19_R3, V1_18_R2, V1_17_R1, V1_16_R3, V1_15_R1, V1_14_R1, UNKNOWN,
 	};
 
 	private static EntityType PIGZOMBIE = null;
@@ -139,9 +139,9 @@ public class MultiVersion {
 		return PIGZOMBIE;
 	}
 
-	public static boolean is119R2() {
+	public static boolean is119R3() {
 		try {
-			Class clazz = Class.forName("org.bukkit.craftbukkit.v1_19_R2.CraftWorld");
+			Class clazz = Class.forName("org.bukkit.craftbukkit.v1_19_R3.CraftWorld");
 			return clazz != null;
 		} catch (ClassNotFoundException ex) {
 			return false;
@@ -212,7 +212,7 @@ public class MultiVersion {
 	public static boolean hasExtendedPos() {
 		if (newPos != null)
 			return newPos;
-		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R2)
+		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R3)
 			newPos = true;
 		return newPos;
 	}
@@ -325,21 +325,21 @@ public class MultiVersion {
 			primitiveParse = new PrimitiveParse118R2();
 			spawnerLightRule = new SpawnerLightRule118R2();
 
-		} else if (Main.version == Version.V1_19_R2) {
-			getNBTTagCompound = new GetNBTTagCompound119R2();
-			getNBTTagList = new GetNBTTagList119R2();
-			getPotential = new GetPotential119R2();
-			equipHands = new EquipHands119R2();
-			equipArmour = new EquipArmour119R2();
-			getItem = new GetItem119R2();
-			getRoguelike = new GetRoguelike119R2();
-			generateLaterOrigin = new GenerateLaterOrigin119R2();
-			getSpawnPotentials = new GetSpawnPotentials119R2();
-			get = new Get119R2();
-			compoundParse = new CompoundParse119R2();
-			listParse = new ListParse119R2();
-			primitiveParse = new PrimitiveParse119R2();
-			spawnerLightRule = new SpawnerLightRule119R2();
+		} else if (Main.version == Version.V1_19_R3) {
+			getNBTTagCompound = new GetNBTTagCompound119R3();
+			getNBTTagList = new GetNBTTagList119R3();
+			getPotential = new GetPotential119R3();
+			equipHands = new EquipHands119R3();
+			equipArmour = new EquipArmour119R3();
+			getItem = new GetItem119R3();
+			getRoguelike = new GetRoguelike119R3();
+			generateLaterOrigin = new GenerateLaterOrigin119R3();
+			getSpawnPotentials = new GetSpawnPotentials119R3();
+			get = new Get119R3();
+			compoundParse = new CompoundParse119R3();
+			listParse = new ListParse119R3();
+			primitiveParse = new PrimitiveParse119R3();
+			spawnerLightRule = new SpawnerLightRule119R3();
 		}
 	}
 
@@ -368,7 +368,7 @@ public class MultiVersion {
 	}
 
 	public static int[] getWorldYRange() {
-		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R2) {
+		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R3) {
 			return new int[] { -64, 320 };
 		} else {
 			return new int[] { 0, 256 };
@@ -378,7 +378,7 @@ public class MultiVersion {
 	public static boolean spawnerNeedLightUpdate() {
 		if (Main.version == Version.V1_18_R2)
 			return true;
-		if (Main.version == Version.V1_19_R2)
+		if (Main.version == Version.V1_19_R3)
 			return true;
 		return false;
 	}

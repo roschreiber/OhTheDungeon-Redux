@@ -1,4 +1,4 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawner;
 import otd.nms.GetNBTTagList;
 
-public class GetNBTTagList119R2 implements GetNBTTagList {
+public class GetNBTTagList119R3 implements GetNBTTagList {
 	public Object get(Random rand, int level, SpawnPotential sp) {
 		net.minecraft.nbt.NBTTagList potentials = new net.minecraft.nbt.NBTTagList();
 		if (sp.name.equals(Spawner.getName(Spawner.ZOMBIE))) {

@@ -1,8 +1,8 @@
-package otd.nms.v1_19_R2;
+package otd.nms.v1_19_R3;
 
 import otd.nms.GetItem;
 
-public class GetItem119R2 implements GetItem {
+public class GetItem119R3 implements GetItem {
 
 	public Object get(String itemName) {
 		Object obj = null;
