@@ -158,8 +158,7 @@ public class DoomlikeConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#doomlike");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#doomlike");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);

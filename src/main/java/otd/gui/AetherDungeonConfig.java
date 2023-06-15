@@ -125,8 +125,7 @@ public class AetherDungeonConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#aether");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#aether");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);

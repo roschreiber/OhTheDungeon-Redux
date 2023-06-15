@@ -142,8 +142,7 @@ public class RoguelikeConfig extends Content {
 			tower.openInventory(p);
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#roguelike");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#roguelike");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);

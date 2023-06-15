@@ -105,8 +105,7 @@ public class SmoofyConfig extends Content {
 			bs.openInventory(p);
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#smoofy");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#smoofy");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);

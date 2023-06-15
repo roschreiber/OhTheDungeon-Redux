@@ -115,8 +115,7 @@ public class BattleTowerConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#battle-tower");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#battle-tower");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);

@@ -40,6 +40,7 @@ public abstract class Content implements InventoryHolder, Listener {
 //	protected final static ItemStack DISABLE = Skull.DISABLED.getItem();
 
 	public String title;
+	protected final String dungeonURL = "https://github.com/steve4744/OhTheDungeon/blob/main/dungeons/dungeons.md";
 
 	@Override
 	public Inventory getInventory() {

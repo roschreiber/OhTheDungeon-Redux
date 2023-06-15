@@ -106,8 +106,7 @@ public class CastleDungeonConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/dungeons/dungeons.md#castle");
+			p.sendMessage(ChatColor.BLUE + dungeonURL + "#castle");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);
