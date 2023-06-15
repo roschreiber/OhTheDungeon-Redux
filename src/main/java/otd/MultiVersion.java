@@ -233,10 +233,12 @@ public class MultiVersion {
 	private static Boolean newPos = null;
 
 	public static boolean hasExtendedPos() {
-		if (newPos != null)
+		if (newPos != null) {
 			return newPos;
-		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R3 || Main.version == Version.V1_20_R1)
+		}
+		if (is118Plus()) {
 			newPos = true;
+		}
 		return newPos;
 	}
 
@@ -407,19 +409,11 @@ public class MultiVersion {
 	}
 
 	public static int[] getWorldYRange() {
-		if (Main.version == Version.V1_18_R2 || Main.version == Version.V1_19_R3 || Main.version == Version.V1_20_R1) {
-			return new int[] { -64, 320 };
-		} else {
-			return new int[] { 0, 256 };
-		}
+		return is118Plus() ? new int[] { -64, 320 } : new int[] { 0, 256 };
 	}
 
 	public static boolean spawnerNeedLightUpdate() {
-		if (Main.version == Version.V1_18_R2)
-			return true;
-		if (Main.version == Version.V1_19_R3 || Main.version == Version.V1_20_R1)
-			return true;
-		return false;
+		return is118Plus();
 	}
 
 	private static Boolean hasWaterCauldron = null;
@@ -434,5 +428,11 @@ public class MultiVersion {
 			hasWaterCauldron = false;
 		}
 		return hasWaterCauldron;
+	}
+
+	private static boolean is118Plus() {
+		return (Main.version == Version.V1_20_R1 ||
+				Main.version == Version.V1_19_R3 ||
+				Main.version == Version.V1_18_R2);
 	}
 }
