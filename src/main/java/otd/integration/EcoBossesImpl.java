@@ -99,7 +99,7 @@ public class EcoBossesImpl {
 		public Set<String> getMobNames() {
 			Set<String> res = new HashSet<>();
 			for (EcoBoss boss : Bosses.values()) {
-				String id = boss.getId();
+				String id = boss.getID();
 				res.add(id);
 			}
 			return res;

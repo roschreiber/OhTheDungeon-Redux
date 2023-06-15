@@ -24,6 +24,10 @@
 			<url>https://jitpack.io</url>
 		</repository>
 		<repository>
+			<id>auxilor-repo</id>
+			<url>https://repo.auxilor.io/repository/maven-public/</url>
+		</repository>
+		<repository>
 			<id>placeholderapi</id>
 			<url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
 		</repository>
@@ -109,14 +113,14 @@
 			<version>4.14.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
-		<!--
+		<!-- -->
 		<dependency>
 			<groupId>com.willfp</groupId>
 			<artifactId>EcoBosses</artifactId>
-			<version>8.72.2</version>
+			<version>9.14.0</version>
 			<scope>provided</scope>
 		</dependency>
-		-->
+
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
 			<artifactId>worldedit-bukkit</artifactId>
