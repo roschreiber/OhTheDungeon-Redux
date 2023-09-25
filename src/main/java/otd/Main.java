@@ -38,8 +38,6 @@ import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.UnknownDependencyException;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import forge_sandbox.Sandbox;
 import forge_sandbox.com.someguyssoftware.dungeons2.config.ModConfig;
 import forge_sandbox.com.someguyssoftware.dungeons2.spawner.SpawnSheetLoader;
@@ -109,7 +107,6 @@ import otd.script.JSExample;
 import otd.script.JSLoader;
 import otd.script.listener.DungeonEventListener;
 import otd.struct.SchematicLoader;
-import otd.update.UpdateChecker;
 import otd.util.Diagnostic;
 import otd.util.ExceptionReporter;
 import otd.util.I18n;
@@ -130,8 +127,6 @@ public class Main extends JavaPlugin {
 	@SuppressWarnings("unused")
 	private static Integer api_version = 7;
 	public static MultiVersion.Version version = MultiVersion.Version.UNKNOWN;
-	@SuppressWarnings("unused")
-	private Metrics metrics;
 	private final static int metric_pluginId = 9213;
 	@SuppressWarnings("unused")
 	private static PerPlayerDungeonInstance ppdi;
@@ -169,9 +164,9 @@ public class Main extends JavaPlugin {
 			version = MultiVersion.Version.V1_19_R3;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.19.4", ChatColor.GREEN);
 
-		} else if (MultiVersion.is120R1()) {
-			version = MultiVersion.Version.V1_20_R1;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.20", ChatColor.GREEN);
+		} else if (MultiVersion.is120R2()) {
+			version = MultiVersion.Version.V1_20_R2;
+			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.20.2", ChatColor.GREEN);
 
 		} else {
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Unknown Version...", ChatColor.RED);
@@ -179,7 +174,6 @@ public class Main extends JavaPlugin {
 		}
 		MultiVersion.has3DBiome();
 		if (version == MultiVersion.Version.UNKNOWN) {
-			// MultiVersion.checkForUnknownVersion();
 			throw new UnsupportedOperationException("Unknown server version...");
 		}
 		MultiVersion.init();
@@ -213,7 +207,6 @@ public class Main extends JavaPlugin {
 			Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));
 		}
 
-		// PaperLib.suggestPaper(this);
 		disabled = false;
 
 		I18n.init();
@@ -285,31 +278,15 @@ public class Main extends JavaPlugin {
 
 //		PluginConfig.instance.init();
 //		PluginConfig.instance.update();
-//
+
 		ChunkList.rebuildChunkMap();
 
-		if (YamlPluginConfig.update) {
+		/*if (YamlPluginConfig.update) {
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] Update checking...", ChatColor.GREEN);
 			asyncUpdateChecker();
-		}
-//
-//		String update = PluginConfig.instance.config.get("updater");
-//		if (update != null && update.equalsIgnoreCase("TRUE")) {
-//			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You''ll Go] Update checking...", ChatColor.GREEN);
-//			asyncUpdateChecker();
-//		}
+		}*/
 
-		// String bstats = PluginConfig.instance.config.get("bstats");
-		// if(bstats != null && bstats.equalsIgnoreCase("TRUE")) {
-		metrics = new Metrics(this, metric_pluginId);
-		// }
-
-//        String fps_opt = PluginConfig.instance.config.get("fps_opt");
-//        if(fps_opt != null && fps_opt.equalsIgnoreCase("TRUE")) {
-//            if(version == MultiVersion.Version.V1_16_R1 || version == MultiVersion.Version.V1_16_R2 || version == MultiVersion.Version.V1_16_R3) {
-//                
-//            }
-//        }
+		new Metrics(this, metric_pluginId);
 
 		registerCommand();
 		BattleTowerSchematics.init(this);
@@ -343,7 +320,6 @@ public class Main extends JavaPlugin {
 		}, 2L);
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
-			// PaperLib.suggestPaper(Main.instance);
 			if (!PaperLib.isPaper()) {
 				Bukkit.getLogger().log(Level.INFO,
 						"{0}[Oh The Dungeons You'll Go] You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss",
@@ -443,9 +419,8 @@ public class Main extends JavaPlugin {
 		}
 	}
 
-	private BukkitRunnable update_check_task_id;
+	/*private BukkitRunnable update_check_task_id;
 	private final int RESOURCE_ID = 76437;
-
 	private void asyncUpdateChecker() {
 		update_check_task_id = new BukkitRunnable() {
 			@Override
@@ -454,7 +429,7 @@ public class Main extends JavaPlugin {
 			}
 		};
 		update_check_task_id.runTaskTimerAsynchronously(this, 200, 20 * 3600 * 1);
-	}
+	}*/
 
 	private class DLDWorldListener implements Listener {
 		DungeonPopulator d = new DungeonPopulator();
