@@ -34,7 +34,7 @@ import com.mojang.authlib.properties.Property;
  */
 public class Skull {
 	public static SkullMeta applyHead(String uuid, String textures, SkullMeta headMeta) {
-		GameProfile profile = new GameProfile(UUID.fromString(uuid), null);
+		GameProfile profile = new GameProfile(UUID.fromString(uuid), "");
 		profile.getProperties().put("textures", new Property("textures", textures));
 		Field profileField;
 		try {
