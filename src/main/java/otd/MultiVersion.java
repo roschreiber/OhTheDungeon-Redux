@@ -115,20 +115,20 @@ import otd.nms.v1_19_R3.GetSpawnPotentials119R3;
 import otd.nms.v1_19_R3.ListParse119R3;
 import otd.nms.v1_19_R3.PrimitiveParse119R3;
 import otd.nms.v1_19_R3.SpawnerLightRule119R3;
-import otd.nms.v1_20_R1.CompoundParse120R1;
-import otd.nms.v1_20_R1.EquipArmour120R1;
-import otd.nms.v1_20_R1.EquipHands120R1;
-import otd.nms.v1_20_R1.GenerateLaterOrigin120R1;
-import otd.nms.v1_20_R1.Get120R1;
-import otd.nms.v1_20_R1.GetItem120R1;
-import otd.nms.v1_20_R1.GetNBTTagCompound120R1;
-import otd.nms.v1_20_R1.GetNBTTagList120R1;
-import otd.nms.v1_20_R1.GetPotential120R1;
-import otd.nms.v1_20_R1.GetRoguelike120R1;
-import otd.nms.v1_20_R1.GetSpawnPotentials120R1;
-import otd.nms.v1_20_R1.ListParse120R1;
-import otd.nms.v1_20_R1.PrimitiveParse120R1;
-import otd.nms.v1_20_R1.SpawnerLightRule120R1;
+import otd.nms.v1_20_R2.CompoundParse120R2;
+import otd.nms.v1_20_R2.EquipArmour120R2;
+import otd.nms.v1_20_R2.EquipHands120R2;
+import otd.nms.v1_20_R2.GenerateLaterOrigin120R2;
+import otd.nms.v1_20_R2.Get120R2;
+import otd.nms.v1_20_R2.GetItem120R2;
+import otd.nms.v1_20_R2.GetNBTTagCompound120R2;
+import otd.nms.v1_20_R2.GetNBTTagList120R2;
+import otd.nms.v1_20_R2.GetPotential120R2;
+import otd.nms.v1_20_R2.GetRoguelike120R2;
+import otd.nms.v1_20_R2.GetSpawnPotentials120R2;
+import otd.nms.v1_20_R2.ListParse120R2;
+import otd.nms.v1_20_R2.PrimitiveParse120R2;
+import otd.nms.v1_20_R2.SpawnerLightRule120R2;
 
 /**
  *
@@ -137,7 +137,7 @@ import otd.nms.v1_20_R1.SpawnerLightRule120R1;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_20_R1, V1_19_R3, V1_18_R2, V1_17_R1, V1_16_R3, V1_15_R1, V1_14_R1, UNKNOWN
+		V1_20_R2, V1_19_R3, V1_18_R2, V1_17_R1, V1_16_R3, V1_15_R1, V1_14_R1, UNKNOWN
 	};
 
 	private static EntityType PIGZOMBIE = null;
@@ -153,9 +153,9 @@ public class MultiVersion {
 		return PIGZOMBIE;
 	}
 
-	public static boolean is120R1() {
+	public static boolean is120R2() {
 		try {
-			Class clazz = Class.forName("org.bukkit.craftbukkit.v1_20_R1.CraftWorld");
+			Class clazz = Class.forName("org.bukkit.craftbukkit.v1_20_R2.CraftWorld");
 			return clazz != null;
 		} catch (ClassNotFoundException ex) {
 			return false;
@@ -366,21 +366,21 @@ public class MultiVersion {
 			primitiveParse = new PrimitiveParse119R3();
 			spawnerLightRule = new SpawnerLightRule119R3();
 
-		} else if (Main.version == Version.V1_20_R1) {
-			getNBTTagCompound = new GetNBTTagCompound120R1();
-			getNBTTagList = new GetNBTTagList120R1();
-			getPotential = new GetPotential120R1();
-			equipHands = new EquipHands120R1();
-			equipArmour = new EquipArmour120R1();
-			getItem = new GetItem120R1();
-			getRoguelike = new GetRoguelike120R1();
-			generateLaterOrigin = new GenerateLaterOrigin120R1();
-			getSpawnPotentials = new GetSpawnPotentials120R1();
-			get = new Get120R1();
-			compoundParse = new CompoundParse120R1();
-			listParse = new ListParse120R1();
-			primitiveParse = new PrimitiveParse120R1();
-			spawnerLightRule = new SpawnerLightRule120R1();
+		} else if (Main.version == Version.V1_20_R2) {
+			getNBTTagCompound = new GetNBTTagCompound120R2();
+			getNBTTagList = new GetNBTTagList120R2();
+			getPotential = new GetPotential120R2();
+			equipHands = new EquipHands120R2();
+			equipArmour = new EquipArmour120R2();
+			getItem = new GetItem120R2();
+			getRoguelike = new GetRoguelike120R2();
+			generateLaterOrigin = new GenerateLaterOrigin120R2();
+			getSpawnPotentials = new GetSpawnPotentials120R2();
+			get = new Get120R2();
+			compoundParse = new CompoundParse120R2();
+			listParse = new ListParse120R2();
+			primitiveParse = new PrimitiveParse120R2();
+			spawnerLightRule = new SpawnerLightRule120R2();
 		}
 	}
 
@@ -431,7 +431,7 @@ public class MultiVersion {
 	}
 
 	private static boolean is118Plus() {
-		return (Main.version == Version.V1_20_R1 ||
+		return (Main.version == Version.V1_20_R2 ||
 				Main.version == Version.V1_19_R3 ||
 				Main.version == Version.V1_18_R2);
 	}

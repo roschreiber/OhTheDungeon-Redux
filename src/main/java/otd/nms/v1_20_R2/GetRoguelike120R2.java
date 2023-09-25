@@ -1,10 +1,10 @@
-package otd.nms.v1_20_R1;
+package otd.nms.v1_20_R2;
 
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.config.WorldConfig;
 import otd.nms.GetRoguelike;
 
-public class GetRoguelike120R1 implements GetRoguelike {
+public class GetRoguelike120R2 implements GetRoguelike {
 	public Object get(int level, String type, Object otag, SpawnPotential sp) {
 		Object obj = null;
 		obj = getInner(level, type, otag, sp);
