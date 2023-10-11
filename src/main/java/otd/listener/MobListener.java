@@ -41,8 +41,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import forge_sandbox.greymerk.roguelike.treasure.loot.BookBase;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import otd.config.WorldConfig;
 import otd.gui.dungeon_plot.UserTeleport;
 import otd.util.Diagnostic;
@@ -80,7 +78,6 @@ public class MobListener implements Listener {
 			ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
 			BookMeta bookMeta = (BookMeta) book.getItemMeta();
 			String array_page[] = new String[pages.size()];
-			//BaseComponent[] page1 = new ComponentBuilder().create();
 			for (int i = 0; i < array_page.length; i++) {
 				array_page[i] = pages.get(i);
 			}

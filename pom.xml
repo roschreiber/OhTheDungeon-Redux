@@ -19,18 +19,28 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
+		<!-- Vault Repo -->
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</repository>
+		<!-- MythicMobs Repo -->
+		<repository>
+			<id>nexus</id>
+			<name>Lumine Releases</name>
+			<url>https://mvn.lumine.io/repository/maven-public/</url>
+		</repository>
+		<!-- EcoBosses Repo -->
 		<repository>
 			<id>auxilor-repo</id>
 			<url>https://repo.auxilor.io/repository/maven-public/</url>
 		</repository>
+		<!-- PlaceholderAPI Repo -->
 		<repository>
 			<id>placeholderapi</id>
 			<url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
 		</repository>
+		<!-- WorldEdit Repo -->
 		<repository>
 			<id>enginehub-maven</id>
 			<url>https://maven.enginehub.org/repo/</url>
@@ -104,7 +114,7 @@
 		<dependency>
 			<groupId>io.lumine</groupId>
 			<artifactId>Mythic-Dist</artifactId>
-			<version>5.0.2-SNAPSHOT</version>
+			<version>5.3.3-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
