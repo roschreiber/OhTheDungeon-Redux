@@ -26,8 +26,8 @@ public class EcoBossesImpl {
 
 	public static void enable() {
 		try {
-			if (Class.forName("org.mineacademy.boss.BossPlugin") != null) {
-				Bukkit.getLogger().info("Loading Boss support ...");
+			if (Class.forName("com.willfp.ecobosses.EcoBossesPlugin") != null) {
+				Bukkit.getLogger().info("Loading EcoBosses support ...");
 				EcoBossesImpl.inst = new EcoBossesOTDImpl();
 				ready = true;
 			}
