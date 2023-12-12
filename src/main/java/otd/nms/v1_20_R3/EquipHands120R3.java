@@ -1,9 +1,9 @@
-package otd.nms.v1_20_R2;
+package otd.nms.v1_20_R3;
 
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.nms.EquipHands;
 
-public class EquipHands120R2 implements EquipHands {
+public class EquipHands120R3 implements EquipHands {
 	public Object get(Object mob, String weapon, String offhand, SpawnPotential sp) {
 		net.minecraft.nbt.NBTTagList hands = new net.minecraft.nbt.NBTTagList();
 		hands.add((net.minecraft.nbt.NBTBase) sp.getItem(weapon));

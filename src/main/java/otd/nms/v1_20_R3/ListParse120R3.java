@@ -1,11 +1,11 @@
-package otd.nms.v1_20_R2;
+package otd.nms.v1_20_R3;
 
 import otd.nms.ListParse;
 import otd.util.nbt.JsonToNBT;
 import otd.util.nbt.JsonToNBT.List;
 import otd.util.nbt.JsonToNBT.NBTException;
 
-public class ListParse120R2 implements ListParse {
+public class ListParse120R3 implements ListParse {
 	public Object parse(List l) throws NBTException {
 		net.minecraft.nbt.NBTTagList nbttaglist = new net.minecraft.nbt.NBTTagList();
 
