@@ -64,7 +64,7 @@ public class AsyncWorldEditor implements IWorldEditor {
 		invalid.add(Material.WATER);
 		invalid.add(Material.CACTUS);
 		invalid.add(Material.SNOW);
-		invalid.add(Material.GRASS);
+		invalid.add(Material.SHORT_GRASS);
 		invalid.add(Material.STONE);
 		invalid.add(Material.OAK_LEAVES);
 		invalid.add(Material.POPPY);

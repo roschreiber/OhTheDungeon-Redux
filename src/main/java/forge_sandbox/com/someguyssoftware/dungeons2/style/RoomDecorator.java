@@ -522,7 +522,7 @@ public class RoomDecorator implements IRoomDecorator {
 				Material groundBlockState = null;
 				switch (b) {
 				case 0:
-					plantBlockState = Material.GRASS;
+					plantBlockState = Material.SHORT_GRASS;
 					break;
 				case 1:
 					plantBlockState = Material.DEAD_BUSH;
@@ -537,7 +537,7 @@ public class RoomDecorator implements IRoomDecorator {
 					plantBlockState = Material.RED_MUSHROOM;
 					break;
 				default:
-					plantBlockState = Material.GRASS;
+					plantBlockState = Material.SHORT_GRASS;
 				}
 				if (b < 3)
 					groundBlockState = Material.DIRT;
@@ -590,7 +590,7 @@ public class RoomDecorator implements IRoomDecorator {
 				Material groundBlockState = null;
 				switch (b) {
 				case 0:
-					plantBlockState = Material.GRASS;
+					plantBlockState = Material.SHORT_GRASS;
 					break;
 				case 1:
 					plantBlockState = Material.DEAD_BUSH;
@@ -605,7 +605,7 @@ public class RoomDecorator implements IRoomDecorator {
 					plantBlockState = Material.RED_MUSHROOM;
 					break;
 				default:
-					plantBlockState = Material.GRASS;
+					plantBlockState = Material.SHORT_GRASS;
 				}
 				if (b < 3)
 					groundBlockState = Material.DIRT;

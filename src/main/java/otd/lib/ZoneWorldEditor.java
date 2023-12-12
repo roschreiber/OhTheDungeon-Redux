@@ -63,7 +63,7 @@ public class ZoneWorldEditor implements IWorldEditor {
 		INVALID.add(Material.WATER);
 		INVALID.add(Material.CACTUS);
 		INVALID.add(Material.SNOW);
-		INVALID.add(Material.GRASS);
+		INVALID.add(Material.SHORT_GRASS);
 		INVALID.add(Material.STONE);
 		INVALID.add(Material.OAK_LEAVES);
 		INVALID.add(Material.POPPY);

@@ -47,7 +47,7 @@ public abstract class PlatGenerator {
 	protected static final Material byteSidewalk = Material.LEGACY_DOUBLE_STEP;
 	@SuppressWarnings("deprecation")
 	protected static final Material byteParkwalk = Material.LEGACY_DOUBLE_STEP;
-	protected static final Material intGrassBlades = Material.GRASS;
+	protected static final Material intGrassBlades = Material.SHORT_GRASS;
 	protected static final Material intFlowerRed = Material.POPPY;
 	protected static final Material intFlowerYellow = Material.DANDELION;
 	protected static final double oddsOfAFenceOpening = 0.7;

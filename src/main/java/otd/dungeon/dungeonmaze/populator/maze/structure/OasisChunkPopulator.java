@@ -88,7 +88,7 @@ public class OasisChunkPopulator extends ChunkBlockPopulator {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
 				if (rand.nextInt(100) < CHANCE_CLAYINDIRT) {
-					world.setBlockType(chunkx * 16 + x, 31, chunkz * 16 + z, Material.GRASS);
+					world.setBlockType(chunkx * 16 + x, 31, chunkz * 16 + z, Material.SHORT_GRASS);
 				}
 			}
 		}

@@ -341,7 +341,7 @@ public final class DBlock {
 	 */
 	public static boolean isGroundBlock(AsyncWorldEditor world, int x, int y, int z) {
 		Material mat = world.getBlockState(x, y, z);
-		return (mat == Material.GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
+		return (mat == Material.SHORT_GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
 				|| (mat == Material.SAND) || (mat == Material.STONE) || (mat == Material.CLAY
 						// Failsafe, it can never go into the void, or become an infinite loop
 						|| (y < world.getBottom()));
@@ -353,7 +353,7 @@ public final class DBlock {
 		if (swc != null)
 			bottom = swc.worldParameter.bottom;
 		Material mat = world.getBlockAt(x, y, z).getType();
-		return (mat == Material.GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
+		return (mat == Material.SHORT_GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
 				|| (mat == Material.SAND) || (mat == Material.STONE) || (mat == Material.CLAY
 						// Failsafe, it can never go into the void, or become an infinite loop
 						|| (y < bottom));
@@ -361,7 +361,7 @@ public final class DBlock {
 
 	public static boolean isGroundBlockAsync(AsyncWorldEditor world, int x, int y, int z) {
 		Material mat = world.getBlockState(x, y, z);
-		return (mat == Material.GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
+		return (mat == Material.SHORT_GRASS) || (mat == Material.IRON_BLOCK) || (mat == Material.DIRT)
 				|| (mat == Material.SAND) || (mat == Material.STONE) || (mat == Material.CLAY
 						// Failsafe, it can never go into the void, or become an infinite loop
 						|| (y < world.getBottom()));

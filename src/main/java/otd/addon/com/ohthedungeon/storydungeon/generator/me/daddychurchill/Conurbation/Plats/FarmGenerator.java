@@ -58,7 +58,7 @@ public class FarmGenerator extends PlatGenerator {
 		matDirt = Material.DIRT;
 		matAir = Material.AIR;
 		matTrellis = Material.OAK_LOG;
-		deadOnDirt = Material.GRASS;
+		deadOnDirt = Material.SHORT_GRASS;
 		deadOnSand = Material.DEAD_BUSH;
 		cropNone = Material.AIR;
 		cropFallow = Material.DIRT;
