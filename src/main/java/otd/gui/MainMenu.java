@@ -26,7 +26,8 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.md_5.bungee.api.ChatColor;
 import otd.config.WorldConfig;
 import otd.gui.dungeon_plot.CreateDungeonWorld;
@@ -48,7 +49,6 @@ public class MainMenu extends Content {
 		super(I18n.instance.Main_Menu, SLOT);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void init() {
 		inv.clear();
@@ -57,48 +57,45 @@ public class MainMenu extends Content {
 			addItem(i, dummy);
 		}
 		{
-			ItemStack is = Skull.EARTH.getItem(); /* new ItemStack(Material.MAP); */
+			ItemStack is = Skull.EARTH.getItem();
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu1);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu1_Lore1);
-			lores.add(I18n.instance.Menu1_Lore2);
-			lores.add(ChatColor.YELLOW + I18n.instance.Menu1_Lore3);
-			lores.add(I18n.instance.Menu1_Lore4);
-			im.setLore(lores);
+			im.displayName(Component.text(I18n.instance.Menu1));
+			List<Component> lores = new ArrayList<>();
+			lores.add(Component.text(I18n.instance.Menu1_Lore1));
+			lores.add(Component.text(I18n.instance.Menu1_Lore2));
+			lores.add(Component.text(I18n.instance.Menu1_Lore3).color(NamedTextColor.YELLOW));
+			lores.add(Component.text(I18n.instance.Menu1_Lore4));
+			im.lore(lores);
 
 			is.setItemMeta(im);
-
 			addItem(1, 1, is);
 		}
 		{
-			ItemStack is = Skull.CITY.getItem(); /* new ItemStack(Material.COMPASS); */
+			ItemStack is = Skull.CITY.getItem();
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu2);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu2_Lore1);
-			lores.add(I18n.instance.Menu2_Lore2);
-			lores.add(ChatColor.YELLOW + I18n.instance.Menu2_Lore3);
-			lores.add(I18n.instance.Menu2_Lore4);
-			im.setLore(lores);
+			im.displayName(Component.text(I18n.instance.Menu2));
+			List<Component> lores = new ArrayList<>();
+			lores.add(Component.text(I18n.instance.Menu2_Lore1));
+			lores.add(Component.text(I18n.instance.Menu2_Lore2));
+			lores.add(Component.text(I18n.instance.Menu2_Lore3).color(NamedTextColor.YELLOW));
+			lores.add(Component.text(I18n.instance.Menu2_Lore4));
+			im.lore(lores);
 
 			is.setItemMeta(im);
-
 			addItem(1, 4, is);
 		}
 		{
-			ItemStack is = Skull.TOOL.getItem(); /* new ItemStack(Material.GOLDEN_PICKAXE); */
+			ItemStack is = Skull.TOOL.getItem();
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Util_Menu);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Util_Menu_Lore);
-			im.setLore(lores);
+			im.displayName(Component.text(I18n.instance.Util_Menu));
+			List<Component> lores = new ArrayList<>();
+			lores.add(Component.text(I18n.instance.Util_Menu_Lore));
+			im.lore(lores);
 
 			is.setItemMeta(im);
-
 			addItem(1, 7, is);
 		}
 	}

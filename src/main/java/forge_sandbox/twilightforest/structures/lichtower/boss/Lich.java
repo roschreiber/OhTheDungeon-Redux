@@ -29,8 +29,8 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
@@ -38,7 +38,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.util.Vector;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import otd.Main;
 import otd.MultiVersion;
 import otd.lib.spawner.SpawnerDecryAPI;
@@ -51,26 +52,21 @@ import otd.util.Skull;
  * @author shadow
  */
 public class Lich implements Listener {
-	private final static String UUID = "fd6ba3aa-1348-42c6-9819-32e377bcfedf";
-	private final static String TEXTURES = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWFmYzlhOGFhMjhiNTBmZjM0MjlkMTUxZmJkNjhmNmY3NWVmNDlkNmQ0ODM5MDRhNDFhZDU3ODllMjA1M2Y3In19fQ==";
 	public final static String BOSS_TAG = "otd_boss_lich";
 	public final static String BOSS_TAG_INVALID = "otd_boss_lich_invalid";
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack getLichHead() {
-		ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-		SkullMeta headMeta = (SkullMeta) head.getItemMeta();
+		ItemStack is = Skull.LICH.getItem();
+		ItemMeta im = is.getItemMeta();
 
-		headMeta.setDisplayName(I18n.instance.Lich_Head);
-		List<String> lores = new ArrayList<>();
-		lores.add(ChatColor.AQUA + I18n.instance.Lich_Head_Lore);
-		headMeta.setLore(lores);
+		im.displayName(Component.text(I18n.instance.Lich_Head));
+		List<Component> lores = new ArrayList<>();
+		lores.add(Component.text(I18n.instance.Lich_Head_Lore).color(NamedTextColor.AQUA));
 
-		headMeta = Skull.applyHead(UUID, TEXTURES, headMeta);
+		im.lore(lores);
+		is.setItemMeta(im);
 
-		head.setItemMeta(headMeta);
-
-		return head;
+		return is;
 	}
 
 	private static ItemStack skull;
@@ -79,13 +75,13 @@ public class Lich implements Listener {
 		skull = getLichHead();
 	}
 
-	@SuppressWarnings("deprecation")
 	public static Entity spawnBoss(Location loc) {
 		Skeleton entity = (Skeleton) loc.getWorld().spawnEntity(loc, EntityType.SKELETON);
 		entity.setPersistent(true);
 		entity.setSilent(true);
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 600 * 20, 25));
-		entity.setCustomName(I18n.instance.Lich_Name);
+
+		entity.customName(Component.text(I18n.instance.Lich_Name));
 
 		{
 			ItemStack item = new ItemStack(Material.LEATHER_LEGGINGS);

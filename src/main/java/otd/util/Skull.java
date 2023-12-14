@@ -16,97 +16,101 @@
  */
 package otd.util;
 
-import java.lang.reflect.Field;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.UUID;
-import java.util.logging.Level;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerTextures;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
+import com.destroystokyo.paper.profile.PlayerProfile;
 
 /**
  *
  * @author shadow
  */
 public class Skull {
-	public static SkullMeta applyHead(String uuid, String textures, SkullMeta headMeta) {
-		GameProfile profile = new GameProfile(UUID.fromString(uuid), "");
-		profile.getProperties().put("textures", new Property("textures", textures));
-		Field profileField;
-		try {
-			profileField = headMeta.getClass().getDeclaredField("profile");
-			profileField.setAccessible(true);
-			profileField.set(headMeta, profile);
-		} catch (NullPointerException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e1) {
-			// e1.printStackTrace();
-			Bukkit.getLogger().log(Level.SEVERE, "[Oh The Dungeons] Dice is not working properly");
-		}
 
-		return headMeta;
+	private static PlayerProfile getProfile(String uuid, String url) {
+		PlayerProfile profile = Bukkit.createProfile(UUID.fromString(uuid));
+		PlayerTextures textures = profile.getTextures();
+		URL urlObject;
+		try {
+			urlObject = new URL("https://textures.minecraft.net/texture/" + url); // The URL to the skin, for example: https://textures.minecraft.net/texture/18813764b2abc94ec3c3bc67b9147c21be850cdf996679703157f4555997ea63a
+		} catch (MalformedURLException exception) {
+			throw new RuntimeException("Invalid URL", exception);
+		}
+		textures.setSkin(urlObject);   // Set the skin of the player profile to the URL
+		profile.setTextures(textures); // Set the textures back to the profile
+
+		return profile;
 	}
 
-	public static ItemStack getHead(String uuid, String textures) {
+	private static ItemStack getHead(String uuid, String url) {
+		PlayerProfile profile = getProfile(uuid, url);
 		ItemStack is = new ItemStack(Material.PLAYER_HEAD);
 		SkullMeta im = (SkullMeta) is.getItemMeta();
-		im = applyHead(uuid, textures, im);
+		im.setPlayerProfile(profile); // Set the owning player of the head to the player profile
 		is.setItemMeta(im);
 		return is;
 	}
 
 	public final static class HeadData {
 		private final String uuid;
-		private final String texture;
+		private final String url;
 
-		public HeadData(String uuid, String texture) {
+		public HeadData(String uuid, String url) {
 			this.uuid = uuid;
-			this.texture = texture;
+			this.url = url;
 		}
 
 		public String getUUID() {
 			return uuid;
 		}
 
-		public String getTexture() {
-			return texture;
+		public String getUrl() {
+			return url;
 		}
 
 		public ItemStack getItem() {
-			return getHead(this.uuid, this.texture);
+			return getHead(this.uuid, this.url);
 		}
 	}
 
-	public final static HeadData EARTH = new HeadData("b8c1ed51-5698-4a3c-a062-8ffd4bb471ed",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODc5ZTU0Y2JlODc4NjdkMTRiMmZiZGYzZjE4NzA4OTQzNTIwNDhkZmVjZDk2Mjg0NmRlYTg5M2IyMTU0Yzg1In19fQ==");
-	public final static HeadData CITY = new HeadData("66203b35-31b7-4cd3-bcbb-91f953d180cc",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjI1YjI3Y2U2MmNhODg3NDM4NDBhOTVkMWMzOTg2OGY0M2NhNjA2OTZhODRmNTY0ZmJkN2RkYTI1OWJlMDBmZSJ9fX0=");
-	public final static HeadData TOOL = new HeadData("c8b42654-b3e6-4fb2-8da3-419f6eeb24e5",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjY4MjU5ZmQyNzlkN2NiZmVkZWIzYzlkOGU3ZTNkZWYxNmMwOWRmZDg0NTIyZjQ4OGJlMWUwMjdmZTVlMyJ9fX0=");
-	public final static HeadData ROGUELIKE = new HeadData("bcccae77-0ac7-4cd0-8126-c900727c2223",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDljMTgzMmU0ZWY1YzRhZDljNTE5ZDE5NGIxOTg1MDMwZDI1NzkxNDMzNGFhZjI3NDVjOWRmZDYxMWQ2ZDYxZCJ9fX0=");
-	public final static HeadData DOOMLIKE = new HeadData("b6ef6473-53e3-4e92-a04f-2b4827ad5f2f",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE5ZmIyZTQ5NzAzYzZjYjk1MTE2YmUxNTM2M2M5ZDU2ODllZjIyOWE3NWM2NTVlZjU3NmJlMzYwZWMzY2JlYiJ9fX0=");
-	public final static HeadData BATTLE = new HeadData("99d1db69-a107-4227-b575-cb40c9f37092",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVkNzZkOTBiMzc4MDgzZDE0Nzc1NjgwNTA1ZGRiMWU2YzJjNmRjZjRkZGU3ZjliMWY1ODgwOWJlYzZjNjVjOCJ9fX0=");
-	public final static HeadData SMOOFY = new HeadData("66cdb895-9ce2-4894-9925-4b843d95d325",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2RkMjVhNGNjYmE5NTY4NDJlOTc2N2Y4ZDA0YWJlODc1NDQyMTNhOTQ5MzhiZjVkNDVjZjljZDZiMjQ4NTg5OCJ9fX0=");
-	public final static HeadData DRAYLAR = new HeadData("51265b44-b6d0-40d2-a2f9-1bf181e971bd",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmFhOTUyOTFmOTNhNzBkYjZmMWFhMWViODQ4MjRiOWRmM2I5ZmMwYTI1NDZmN2ZmODFhMTJjNTY3NjBmZWFhIn19fQ==");
-	public final static HeadData ANTMAN = new HeadData("2bfd0d1c-9c96-4036-ab44-0051dfdb3dda",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWEzYWJlZjNhYzlmYjA3Y2NiMTAzNWVmZmNkYWIxMjdmZjI3YmFlYmE2ZDllODc2OTJjZTMxOGI1NjY0MWIyIn19fQ==");
-	public final static HeadData AETHER = new HeadData("36faa30a-f2e4-486a-830d-a72578d0e3c3",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTQ5YTFmNmZlYjYyZmRmMmZjNGUxN2Y5MWJiMWEzMjAxMWU3NWM1NjIwNWZhMjU4NjlmYTVkY2ZiMzVhZTAwMCJ9fX0=");
-	public final static HeadData LICH = new HeadData("fd6ba3aa-1348-42c6-9819-32e377bcfedf",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWFmYzlhOGFhMjhiNTBmZjM0MjlkMTUxZmJkNjhmNmY3NWVmNDlkNmQ0ODM5MDRhNDFhZDU3ODllMjA1M2Y3In19fQ==");
-	public final static HeadData CASTLE = new HeadData("af081ea7-3b8e-4a24-aaac-dbec776ee903",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzI4OGZjNmYxMzAwNTk1Njg1M2IyOGM5MDA4YjI5MGYwNGY3NjVjNGJhNTBhOGU5Y2Q2MmMwZGJlMmIyYWRhNyJ9fX0=");
-	public final static HeadData CUSTOM = new HeadData("5636359e-9ac6-493f-894d-a5914f3d0a6e",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTYzMzBhNGEyMmZmNTU4NzFmYzhjNjE4ZTQyMWEzNzczM2FjMWRjYWI5YzhlMWE0YmI3M2FlNjQ1YTRhNGUifX19");
-	public final static HeadData ENABLED = new HeadData("b4e096c1-65b2-4abd-bedc-e67842bb42b1",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2UyYTUzMGY0MjcyNmZhN2EzMWVmYWI4ZTQzZGFkZWUxODg5MzdjZjgyNGFmODhlYThlNGM5M2E0OWM1NzI5NCJ9fX0=");
-	public final static HeadData DISABLED = new HeadData("1c71c451-e7cc-4a64-bdd1-a1c038b8c9f3",
-			"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWVmMDcwOGZjZTVmZmFhNjYwOGNiZWQzZTc4ZWQ5NTgwM2Q4YTg5Mzc3ZDFkOTM4Y2UwYmRjNjFiNmRjOWY0ZiJ9fX0=");
+	public final static HeadData EARTH = new HeadData("b8c1ed51-5698-4a3c-a062-8ffd4bb471ed", "879e54cbe87867d14b2fbdf3f1870894352048dfecd962846dea893b2154c85");
+
+	public final static HeadData CITY = new HeadData("66203b35-31b7-4cd3-bcbb-91f953d180cc", "b25b27ce62ca88743840a95d1c39868f43ca60696a84f564fbd7dda259be00fe");
+
+	public final static HeadData TOOL = new HeadData("c8b42654-b3e6-4fb2-8da3-419f6eeb24e5", "bdaf68259fd279d7cbfedeb3c9d8e7e3def16c09dfd84522f488be1e027fe5e3");
+
+	public final static HeadData ROGUELIKE = new HeadData("bcccae77-0ac7-4cd0-8126-c900727c2223", "49c1832e4ef5c4ad9c519d194b1985030d257914334aaf2745c9dfd611d6d61d");
+
+	public final static HeadData DOOMLIKE = new HeadData("b6ef6473-53e3-4e92-a04f-2b4827ad5f2f", "419fb2e49703c6cb95116be15363c9d5689ef229a75c655ef576be360ec3cbeb");
+
+	public final static HeadData BATTLE = new HeadData("99d1db69-a107-4227-b575-cb40c9f37092", "a5d76d90b378083d14775680505ddb1e6c2c6dcf4dde7f9b1f58809bec6c65c8");
+
+	public final static HeadData SMOOFY = new HeadData("66cdb895-9ce2-4894-9925-4b843d95d325", "7dd25a4ccba956842e9767f8d04abe87544213a94938bf5d45cf9cd6b2485898");
+
+	public final static HeadData DRAYLAR = new HeadData("51265b44-b6d0-40d2-a2f9-1bf181e971bd", "baa95291f93a70db6f1aa1eb84824b9df3b9fc0a2546f7ff81a12c56760feaa");
+
+	public final static HeadData ANTMAN = new HeadData("2bfd0d1c-9c96-4036-ab44-0051dfdb3dda", "9a3abef3ac9fb07ccb1035effcdab127ff27baeba6d9e87692ce318b56641b2");
+
+	public final static HeadData AETHER = new HeadData("36faa30a-f2e4-486a-830d-a72578d0e3c3", "549a1f6feb62fdf2fc4e17f91bb1a32011e75c56205fa25869fa5dcfb35ae000");
+
+	public final static HeadData LICH = new HeadData("fd6ba3aa-1348-42c6-9819-32e377bcfedf", "eafc9a8aa28b50ff3429d151fbd68f6f75ef49d6d483904a41ad5789e2053f7");
+
+	public final static HeadData CASTLE = new HeadData("af081ea7-3b8e-4a24-aaac-dbec776ee903", "3288fc6f13005956853b28c9008b290f04f765c4ba50a8e9cd62c0dbe2b2ada7");
+
+	public final static HeadData CINDER = new HeadData("9b13d10d-4703-4dfb-af23-ed0228c84eb4", "e5d607275cf883f1a99b3f435cec9dc24176b08652eaa124105652fd42d48592");
+
+	public final static HeadData DICE = new HeadData("afbe4c67-a6a5-4559-ad06-78a6ed2ab4e9", "915f7c313bca9c2f958e68ab14ab393867d67503affff8f20cb13fbe917fd31");
+
+	public final static HeadData CUSTOM = new HeadData("5636359e-9ac6-493f-894d-a5914f3d0a6e", "56330a4a22ff55871fc8c618e421a37733ac1dcab9c8e1a4bb73ae645a4a4e");
+
+	public final static HeadData ENABLED = new HeadData("b4e096c1-65b2-4abd-bedc-e67842bb42b1", "ce2a530f42726fa7a31efab8e43dadee188937cf824af88ea8e4c93a49c57294");
+
+	public final static HeadData DISABLED = new HeadData("1c71c451-e7cc-4a64-bdd1-a1c038b8c9f3", "eef0708fce5ffaa6608cbed3e78ed95803d8a89377d1d938ce0bdc61b6dc9f4f");
+
 }

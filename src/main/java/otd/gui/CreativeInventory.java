@@ -41,7 +41,6 @@ import otd.util.Roll;
 public class CreativeInventory extends Content {
 
 	private final static int SLOT = 54;
-//    public final static CreativeInventory instance = new CreativeInventory();
 
 	public CreativeInventory() {
 		super(I18n.instance.Creative_Inventory, SLOT);

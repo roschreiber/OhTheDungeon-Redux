@@ -24,13 +24,13 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import otd.Main;
 import otd.MultiVersion;
 import otd.lib.spawner.SpawnerDecryAPI;
@@ -43,26 +43,21 @@ import otd.util.Skull;
  * @author shadow
  */
 public class CastleKing implements Listener {
-	private final static String UUID = "9b13d10d-4703-4dfb-af23-ed0228c84eb4";
-	private final static String TEXTURES = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTVkNjA3Mjc1Y2Y4ODNmMWE5OWIzZjQzNWNlYzlkYzI0MTc2YjA4NjUyZWFhMTI0MTA1NjUyZmQ0MmQ0ODU5MiJ9fX0=";
 	public final static String BOSS_TAG = "otd_boss_castle_king";
 	public final static String BOSS_TAG_INVALID = "otd_boss_castle_king_invalid";
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack getCastleKingHead() {
-		ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-		SkullMeta headMeta = (SkullMeta) head.getItemMeta();
+		ItemStack is = Skull.CINDER.getItem();
+		ItemMeta im = is.getItemMeta();
 
-		headMeta.setDisplayName(I18n.instance.Castle_King_Head);
-		List<String> lores = new ArrayList<>();
-		lores.add(ChatColor.AQUA + I18n.instance.Castle_King_Head_Lore);
-		headMeta.setLore(lores);
+		im.displayName(Component.text(I18n.instance.Castle_King_Head));
+		List<Component> lores = new ArrayList<>();
+		lores.add(Component.text(I18n.instance.Castle_King_Head_Lore).color(NamedTextColor.AQUA));
 
-		headMeta = Skull.applyHead(UUID, TEXTURES, headMeta);
+		im.lore(lores);
+		is.setItemMeta(im);
 
-		head.setItemMeta(headMeta);
-
-		return head;
+		return is;
 	}
 
 	private static ItemStack skull;
@@ -71,13 +66,12 @@ public class CastleKing implements Listener {
 		skull = getCastleKingHead();
 	}
 
-	@SuppressWarnings("deprecation")
 	public static Entity spawnBoss(Location loc) {
 		WitherSkeleton entity = (WitherSkeleton) loc.getWorld().spawnEntity(loc, EntityType.WITHER_SKELETON);
 		entity.setPersistent(true);
 		entity.setSilent(true);
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 600 * 20, 25));
-		entity.setCustomName(I18n.instance.Castle_King_Name);
+		entity.customName(Component.text(I18n.instance.Castle_King_Name));
 
 		{
 			ItemStack item = new ItemStack(Material.LEATHER_LEGGINGS);
