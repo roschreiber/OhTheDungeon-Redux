@@ -38,8 +38,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.util.Vector;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import net.md_5.bungee.api.ChatColor;
 import otd.Main;
 import otd.MultiVersion;
 import otd.lib.spawner.SpawnerDecryAPI;
@@ -55,15 +54,16 @@ public class Lich implements Listener {
 	public final static String BOSS_TAG = "otd_boss_lich";
 	public final static String BOSS_TAG_INVALID = "otd_boss_lich_invalid";
 
+	@SuppressWarnings("deprecation")
 	public static ItemStack getLichHead() {
 		ItemStack is = Skull.LICH.getItem();
 		ItemMeta im = is.getItemMeta();
 
-		im.displayName(Component.text(I18n.instance.Lich_Head));
-		List<Component> lores = new ArrayList<>();
-		lores.add(Component.text(I18n.instance.Lich_Head_Lore).color(NamedTextColor.AQUA));
+		im.setDisplayName(I18n.instance.Lich_Head);
+		List<String> lores = new ArrayList<>();
+		lores.add(ChatColor.AQUA + I18n.instance.Lich_Head_Lore);
 
-		im.lore(lores);
+		im.setLore(lores);
 		is.setItemMeta(im);
 
 		return is;
@@ -81,7 +81,7 @@ public class Lich implements Listener {
 		entity.setSilent(true);
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 600 * 20, 25));
 
-		entity.customName(Component.text(I18n.instance.Lich_Name));
+		entity.setCustomName(I18n.instance.Lich_Name);
 
 		{
 			ItemStack item = new ItemStack(Material.LEATHER_LEGGINGS);

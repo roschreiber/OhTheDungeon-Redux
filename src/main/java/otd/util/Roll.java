@@ -28,7 +28,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import net.kyori.adventure.text.Component;
 import otd.Main;
 import otd.listener.MobListener;
 import otd.config.WorldConfig;
@@ -49,11 +48,11 @@ public class Roll {
 		ItemStack is = Skull.DICE.getItem();
 		ItemMeta im = is.getItemMeta();
 
-		im.displayName(Component.text(I18n.instance.Dice));
-		List<Component> lores = new ArrayList<>();
-		lores.add(Component.text(I18n.instance.DiceContent));
-		lores.add(0, Component.text(DICE));
-		im.lore(lores);
+		im.setDisplayName(I18n.instance.Dice);
+		List<String> lores = new ArrayList<>();
+		lores.add(I18n.instance.DiceContent);
+		lores.add(0, DICE);
+		im.setLore(lores);
 
 		is.setItemMeta(im);
 		return is;

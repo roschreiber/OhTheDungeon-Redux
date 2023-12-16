@@ -23,9 +23,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 import org.bukkit.profile.PlayerTextures;
+import org.jetbrains.annotations.Nullable;
 
-import com.destroystokyo.paper.profile.PlayerProfile;
+//import com.destroystokyo.paper.profile.PlayerProfile;
 
 /**
  *
@@ -33,8 +35,9 @@ import com.destroystokyo.paper.profile.PlayerProfile;
  */
 public class Skull {
 
+	@SuppressWarnings("deprecation")
 	private static PlayerProfile getProfile(String uuid, String url) {
-		PlayerProfile profile = Bukkit.createProfile(UUID.fromString(uuid));
+		PlayerProfile profile = Bukkit.createPlayerProfile(UUID.fromString(uuid));
 		PlayerTextures textures = profile.getTextures();
 		URL urlObject;
 		try {
@@ -48,11 +51,12 @@ public class Skull {
 		return profile;
 	}
 
+	@SuppressWarnings("deprecation")
 	private static ItemStack getHead(String uuid, String url) {
 		PlayerProfile profile = getProfile(uuid, url);
 		ItemStack is = new ItemStack(Material.PLAYER_HEAD);
 		SkullMeta im = (SkullMeta) is.getItemMeta();
-		im.setPlayerProfile(profile); // Set the owning player of the head to the player profile
+		im.setOwnerProfile(profile); // Set the owning player of the head to the player profile
 		is.setItemMeta(im);
 		return is;
 	}
