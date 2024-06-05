@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
 	<artifactId>OhTheDungeonsYoullGo</artifactId>
-	<version>1.20.5</version>
+	<version>1.20.6-SNAPSHOT</version>
 	<properties>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
 	<repositories>
 		<repository>
@@ -54,13 +54,13 @@
 		<dependency>
 			<groupId>io.papermc.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>1.20.4-R0.1-SNAPSHOT</version>
+			<version>1.20.6-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.spigotmc.......</groupId>
 			<artifactId>spigot</artifactId>
-			<version>1.20.4-R0.1-SNAPSHOT</version>
+			<version>1.20.6-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>me.clip</groupId>
 			<artifactId>placeholderapi</artifactId>
-			<version>2.11.1</version>
+			<version>2.11.6</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -139,7 +139,7 @@
 		<dependency>
 			<groupId>org.bstats</groupId>
 			<artifactId>bstats-bukkit</artifactId>
-			<version>3.0.0</version>
+			<version>3.0.2</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -165,7 +165,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.3.0</version>
+				<version>3.5.3</version>
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<relocations>
