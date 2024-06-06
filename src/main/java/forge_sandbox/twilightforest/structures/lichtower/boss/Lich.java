@@ -140,7 +140,7 @@ public class Lich implements Listener {
 			if (hit instanceof Player) {
 				((Player) hit).damage(6.0D, hit);
 				applyKnockback(((Player) hit), entity);
-				((Player) hit).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5 * 20, 1, true));
+				((Player) hit).addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 5 * 20, 1, true));
 			}
 		}
 	}

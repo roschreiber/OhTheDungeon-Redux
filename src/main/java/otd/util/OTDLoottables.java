@@ -31,14 +31,14 @@ public enum OTDLoottables {
 			{
 				ItemStack is = new ItemStack(Material.BOW);
 				ItemMeta im = is.getItemMeta();
-				im.addEnchant(Enchantment.ARROW_DAMAGE, 4, false);
+				im.addEnchant(Enchantment.POWER, 4, false);
 				is.setItemMeta(im);
 				res.add(new LootNode(is, 0.1, 1, 1));
 			}
 			{
 				ItemStack is = new ItemStack(Material.BOW);
 				ItemMeta im = is.getItemMeta();
-				im.addEnchant(Enchantment.ARROW_INFINITE, 1, false);
+				im.addEnchant(Enchantment.INFINITY, 1, false);
 				is.setItemMeta(im);
 				res.add(new LootNode(is, 0.1, 1, 1));
 			}

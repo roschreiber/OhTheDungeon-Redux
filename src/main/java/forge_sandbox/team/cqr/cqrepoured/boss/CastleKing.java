@@ -76,7 +76,7 @@ public class CastleKing implements Listener {
 		{
 			ItemStack item = new ItemStack(Material.LEATHER_LEGGINGS);
 			LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-			meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
+			meta.addEnchant(Enchantment.PROTECTION, 3, true);
 			meta.setColor(Color.BLACK);
 			item.setItemMeta(meta);
 
@@ -84,19 +84,19 @@ public class CastleKing implements Listener {
 
 			ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
 			ItemMeta sword_meta = sword.getItemMeta();
-			sword_meta.addEnchant(Enchantment.DAMAGE_ALL, 4, true);
+			sword_meta.addEnchant(Enchantment.SHARPNESS, 4, true);
 			sword_meta.addEnchant(Enchantment.FIRE_ASPECT, 4, true);
 			sword.setItemMeta(sword_meta);
 
 			ItemStack armor = new ItemStack(Material.DIAMOND_CHESTPLATE);
 			ItemMeta armor_meta = armor.getItemMeta();
-			armor_meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
+			armor_meta.addEnchant(Enchantment.PROTECTION, 3, true);
 			armor_meta.addEnchant(Enchantment.THORNS, 2, true);
 			armor.setItemMeta(armor_meta);
 
 			ItemStack boots = new ItemStack(Material.IRON_BOOTS);
 			ItemMeta boots_meta = boots.getItemMeta();
-			boots_meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
+			boots_meta.addEnchant(Enchantment.PROTECTION, 3, true);
 			boots.setItemMeta(boots_meta);
 
 			if (ee != null) {
@@ -132,8 +132,8 @@ public class CastleKing implements Listener {
 		if (damager instanceof WitherSkeleton) {
 			Entity damagee = event.getEntity();
 			if (damagee instanceof Player) {
-				((Player) damagee).addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 300, 0));
-				((Player) damagee).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 600, 0));
+				((Player) damagee).addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, 300, 0));
+				((Player) damagee).addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 600, 0));
 			}
 		}
 	}

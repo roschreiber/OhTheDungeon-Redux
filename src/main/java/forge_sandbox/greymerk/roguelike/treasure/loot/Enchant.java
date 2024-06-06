@@ -117,7 +117,7 @@ public enum Enchant {
 	}
 
 	private final static Enchantment[] BASIC = { Enchantment.VANISHING_CURSE, Enchantment.BINDING_CURSE,
-			Enchantment.DIG_SPEED, Enchantment.KNOCKBACK, Enchantment.DURABILITY, };
+			Enchantment.EFFICIENCY, Enchantment.KNOCKBACK, Enchantment.UNBREAKING, };
 
 	public static ItemStack enchantItem(Random rand, ItemStack item, int enchantLevel) {
 

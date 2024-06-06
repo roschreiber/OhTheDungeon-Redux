@@ -88,7 +88,7 @@ public abstract class Content implements InventoryHolder, Listener {
 		if (hide) {
 			ItemMeta im = item.getItemMeta();
 			im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DYE, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS,
-					ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_UNBREAKABLE);
+					ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_UNBREAKABLE);
 			item.setItemMeta(im);
 		}
 		inv.setItem(index, item);
@@ -102,7 +102,7 @@ public abstract class Content implements InventoryHolder, Listener {
 		if (hide) {
 			ItemMeta im = item.getItemMeta();
 			im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DYE, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS,
-					ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_UNBREAKABLE);
+					ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ADDITIONAL_TOOLTIP, ItemFlag.HIDE_UNBREAKABLE);
 			item.setItemMeta(im);
 		}
 		inv.setItem(index, item);

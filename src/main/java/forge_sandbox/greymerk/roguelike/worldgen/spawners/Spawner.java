@@ -44,7 +44,7 @@ public enum Spawner {
 		case SLIME:
 			return EntityType.SLIME;
 		case PRIMEDTNT:
-			return EntityType.PRIMED_TNT;
+			return EntityType.TNT;
 		case PIGZOMBIE:
 			return MultiVersion.getPigZombie();
 		default:

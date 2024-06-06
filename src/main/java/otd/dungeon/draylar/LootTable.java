@@ -87,7 +87,7 @@ public class LootTable {
 		BONUS.add(new Node(Material.SEA_PICKLE, 1, 15));
 		BONUS.add(new Node(Material.DRIED_KELP_BLOCK, 5, 12));
 		BONUS.add(new Node(Material.WITHER_ROSE, 1, 3));
-		BONUS.add(new Node(Material.SCUTE, 2, 8));
+		BONUS.add(new Node(Material.TURTLE_SCUTE, 2, 8));
 		BONUS.add(new CoralNode());
 //        for(Material type : Material.values()) {
 //            if(type.toString().toUpperCase().contains("CORAL")) {

@@ -101,9 +101,9 @@ public enum Potion {
 
 		switch (effect) {
 		case HEALING:
-			return upgrade ? PotionEffectType.HEAL : PotionEffectType.HEAL;
+			return upgrade ? PotionEffectType.INSTANT_HEALTH : PotionEffectType.INSTANT_HEALTH;
 		case HARM:
-			return upgrade ? PotionEffectType.HARM : PotionEffectType.HARM;
+			return upgrade ? PotionEffectType.INSTANT_DAMAGE : PotionEffectType.INSTANT_DAMAGE;
 		case REGEN:
 			if (extend) {
 				return PotionEffectType.REGENERATION;
@@ -118,9 +118,9 @@ public enum Potion {
 			}
 		case STRENGTH:
 			if (extend) {
-				return PotionEffectType.INCREASE_DAMAGE;
+				return PotionEffectType.STRENGTH;
 			} else {
-				return upgrade ? PotionEffectType.INCREASE_DAMAGE : PotionEffectType.INCREASE_DAMAGE;
+				return upgrade ? PotionEffectType.STRENGTH : PotionEffectType.STRENGTH;
 			}
 		case WEAKNESS:
 			if (extend) {
@@ -130,9 +130,9 @@ public enum Potion {
 			}
 		case SLOWNESS:
 			if (extend) {
-				return PotionEffectType.SLOW;
+				return PotionEffectType.SLOWNESS;
 			} else {
-				return PotionEffectType.SLOW;
+				return PotionEffectType.SLOWNESS;
 			}
 		case SWIFTNESS:
 			if (extend) {

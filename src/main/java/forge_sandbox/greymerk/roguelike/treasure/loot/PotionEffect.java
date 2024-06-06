@@ -32,25 +32,25 @@ public enum PotionEffect {
 		if (pe == SPEED)
 			return PotionEffectType.SPEED;
 		else if (pe == SLOWNESS)
-			return PotionEffectType.SLOW;
+			return PotionEffectType.SLOWNESS;
 		else if (pe == HASTE)
-			return PotionEffectType.FAST_DIGGING;
+			return PotionEffectType.HASTE;
 		else if (pe == FATIGUE)
-			return PotionEffectType.SLOW_DIGGING;
+			return PotionEffectType.MINING_FATIGUE;
 		else if (pe == STRENGTH)
-			return PotionEffectType.INCREASE_DAMAGE;
+			return PotionEffectType.STRENGTH;
 		else if (pe == HEALTH)
-			return PotionEffectType.HEAL;
+			return PotionEffectType.HEALTH_BOOST;
 		else if (pe == DAMAGE)
-			return PotionEffectType.HARM;
+			return PotionEffectType.INSTANT_DAMAGE;
 		else if (pe == JUMP)
-			return PotionEffectType.JUMP;
+			return PotionEffectType.JUMP_BOOST;
 		else if (pe == NAUSIA)
-			return PotionEffectType.CONFUSION;
+			return PotionEffectType.NAUSEA;
 		else if (pe == REGEN)
 			return PotionEffectType.REGENERATION;
 		else if (pe == RESISTANCE)
-			return PotionEffectType.DAMAGE_RESISTANCE;
+			return PotionEffectType.RESISTANCE;
 		else if (pe == FIRERESIST)
 			return PotionEffectType.FIRE_RESISTANCE;
 		else if (pe == WATERBREATH)

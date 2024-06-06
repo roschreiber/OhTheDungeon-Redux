@@ -20,7 +20,7 @@ public class GearedMobFactory {
 	private static final List<ItemStack> DEBUFF_ARROW_LIST = new ArrayList<>();
 	private static final PotionEffect[] EFFECTS = { new PotionEffect(PotionEffectType.HUNGER, 600, 1),
 			new PotionEffect(PotionEffectType.LEVITATION, 40, 0), new PotionEffect(PotionEffectType.POISON, 200, 0),
-			new PotionEffect(PotionEffectType.SLOW, 600, 0), };
+			new PotionEffect(PotionEffectType.SLOWNESS, 600, 0), };
 
 	static {
 		for (PotionEffect effect : EFFECTS) {

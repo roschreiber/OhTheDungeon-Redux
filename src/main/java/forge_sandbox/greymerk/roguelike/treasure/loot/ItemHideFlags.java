@@ -23,7 +23,7 @@ public enum ItemHideFlags {
 		ItemMeta im = item.getItemMeta();
 		if (val >= 32) {
 			val -= 32;
-			im.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+			im.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 		}
 		if (val >= 16) {
 			val -= 16;

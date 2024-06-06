@@ -24,7 +24,7 @@ public class ProfilePoisonArcher implements IMonsterProfile {
 
 		mob.setMobClass(MobType.STRAY, false);
 
-		mob.setSlot(EquipmentSlot.OFF_HAND, TippedArrow.get(PotionEffectType.INCREASE_DAMAGE));
+		mob.setSlot(EquipmentSlot.OFF_HAND, TippedArrow.get(PotionEffectType.STRENGTH));
 		mob.setSlot(EquipmentSlot.HAND,
 				ItemWeapon.getBow(rand, level, Enchant.canEnchant(world.getDifficulty(), rand, level)));
 
