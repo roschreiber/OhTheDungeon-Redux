@@ -164,9 +164,9 @@ public class Main extends JavaPlugin {
 			version = MultiVersion.Version.V1_19_R3;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.19.4", ChatColor.GREEN);
 
-		} else if (MultiVersion.is120R3()) {
-			version = MultiVersion.Version.V1_20_R3;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.20.4", ChatColor.GREEN);
+		} else if (MultiVersion.is120R4()) {
+			version = MultiVersion.Version.V1_20_R4;
+			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.20.6", ChatColor.GREEN);
 
 		} else {
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Unknown Version...", ChatColor.RED);

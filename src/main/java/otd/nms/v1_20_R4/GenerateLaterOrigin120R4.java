@@ -1,4 +1,4 @@
-package otd.nms.v1_20_R3;
+package otd.nms.v1_20_R4;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ import otd.lib.spawner.SpawnerDecryAPI;
 import otd.nms.GenerateLaterOrigin;
 import otd.world.DungeonType;
 
-public class GenerateLaterOrigin120R3 implements GenerateLaterOrigin {
+public class GenerateLaterOrigin120R4 implements GenerateLaterOrigin {
 	public void generate_chunk(Chunk chunk, Coord pos, IWorldEditor editor, Random rand, Coord cursor, int level,
 			Spawnable s) {
 		int x = pos.getX() % 16;
@@ -31,7 +31,7 @@ public class GenerateLaterOrigin120R3 implements GenerateLaterOrigin {
 		if (!(blockState instanceof CreatureSpawner))
 			return;
 
-		org.bukkit.craftbukkit.v1_20_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R3.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.TileEntity te = ws.getHandle()
@@ -59,7 +59,7 @@ public class GenerateLaterOrigin120R3 implements GenerateLaterOrigin {
 		BlockState blockState = tileentity.getState();
 		if (!(blockState instanceof CreatureSpawner))
 			return;
-		org.bukkit.craftbukkit.v1_20_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R3.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.TileEntity te = ws.getHandle()

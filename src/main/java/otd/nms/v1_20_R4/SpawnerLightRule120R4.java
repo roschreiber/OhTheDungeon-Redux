@@ -1,4 +1,4 @@
-package otd.nms.v1_20_R3;
+package otd.nms.v1_20_R4;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -6,9 +6,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import otd.nms.SpawnerLightRule;
 
-public class SpawnerLightRule120R3 implements SpawnerLightRule {
+public class SpawnerLightRule120R4 implements SpawnerLightRule {
 	public void update(Block tileentity, JavaPlugin plugin) {
-		org.bukkit.craftbukkit.v1_20_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R3.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
 				.getWorld();
 		net.minecraft.world.level.block.entity.TileEntity te;
 		Location pos = tileentity.getLocation();

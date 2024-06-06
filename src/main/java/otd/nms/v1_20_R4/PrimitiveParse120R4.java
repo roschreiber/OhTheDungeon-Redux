@@ -1,10 +1,10 @@
-package otd.nms.v1_20_R3;
+package otd.nms.v1_20_R4;
 
 import otd.nms.PrimitiveParse;
 import otd.util.nbt.JsonToNBT.NBTException;
 import otd.util.nbt.JsonToNBT.Primitive;
 
-public class PrimitiveParse120R3 implements PrimitiveParse {
+public class PrimitiveParse120R4 implements PrimitiveParse {
 	public Object parseDouble(Primitive p) throws NBTException {
 		return net.minecraft.nbt.NBTTagDouble
 				.a(Double.parseDouble(p.jsonValue.substring(0, p.jsonValue.length() - 1)));
