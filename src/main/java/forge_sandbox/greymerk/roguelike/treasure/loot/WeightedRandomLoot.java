@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import com.google.gson.JsonObject;
 
 import forge_sandbox.greymerk.roguelike.util.IWeighted;
-import otd.MultiVersion;
 import otd.util.FormatItem;
 import otd.util.nbt.JsonToNBT;
 
@@ -117,7 +116,6 @@ public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeig
 		} catch (NullPointerException e) {
 			// ignore
 		}
-		//debug
 		/*if (this.nbt != null) {
 			if (MultiVersion.get != null)
 				item = MultiVersion.get.get(item, this.nbt);
