@@ -19,6 +19,7 @@ public class SpawnerLightRule118R2 implements SpawnerLightRule {
 		if (te == null)
 			return;
 
+		/*
 		net.minecraft.nbt.NBTTagCompound nbt = te.o();
 		if (nbt.e("SpawnData")) {
 			net.minecraft.nbt.NBTTagCompound spawnData = (net.minecraft.nbt.NBTTagCompound) nbt.c("SpawnData");
@@ -58,5 +59,6 @@ public class SpawnerLightRule118R2 implements SpawnerLightRule {
 			nbt.a("SpawnPotentials", newList);
 		}
 		te.a(nbt);
+		*/
 	}
 }

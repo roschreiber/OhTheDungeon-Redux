@@ -1,0 +1,77 @@
+How to use JS script in OTD plugin?
+
+Example: Create a custom dungeon with a MythicMob Boss
+
+1. Download the schematic from
+https://github.com/OhTheDungeon/OhTheDungeon/raw/main/docs/%5BCharlie724%5DFloatingCastle.schematic, and put it in \plugins\Oh_the_dungeons_youll_go\schematics
+
+And then add it into OTD. (input ‘/otd’ -> “dungeon in normal world” -> (select a world) ->
+“custom dungeons” -> “Add Custom Dungeon”)
+
+As this dungeon is a floating castle, you may want to choose the type as ‘sky’.
+
+2. Write a ‘on_dungeon_placed’ script
+
+Copy the file from
+\plugins\Oh_the_dungeons_youll_go\js\examples\on_dungeon_placed\custom.js, and put it
+into \plugins\Oh_the_dungeons_youll_go\js\on_dungeon_placed\custom.js
+
+You could use any filename you want, just make sure that the file type is still js.
+
+All the js file under `on_dungeon_placed` folder will be executed one by one when a dungeon is placed.
+
+The code is easy to understand, for a FloatingCastle dungeon, it will place a beacon in the
+middle of dungeon, and place a beacon in the middle of the dungeon, and next to the beacon, it
+will place a script spawner.
+A script spawner is a spawner that when active, it won’t spawn any mobs. Instead, it will
+execute the script you want.
+Here the script is `spawn_boss.js`
+
+-           function on_dungeon_placed(world, centerx, centery, centerz, chunks, type, custom) {
+-            var DungeonType = Java.type("otd.world.DungeonType");
+-            if(type == DungeonType.CustomDungeon) {
+-
+-              if(custom == "[Charlie724]FloatingCastle.schematic") {
+-                var BlockUtils = Java.type("otd.script.utils.BlockUtils");
+-                var Location = Java.type("org.bukkit.Location");
+-                var center = new Location(world, centerx, centery, centerz);
+-                var Material = Java.type("org.bukkit.Material");
+-                BlockUtils.placeBlock(center, Material.BEACON);
+-
+-                var center1 = new Location(world, centerx, centery + 1, centerz);
+-                BlockUtils.placeScriptSpawner(center1, "spawn_boss.js");
+-              }
+-
+-              var Bukkit = Java.type("org.bukkit.Bukkit");
+-              Bukkit.broadcastMessage("loc: " + centerx + "," + centery + "," + centerz);
+-            }
+-           }
+
+3. Create the script for spawner
+
+Copy the file from \plugins\Oh_the_dungeons_youll_go\js\examples\spawner_scripts\spawn_boss.js, and put it into \plugins\Oh_the_dungeons_youll_go\js\spawner_scripts\spawn_boss.js
+
+You should keep the name the same as what you set in the previous script.
+
+Here `MobUtils.spawnCustomMythicMobs` is how we create a MythicMobs Boss. You need to
+make sure you have `SkeletonKing` in you MythicMobs mobs list.
+
+-      function spawner_action(loc) {
+-        var x = loc.getBlockX();
+-        var y = loc.getBlockY();
+-        var z = loc.getBlockZ();
+-
+-        var MobUtils = Java.type("otd.script.utils.MobUtils");
+-        MobUtils.spawnCustomMythicMobs(loc, 'SkeletonKing');
+-        var Bukkit = Java.type("org.bukkit.Bukkit");
+-        Bukkit.broadcastMessage("A Boss spawn at " + x + "," + y + "," + z);
+-      }
+
+4. Reload the script in OTD
+
+In the terminal, input `otd_reload_scripts`, you should see all files are loaded with no error.
+Test it:
+
+Go into the world, and type `/otd_place custom`, select the floating castle.
+
+In the middle you’ll see a spawner next to a beacon. And when active (or break by player), it will spawn a BOSS.

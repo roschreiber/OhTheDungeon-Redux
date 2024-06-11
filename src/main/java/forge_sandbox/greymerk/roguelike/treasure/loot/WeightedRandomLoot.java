@@ -117,10 +117,11 @@ public class WeightedRandomLoot implements Comparable<WeightedRandomLoot>, IWeig
 		} catch (NullPointerException e) {
 			// ignore
 		}
-		if (this.nbt != null) {
+		//debug
+		/*if (this.nbt != null) {
 			if (MultiVersion.get != null)
 				item = MultiVersion.get.get(item, this.nbt);
-		}
+		}*/
 		return item;
 	}
 

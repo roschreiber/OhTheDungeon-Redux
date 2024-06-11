@@ -260,7 +260,7 @@ public class MultiVersion {
 	public static GetRoguelike getRoguelike = null;
 	public static GenerateLaterOrigin generateLaterOrigin = null;
 	public static GetSpawnPotentials getSpawnPotentials = null;
-	public static Get get = null;
+	//public static Get get = null;
 	public static CompoundParse compoundParse = null;
 	public static ListParse listParse = null;
 	public static PrimitiveParse primitiveParse = null;
@@ -284,7 +284,7 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike114R1();
 			generateLaterOrigin = new GenerateLaterOrigin114R1();
 			getSpawnPotentials = new GetSpawnPotentials114R1();
-			get = new Get114R1();
+			//get = new Get114R1();
 			compoundParse = new CompoundParse114R1();
 			listParse = new ListParse114R1();
 			primitiveParse = new PrimitiveParse114R1();
@@ -299,7 +299,7 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike115R1();
 			generateLaterOrigin = new GenerateLaterOrigin115R1();
 			getSpawnPotentials = new GetSpawnPotentials115R1();
-			get = new Get115R1();
+			//get = new Get115R1();
 			compoundParse = new CompoundParse115R1();
 			listParse = new ListParse115R1();
 			primitiveParse = new PrimitiveParse115R1();
@@ -314,7 +314,7 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike116R3();
 			generateLaterOrigin = new GenerateLaterOrigin116R3();
 			getSpawnPotentials = new GetSpawnPotentials116R3();
-			get = new Get116R3();
+			//get = new Get116R3();
 			compoundParse = new CompoundParse116R3();
 			listParse = new ListParse116R3();
 			primitiveParse = new PrimitiveParse116R3();
@@ -329,7 +329,7 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike117R1();
 			generateLaterOrigin = new GenerateLaterOrigin117R1();
 			getSpawnPotentials = new GetSpawnPotentials117R1();
-			get = new Get117R1();
+			//get = new Get117R1();
 			compoundParse = new CompoundParse117R1();
 			listParse = new ListParse117R1();
 			primitiveParse = new PrimitiveParse117R1();
@@ -344,11 +344,11 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike118R2();
 			generateLaterOrigin = new GenerateLaterOrigin118R2();
 			getSpawnPotentials = new GetSpawnPotentials118R2();
-			get = new Get118R2();
+			//get = new Get118R2();
 			compoundParse = new CompoundParse118R2();
 			listParse = new ListParse118R2();
 			primitiveParse = new PrimitiveParse118R2();
-			spawnerLightRule = new SpawnerLightRule118R2();
+			//spawnerLightRule = new SpawnerLightRule118R2();
 
 		} else if (Main.version == Version.V1_19_R3) {
 			getNBTTagCompound = new GetNBTTagCompound119R3();
@@ -360,11 +360,11 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike119R3();
 			generateLaterOrigin = new GenerateLaterOrigin119R3();
 			getSpawnPotentials = new GetSpawnPotentials119R3();
-			get = new Get119R3();
+			//get = new Get119R3();
 			compoundParse = new CompoundParse119R3();
 			listParse = new ListParse119R3();
 			primitiveParse = new PrimitiveParse119R3();
-			spawnerLightRule = new SpawnerLightRule119R3();
+			//spawnerLightRule = new SpawnerLightRule119R3();
 
 		} else if (Main.version == Version.V1_20_R4) {
 			getNBTTagCompound = new GetNBTTagCompound120R4();
@@ -376,7 +376,7 @@ public class MultiVersion {
 			getRoguelike = new GetRoguelike120R4();
 			generateLaterOrigin = new GenerateLaterOrigin120R4();
 			getSpawnPotentials = new GetSpawnPotentials120R4();
-			get = new Get120R4();
+			//get = new Get120R4();
 			compoundParse = new CompoundParse120R4();
 			listParse = new ListParse120R4();
 			primitiveParse = new PrimitiveParse120R4();
