@@ -19,8 +19,6 @@ package otd;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import org.bukkit.entity.EntityType;
-
 import otd.nms.CompoundParse;
 import otd.nms.EquipArmour;
 import otd.nms.EquipHands;
@@ -139,19 +137,6 @@ public class MultiVersion {
 	public static enum Version {
 		V1_20_R4, V1_19_R3, V1_18_R2, V1_17_R1, V1_16_R3, V1_15_R1, V1_14_R1, UNKNOWN
 	};
-
-	private static EntityType PIGZOMBIE = null;
-
-	public static EntityType getPigZombie() {
-		if (PIGZOMBIE == null) {
-			try {
-				PIGZOMBIE = EntityType.valueOf("ZOMBIFIED_PIGLIN");
-			} catch (IllegalArgumentException ex) {
-				PIGZOMBIE = EntityType.valueOf("PIG_ZOMBIE");
-			}
-		}
-		return PIGZOMBIE;
-	}
 
 	public static boolean is120R4() {
 		try {

@@ -7,12 +7,11 @@ import org.bukkit.entity.EntityType;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.LevelSettings;
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import forge_sandbox.greymerk.roguelike.worldgen.IWorldEditor;
-import otd.MultiVersion;
 
 public enum Spawner {
 
 	CREEPER("creeper"), CAVESPIDER("cave_spider"), SPIDER("spider"), SKELETON("skeleton"), ZOMBIE("zombie"),
-	SILVERFISH("silverfish"), ENDERMAN("enderman"), WITCH("witch"), WITHERBOSS("wither"), BAT("bat"),
+	SILVERFISH("silverfish"), ENDERMAN("enderman"), WITCH("witch"), WITHERBOSS("wither"), BAT("bat"), BOGGED("bogged"),
 	LAVASLIME("magma_cube"), BLAZE("blaze"), SLIME("slime"), PRIMEDTNT("tnt"), PIGZOMBIE("zombie_pigman");
 
 	public static EntityType toEntityType(Spawner s) {
@@ -46,7 +45,9 @@ public enum Spawner {
 		case PRIMEDTNT:
 			return EntityType.TNT;
 		case PIGZOMBIE:
-			return MultiVersion.getPigZombie();
+			return EntityType.ZOMBIFIED_PIGLIN;
+		case BOGGED:
+			return EntityType.BOGGED;
 		default:
 			return EntityType.ZOMBIE;
 		}

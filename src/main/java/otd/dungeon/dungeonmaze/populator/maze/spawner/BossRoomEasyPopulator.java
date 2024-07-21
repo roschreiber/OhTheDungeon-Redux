@@ -19,7 +19,6 @@ package otd.dungeon.dungeonmaze.populator.maze.spawner;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 
-import otd.MultiVersion;
 import otd.dungeon.dungeonmaze.populator.maze.MazeRoomBlockPopulator;
 import otd.dungeon.dungeonmaze.populator.maze.MazeRoomBlockPopulatorArgs;
 
@@ -80,7 +79,7 @@ public class BossRoomEasyPopulator extends MazeRoomBlockPopulator {
 		}
 		if (SpawnerUtils.isPigZombieAllowed(world.getWorld())) {
 			Spawner_Later later = new Spawner_Later(chunkx * 16 + x + 3, yFloor + 1, chunkz * 16 + z + 3,
-					MultiVersion.getPigZombie());
+					EntityType.ZOMBIFIED_PIGLIN);
 			world.addLater(later);
 		}
 		if (SpawnerUtils.isSpiderAllowed(world.getWorld())) {

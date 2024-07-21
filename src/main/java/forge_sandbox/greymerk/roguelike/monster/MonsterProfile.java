@@ -5,6 +5,7 @@ import java.util.Random;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileArcher;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileAshlea;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileBaby;
+import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileBogged;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileEvoker;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileHusk;
 import forge_sandbox.greymerk.roguelike.monster.profiles.ProfileJohnny;
@@ -30,7 +31,7 @@ import org.bukkit.entity.Zombie;
 public enum MonsterProfile {
 
 	TALLMOB, ZOMBIE, PIGMAN, SKELETON, VILLAGER, HUSK, BABY, ASHLEA, RLEAHY, ARCHER, WITHER, POISONARCHER, MAGICARCHER,
-	SWORDSMAN, EVOKER, VINDICATOR, WITCH, JOHNNY;
+	SWORDSMAN, EVOKER, VINDICATOR, WITCH, JOHNNY, BOGGED;
 
 	public static IMonsterProfile get(MonsterProfile profile) {
 		switch (profile) {
@@ -70,6 +71,8 @@ public enum MonsterProfile {
 			return new ProfileWitch();
 		case JOHNNY:
 			return new ProfileJohnny();
+		case BOGGED:
+			return new ProfileBogged();
 		default:
 			return new ProfileTallMob();
 		}

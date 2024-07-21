@@ -25,7 +25,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
-import otd.MultiVersion;
 import otd.dungeon.dungeonmaze.populator.maze.MazeLayerBlockPopulator;
 import otd.dungeon.dungeonmaze.populator.maze.MazeLayerBlockPopulatorArgs;
 import otd.dungeon.dungeonmaze.util.NumberUtils;
@@ -181,8 +180,7 @@ public class BossRoomHardPopulator extends MazeLayerBlockPopulator {
 		}
 
 		if (SpawnerUtils.isPigZombieAllowed(world.getWorld())) {
-			Spawner_Later later = new Spawner_Later(chunkx * 16 + x + 8, y + 2, chunkz * 16 + z + 7,
-					MultiVersion.getPigZombie());
+			Spawner_Later later = new Spawner_Later(chunkx * 16 + x + 8, y + 2, chunkz * 16 + z + 7, EntityType.ZOMBIFIED_PIGLIN);
 			world.addLater(later);
 		}
 
