@@ -19,14 +19,14 @@ public class GetSpawnPotentials120R4 implements GetSpawnPotentials {
 			return res;
 		}
 
-		net.minecraft.nbt.NBTTagList potentials = new net.minecraft.nbt.NBTTagList();
+		net.minecraft.nbt.ListTag potentials = new net.minecraft.nbt.ListTag();
 
 		for (SpawnPotential potential : s.potentials) {
-			net.minecraft.nbt.NBTTagCompound nbt = (net.minecraft.nbt.NBTTagCompound) potential
+			net.minecraft.nbt.CompoundTag nbt = (net.minecraft.nbt.CompoundTag) potential
 					.getNBTTagCompound(level);
-			net.minecraft.nbt.NBTTagCompound holder = new net.minecraft.nbt.NBTTagCompound();
-			holder.a("data", nbt);
-			holder.a("weight", potential.weight);
+			net.minecraft.nbt.CompoundTag holder = new net.minecraft.nbt.CompoundTag();
+			holder.put("data", nbt);
+			holder.putInt("weight", potential.weight);
 			potentials.add(holder);
 		}
 

@@ -4,13 +4,13 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.minecraft.nbt.NBTBase;
+//import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.Tag;
 import otd.nms.SpawnerLightRule;
 
 public class SpawnerLightRule120R4 implements SpawnerLightRule {
 	public void update(Block tileentity, JavaPlugin plugin) {
-		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R1.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R1.CraftWorld) tileentity
 				.getWorld();
 		net.minecraft.world.level.block.entity.BlockEntity te;
 		Location pos = tileentity.getLocation();
@@ -37,9 +37,9 @@ public class SpawnerLightRule120R4 implements SpawnerLightRule {
 			nbt.put("SpawnData", spawnData);
 		}
 		if (nbt.contains("SpawnPotentials")) {
-			net.minecraft.nbt.NBTTagList spawnPotentials = (net.minecraft.nbt.NBTTagList) nbt.get("SpawnPotentials");
-			net.minecraft.nbt.NBTTagList newList = new net.minecraft.nbt.NBTTagList();
-			for (net.minecraft.nbt.NBTBase base : spawnPotentials) {
+			net.minecraft.nbt.ListTag spawnPotentials = (net.minecraft.nbt.ListTag) nbt.get("SpawnPotentials");
+			net.minecraft.nbt.ListTag newList = new net.minecraft.nbt.ListTag();
+			for (net.minecraft.nbt.Tag base : spawnPotentials) {
 				net.minecraft.nbt.CompoundTag node = (net.minecraft.nbt.CompoundTag) base;
 				if (node.contains("data")) {
 					net.minecraft.nbt.CompoundTag data = (net.minecraft.nbt.CompoundTag) node.get("data");
@@ -55,7 +55,7 @@ public class SpawnerLightRule120R4 implements SpawnerLightRule {
 					data.put("custom_spawn_rules", custom_spawn_rules);
 					node.put("data", data);
 				}
-				newList.add((NBTBase) node);
+				newList.add((Tag) node);
 			}
 			nbt.put("SpawnPotentials", (Tag) newList);
 		}

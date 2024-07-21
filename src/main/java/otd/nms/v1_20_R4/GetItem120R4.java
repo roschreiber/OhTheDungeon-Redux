@@ -11,11 +11,11 @@ public class GetItem120R4 implements GetItem {
 	}
 
 	private Object getInner(String itemName) {
-		net.minecraft.nbt.NBTTagCompound item = new net.minecraft.nbt.NBTTagCompound();
+		net.minecraft.nbt.CompoundTag item = new net.minecraft.nbt.CompoundTag();
 		if (itemName == null)
 			return item;
-		item.a("id", itemName);
-		item.a("Count", 1);
+		item.putString("id", itemName);
+		item.putInt("Count", 1);
 		return item;
 	}
 }

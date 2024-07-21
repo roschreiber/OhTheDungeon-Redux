@@ -31,7 +31,7 @@ public class GenerateLaterOrigin120R4 implements GenerateLaterOrigin {
 		if (!(blockState instanceof CreatureSpawner))
 			return;
 
-		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R1.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R1.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()
@@ -44,7 +44,7 @@ public class GenerateLaterOrigin120R4 implements GenerateLaterOrigin {
 		nbt.putInt("y", pos.getY());
 		nbt.putInt("z", pos.getZ());
 
-		net.minecraft.nbt.NBTBase base = (net.minecraft.nbt.NBTBase) s.getSpawnPotentials(rand, level);
+		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
 		if (base != null) {
 			nbt.put("SpawnPotentials", (Tag) base);
 		}
@@ -60,7 +60,7 @@ public class GenerateLaterOrigin120R4 implements GenerateLaterOrigin {
 		BlockState blockState = tileentity.getState();
 		if (!(blockState instanceof CreatureSpawner))
 			return;
-		org.bukkit.craftbukkit.v1_20_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_20_R4.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R1.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R1.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()
@@ -72,7 +72,7 @@ public class GenerateLaterOrigin120R4 implements GenerateLaterOrigin {
 		nbt.putInt("y", pos.getY());
 		nbt.putInt("z", pos.getZ());
 
-		net.minecraft.nbt.NBTBase base = (net.minecraft.nbt.NBTBase) s.getSpawnPotentials(rand, level);
+		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
 		if (base != null)
 			nbt.put("SpawnPotentials", (Tag) base);
 

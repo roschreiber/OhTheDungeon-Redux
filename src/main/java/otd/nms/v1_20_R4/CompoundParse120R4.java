@@ -7,9 +7,9 @@ import otd.util.nbt.JsonToNBT.NBTException;
 
 public class CompoundParse120R4 implements CompoundParse {
 	public Object parse(Compound c) throws NBTException {
-		net.minecraft.nbt.NBTTagCompound nbttagcompound = new net.minecraft.nbt.NBTTagCompound();
+		net.minecraft.nbt.CompoundTag nbttagcompound = new net.minecraft.nbt.CompoundTag();
 		for (JsonToNBT.Any jsontonbt$any : c.tagList) {
-			nbttagcompound.a(jsontonbt$any.json, (net.minecraft.nbt.NBTBase) jsontonbt$any.parse());
+			nbttagcompound.put(jsontonbt$any.json, (net.minecraft.nbt.Tag) jsontonbt$any.parse());
 		}
 
 		return nbttagcompound;

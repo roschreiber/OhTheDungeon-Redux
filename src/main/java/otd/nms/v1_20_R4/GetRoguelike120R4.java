@@ -13,21 +13,21 @@ public class GetRoguelike120R4 implements GetRoguelike {
 	}
 
 	private Object getInner(int level, String type, Object otag, SpawnPotential sp) {
-		net.minecraft.nbt.NBTTagCompound tag = (net.minecraft.nbt.NBTTagCompound) otag;
-		tag.a("id", type);
+		net.minecraft.nbt.CompoundTag tag = (net.minecraft.nbt.CompoundTag) otag;
+		tag.putString("id", type);
 
 		if (!(WorldConfig.wc.rogueSpawners && sp.equip))
 			return tag;
-		net.minecraft.nbt.NBTTagList activeEffects = new net.minecraft.nbt.NBTTagList();
-		tag.a("ActiveEffects", activeEffects);
+		net.minecraft.nbt.ListTag activeEffects = new net.minecraft.nbt.ListTag();
+		tag.put("ActiveEffects", activeEffects);
 
-		net.minecraft.nbt.NBTTagCompound buff = new net.minecraft.nbt.NBTTagCompound();
+		net.minecraft.nbt.CompoundTag buff = new net.minecraft.nbt.CompoundTag();
 		activeEffects.add(buff);
 
-		buff.a("Id", (byte) 4);
-		buff.a("Amplifier", (byte) level);
-		buff.a("Duration", 10);
-		buff.a("Ambient", (byte) 0);
+		buff.putByte("Id", (byte) 4);
+		buff.putByte("Amplifier", (byte) level);
+		buff.putInt("Duration", 10);
+		buff.putByte("Ambient", (byte) 0);
 
 		return tag;
 	}
