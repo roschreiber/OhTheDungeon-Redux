@@ -19,7 +19,10 @@ package otd.dungeon.draylar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -56,11 +59,8 @@ public class LootTable {
 		private final static List<Material> CORAL;
 		static {
 			CORAL = new ArrayList<>();
-			for (Material type : Material.values()) {
-				if (type.toString().toUpperCase().contains("CORAL")) {
-					CORAL.add(type);
-				}
-			}
+			CORAL.addAll(Tag.CORALS.getValues());
+			CORAL.addAll(Tag.CORAL_BLOCKS.getValues());
 		}
 
 		private final int coral_max, coral_min;
