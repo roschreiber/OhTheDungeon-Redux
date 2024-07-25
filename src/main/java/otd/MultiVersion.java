@@ -31,19 +31,6 @@ import otd.nms.GetSpawnPotentials;
 import otd.nms.ListParse;
 import otd.nms.PrimitiveParse;
 import otd.nms.SpawnerLightRule;
-import otd.nms.v1_20_R4.CompoundParse120R4;
-import otd.nms.v1_20_R4.EquipArmour120R4;
-import otd.nms.v1_20_R4.EquipHands120R4;
-import otd.nms.v1_20_R4.GenerateLaterOrigin120R4;
-import otd.nms.v1_20_R4.GetItem120R4;
-import otd.nms.v1_20_R4.GetNBTTagCompound120R4;
-import otd.nms.v1_20_R4.GetNBTTagList120R4;
-import otd.nms.v1_20_R4.GetPotential120R4;
-import otd.nms.v1_20_R4.GetRoguelike120R4;
-import otd.nms.v1_20_R4.GetSpawnPotentials120R4;
-import otd.nms.v1_20_R4.ListParse120R4;
-import otd.nms.v1_20_R4.PrimitiveParse120R4;
-import otd.nms.v1_20_R4.SpawnerLightRule120R4;
 
 /**
  *
@@ -112,20 +99,20 @@ public class MultiVersion {
 
 	public static void init() {
 		biomeHelper = new Biome3D();
-		getNBTTagCompound = new GetNBTTagCompound120R4();
-		getNBTTagList = new GetNBTTagList120R4();
-		getPotential = new GetPotential120R4();
-		equipHands = new EquipHands120R4();
-		equipArmour = new EquipArmour120R4();
-		getItem = new GetItem120R4();
-		getRoguelike = new GetRoguelike120R4();
-		generateLaterOrigin = new GenerateLaterOrigin120R4();
-		getSpawnPotentials = new GetSpawnPotentials120R4();
+		getNBTTagCompound = new GetNBTTagCompound();
+		getNBTTagList = new GetNBTTagList();
+		getPotential = new GetPotential();
+		equipHands = new EquipHands();
+		equipArmour = new EquipArmour();
+		getItem = new GetItem();
+		getRoguelike = new GetRoguelike();
+		generateLaterOrigin = new GenerateLaterOrigin();
+		getSpawnPotentials = new GetSpawnPotentials();
 		//get = new Get120R4();
-		compoundParse = new CompoundParse120R4();
-		listParse = new ListParse120R4();
-		primitiveParse = new PrimitiveParse120R4();
-		spawnerLightRule = new SpawnerLightRule120R4();
+		compoundParse = new CompoundParse();
+		listParse = new ListParse();
+		primitiveParse = new PrimitiveParse();
+		spawnerLightRule = new SpawnerLightRule();
 	}
 
 	private static interface BiomeHelper {
