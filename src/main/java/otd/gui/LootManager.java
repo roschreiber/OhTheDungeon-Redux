@@ -142,7 +142,7 @@ public class LootManager extends Content {
 			addItem(0, 0, is);
 		}
 		{
-			ItemStack is = new ItemStack(Material.LAVA);
+			ItemStack is = new ItemStack(Material.LAVA_BUCKET);
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Remove_All);
 			List<String> lores = new ArrayList<>();
