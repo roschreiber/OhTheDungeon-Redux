@@ -6,17 +6,14 @@ import com.google.gson.JsonObject;
 
 import forge_sandbox.greymerk.roguelike.util.IWeighted;
 import forge_sandbox.greymerk.roguelike.util.WeightedChoice;
+
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionEffect;
-
-//import net.minecraft.init.Items;
-//import net.minecraft.init.PotionEffectTypes;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.potion.PotionEffectType;
-//import net.minecraft.potion.PotionUtils;
 
 public enum Potion {
 
@@ -39,12 +36,10 @@ public enum Potion {
 		if (!data.has("name"))
 			throw new Exception("Potion missing name field");
 		String nameString = data.get("name").getAsString();
-		PotionEffectType type;
-		try {
-			type = PotionEffectType.getByName(nameString);
-		} catch (Exception ex) {
+		NamespacedKey key = NamespacedKey.minecraft(nameString.toLowerCase());
+		PotionEffectType type = Registry.EFFECT.get(key);
+		if (type == null) {
 			type = PotionEffectType.REGENERATION;
-//                    Bukkit.getLogger().log(Level.SEVERE, "###" + nameString);
 		}
 		ItemStack item = !data.has("form") ? new ItemStack(Material.POTION)
 				: data.get("form").getAsString().toLowerCase().equals("splash") ? new ItemStack(Material.SPLASH_POTION)

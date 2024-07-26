@@ -32,7 +32,6 @@ import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 import otd.api.event.ChestEvent;
 import otd.lib.async.AsyncWorldEditor;
@@ -81,7 +80,7 @@ public class Chest_Later extends Later {
 			{
 				ItemStack item = new ItemStack(Material.TIPPED_ARROW);
 				PotionMeta pm = (PotionMeta) item.getItemMeta();
-				pm.setBasePotionData(new PotionData(PotionType.POISON, false, false));
+				pm.setBasePotionType(PotionType.POISON);
 				item.setItemMeta(pm);
 
 				list.add(1, new LootNode(1, 10, item));

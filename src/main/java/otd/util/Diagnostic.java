@@ -136,9 +136,9 @@ public class Diagnostic {
 		}
 
 		if (count > 0) {
-			p.sendMessage("OTD founds " + count + " issue(s) on your server. Check the above link for help");
+			p.sendMessage("OTD found " + count + " issue(s) on your server. Check the above link for help");
 		} else {
-			p.sendMessage("OTD founds 0 issue on your server.");
+			p.sendMessage("OTD found 0 issues on your server.");
 		}
 	}
 }

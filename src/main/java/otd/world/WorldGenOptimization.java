@@ -31,7 +31,7 @@ public class WorldGenOptimization implements Listener {
 	@EventHandler
 	public void onWorldInit(WorldInitEvent e) {
 		if (e.getWorld().getName().equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
-			e.getWorld().setKeepSpawnInMemory(false);
+			e.getWorld().setGameRule(GameRule.SPAWN_CHUNK_RADIUS, 0);
 			e.getWorld().setTime(6000);
 			e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
 			e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
@@ -43,7 +43,7 @@ public class WorldGenOptimization implements Listener {
 	@EventHandler
 	public void onWorldLoad(WorldLoadEvent e) {
 		if (e.getWorld().getName().equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
-			e.getWorld().setKeepSpawnInMemory(false);
+			e.getWorld().setGameRule(GameRule.SPAWN_CHUNK_RADIUS, 0);
 			e.getWorld().setTime(6000);
 			e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
 			e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);

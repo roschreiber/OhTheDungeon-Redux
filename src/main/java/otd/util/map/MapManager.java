@@ -164,7 +164,6 @@ public class MapManager {
 		return is;
 	}
 
-	@SuppressWarnings("deprecation")
 	private static void initMapRender() {
 		MapView map;
 		map = Bukkit.getMap(WorldConfig.wc.map_bunker);
@@ -235,7 +234,6 @@ public class MapManager {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private static void initMapConfig() {
 		World w = Bukkit.getServer().getWorlds().get(0);
 		boolean save = false;

@@ -170,9 +170,9 @@ public class SchematicLoader {
 		BlockVector3 min = clipboard.getMinimumPoint();
 		BlockVector3 max = clipboard.getMaximumPoint();
 
-		for (int x = min.getBlockX(); x <= max.getBlockX(); x++) {
-			for (int z = min.getBlockZ(); z <= max.getBlockZ(); z++) {
-				for (int y = min.getBlockY(); y <= max.getBlockY(); y++) {
+		for (int x = min.x(); x <= max.x(); x++) {
+			for (int z = min.z(); z <= max.z(); z++) {
+				for (int y = min.y(); y <= max.y(); y++) {
 					BlockVector3 sub = BlockVector3.at(x, y, z);
 					BlockState bs = clipboard.getBlock(sub);
 					int xi = x + dungeon.offset[0] + loc.getBlockX();

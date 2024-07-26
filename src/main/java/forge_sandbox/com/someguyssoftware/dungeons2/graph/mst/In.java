@@ -18,6 +18,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 // import java.net.HttpURLConnection;
 import java.net.URLConnection;
@@ -174,7 +176,7 @@ public final class In {
 
 			// or URL from web
 			if (url == null) {
-				url = new URL(name);
+				url = new URI(name).toURL();
 			}
 
 			URLConnection site = url.openConnection();
@@ -186,7 +188,7 @@ public final class In {
 			InputStream is = site.getInputStream();
 			scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
 			scanner.useLocale(LOCALE);
-		} catch (IOException ioe) {
+		} catch (IOException | URISyntaxException ioe) {
 			throw new IllegalArgumentException("Could not open " + name);
 		}
 	}

@@ -57,7 +57,7 @@ public class UserTeleport extends Content {
 	}
 
 	public static void teleportBed(Player p) {
-		Location loc = p.getBedSpawnLocation();
+		Location loc = p.getRespawnLocation();
 		if (loc == null || loc.getWorld().getName().equals(WorldDefine.WORLD_NAME)) {
 			loc = Bukkit.getWorlds().get(0).getSpawnLocation();
 		}

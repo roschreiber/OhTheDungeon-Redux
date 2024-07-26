@@ -32,8 +32,8 @@ public class JSExample {
 			if (!f.exists())
 				f.mkdirs();
 
-			File out = new File(f, "how_to_use.pdf");
-			loadFile("example/how_to_use.pdf", out);
+			File out = new File(f, "how_to_use.txt");
+			loadFile("example/how_to_use.txt", out);
 		}
 		{
 			File f = new File(Main.instance.getDataFolder(),
