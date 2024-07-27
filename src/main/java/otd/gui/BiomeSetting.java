@@ -144,7 +144,7 @@ public class BiomeSetting extends Content {
 		{
 			ItemStack is = new ItemStack(Material.STONE_BUTTON);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
+			im.setDisplayName(I18n.instance.Apply);
 			is.setItemMeta(im);
 			addItem(0, 8, is);
 		}

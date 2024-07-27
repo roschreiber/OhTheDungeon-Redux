@@ -245,7 +245,7 @@ public class BossConfig extends Content {
 			addItem(2, 5, icon);
 		}
 		{
-			ItemStack icon = new ItemStack(Material.LEVER);
+			ItemStack icon = new ItemStack(Material.STONE_BUTTON);
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Apply);
 			icon.setItemMeta(im);

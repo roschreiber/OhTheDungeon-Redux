@@ -43,13 +43,20 @@ import otd.world.WorldDefine;
  */
 public class WorldManager extends Content {
 	private final static int SLOT = 54;
+	private final Content parent;
 
 	public static WorldManager instance = new WorldManager();
 
 	public WorldManager() {
 		super(I18n.instance.World_Manager, SLOT);
+		parent = null;
+	}
+
+	public WorldManager(Content parent) {
+		super(I18n.instance.World_Manager, SLOT);
 		worlds = new ArrayList<>();
 		offset = 0;
+		this.parent = parent;
 	}
 
 	public final static Material NORMAL = Material.GRASS_BLOCK;
@@ -93,6 +100,10 @@ public class WorldManager extends Content {
 			return;
 		String name = im.getDisplayName();
 		WorldManager holder = (WorldManager) e.getInventory().getHolder();
+
+		if (slot == 8) {
+			holder.parent.openInventory(p);
+		}
 
 		if (name.equals(I18n.instance.Previous)) {
 			holder.offset--;
@@ -166,6 +177,14 @@ public class WorldManager extends Content {
 			is.setItemMeta(im);
 
 			addItem(5, 8, is);
+		}
+		{
+			ItemStack is = new ItemStack(Material.LEVER);
+			ItemMeta im = is.getItemMeta();
+			im.setDisplayName(I18n.instance.Back);
+			is.setItemMeta(im);
+
+			addItem(0, 8, is);
 		}
 //        {
 //            ItemStack is = new ItemStack(Material.BOOK);

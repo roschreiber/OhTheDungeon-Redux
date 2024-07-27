@@ -117,7 +117,7 @@ public class MainMenu extends Content {
 		if (holder == null)
 			return;
 		if (slot == 10) {
-			WorldManager wm = new WorldManager();
+			WorldManager wm = new WorldManager(holder);
 			wm.openInventory(p);
 		}
 		if (slot == 13) {
@@ -126,10 +126,10 @@ public class MainMenu extends Content {
 				return;
 			}
 			if (WorldConfig.wc.dungeon_world.finished) {
-				RemoveDungeonWorld r = new RemoveDungeonWorld();
+				RemoveDungeonWorld r = new RemoveDungeonWorld(holder);
 				r.openInventory(p);
 			} else {
-				CreateDungeonWorld c = new CreateDungeonWorld();
+				CreateDungeonWorld c = new CreateDungeonWorld(holder);
 				c.openInventory(p);
 			}
 		}

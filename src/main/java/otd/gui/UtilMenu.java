@@ -21,7 +21,6 @@ import otd.util.I18n;
 public class UtilMenu extends Content {
 	public final static UtilMenu instance = new UtilMenu();
 
-	@SuppressWarnings("unused")
 	private final Content parent;
 
 	private UtilMenu() {
@@ -108,15 +107,15 @@ public class UtilMenu extends Content {
 			is.setItemMeta(im);
 			addItem(5, is);
 		}
-//		{
-//			ItemStack is = new ItemStack(Material.LEVER);
-//			ItemMeta im = is.getItemMeta();
-//
-//			im.setDisplayName(I18n.instance.Back);
-//
-//			is.setItemMeta(im);
-//			addItem(8, is);
-//		}
+		{
+			ItemStack is = new ItemStack(Material.LEVER);
+			ItemMeta im = is.getItemMeta();
+
+			im.setDisplayName(I18n.instance.Back);
+
+			is.setItemMeta(im);
+			addItem(8, is);
+		}
 	}
 
 	@EventHandler
@@ -161,8 +160,8 @@ public class UtilMenu extends Content {
 			PPDI_Config cfg = new PPDI_Config();
 			cfg.openInventory(p);
 		}
-//		if (slot == 8) {
-//			holder.parent.openInventory(p);
-//		}
+		if (slot == 8) {
+			holder.parent.openInventory(p);
+		}
 	}
 }

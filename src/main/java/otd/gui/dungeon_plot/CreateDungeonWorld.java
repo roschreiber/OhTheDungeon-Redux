@@ -47,9 +47,16 @@ import otd.util.I18n;
 public class CreateDungeonWorld extends Content {
 
 	public final static CreateDungeonWorld instance = new CreateDungeonWorld();
+	private final Content parent;
 
 	public CreateDungeonWorld() {
 		super(I18n.instance.Menu_Remove_World, 9);
+		this.parent = null;
+	}
+
+	public CreateDungeonWorld(Content parent) {
+		super(I18n.instance.Menu_Remove_World, 9);
+		this.parent = parent;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -94,6 +101,15 @@ public class CreateDungeonWorld extends Content {
 
 			is.setItemMeta(im);
 
+			addItem(7, is);
+		}
+		{
+			ItemStack is = new ItemStack(Material.LEVER);
+			ItemMeta im = is.getItemMeta();
+
+			im.setDisplayName(I18n.instance.Back);
+
+			is.setItemMeta(im);
 			addItem(8, is);
 		}
 	}
@@ -134,7 +150,7 @@ public class CreateDungeonWorld extends Content {
 			}
 			holder.init();
 		}
-		if (slot == 8) {
+		if (slot == 7) {
 			if (!checkEnabled()) {
 				p.sendMessage(ChatColor.RED + I18n.instance.Must_Natural_Spawn);
 			} else {
@@ -152,6 +168,9 @@ public class CreateDungeonWorld extends Content {
 					p.closeInventory();
 				}
 			}
+		}
+		if (slot == 8) {
+			holder.parent.openInventory(p);
 		}
 	}
 

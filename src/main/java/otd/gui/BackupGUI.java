@@ -226,7 +226,7 @@ public class BackupGUI extends Content {
 			addItem(0, 7, is);
 		}
 		{
-			ItemStack is = new ItemStack(Material.STONE_BUTTON);
+			ItemStack is = new ItemStack(Material.LEVER);
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Back);
 			is.setItemMeta(im);

@@ -44,9 +44,16 @@ import otd.world.DungeonWorld;
 public class RemoveDungeonWorld extends Content {
 
 	public final static RemoveDungeonWorld instance = new RemoveDungeonWorld();
+	private final Content parent;
+
+	public RemoveDungeonWorld(Content parent) {
+		super(I18n.instance.Menu_Remove_World, 9);
+		this.parent = parent;
+	}
 
 	public RemoveDungeonWorld() {
 		super(I18n.instance.Menu_Remove_World, 9);
+		this.parent = null;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -65,6 +72,15 @@ public class RemoveDungeonWorld extends Content {
 			is.setItemMeta(im);
 
 			addItem(4, is);
+		}
+		{
+			ItemStack is = new ItemStack(Material.LEVER);
+			ItemMeta im = is.getItemMeta();
+
+			im.setDisplayName(I18n.instance.Back);
+
+			is.setItemMeta(im);
+			addItem(8, is);
 		}
 	}
 
@@ -99,6 +115,9 @@ public class RemoveDungeonWorld extends Content {
 				else
 					p.sendMessage(ChatColor.RED + I18n.instance.Menu_remove_click_fail);
 			}, 10L);
+		}
+		if (slot == 8) {
+			holder.parent.openInventory(p);
 		}
 	}
 }

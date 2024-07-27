@@ -182,7 +182,7 @@ public class WorldParameter extends Content {
 			addItem(4, 7, icon);
 		}
 		{
-			ItemStack icon = new ItemStack(Material.LEVER);
+			ItemStack icon = new ItemStack(Material.STONE_BUTTON);
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Apply);
 			icon.setItemMeta(im);
