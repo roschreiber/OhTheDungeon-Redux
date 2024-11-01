@@ -39,12 +39,12 @@ import otd.nms.SpawnerLightRule;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_21_R1, UNKNOWN
+		V1_21_R2, UNKNOWN
 	};
 
 	public static boolean is121R1() {
 		try {
-			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R1.CraftWorld");
+			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R2.CraftWorld");
 			return clazz != null;
 		} catch (ClassNotFoundException ex) {
 			return false;
@@ -71,14 +71,14 @@ public class MultiVersion {
 		return newPos;
 	}
 
-	public static int getBiomeVersion() {
+	/*public static int getBiomeVersion() {
 		Biome[] biomes = Biome.values();
 		for (Biome biome : biomes) {
 			if (biome.toString().toUpperCase().equals("WINDSWEPT_FOREST"))
 				return 2;
 		}
 		return 1;
-	}
+	}*/
 
 	public static GetNBTTagCompound getNBTTagCompound = null;
 	public static GetNBTTagList getNBTTagList = null;

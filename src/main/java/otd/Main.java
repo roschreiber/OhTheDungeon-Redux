@@ -141,7 +141,7 @@ public class Main extends JavaPlugin {
 		main = this;
 		mainInstance = this;
 		if (MultiVersion.is121R1()) {
-			version = MultiVersion.Version.V1_21_R1;
+			version = MultiVersion.Version.V1_21_R2;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.21.x", ChatColor.GREEN);
 
 		} else {
