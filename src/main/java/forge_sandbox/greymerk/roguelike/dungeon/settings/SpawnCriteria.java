@@ -8,6 +8,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.block.Biome;
 import otd.lib.BiomeDictionary;
 //import net.minecraft.util.ResourceLocation;
@@ -27,11 +29,14 @@ public class SpawnCriteria {
 		this.everywhere = false;
 	}
 
+	@SuppressWarnings("deprecation")
 	private static Biome nameToBiome(String name) {
 		String parts[] = name.split(":");
 		Biome biome;
 		try {
-			biome = Biome.valueOf(parts[1]);
+			NamespacedKey key = NamespacedKey.minecraft(parts[1].toLowerCase());
+			biome = Registry.BIOME.get(key);
+			Bukkit.getLogger().log(Level.INFO, "Biome: " + name);
 		} catch (Exception ex) {
 			biome = Biome.PLAINS;
 			Bukkit.getLogger().log(Level.SEVERE, "Unknown Biome: " + name);

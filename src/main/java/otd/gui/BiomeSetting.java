@@ -17,10 +17,11 @@
 package otd.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.bukkit.Material;
-import org.bukkit.block.Biome;
+import org.bukkit.Registry;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
@@ -39,6 +40,7 @@ public class BiomeSetting extends Content {
 	private final static int SLOT = 54;
 	private final Set<String> biomes;
 	private int offset;
+	private int i;
 
 	private BiomeSetting() {
 		super("", SLOT);
@@ -149,30 +151,25 @@ public class BiomeSetting extends Content {
 			addItem(0, 8, is);
 		}
 		{
-			List<String> all_biome = new ArrayList<>();
-			for (Biome biome : Biome.values()) {
-				all_biome.add(biome.toString());
-			}
+
+			List<String> all_biomes = new ArrayList<>();
+			Registry.BIOME.forEach(biome -> {
+				all_biomes.add(biome.toString());
+			});
+			Collections.sort(all_biomes);
+
 			if (offset < 0)
 				offset = 0;
 			int index = offset * 45;
-			int i = 0;
-			while (i + 9 < 54 && index + i < all_biome.size()) {
-				String biome_name = all_biome.get(index + i);
-				Material material;
-				if (biomes.contains(biome_name))
-					material = DISABLE;
-				else
-					material = ENABLE;
+			i = 0;
+			while (i + 9 < 54 && index + i < all_biomes.size()) {
+				String biome_name = all_biomes.get(index + i).toString();
+				Material material = biomes.contains(biome_name) ? DISABLE : ENABLE;
 
 				ItemStack is = new ItemStack(material);
 				ItemMeta im = is.getItemMeta();
 				im.setDisplayName(biome_name);
-				String status;
-				if (material == DISABLE)
-					status = I18n.instance.Disable;
-				else
-					status = I18n.instance.Enable;
+				String status = material == DISABLE ? I18n.instance.Disable : I18n.instance.Enable;
 
 				List<String> lores = new ArrayList<>();
 				lores.add(status);
@@ -182,6 +179,6 @@ public class BiomeSetting extends Content {
 				addItem(i + 9, is);
 				i++;
 			}
-		}
+	}
 	}
 }

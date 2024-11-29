@@ -71,15 +71,6 @@ public class MultiVersion {
 		return newPos;
 	}
 
-	/*public static int getBiomeVersion() {
-		Biome[] biomes = Biome.values();
-		for (Biome biome : biomes) {
-			if (biome.toString().toUpperCase().equals("WINDSWEPT_FOREST"))
-				return 2;
-		}
-		return 1;
-	}*/
-
 	public static GetNBTTagCompound getNBTTagCompound = null;
 	public static GetNBTTagList getNBTTagList = null;
 	public static GetPotential getPotential = null;

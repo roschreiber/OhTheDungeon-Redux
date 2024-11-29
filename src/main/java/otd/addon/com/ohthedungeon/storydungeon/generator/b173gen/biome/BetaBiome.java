@@ -2,6 +2,9 @@ package otd.addon.com.ohthedungeon.storydungeon.generator.b173gen.biome;
 
 //import com.github.barteks2x.b173gen.config.WorldConfig;
 import otd.addon.com.ohthedungeon.storydungeon.generator.b173gen.oldnoisegen.NoiseGeneratorOctaves3D;
+
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.block.Biome;
 
 import java.util.Random;
@@ -20,12 +23,14 @@ public class BetaBiome {
 	private final Biome bukkitBiome;
 	private final String name;
 
+	@SuppressWarnings("deprecation")
 	BetaBiome(String name, String... bukkitNames) {
 		this.name = name;
 		Biome temp = null;
 		for (String n : bukkitNames) {
 			try {
-				temp = Biome.valueOf(n);
+				NamespacedKey key = NamespacedKey.minecraft(n.toLowerCase());
+				temp = Registry.BIOME.get(key);
 				break;// break if no exception (value exists)
 			} catch (Exception ex) {
 			}

@@ -9,6 +9,7 @@ import otd.addon.com.ohthedungeon.storydungeon.generator.b173gen.oldgen.MathHelp
 //import com.github.barteks2x.b173gen.oldgen.WorldGenTaiga2Old;
 //import com.github.barteks2x.b173gen.oldgen.WorldGenTreeOld;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.Configuration;
 
@@ -40,25 +41,27 @@ public class BiomeOld {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void init(Configuration config) {
 		if (config.getBoolean("global.experimental.biomesExperimental", true)) {
 			HashMap<Biome, Float> temp = new HashMap<Biome, Float>(128);
 			HashMap<Biome, Float> humid = new HashMap<Biome, Float>(128);
-			Biome[] array = Biome.values();
-			// int a = 0;
-			for (Biome b : array) {
-				if (!config.contains("global.experimental.biomes." + b.name())) {
-					continue;
+
+			Biome lastBiome = Registry.BIOME.stream().findFirst().orElse(null);
+
+			Registry.BIOME.forEach(b -> {
+				if (!config.contains("global.experimental.biomes." + b.toString())) {
+					return;
 				}
-				List<Double> values = config.getDoubleList("global.experimental.biomes." + b.name());
-				// ++a;
+				List<Double> values = config.getDoubleList("global.experimental.biomes." + b.toString());
+
 				Iterator<Double> it = values.iterator();
 				if (!it.hasNext()) {
-					continue;
+					return;
 				}
 				double temperature = it.next();
 				if (!it.hasNext()) {
-					continue;
+					return;
 				}
 				double humidity = it.next();
 				temperature *= 0.1;
@@ -67,14 +70,14 @@ public class BiomeOld {
 				// temperature + " h: " + humidity);
 				temp.put(b, (float) MathHelper.clamp(temperature, 0.0, 1.0));
 				humid.put(b, (float) MathHelper.clamp(humidity, 0.0, 1.0));
-			}
+			});
 			for (int i = 0; i < 64; ++i) {
 				for (int j = 0; j < 64; ++j) {
 					int index = (i + j * 64);
 					float biomeTemp = i / 63.0F;
 					float biomeHumid = j / 63.0F;
-					Biome lastBiome = array[0];
 					float lastDistSquared = Float.MAX_VALUE;
+
 					for (Biome b : temp.keySet()) {
 						float dt = biomeTemp - temp.get(b);
 						float dh = biomeHumid - humid.get(b);
@@ -85,7 +88,7 @@ public class BiomeOld {
 						}
 					}
 					biomeLookupTable[index] = new BetaBiome(getBiome(biomeTemp, biomeHumid).getName(),
-							lastBiome.name());
+							lastBiome.toString());
 				}
 			}
 		} else {
