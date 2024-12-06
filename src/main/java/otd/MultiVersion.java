@@ -44,7 +44,7 @@ public class MultiVersion {
 
 	public static boolean is121R1() {
 		try {
-			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R2.CraftWorld");
+			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R3.CraftWorld");
 			return clazz != null;
 		} catch (ClassNotFoundException ex) {
 			return false;
