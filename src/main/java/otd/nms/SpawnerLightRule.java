@@ -8,7 +8,7 @@ import net.minecraft.nbt.Tag;
 
 public class SpawnerLightRule {
 	public void update(Block tileentity, JavaPlugin plugin) {
-		org.bukkit.craftbukkit.v1_21_R2.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R2.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R3.CraftWorld) tileentity
 				.getWorld();
 		net.minecraft.world.level.block.entity.BlockEntity te;
 		Location pos = tileentity.getLocation();

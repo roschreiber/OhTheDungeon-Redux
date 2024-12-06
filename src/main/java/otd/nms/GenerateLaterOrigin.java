@@ -30,7 +30,7 @@ public class GenerateLaterOrigin {
 		if (!(blockState instanceof CreatureSpawner))
 			return;
 
-		org.bukkit.craftbukkit.v1_21_R2.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R2.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R3.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()
@@ -59,7 +59,7 @@ public class GenerateLaterOrigin {
 		BlockState blockState = tileentity.getState();
 		if (!(blockState instanceof CreatureSpawner))
 			return;
-		org.bukkit.craftbukkit.v1_21_R2.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R2.CraftWorld) tileentity
+		org.bukkit.craftbukkit.v1_21_R3.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R3.CraftWorld) tileentity
 				.getWorld();
 
 		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()

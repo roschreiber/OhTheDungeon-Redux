@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.World;
-import org.bukkit.block.Biome;
 import org.bukkit.generator.BlockPopulator;
 
 import forge_sandbox.greymerk.roguelike.dungeon.Dungeon;
@@ -81,10 +82,12 @@ public class TaskHolder {
 		return this.chunkZ;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean run() {
+		NamespacedKey key = NamespacedKey.minecraft(zc.biome.toLowerCase());
 		if (!init) {
 			init = true;
-			this.zwe = new ZoneWorldEditor(Biome.valueOf(zc.biome), world);
+			this.zwe = new ZoneWorldEditor(Registry.BIOME.get(key), world);
 			zwe.setSeaLevel(63);
 			zwe.setBottom(5);
 
@@ -150,7 +153,7 @@ public class TaskHolder {
 			BaseGenerator bg = FakeGenerator.getGenerator(zc.generator);
 			AsyncChunk chunk = bg.asyncGenerateChunkData(17L, FakeGenerator.getRandom(), pos[0], pos[1]);
 			step++;
-			AsyncTask_Chunk ac = new AsyncTask_Chunk(chunk, Biome.valueOf(zc.biome), pos[0], pos[1]);
+			AsyncTask_Chunk ac = new AsyncTask_Chunk(chunk, Registry.BIOME.get(key), pos[0], pos[1]);
 
 			ac.flat(CHUNK_SLOT);
 

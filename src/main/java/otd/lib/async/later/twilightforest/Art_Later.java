@@ -22,6 +22,7 @@ import java.util.Random;
 import org.bukkit.Art;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.bukkit.Registry;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
@@ -61,14 +62,15 @@ public class Art_Later extends Later {
 	 * At least one of the painting's parameters must be the specified size or
 	 * greater
 	 */
+	@SuppressWarnings("deprecation")
 	public static Art getPaintingOfSize(Random rand, int minSize) {
 		ArrayList<Art> valid = new ArrayList<>();
 
-		for (Art art : Art.values()) {
+		Registry.ART.forEach(art -> {
 			if (art.getBlockWidth() >= minSize || art.getBlockHeight() >= minSize) {
 				valid.add(art);
 			}
-		}
+		});
 
 		if (valid.size() > 0) {
 			return valid.get(rand.nextInt(valid.size()));
