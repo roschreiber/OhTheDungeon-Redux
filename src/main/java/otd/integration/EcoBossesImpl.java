@@ -13,6 +13,7 @@ import org.bukkit.entity.Entity;
 import com.willfp.ecobosses.bosses.Bosses;
 import com.willfp.ecobosses.bosses.EcoBoss;
 import com.willfp.ecobosses.bosses.LivingEcoBoss;
+import com.willfp.libreforge.Holder
 
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
