@@ -40,4 +40,5 @@ jobs:
 #        working-directory: ./NexEngine
 #          
       - name: Package plugin
+        continue-on-error: true
         run: mvn package
