@@ -41,4 +41,4 @@ jobs:
 #          
       - name: Package plugin
         continue-on-error: true
-        run: mvn package
+        run: mvn clean package
