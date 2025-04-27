@@ -89,12 +89,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- -->
-		<dependency>
-			<groupId>com.willfp</groupId>
-			<artifactId>EcoBosses</artifactId>
-			<version>9.50.0</version>
-			<scope>provided</scope>
-		</dependency>
+#		<dependency>
+#			<groupId>com.willfp</groupId>
+#			<artifactId>EcoBosses</artifactId>
+#			<version>9.50.0</version>
+#			<scope>provided</scope>
+#		</dependency>
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
 			<artifactId>worldedit-bukkit</artifactId>
