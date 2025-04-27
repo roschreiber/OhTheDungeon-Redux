@@ -39,12 +39,12 @@ import otd.nms.SpawnerLightRule;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_21_R2, UNKNOWN
+		V1_21_R4, UNKNOWN
 	};
 
-	public static boolean is121R1() {
+	public static boolean is121R4() {
 		try {
-			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R3.CraftWorld");
+			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R4.CraftWorld");
 			return clazz != null;
 		} catch (ClassNotFoundException ex) {
 			return false;
