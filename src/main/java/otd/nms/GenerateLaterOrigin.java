@@ -6,10 +6,12 @@ import org.bukkit.Chunk;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
+
+import de.tr7zw.nbtapi.NBTContainer;
+import de.tr7zw.nbtapi.NBTTileEntity;
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import forge_sandbox.greymerk.roguelike.worldgen.IWorldEditor;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawnable;
-import net.minecraft.nbt.Tag;
 import otd.Main;
 import otd.lib.spawner.SpawnerDecryAPI;
 import otd.world.DungeonType;
@@ -30,26 +32,14 @@ public class GenerateLaterOrigin {
 		if (!(blockState instanceof CreatureSpawner))
 			return;
 
-		org.bukkit.craftbukkit.v1_21_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R4.CraftWorld) tileentity
-				.getWorld();
-
-		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()
-				.getBlockEntity(new net.minecraft.core.BlockPos(pos.getX(), pos.getY(), pos.getZ()));
-
-		if (te == null)
-			return;
-		net.minecraft.nbt.CompoundTag nbt = new net.minecraft.nbt.CompoundTag();
-		nbt.putInt("x", pos.getX());
-		nbt.putInt("y", pos.getY());
-		nbt.putInt("z", pos.getZ());
-
+		NBTTileEntity nbt = new NBTTileEntity(blockState);
 		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
-		if (base != null) {
-			nbt.put("SpawnPotentials", (Tag) base);
-		}
 
-		//te.a(nbt);
-		te.loadWithComponents(nbt, ws.getHandle().getLevel().registryAccess());
+		if (base != null) {
+			net.minecraft.nbt.CompoundTag temp = new net.minecraft.nbt.CompoundTag();
+			temp.put("SpawnPotentials", base);
+			nbt.mergeCompound(new NBTContainer(temp));
+		}
 
 		SpawnerDecryAPI.setSpawnerDecry(tileentity, Main.instance, DungeonType.Roguelike, false);
 	}
@@ -59,24 +49,15 @@ public class GenerateLaterOrigin {
 		BlockState blockState = tileentity.getState();
 		if (!(blockState instanceof CreatureSpawner))
 			return;
-		org.bukkit.craftbukkit.v1_21_R4.CraftWorld ws = (org.bukkit.craftbukkit.v1_21_R4.CraftWorld) tileentity
-				.getWorld();
 
-		net.minecraft.world.level.block.entity.BlockEntity te = ws.getHandle()
-				.getBlockEntity(new net.minecraft.core.BlockPos(pos.getX(), pos.getY(), pos.getZ()));
-		if (te == null)
-			return;
-		net.minecraft.nbt.CompoundTag nbt = new net.minecraft.nbt.CompoundTag();
-		nbt.putInt("x", pos.getX());
-		nbt.putInt("y", pos.getY());
-		nbt.putInt("z", pos.getZ());
-
+		NBTTileEntity nbt = new NBTTileEntity(blockState);
 		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
-		if (base != null)
-			nbt.put("SpawnPotentials", (Tag) base);
 
-		//te.a(nbt);
-		te.loadWithComponents(nbt, ws.getHandle().getLevel().registryAccess());
+		if (base != null) {
+			net.minecraft.nbt.CompoundTag temp = new net.minecraft.nbt.CompoundTag();
+			temp.put("SpawnPotentials", base);
+			nbt.mergeCompound(new NBTContainer(temp));
+		}
 
 		SpawnerDecryAPI.setSpawnerDecry(tileentity, Main.instance, DungeonType.Roguelike, false);
 	}

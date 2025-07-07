@@ -1,12 +1,11 @@
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
 	<artifactId>OhTheDungeonsYoullGo</artifactId>
-	<version>1.21.5</version>
+	<version>1.21.7</version>
 	<properties>
-	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
@@ -45,22 +44,32 @@
 			<id>enginehub-maven</id>
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
+		<!-- CodeMC -->
+		<repository>
+  			<id>codemc-repo</id>
+  			<url>https://repo.codemc.io/repository/maven-public/</url>
+  			<layout>default</layout>
+		</repository>
 		<repository>
 			<id>maven</id>
 			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
+        <repository>
+            <id>CodeMC</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>io.papermc.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>1.21.5-R0.1-SNAPSHOT</version>
+			<version>1.21.7-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot</artifactId>
-			<version>1.21.5-R0.1-SNAPSHOT</version>
+			<version>1.21.7-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 			<classifier>remapped-mojang</classifier>
 		</dependency>
@@ -69,6 +78,12 @@
 			<artifactId>VaultAPI</artifactId>
 			<version>1.7</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+  			<groupId>de.tr7zw</groupId>
+  			<artifactId>item-nbt-api-plugin</artifactId>
+  			<version>2.15.1</version>
+  			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>me.clip</groupId>
@@ -88,24 +103,23 @@
 			<version>4.14.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- -->
+		<!-- EcoMobs (formerly EcoBosses) and eco dependency -->
 		<dependency>
 			<groupId>com.willfp</groupId>
-			<artifactId>EcoBosses</artifactId>
-			<version>9.50.0</version>
+			<artifactId>eco</artifactId>
+			<version>6.76.2</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.willfp</groupId>
+			<artifactId>EcoMobs</artifactId>
+			<version>10.20.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
 			<artifactId>worldedit-bukkit</artifactId>
 			<version>7.3.0-SNAPSHOT</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bstats</groupId>
-			<artifactId>bstats-bukkit</artifactId>
-			<version>3.0.2</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.papermc</groupId>
@@ -118,6 +132,13 @@
 			<artifactId>nashorn-core</artifactId>
 			<version>15.3</version>
 		</dependency>
+		<!-- bStats -->
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.1.0</version>
+            <scope>compile</scope>
+        </dependency>
 	</dependencies>
 	<build>
 		<resources>
@@ -128,38 +149,38 @@
 		</resources>
 		<plugins>
 			<plugin>
-                <groupId>net.md-5</groupId>
-                <artifactId>specialsource-maven-plugin</artifactId>
-                <version>2.0.2</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>remap</goal>
-                        </goals>
-                        <id>remap-obf</id>
-                        <configuration>
-                            <srgIn>org.spigotmc:minecraft-server:1.21.5-R0.1-SNAPSHOT:txt:maps-mojang</srgIn>
-                            <reverse>true</reverse>
-                            <remappedDependencies>org.spigotmc:spigot:1.21.5-R0.1-SNAPSHOT:jar:remapped-mojang</remappedDependencies>
-                            <remappedArtifactAttached>true</remappedArtifactAttached>
-                            <remappedClassifierName>remapped-obf</remappedClassifierName>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>remap</goal>
-                        </goals>
-                        <id>remap-spigot</id>
-                        <configuration>
-                            <inputFile>${project.build.directory}/${project.artifactId}-${project.version}-remapped-obf.jar</inputFile>
-                            <srgIn>org.spigotmc:minecraft-server:1.21.5-R0.1-SNAPSHOT:csrg:maps-spigot</srgIn>
-                            <remappedDependencies>org.spigotmc:spigot:1.21.5-R0.1-SNAPSHOT:jar:remapped-obf</remappedDependencies>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+				<groupId>net.md-5</groupId>
+				<artifactId>specialsource-maven-plugin</artifactId>
+				<version>2.0.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>remap</goal>
+						</goals>
+						<id>remap-obf</id>
+						<configuration>
+							<srgIn>org.spigotmc:minecraft-server:1.21.7-R0.1-SNAPSHOT:txt:maps-mojang</srgIn>
+							<reverse>true</reverse>
+							<remappedDependencies>org.spigotmc:spigot:1.21.7-R0.1-SNAPSHOT:jar:remapped-mojang</remappedDependencies>
+							<remappedArtifactAttached>true</remappedArtifactAttached>
+							<remappedClassifierName>remapped-obf</remappedClassifierName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>remap</goal>
+						</goals>
+						<id>remap-spigot</id>
+						<configuration>
+							<inputFile>${project.build.directory}/${project.artifactId}-${project.version}-remapped-obf.jar</inputFile>
+							<srgIn>org.spigotmc:minecraft-server:1.21.7-R0.1-SNAPSHOT:csrg:maps-spigot</srgIn>
+							<remappedDependencies>org.spigotmc:spigot:1.21.7-R0.1-SNAPSHOT:jar:remapped-obf</remappedDependencies>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -183,7 +204,7 @@
 				</configuration>
 				<executions>
 					<execution>
-						<phase>install</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>shade</goal>
 						</goals>

@@ -2,7 +2,7 @@ name: Oh_the_dungeons_youll_go
 authors: [shadow_wind]
 main: otd.Main
 load: STARTUP
-api-version: 1.21.3
+api-version: 1.21.7
 version: "${project.version}"
 api: forge_sandbox
 softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoBosses]

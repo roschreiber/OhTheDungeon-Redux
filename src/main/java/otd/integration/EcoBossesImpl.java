@@ -10,9 +10,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
-import com.willfp.ecobosses.bosses.Bosses;
-import com.willfp.ecobosses.bosses.EcoBoss;
-import com.willfp.ecobosses.bosses.LivingEcoBoss;
+// TODO: Fix these imports
+// import com.willfp.ecomobs.mobs.Mobs;
+// import com.willfp.ecomobs.mobs.EcoMob;
+// import com.willfp.ecomobs.mobs.LivingEcoMob;
 
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
@@ -26,12 +27,14 @@ public class EcoBossesImpl {
 
 	public static void enable() {
 		try {
-			if (Class.forName("com.willfp.ecobosses.EcoBossesPlugin") != null) {
-				Bukkit.getLogger().info("Loading EcoBosses support ...");
-				EcoBossesImpl.inst = new EcoBossesOTDImpl();
-				ready = true;
-			}
-		} catch (ClassNotFoundException e) {
+			// TODO: Fix these imports
+			// if (Class.forName("com.willfp.ecomobs.EcoMobsPlugin") != null) {
+			// 	Bukkit.getLogger().info("Loading EcoMobs support ...");
+			// 	EcoBossesImpl.inst = new EcoBossesOTDImpl();
+			// 	ready = true;
+			// }
+			ready = false; // Temporarily disabled until EcoMobs API is fixed
+		} catch (Exception e) {
 			ready = false;
 		}
 	}
@@ -98,24 +101,28 @@ public class EcoBossesImpl {
 	public static class EcoBossesOTDImpl implements BossOTD {
 		public Set<String> getMobNames() {
 			Set<String> res = new HashSet<>();
-			for (EcoBoss boss : Bosses.values()) {
-				String id = boss.getID();
-				res.add(id);
-			}
+			// TODO: Fix these imports
+			// for (EcoMob mob : Mobs.values()) {
+			// 	String id = mob.getID();
+			// 	res.add(id);
+			// }
 			return res;
 		}
 
 		public Entity spawnMob(String type, Location loc) {
-			EcoBoss boss = Bosses.getByID(type);
-			if (boss != null) {
-				LivingEcoBoss e = boss.spawn(loc);
-				return e.getEntity();
-			}
+			// TODO: Fix these imports
+			// EcoMob mob = Mobs.getByID(type);
+			// if (mob != null) {
+			// 	LivingEcoMob e = mob.spawn(loc);
+			// 	return e.getEntity();
+			// }
 			return null;
 		}
 
 		public boolean isMobExist(String type) {
-			return Bosses.getByID(type) != null;
+			// TODO: Fix these imports
+			// return Mobs.getByID(type) != null;
+			return false;
 		}
 	}
 }

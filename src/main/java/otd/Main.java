@@ -140,8 +140,8 @@ public class Main extends JavaPlugin {
 		instance = this;
 		main = this;
 		mainInstance = this;
-		if (MultiVersion.is121R4()) {
-			version = MultiVersion.Version.V1_21_R4;
+		if (MultiVersion.is121R5()) {
+			version = MultiVersion.Version.V1_21_R5;
 			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.21.x", ChatColor.GREEN);
 
 		} else {
