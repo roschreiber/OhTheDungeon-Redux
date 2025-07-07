@@ -1,4 +1,12 @@
-## Oh The Dungeon You'll Go
+<p align="center">
+  <img src="media/otdredux.png" alt="Oh The Dungeons You'll Go - REDUX" width="703" height="395">
+</p>
+
+<h1 align="center">Oh The Dungeons You'll Go</h1>
+<h2 align="center">REDUX</h3>
+
+---
+
 ### What's this plugin?
 
 This plugin will generate a series of extremely epic dungeons.
@@ -7,8 +15,6 @@ This plugin will generate a series of extremely epic dungeons.
 \(2\) 6 Dungeon Types   
 \(3\) Full GUI Support  
 \(4\) Custom Loot (with NBT tags) support
-
-![alt text](https://github.com/user-attachments/assets/f37cf9a3-6604-4bd6-b0e3-83b986074800 "Oh The Dungeon You'll Go")
 
 ### How to manually place a dungeon?
 
