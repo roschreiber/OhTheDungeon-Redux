@@ -13,6 +13,7 @@ import org.bukkit.entity.Entity;
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
 import io.lumine.mythic.bukkit.MythicBukkit;
+import io.lumine.xikage.mythicmobs.MythicMobs;
 import net.md_5.bungee.api.ChatColor;
 
 public class MythicMobsImpl {
@@ -145,16 +146,16 @@ public class MythicMobsImpl {
 		}
 
 		public Collection<String> getMobNames() {
-			io.lumine.mythic.api.mobs.MobManager mm = MythicBukkit.inst().getMobManager();
+			io.lumine.xikage.mythicmobs.mobs.MobManager mm = MythicMobs.inst().getMobManager();
 			return mm.getMobNames();
 		}
 
 		public Entity spawnMob(String type, Location loc) {
-			io.lumine.mythic.core.mobs.ActiveMob ab = MythicBukkit.inst().getMobManager().spawnMob(type, loc);
+			io.lumine.xikage.mythicmobs.mobs.ActiveMob ab = MythicMobs.inst().getMobManager().spawnMob(type, loc);
 			if (ab != null) {
-				io.lumine.mythic.api.adapters.AbstractEntity ae = ab.getEntity();
+				io.lumine.xikage.mythicmobs.adapters.AbstractEntity ae = ab.getEntity();
 				if (ae != null) {
-					Entity entity = io.lumine.mythic.bukkit.BukkitAdapter.adapt(ae);
+					Entity entity = io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter.adapt(ae);
 					return entity;
 				}
 			}
@@ -162,7 +163,7 @@ public class MythicMobsImpl {
 		}
 
 		public boolean isMobExist(String type) {
-			return MythicBukkit.inst().getMobManager().getMythicMob(type) != null;
+			return MythicMobs.inst().getMobManager().getMythicMob(type) != null;
 		}
 	}
 
