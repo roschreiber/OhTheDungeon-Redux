@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
-	<artifactId>OhTheDungeonsYoullGo</artifactId>
-	<version>1.21.7</version>
+	<artifactId>OTD-Redux</artifactId>
+	<version>1.21.7-0.2</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>21</maven.compiler.source>
@@ -94,13 +94,7 @@
 		<dependency>
 			<groupId>io.lumine</groupId>
 			<artifactId>Mythic-Dist</artifactId>
-			<version>5.3.3-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.lumine.</groupId>
-			<artifactId>Mythic-Dist</artifactId>
-			<version>4.14.2-SNAPSHOT</version>
+			<version>5.9.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- EcoMobs (formerly EcoBosses) and eco dependency -->
