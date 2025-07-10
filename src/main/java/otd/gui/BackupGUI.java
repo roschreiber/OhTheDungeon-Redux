@@ -38,6 +38,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import otd.Main;
+import otd.redux.util.ChatManager;
 import otd.util.GZIPUtils;
 import otd.config.WorldConfig;
 import otd.util.I18n;
@@ -91,9 +92,9 @@ public class BackupGUI extends Content {
 		try (OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(file), "utf-8")) {
 			oStreamWriter.append(json);
 			oStreamWriter.close();
-			p.sendMessage(ChatColor.YELLOW + file.getAbsolutePath());
+			ChatManager.getInstance().sendSuccess(p, "Backup created at: " + file.getAbsolutePath());
 		} catch (IOException e) {
-			p.sendMessage(ChatColor.RED + I18n.instance.Fail_To_Create_Backup);
+			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Create_Backup);
 		}
 	}
 
@@ -101,7 +102,7 @@ public class BackupGUI extends Content {
 		File file = new File(Main.instance.getDataFolder() + File.separator + "backups", file_name);
 		WorldConfig old = WorldConfig.wc;
 		if (!file.exists()) {
-			p.sendMessage(ChatColor.RED + I18n.instance.Fail_To_Restore_Backup);
+			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Restore_Backup);
 			return;
 		}
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"))) {
@@ -117,10 +118,10 @@ public class BackupGUI extends Content {
 			wc.dungeon_world = WorldConfig.wc.dungeon_world;
 			WorldConfig.wc = wc;
 			WorldConfig.save();
-			p.sendMessage(ChatColor.YELLOW + file.getAbsolutePath());
+			ChatManager.getInstance().sendSuccess(p, "Config restored from: " + file.getAbsolutePath());
 		} catch (IOException ex) {
 			WorldConfig.wc = old;
-			p.sendMessage(ChatColor.RED + I18n.instance.Fail_To_Restore_Backup);
+			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Restore_Backup);
 		}
 	}
 

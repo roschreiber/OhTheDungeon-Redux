@@ -31,6 +31,7 @@ import otd.Main;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.integration.MythicMobsImpl;
+import otd.redux.util.ChatManager;
 
 /**
  *
@@ -96,22 +97,23 @@ public class Diagnostic {
 		int count = 0;
 		if (isSpawnerNotReady()) {
 			count++;
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Spawner_Not_Working.md");
+			ChatManager.getInstance().sendClickableLink(p, "Click here to learn about spawner issues", 
+				"https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Spawner_Not_Working.md");
 		}
 		if (isJre32()) {
 			count++;
-			p.sendMessage(ChatColor.BLUE + "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Use_Jre64.md");
+			ChatManager.getInstance().sendClickableLink(p, "Click here to learn about JRE requirements", 
+				"https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Use_Jre64.md");
 		}
 		if (!isWorldHookReady()) {
 			count++;
-			p.sendMessage(ChatColor.BLUE
-					+ "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Fail_to_Hook_Minecraft_World_Object.md");
+			ChatManager.getInstance().sendClickableLink(p, "Click here to learn about world hook issues", 
+				"https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Fail_to_Hook_Minecraft_World_Object.md");
 		}
 		if (!PaperLib.isPaper()) {
 			count++;
-			p.sendMessage(
-					ChatColor.BLUE + "https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Using_Paper.md");
+			ChatManager.getInstance().sendClickableLink(p, "Click here to learn about Paper requirements", 
+				"https://github.com/OhTheDungeon/OhTheDungeon/blob/main/docs/Using_Paper.md");
 		}
 		{
 			boolean found = false;
@@ -125,20 +127,20 @@ public class Diagnostic {
 			}
 			if (found) {
 				if (!MythicMobsImpl.lichBossReady()) {
-					p.sendMessage(
-							"You open the MythicMobs support but no otd_lich_boss is found in your MythicMobs config");
+					ChatManager.getInstance().sendWarning(p, 
+						"You open the MythicMobs support but no otd_lich_boss is found in your MythicMobs config");
 				}
 				if (!MythicMobsImpl.kingCastleBossReady()) {
-					p.sendMessage(
-							"You open the MythicMobs support but no otd_castle_king is found in your MythicMobs config");
+					ChatManager.getInstance().sendWarning(p, 
+						"You open the MythicMobs support but no otd_castle_king is found in your MythicMobs config");
 				}
 			}
 		}
 
 		if (count > 0) {
-			p.sendMessage("OTD found " + count + " issue(s) on your server. Check the above link for help");
+			ChatManager.getInstance().sendError(p, "OTD found " + count + " issue(s) on your server. Check the above links for help");
 		} else {
-			p.sendMessage("OTD found 0 issues on your server.");
+			ChatManager.getInstance().sendSuccess(p, "OTD found 0 issues on your server.");
 		}
 	}
 }

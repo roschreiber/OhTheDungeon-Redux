@@ -62,7 +62,9 @@ import otd.config.WorldConfig;
 import otd.integration.EcoBossesImpl;
 import otd.integration.MythicMobsImpl;
 import otd.lib.spawner.SpawnerDecryAPI;
+import otd.redux.util.ChatManager;
 import otd.util.I18n;
+import otd.util.MessageManager;
 
 /**
  *
@@ -101,10 +103,11 @@ public class SpawnerListener implements Listener {
 		String world = p.getWorld().getName();
 		if (WorldConfig.wc.dict.containsKey(world) && !WorldConfig.wc.dict.get(world).egg_change_spawner) {
 			if (p.hasPermission("oh_the_dungeons.admin")) {
-				p.sendMessage("Bypass spawner change for OP");
+				// Example of using the new ChatManager
+				ChatManager.getInstance().sendInfo(p, "Bypass spawner change for OP");
 			} else {
 				e.setCancelled(true);
-				p.sendMessage(I18n.instance.ChangeSpawnerMessage);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.ChangeSpawnerMessage);
 			}
 		}
 	}
@@ -174,7 +177,7 @@ public class SpawnerListener implements Listener {
 
 			if (config.prevent_spawner_breaking) {
 				if (p.hasPermission("oh_the_dungeons.admin")) {
-					p.sendMessage("Bypass spawner change for OP");
+					MessageManager.getInstance().sendInfo(p, "Bypass spawner change for OP");
 					return;
 				}
 				event.setCancelled(true);

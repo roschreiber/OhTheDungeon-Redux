@@ -58,6 +58,8 @@ import otd.util.ActualHeight;
 import otd.util.ExceptionReporter;
 import otd.util.I18n;
 import otd.world.DungeonType;
+import otd.redux.util.ChatManager;
+import otd.redux.util.ChatManager.MessageType;
 
 public class Otd_Place implements TabExecutor {
 
@@ -92,23 +94,22 @@ public class Otd_Place implements TabExecutor {
 		if (sender == null)
 			return false;
 		if (!(sender instanceof Player)) {
-			sender.sendMessage("Player only command");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("This is a player only command", MessageType.ERROR));
 			return true;
 		}
 		Player p = (Player) sender;
 		if (!p.hasPermission("oh_the_dungeons.admin")) {
-			sender.sendMessage(I18n.instance.No_Permission);
+			sender.sendMessage(ChatManager.getInstance().formatMessage("You do not have permission to use this command", MessageType.ERROR));
 			return true;
 		}
 		String type;
 		if (args.length == 0) {
-			sender.sendMessage("Dungeon type is needed here");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Dungeon type is needed here", MessageType.ERROR));
 			return true;
 		}
 
 		if (!players.contains(p)) {
-			sender.sendMessage("Make sure you want to do that");
-			sender.sendMessage("Type command again in 20s to confirm");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Retype that command in the next 20 seconds to confirm", MessageType.WARNING));
 			players.add(p);
 
 			Bukkit.getScheduler().runTaskLater(instance, () -> {
@@ -126,12 +127,12 @@ public class Otd_Place implements TabExecutor {
 			try {
 				boolean res = commandPlaceDungeon(new Random(), chunk.getX(), chunk.getZ(), world);
 				if (!res) {
-					sender.sendMessage("Fail: No theme available for this chunk...");
+					sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk", MessageType.ERROR));
 				} else {
-					sender.sendMessage("Done");
+					sender.sendMessage(ChatManager.getInstance().formatMessage("Done, Dungeon should be placed in this chunk", MessageType.SUCCESS));
 				}
 			} catch (Throwable ex) {
-				sender.sendMessage("Internal Error when placing a dungeon in this chunk...");
+				sender.sendMessage(ChatManager.getInstance().formatMessage("Internal Error occured when trying to place a dungeon in this chunk", MessageType.ERROR));
 				sender.sendMessage(ExceptionReporter.exceptionToString(ex));
 			}
 			players.remove(p);
@@ -156,20 +157,20 @@ public class Otd_Place implements TabExecutor {
 			boolean flag = AsyncRoguelikeDungeon.generateAsync(rand, editor, x, z);
 
 			if (!flag)
-				sender.sendMessage("Fail: No theme available for this chunk...");
-			sender.sendMessage("Done");
+				sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk...", MessageType.ERROR));
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done, Dungeon should be placed in this chunk", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("battletower")) {
 			BattleTowerPopulator g = new BattleTowerPopulator();
 			g.generateDungeon(world, new Random(), chunk);
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("smoofy")) {
 			SmoofyPopulator.halfAsyncGenerate(world, chunk, new Random());
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("draylar")) {
 			Location location = p.getLocation();
 			BattleTowerSchematics.place(world, new Random(), location.getBlockX(), location.getBlockZ());
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("antman")) {
 			Location location = p.getLocation();
 			location = location.getWorld().getHighestBlockAt(location).getLocation();
@@ -177,7 +178,7 @@ public class Otd_Place implements TabExecutor {
 
 			try {
 				BukkitDungeonGenerator.generate(world, location, new Random());
-				sender.sendMessage("Done");
+				sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			} catch (Exception ex) {
 				Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));
 			}
@@ -185,26 +186,26 @@ public class Otd_Place implements TabExecutor {
 		} else if (type.equals("aether")) {
 			Location location = p.getLocation();
 			AetherBukkitGenerator.generate(world, new Random(), location.getBlockX(), location.getBlockZ());
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("lich")) {
 			Location location = p.getLocation();
 			location = location.getWorld().getHighestBlockAt(location).getLocation();
 			location = ActualHeight.getHeight(location);
 			TFBukkitGenerator.generateLichTower(world, location, new Random());
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("custom")) {
 			CustomDungeonPlaceSelect gui = new CustomDungeonPlaceSelect();
 			gui.openInventory(p);
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("castle")) {
 			Location location = p.getLocation();
 			location = location.getWorld().getHighestBlockAt(location).getLocation();
 			location = ActualHeight.getHeight(location);
 			BukkitCastleGenerator.generate(world, location, new Random());
-			sender.sendMessage("Done");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("text")) {
 			Map<String, Script> scripts = JSLoader.getScripts("on_dungeon_placed");

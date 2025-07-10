@@ -43,6 +43,7 @@ import forge_sandbox.greymerk.roguelike.treasure.loot.BookBase;
 import net.md_5.bungee.api.ChatColor;
 import otd.config.WorldConfig;
 import otd.gui.dungeon_plot.UserTeleport;
+import otd.redux.util.ChatManager;
 import otd.util.Diagnostic;
 import otd.util.I18n;
 import otd.util.Roll;
@@ -104,12 +105,12 @@ public class MobListener implements Listener {
 
 		if (WorldConfig.wc.dungeon_world.finished) {
 			if (p.hasPermission("oh_the_dungeons.teleport"))
-				p.sendMessage(ChatColor.GREEN + I18n.instance.User_TP_Suggest);
+				ChatManager.getInstance().sendSuccess(p, I18n.instance.User_TP_Suggest);
 		}
 
 		if (p.hasPermission("perplayerdungeoninstance.menu")) {
 			if (!I18n.instance.User_PI_Suggest.isEmpty())
-				p.sendMessage(ChatColor.GREEN + I18n.instance.User_PI_Suggest);
+				ChatManager.getInstance().sendSuccess(p, I18n.instance.User_PI_Suggest);
 		}
 	}
 

@@ -111,6 +111,8 @@ import otd.util.Diagnostic;
 import otd.util.ExceptionReporter;
 import otd.util.I18n;
 import otd.util.LanguageUtil;
+import otd.util.MessageManager;
+import otd.redux.util.ChatManager;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
 import otd.world.WorldGenOptimization;
@@ -186,6 +188,9 @@ public class Main extends JavaPlugin {
 		disabled = false;
 
 		I18n.init();
+        // Initialize the ChatManager
+        ChatManager.getInstance();
+        
 		{
 			(new File(this.getDataFolder(), "schematics")).mkdirs();
 			if (WorldEdit.isReady())

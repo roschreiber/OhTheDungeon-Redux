@@ -23,6 +23,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import otd.gui.MainMenu;
+import otd.redux.util.ChatManager;
+import otd.redux.util.ChatManager.MessageType;
 
 public class Otd implements TabExecutor {
 	@Override
@@ -34,16 +36,17 @@ public class Otd implements TabExecutor {
 	public boolean onCommand(final CommandSender sender, final Command command, final String label,
 			final String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage("Player only command");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("This is a player only command", MessageType.ERROR));
 			return true;
 		}
 		Player p = (Player) sender;
 		if (!p.hasPermission("oh_the_dungeons.admin")) {
-			sender.sendMessage("You don't have permission to do that");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("You don't have permission to do that", MessageType.ERROR));
 			return true;
 		}
 		MainMenu wm = new MainMenu();
 		wm.openInventory(p);
+		sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		return true;
 	}
 }

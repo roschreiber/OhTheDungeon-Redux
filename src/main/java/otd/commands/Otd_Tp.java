@@ -27,6 +27,8 @@ import otd.gui.dungeon_plot.UserTeleport;
 import otd.world.DungeonTask;
 import otd.world.DungeonWorld;
 import otd.util.I18n;
+import otd.redux.util.ChatManager;
+import otd.redux.util.ChatManager.MessageType;
 
 /**
  *
@@ -44,18 +46,18 @@ public class Otd_Tp implements TabExecutor {
 		if (sender == null)
 			return false;
 		if (!(sender instanceof Player)) {
-			sender.sendMessage("Player only command");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("This is a player only command", MessageType.ERROR));
 			return true;
 		}
 		Player p = (Player) sender;
 		if (!p.hasPermission("oh_the_dungeons.teleport")) {
-			sender.sendMessage(I18n.instance.No_Permission);
+			sender.sendMessage(ChatManager.getInstance().formatMessage(I18n.instance.No_Permission, MessageType.ERROR));
 			return true;
 		}
 
 		if (DungeonWorld.world == null || WorldConfig.wc.dungeon_world.finished == false
 				|| DungeonTask.isGenerating()) {
-			sender.sendMessage(I18n.instance.Dungeon_Plot_Not_Ready);
+			sender.sendMessage(ChatManager.getInstance().formatMessage(I18n.instance.Dungeon_Plot_Not_Ready, MessageType.ERROR));
 			return true;
 		}
 
@@ -64,6 +66,7 @@ public class Otd_Tp implements TabExecutor {
 
 		UserTeleport ut = new UserTeleport();
 		ut.openInventory(p);
+		sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));	
 
 		return true;
 	}

@@ -26,6 +26,8 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import otd.config.WorldConfig;
 import otd.util.I18n;
+import otd.redux.util.ChatManager;
+import otd.redux.util.ChatManager.MessageType;
 
 public class Otd_Cp implements TabExecutor {
 	@Override
@@ -52,7 +54,7 @@ public class Otd_Cp implements TabExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 			if (!p.hasPermission("oh_the_dungeons.admin")) {
-				sender.sendMessage(I18n.instance.No_Permission);
+				sender.sendMessage(ChatManager.getInstance().formatMessage(I18n.instance.No_Permission, MessageType.ERROR));	
 				return true;
 			}
 		}
@@ -60,13 +62,13 @@ public class Otd_Cp implements TabExecutor {
 		if (args.length != 2)
 			return false;
 		if (!WorldConfig.wc.dict.containsKey(args[0])) {
-			sender.sendMessage("Invalid source world");
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Invalid source world", MessageType.ERROR));
 			return true;
 		}
 
 		WorldConfig.wc.dict.put(args[1], WorldConfig.wc.dict.get(args[0]));
 		WorldConfig.save();
-		sender.sendMessage("Done");
+		sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 
 		return true;
 	}

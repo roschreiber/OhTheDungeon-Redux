@@ -44,6 +44,7 @@ import otd.populator.IPopulator;
 import otd.populator.LichTowerPopulator;
 import otd.populator.RoguelikePopulator;
 import otd.populator.SmoofyPopulator;
+import otd.redux.util.ChatManager;
 import otd.struct.SchematicLoader;
 import otd.util.I18n;
 import otd.world.task.DungeonChunkTask;
@@ -175,7 +176,7 @@ public class DungeonTask {
 
 	@SuppressWarnings("deprecation")
 	public static void globalMessage() {
-		Bukkit.broadcastMessage(ChatColor.BLUE + I18n.instance.Dungeon_Plot_Finish);
+		ChatManager.getInstance().broadcastMessage(I18n.instance.Dungeon_Plot_Finish, ChatManager.MessageType.IMPORTANT);
 	}
 
 	public static void start() {
@@ -250,7 +251,7 @@ public class DungeonTask {
 						count++;
 						for (Player p : Bukkit.getOnlinePlayers()) {
 							if (p.hasPermission("oh_the_dungeons.admin")) {
-								p.sendMessage("Dungeon Plot: " + count + "/" + dungeon_count);
+								ChatManager.getInstance().sendInfo(p, "Dungeon Plot: " + count + "/" + dungeon_count);
 							}
 						}
 
