@@ -2,19 +2,21 @@
   <img src="media/otdredux.png" alt="Oh The Dungeons You'll Go - REDUX" width="703" height="395">
 </p>
 
-<h1 align="center">Oh The Dungeons You'll Go</h1>
-<h2 align="center">REDUX</h3>
+<h1 align="center">Oh The Dungeons You'll Go<br>REDUX</h1>
 
 ---
 
-### What's this plugin?
+### What is this plugin?
 
-This plugin will generate a series of extremely epic dungeons.
+This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin that added various, procedurally generated dungeons to the game. It was abandoned by its original creator in 2023, and this is a fork which aims to update it and make it more user friendly.
 
-\(1\) 70 dungeon themes  
-\(2\) 6 Dungeon Types   
-\(3\) Full GUI Support  
-\(4\) Custom Loot (with NBT tags) support
+### Can I use this on my server right now?
+
+No. Well, yes, you can but I don't recommend that. OTD-R is currently very buggy since there have been massive changes to the way NBT is handled in Minecraft. I have not been able to fix most of these yet, so you may get bugs like dungeons not generating properly or chests being empty.
+
+### So, why do I need to install Item-NBT-API as a dependency now?
+
+Because Minecraft changed how ItemStack NBT is serialized in 1.21.5+. Item-NBT-API bridges this gap temporarily, but I will remove it in the future, making sure that there are only soft dependencies for OTD-R.
 
 ### How to manually place a dungeon?
 
