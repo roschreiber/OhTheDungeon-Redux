@@ -355,8 +355,10 @@ public class BattleTowerSchematic {
 		CreatureSpawner tileentitymobspawner = ((CreatureSpawner) block.getState());
 		tileentitymobspawner.setSpawnedType(SPAWNER_MOB_LIST[rand.nextInt(SPAWNER_MOB_LIST.length)]);
 		tileentitymobspawner.update();
-		SpawnerDecryAPI.setSpawnerDecry(block, Main.instance, DungeonType.Draylar, true);
-	}
+    Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+        SpawnerDecryAPI.setSpawnerDecry(block, Main.instance, DungeonType.Draylar, true);
+    }, 1L);
+}
 
 	public List<int[]> getLayer(int y) {
 		List<int[]> result = new ArrayList<>();

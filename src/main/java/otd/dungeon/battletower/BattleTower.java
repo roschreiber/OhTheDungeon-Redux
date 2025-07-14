@@ -265,23 +265,23 @@ public class BattleTower {
 //				}
 			} else {
 				if (towerChosen != TowerTypes.Null) {
-					try {
-						Block block = world.getBlockAt(ix + 2, builderHeight + 6, kz + 2);
-						block.setType(Material.SPAWNER, true);
-						CreatureSpawner tileentitymobspawner = ((CreatureSpawner) block.getState());
+					Block block1 = world.getBlockAt(ix + 2, builderHeight + 6, kz + 2);
+Block block2 = world.getBlockAt(ix - 3, builderHeight + 6, kz + 2);
+try {
+						block1.setType(Material.SPAWNER, true);
+						CreatureSpawner tileentitymobspawner = (CreatureSpawner) block1.getState();
 						tileentitymobspawner.setSpawnedType(getMobType(random));
 						tileentitymobspawner.update();
-						SpawnerDecryAPI.setSpawnerDecry(block, Main.instance, DungeonType.BattleTower, true);
+						Bukkit.getScheduler().runTaskLater(Main.instance, () -> SpawnerDecryAPI.setSpawnerDecry(block1, Main.instance, DungeonType.BattleTower, true), 1L);
 
-						block = world.getBlockAt(ix - 3, builderHeight + 6, kz + 2);
-						block.setType(Material.SPAWNER, true);
-						tileentitymobspawner = (CreatureSpawner) block.getState();
+						block2.setType(Material.SPAWNER, true);
+						tileentitymobspawner = (CreatureSpawner) block2.getState();
 						tileentitymobspawner.setSpawnedType(getMobType(random));
 						tileentitymobspawner.update();
-						SpawnerDecryAPI.setSpawnerDecry(block, Main.instance, DungeonType.BattleTower, true);
+						Bukkit.getScheduler().runTaskLater(Main.instance, () -> SpawnerDecryAPI.setSpawnerDecry(block2, Main.instance, DungeonType.BattleTower, true), 1L);
 					} catch (Exception ex) {
-						Block block = world.getBlockAt(ix + 2, builderHeight + 6, kz + 2);
-						block.setType(Material.AIR, true);
+						block1.setType(Material.AIR, true);
+						block2.setType(Material.AIR, true);
 					}
 				} else {
 					world.getBlockAt(ix + 2, builderHeight + 6, kz + 2).setType(Material.AIR, false);
@@ -340,7 +340,8 @@ public class BattleTower {
 			}
 
 			if (towerChosen != TowerTypes.Null) {
-				for (int l3 = 0; l3 < (floor * 4 + towerChosen.ordinal()) - 8 && !topFloor; l3++) // random hole poker
+				int limit = (floor * 4 + towerChosen.ordinal()) - 8;
+for (int l3 = 0; l3 < limit && !topFloor; l3++) // random hole poker
 				{
 					int k4 = 5 - random.nextInt(12);
 					int k5 = builderHeight + 5;

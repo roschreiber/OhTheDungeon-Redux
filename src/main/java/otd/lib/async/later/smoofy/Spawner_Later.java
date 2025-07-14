@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
+import org.bukkit.Bukkit;
 
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import otd.Main;
@@ -52,7 +53,9 @@ public class Spawner_Later extends Later {
 		CreatureSpawner spawner = ((CreatureSpawner) blockState);
 		spawner.setSpawnedType(type);
 		blockState.update();
-		SpawnerDecryAPI.setSpawnerDecry(spawnerBlock, Main.instance, DungeonType.DungeonMaze, true);
+		Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+    SpawnerDecryAPI.setSpawnerDecry(spawnerBlock, Main.instance, DungeonType.DungeonMaze, true);
+}, 1L);
 	}
 
 }

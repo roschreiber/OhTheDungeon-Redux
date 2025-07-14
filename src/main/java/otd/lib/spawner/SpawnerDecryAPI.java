@@ -34,6 +34,7 @@ import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.util.PluginKeys;
 import otd.world.DungeonType;
+import org.bukkit.Bukkit;
 
 /**
  *
@@ -83,8 +84,10 @@ public class SpawnerDecryAPI {
 			return;
 
 		if (light_update && MultiVersion.spawnerNeedLightUpdate()) {
+		Bukkit.getScheduler().runTaskLater(plugin, () -> {
 			updateSpawnerLightRule(block, plugin);
-		}
+		}, 1L);
+	}
 
 		CreatureSpawner ts = (CreatureSpawner) block.getState();
 		SpawnerManager.instance().setOtdSpawnerTag(ts);
