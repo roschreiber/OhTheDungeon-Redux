@@ -185,7 +185,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.5.3</version>
+				<version>3.6.0</version>
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<relocations>
@@ -200,6 +200,10 @@
 						<relocation>
 							<pattern>org.openjdk.nashorn</pattern>
 							<shadedPattern>otd.lib.org.openjdk.nashorn</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>de.tr7zw.changeme.nbtapi</pattern>
+							<shadedPattern>otd.lib.de.tr7zw.changeme.nbtapi</shadedPattern>
 						</relocation>
 					</relocations>
 				</configuration>

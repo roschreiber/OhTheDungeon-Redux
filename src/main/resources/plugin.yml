@@ -1,5 +1,5 @@
-name: Oh_the_dungeons_youll_go
-authors: [shadow_wind]
+name: Oh_the_dungeons_youll_go_Redux
+authors: [shadow_wind,rob]
 main: otd.Main
 load: STARTUP
 api-version: 1.21.7

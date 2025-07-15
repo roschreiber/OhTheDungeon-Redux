@@ -84,15 +84,15 @@ public class BattleTowerPopulator extends IPopulator {
 				typelist.add(1);
 
 			int size = typelist.size();
-			if (size == 0)
-				return false;
-			int item = random.nextInt(size); // In real life, the Random object should be rather more shared than this
-			int i = 0;
 			Integer c = null;
-			for (Integer obj : typelist) {
-				if (i == item)
-					c = obj;
-				i++;
+			if (size > 0) {
+				int item = random.nextInt(size);
+				int i = 0;
+				for (Integer obj : typelist) {
+					if (i == item)
+						c = obj;
+					i++;
+				}
 			}
 			if (c == null)
 				c = 1;

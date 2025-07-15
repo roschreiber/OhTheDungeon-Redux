@@ -23,13 +23,27 @@ public class Vine {
 		if (!editor.isAirBlock(origin))
 			return;
 		MetaBlock vine = BlockType.get(BlockType.VINE);
+		MultipleFacing state = (MultipleFacing) vine.getState(); // BlockVine.FACING -> MultipleFacing
+		boolean placed = false;
 		for (Cardinal dir : Cardinal.directions) {
 			Coord c = new Coord(origin);
 			c.add(dir);
-			if (editor.canPlace(vine, c, dir)) {
-				setOrientation(vine, dir).set(editor, c);
-				return;
+			if (editor.getMaterial(c).isSolid()) {
+				BlockFace face;
+				switch(dir) {
+					case NORTH: face = BlockFace.NORTH; break;
+					case EAST: face = BlockFace.EAST; break;
+					case SOUTH: face = BlockFace.SOUTH; break;
+					case WEST: face = BlockFace.WEST; break;
+					default: continue;
+				}
+				state.setFace(face, true);
+				placed = true;
 			}
+		}
+		if (placed) {
+			vine.setState(state);
+			vine.set(editor, origin);
 		}
 	}
 
