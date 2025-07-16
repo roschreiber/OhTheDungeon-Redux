@@ -27,6 +27,7 @@ import otd.addon.com.ohthedungeon.storydungeon.util.I18n;
 import otd.addon.com.ohthedungeon.storydungeon.util.ZoneUtils;
 import otd.addon.com.ohthedungeon.storydungeon.vault.VaultManager;
 import otd.addon.com.ohthedungeon.storydungeon.world.WorldManager;
+import otd.redux.util.ConsoleManager;
 
 /**
  *
@@ -52,9 +53,7 @@ public class PerPlayerDungeonInstance {
 		(new File(path)).mkdirs();
 		DungeonConfig.load();
 		if (!vault.setupEconomy()) {
-			Bukkit.getLogger().log(Level.INFO,
-					"{0}[Oh The Dungeons You''ll Go] Vault is not installed. Economy function is disabled",
-					ChatColor.RED);
+			ConsoleManager.logWarning(" Vault is not installed. Economy function is disabled");
 			DungeonConfig.setEnableMoneyPayment(false);
 		}
 		Main.instance.getCommand("otd_pi").setExecutor(new CommandMenu(this));

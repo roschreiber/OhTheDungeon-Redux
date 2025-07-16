@@ -19,6 +19,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import otd.redux.util.ConsoleManager;
 
 /**
  *
@@ -41,8 +42,7 @@ public class Async_Task_Pool {
 			start();
 		}, 1L, 20L);
 
-		plugin.getLogger().log(Level.INFO,
-				"{0}[Oh The Dungeons You''ll Go] Create PerPlayerDungeonInstance Task Pool Successful", ChatColor.BLUE);
+		ConsoleManager.logInfo(" Create PerPlayerDungeonInstance Task Pool Successful");
 	}
 
 	public List<String> getPending() {

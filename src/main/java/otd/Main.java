@@ -111,9 +111,8 @@ import otd.util.Diagnostic;
 import otd.util.ExceptionReporter;
 import otd.util.I18n;
 import otd.util.LanguageUtil;
-import otd.util.MessageManager;
 import otd.redux.util.ChatManager;
-import otd.redux.util.ChatManager.MessageType;
+import otd.redux.util.ConsoleManager;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
 import otd.world.WorldGenOptimization;
@@ -145,10 +144,10 @@ public class Main extends JavaPlugin {
 		mainInstance = this;
 		if (MultiVersion.is121R5()) {
 			version = MultiVersion.Version.V1_21_R5;
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] MC Version: 1.21.x", ChatColor.GREEN);
+			ConsoleManager.logInfo(" MC Version: 1.21.x");
 
 		} else {
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Unsupported Version...", ChatColor.RED);
+			ConsoleManager.logError(" Unsupported Version...");
 			version = MultiVersion.Version.UNKNOWN;
 		}
 		MultiVersion.has3DBiome();
@@ -165,7 +164,7 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		WorldConfig.AsyncSaver.cancelAsyncSaver();
 		WorldConfig.close();
-		Bukkit.getLogger().log(Level.WARNING, "[Oh The Dungeons You'll Go] Plugin is disabled");
+		ConsoleManager.logWarning(" Plugin is disabled");
 
 		disabled = true;
 	}
@@ -175,15 +174,14 @@ public class Main extends JavaPlugin {
 		try {
 			Class.forName("org.spigotmc.SpigotConfig");
 		} catch (ClassNotFoundException ex) {
-			getLogger()
-					.severe("[Oh The Dungeons You'll Go] requires Spigot (or a fork such as Paper) in order to run.");
+			ConsoleManager.logError(" Requires Spigot (or a fork such as Paper) in order to run.");
 			throw new UnsupportedOperationException("Unsupported Server Type");
 		}
 
 		try {
 			YamlPluginConfig.init();
 		} catch (IOException ex) {
-			Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));
+			ConsoleManager.logError(ExceptionReporter.exceptionToString(ex));
 		}
 
 		disabled = false;
@@ -293,7 +291,7 @@ public class Main extends JavaPlugin {
 					String line;
 
 					while ((line = reader.readLine()) != null) {
-						Bukkit.getLogger().log(Level.INFO, "{0}{1}", new Object[] { ChatColor.BLUE, line });
+						ConsoleManager.logLogo(line);
 					}
 				} catch (IOException ex) {
 
@@ -303,24 +301,16 @@ public class Main extends JavaPlugin {
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
 			if (!PaperLib.isPaper()) {
-				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss",
-						ChatColor.RED);
+				ConsoleManager.logWarning(" You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss");
 			}
 			if (!WorldEdit.isReady()) {
-				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] WorldEdit not installed, custom dungeon function is disabled. Don't worry, you could still use the built-in dungeons",
-						ChatColor.RED);
+				ConsoleManager.logWarning(" WorldEdit not installed, custom dungeon function is disabled. Don't worry, you could still use the built-in dungeons");
 			}
 			if (!PlaceholderAPI.isReady()) {
-				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] PlaceHolderAPI not installed, all placeholders are disabled",
-						ChatColor.RED);
+				ConsoleManager.logWarning(" PlaceholderAPI not installed, will disable PlaceholderAPI related features");
 			}
 			if (!MythicMobsImpl.isMythicMobsReady()) {
-				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] MythicMobs not installed, will disable MythicMobs related features",
-						ChatColor.RED);
+				ConsoleManager.logWarning(" MythicMobs not installed, will disable MythicMobs related features");
 			} else {
 				MythicMobsImpl.report();
 			}
@@ -330,9 +320,7 @@ public class Main extends JavaPlugin {
 						ChatColor.RED);
 			}*/
 			if (!EcoBossesImpl.isEcoBossesReady()) {
-				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] EcoMobs not installed, will disable EcoMobs related features",
-						ChatColor.RED);
+				ConsoleManager.logWarning(" EcoMobs not installed, will disable EcoMobs related features");
 			}
 
 			JSLoader.init();
@@ -343,15 +331,13 @@ public class Main extends JavaPlugin {
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
 			if (WorldConfig.wc.dungeon_world.finished) {
-				Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Loading dungeon plot world...",
-						ChatColor.GREEN);
+				ConsoleManager.logInfo(" Loading dungeon plot world...");
 				DungeonWorld.loadDungeonWorld();
 			}
 		}, 1L);
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
-			Bukkit.getLogger().log(Level.INFO, "{0}[Oh The Dungeons You'll Go] Loading PerPlayerDungeonInstance...",
-					ChatColor.GREEN);
+			ConsoleManager.logInfo(" Loading PerPlayerDungeonInstance...");
 			ppdi = new PerPlayerDungeonInstance();
 		}, 1L);
 
