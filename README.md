@@ -14,10 +14,6 @@ This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin
 
 No. Well, yes, you can but I don't recommend that. OTD-R is currently very buggy since there have been massive changes to the way NBT is handled in Minecraft. I have not been able to fix most of these yet, so you may get bugs like dungeons not generating properly or chests being empty.
 
-### So, why do I need to install Item-NBT-API as a dependency now?
-
-Because Minecraft changed how ItemStack NBT is serialized in 1.21.5+. Item-NBT-API bridges this gap temporarily, but I will remove it in the future, making sure that there are only soft dependencies for OTD-R.
-
 ### How to manually place a dungeon?
 
 \(1\) Login as OP.

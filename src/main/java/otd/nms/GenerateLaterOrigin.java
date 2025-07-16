@@ -7,8 +7,8 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 
-import de.tr7zw.nbtapi.NBTContainer;
-import de.tr7zw.nbtapi.NBTTileEntity;
+import de.tr7zw.changeme.nbtapi.NBTContainer;
+import de.tr7zw.changeme.nbtapi.NBTTileEntity;
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import forge_sandbox.greymerk.roguelike.worldgen.IWorldEditor;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawnable;

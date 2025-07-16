@@ -113,6 +113,7 @@ import otd.util.I18n;
 import otd.util.LanguageUtil;
 import otd.util.MessageManager;
 import otd.redux.util.ChatManager;
+import otd.redux.util.ChatManager.MessageType;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
 import otd.world.WorldGenOptimization;
@@ -330,7 +331,7 @@ public class Main extends JavaPlugin {
 			}*/
 			if (!EcoBossesImpl.isEcoBossesReady()) {
 				Bukkit.getLogger().log(Level.INFO,
-						"{0}[Oh The Dungeons You'll Go] EcoBosses not installed, will disable BossPlugin EcoBosses features",
+						"{0}[Oh The Dungeons You'll Go] EcoMobs not installed, will disable EcoMobs related features",
 						ChatColor.RED);
 			}
 

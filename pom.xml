@@ -81,9 +81,9 @@
 		</dependency>
 		<dependency>
   			<groupId>de.tr7zw</groupId>
-  			<artifactId>item-nbt-api-plugin</artifactId>
+  			<artifactId>item-nbt-api</artifactId>
   			<version>2.15.1</version>
-  			<scope>provided</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>me.clip</groupId>
@@ -203,7 +203,7 @@
 						</relocation>
 						<relocation>
 							<pattern>de.tr7zw.changeme.nbtapi</pattern>
-							<shadedPattern>otd.lib.de.tr7zw.changeme.nbtapi</shadedPattern>
+							<shadedPattern>otd.redux.nbtapi</shadedPattern>
 						</relocation>
 					</relocations>
 				</configuration>
