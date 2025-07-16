@@ -343,7 +343,7 @@ public class Main extends JavaPlugin {
 
 	}
 
-	@SuppressWarnings("unused")
+	/*@SuppressWarnings("unused")
 	private void loadPDF() {
 		File out = new File(Main.instance.getDataFolder(), "OTD.pdf");
 		try (InputStream in = Main.instance.getResource("OTD.pdf");
@@ -363,9 +363,10 @@ public class Main extends JavaPlugin {
 		} catch (InvalidDescriptionException | InvalidPluginException | UnknownDependencyException ex) {
 			Bukkit.getLogger().log(Level.SEVERE, "Load OTD.pdf error...");
 		}
-	}
+	}*/
 
-	@SuppressWarnings("unused")
+
+	/*@SuppressWarnings("unused")
 	private void loadAdvancement() {
 		File out = new File(Main.instance.getDataFolder(), "OhTheDungeonAdvancement.jar");
 		try (InputStream in = Main.instance.getResource("OhTheDungeonAdvancement.jar");
@@ -385,7 +386,7 @@ public class Main extends JavaPlugin {
 		} catch (InvalidDescriptionException | InvalidPluginException | UnknownDependencyException ex) {
 			Bukkit.getLogger().log(Level.SEVERE, "Load Advancements error...");
 		}
-	}
+	}*/
 
 	/*private BukkitRunnable update_check_task_id;
 	private final int RESOURCE_ID = 76437;
