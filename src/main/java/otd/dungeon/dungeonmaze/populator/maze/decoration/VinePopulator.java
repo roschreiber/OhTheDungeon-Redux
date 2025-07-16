@@ -31,11 +31,11 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 	private static final int LAYER_MIN = 1;
 	private static final int LAYER_MAX = 7;
 
-	private static final int CHANCE_VINE = 30;
+	private static final int CHANCE_VINE = 50;
 	private static final double CHANCE_VINE_ADDITION_EACH_LEVEL = -2.5; /* to 15 */
-	private static final int ITERATIONS = 5;
-	private static final int CHANCE_CEILING_VINE = 5;
-	private static final int ITERATIONS_CEILING_VINE = 5;
+	private static final int ITERATIONS = 10;
+	private static final int CHANCE_CEILING_VINE = 10;
+	private static final int ITERATIONS_CEILING_VINE = 10;
 
 	private static final BlockData VINE0 = Bukkit
 			.createBlockData("minecraft:vine[east=false,south=false,north=false,west=false,up=false]");
@@ -72,7 +72,7 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 					vineY = rand.nextInt(4) + 2;
 					vineZ = rand.nextInt(6) + 1;
 
-					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS) {
+					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.CHEST && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_PRESSURE_PLATE && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_BRICK_STAIRS) {
 						world.setChunkData(x + vineX + 1, y + vineY, z + vineZ, VINE2);
 					}
 
@@ -82,7 +82,7 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 					vineY = rand.nextInt(3) + 3;
 					vineZ = rand.nextInt(6) + 1;
 
-					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS) {
+					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.CHEST && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_PRESSURE_PLATE && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_BRICK_STAIRS) {
 						world.setChunkData(x + vineX - 1, y + vineY, z + vineZ, VINE8);
 					}
 
@@ -92,7 +92,7 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 					vineY = rand.nextInt(3) + 3;
 					vineZ = 0;
 
-					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS) {
+					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.CHEST && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_PRESSURE_PLATE && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_BRICK_STAIRS) {
 						world.setChunkData(x + vineX, y + vineY, z + vineZ + 1, VINE4);
 					}
 
@@ -102,7 +102,7 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 					vineY = rand.nextInt(3) + 3;
 					vineZ = 7;
 
-					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS) {
+					if (world.getChunkType(x + vineX, y + vineY, z + vineZ) == Material.STONE_BRICKS && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.CHEST && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_PRESSURE_PLATE && world.getChunkType(x + vineX, y + vineY, z + vineZ) != Material.STONE_BRICK_STAIRS) {
 						world.setChunkData(x + vineX, y + vineY, z + vineZ - 1, VINE1);
 					}
 
@@ -120,7 +120,10 @@ public class VinePopulator extends MazeRoomBlockPopulator {
 				int vineY = args.getCeilingY() - 1;
 				int vineZ = rand.nextInt(6) + 1;
 
-				world.setChunkData(x + vineX, vineY, z + vineZ, VINE0);
+				Material support = world.getChunkType(x + vineX, vineY + 1, z + vineZ);
+				if (support.isSolid() && support != Material.CHEST && support != Material.STONE_PRESSURE_PLATE && support != Material.STONE_BRICK_STAIRS) {
+					world.setChunkData(x + vineX, vineY, z + vineZ, VINE0);
+				}
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import forge_sandbox.greymerk.roguelike.worldgen.MetaBlock;
 import forge_sandbox.greymerk.roguelike.worldgen.shapes.RectSolid;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.MultipleFacing;
-//import net.minecraft.block.BlockVine;
+import org.bukkit.Material;
 
 public class Vine {
 
@@ -23,12 +23,13 @@ public class Vine {
 		if (!editor.isAirBlock(origin))
 			return;
 		MetaBlock vine = BlockType.get(BlockType.VINE);
-		MultipleFacing state = (MultipleFacing) vine.getState(); // BlockVine.FACING -> MultipleFacing
+		MultipleFacing state = (MultipleFacing) vine.getState();
 		boolean placed = false;
 		for (Cardinal dir : Cardinal.directions) {
 			Coord c = new Coord(origin);
 			c.add(dir);
-			if (editor.getMaterial(c).isSolid()) {
+			Material mat = editor.getMaterial(c);
+			if (mat.isSolid() && mat != Material.VINE && mat != Material.CHEST && mat != Material.TRAPPED_CHEST && mat != Material.STONE_PRESSURE_PLATE && mat != Material.STONE_STAIRS) {
 				BlockFace face;
 				switch(dir) {
 					case NORTH: face = BlockFace.NORTH; break;
