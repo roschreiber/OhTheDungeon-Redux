@@ -129,7 +129,7 @@ public class Main extends JavaPlugin {
 	@SuppressWarnings("unused")
 	private static Integer api_version = 7;
 	public static MultiVersion.Version version = MultiVersion.Version.UNKNOWN;
-	private final static int metric_pluginId = 9213;
+	private final static int metric_pluginId = 26538;
 	@SuppressWarnings("unused")
 	private static PerPlayerDungeonInstance ppdi;
 	public final static boolean DEBUG = true;
@@ -342,29 +342,6 @@ public class Main extends JavaPlugin {
 		}, 1L);
 
 	}
-
-	/*@SuppressWarnings("unused")
-	private void loadPDF() {
-		File out = new File(Main.instance.getDataFolder(), "OTD.pdf");
-		try (InputStream in = Main.instance.getResource("OTD.pdf");
-				OutputStream writer = new BufferedOutputStream(new FileOutputStream(out, false))) {
-			// Step 3
-			byte[] buffer = new byte[1024 * 4];
-			int length;
-			while ((length = in.read(buffer)) >= 0) {
-				writer.write(buffer, 0, length);
-			}
-		} catch (Exception ex) {
-			Bukkit.getLogger().log(Level.SEVERE, "Load OTD.pdf error...");
-			return;
-		}
-		try {
-			getServer().getPluginManager().loadPlugin(out);
-		} catch (InvalidDescriptionException | InvalidPluginException | UnknownDependencyException ex) {
-			Bukkit.getLogger().log(Level.SEVERE, "Load OTD.pdf error...");
-		}
-	}*/
-
 
 	/*@SuppressWarnings("unused")
 	private void loadAdvancement() {

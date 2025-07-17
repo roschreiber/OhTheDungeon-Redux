@@ -6,13 +6,19 @@
 
 ---
 
+<p align="center"> <img src="https://bstats.org/signatures/bukkit/OTD-Redux.svg" /> </p>
+
 ### What is this plugin?
 
-This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin that added various, procedurally generated dungeons to the game. It was abandoned by its original creator in 2023, and this is a fork which aims to update it and make it more user friendly.
+This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin that added various, procedurally generated dungeons to the game. It was abandoned by its original creator in late 2021, and this is a fork which aims to update it and make it more user friendly.
 
 ### Can I use this on my server right now?
 
 No. Well, yes, you can but I don't recommend that. OTD-R is currently very buggy since there have been massive changes to the way NBT is handled in Minecraft. I have not been able to fix most of these yet, so you may get bugs like dungeons not generating properly or chests being empty.
+
+### Are there any known issues?
+
+Yeah, there are. For example, mobs do not spawn with any armor right now, EcoMobs isn't implemented yet, and the UIs & commands are outdated and buggy.
 
 ### How to manually place a dungeon?
 
