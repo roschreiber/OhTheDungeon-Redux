@@ -2,7 +2,7 @@ name: Oh_the_dungeons_youll_go_Redux
 authors: [shadow_wind,rob,steve4744]
 main: otd.Main
 load: STARTUP
-api-version: 1.21.7
+api-version: 1.21.6
 version: "${project.version}"
 api: forge_sandbox
 softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoBosses]
