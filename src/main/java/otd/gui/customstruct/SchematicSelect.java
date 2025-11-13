@@ -87,7 +87,7 @@ public class SchematicSelect extends Content {
 		}
 
 		if (slot == 52) {
-			p.sendMessage(ChatColor.GREEN + "https://discord.gg/4ueBxWBgTk");
+			p.sendMessage(ChatColor.GREEN + "https://discord.gg/bkZfWZsrF5");
 			return;
 		}
 
