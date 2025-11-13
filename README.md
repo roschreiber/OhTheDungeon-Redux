@@ -8,6 +8,10 @@
 
 <p align="center"> <img src="https://bstats.org/signatures/bukkit/OTD-Redux.svg" /> </p>
 
+> [!CAUTION]
+> Leaf server software is **untested**. And **WILL** most likely break this plugin. Please only use Paper for now.
+> If you want to help me with adding Leaf support, please shoot me a DM over on discord (no.skipp), or join the discord server linked in the plugin.
+
 ### What is this plugin?
 
 This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin that added various, procedurally generated dungeons to the game. It was abandoned by its original creator in late 2021, and this is a fork which aims to update it and make it more user friendly.
