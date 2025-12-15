@@ -1,5 +1,7 @@
 package otd.api;
 
+import java.util.jar.Attributes.Name;
+
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
 import org.bukkit.persistence.PersistentDataType;
@@ -10,9 +12,11 @@ import otd.Main;
 
 public class MobManager {
 	private final NamespacedKey otd_mob;
+	private final NamespacedKey legacy;
 
 	private MobManager() {
 		otd_mob = new NamespacedKey(Main.instance, "otd_mob");
+		legacy = new NamespacedKey("oh_the_dungeons_youll_go", "otd_mob");
 	}
 
 	private static MobManager INSTANCE = new MobManager();
@@ -26,7 +30,7 @@ public class MobManager {
 	}
 
 	public boolean isOtdNormalMob(Entity e) {
-		return e.getPersistentDataContainer().has(otd_mob, PersistentDataType.BYTE);
+		return e.getPersistentDataContainer().has(otd_mob, PersistentDataType.BYTE) || e.getPersistentDataContainer().has(legacy, PersistentDataType.BYTE);
 	}
 
 	public boolean isLich(Entity e) {

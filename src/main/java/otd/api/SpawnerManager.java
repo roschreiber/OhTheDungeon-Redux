@@ -9,10 +9,12 @@ import otd.util.PluginKeys;
 
 public class SpawnerManager {
 	private final NamespacedKey decry;
+	private final NamespacedKey legacy;
 	private static SpawnerManager INSTANCE = new SpawnerManager();
 
 	private SpawnerManager() {
 		decry = new NamespacedKey(Main.instance, PluginKeys.decry);
+		legacy = new NamespacedKey("oh_the_dungeons_youll_go", PluginKeys.decry);
 	}
 
 	public static SpawnerManager instance() {
@@ -24,6 +26,6 @@ public class SpawnerManager {
 	}
 
 	public boolean isOtdSpawner(CreatureSpawner cs) {
-		return cs.getPersistentDataContainer().has(decry, PersistentDataType.BYTE);
+		return cs.getPersistentDataContainer().has(decry, PersistentDataType.BYTE) || cs.getPersistentDataContainer().has(legacy, PersistentDataType.BYTE);
 	}
 }
