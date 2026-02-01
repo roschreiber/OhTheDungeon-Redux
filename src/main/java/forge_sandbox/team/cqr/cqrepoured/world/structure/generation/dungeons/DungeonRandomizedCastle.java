@@ -99,8 +99,8 @@ public class DungeonRandomizedCastle extends DungeonBase {
 		this.windowTypeRandomizer.add(RandomCastleConfigOptions.WindowType.OPEN_SLIT, 0);
 
 		this.minSpawnerRolls = 1;
-		this.maxSpawnerRolls = 3;
-		this.spawnerRollChance = 50;
+		this.maxSpawnerRolls = 2;
+		this.spawnerRollChance = 35;
 
 		this.minBridgeLength = 2;
 		this.maxBridgeLength = 4;
