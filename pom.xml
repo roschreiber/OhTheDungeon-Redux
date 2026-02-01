@@ -3,20 +3,22 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
 	<artifactId>OTD-Redux</artifactId>
-	<version>1.21.10-0.2.2</version>
+	<version>1.21.11-0.2.3</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>bytecode.space</id>
+			<url>https://repo.bytecode.space/repository/maven-public/</url>
+		</pluginRepository>
+	</pluginRepositories>
 	<repositories>
 		<repository>
 			<id>papermc</id>
 			<url>https://repo.papermc.io/repository/maven-public/</url>
-		</repository>
-		<repository>
-			<id>spigot-repo</id>
-			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
 		<!-- Vault Repo -->
 		<repository>
@@ -63,15 +65,15 @@
 		<dependency>
 			<groupId>io.papermc.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>1.21.10-R0.1-SNAPSHOT</version>
+			<version>1.21.11-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Run 'mvn paper-nms:init' once after cloning! I do not want to change the whole plugin to Gradle to use paperweight-userdev. -->
 		<dependency>
-			<groupId>org.spigotmc</groupId>
-			<artifactId>spigot</artifactId>
-			<version>1.21.9-R0.1-SNAPSHOT</version>
+			<groupId>ca.bkaw</groupId>
+			<artifactId>paper-nms</artifactId>
+			<version>1.21.11-SNAPSHOT</version>
 			<scope>provided</scope>
-			<classifier>remapped-mojang</classifier>
 		</dependency>
 		<dependency>
 			<groupId>com.github.MilkBowl</groupId>
@@ -150,39 +152,6 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>net.md-5</groupId>
-				<artifactId>specialsource-maven-plugin</artifactId>
-				<version>2.0.2</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>remap</goal>
-						</goals>
-						<id>remap-obf</id>
-						<configuration>
-							<srgIn>org.spigotmc:minecraft-server:1.21.8-R0.1-SNAPSHOT:txt:maps-mojang</srgIn>
-							<reverse>true</reverse>
-							<remappedDependencies>org.spigotmc:spigot:1.21.8-R0.1-SNAPSHOT:jar:remapped-mojang</remappedDependencies>
-							<remappedArtifactAttached>true</remappedArtifactAttached>
-							<remappedClassifierName>remapped-obf</remappedClassifierName>
-						</configuration>
-					</execution>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>remap</goal>
-						</goals>
-						<id>remap-spigot</id>
-						<configuration>
-							<inputFile>${project.build.directory}/${project.artifactId}-${project.version}-remapped-obf.jar</inputFile>
-							<srgIn>org.spigotmc:minecraft-server:1.21.8-R0.1-SNAPSHOT:csrg:maps-spigot</srgIn>
-							<remappedDependencies>org.spigotmc:spigot:1.21.8-R0.1-SNAPSHOT:jar:remapped-obf</remappedDependencies>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.6.0</version>
@@ -212,6 +181,19 @@
 						<phase>package</phase>
 						<goals>
 							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>ca.bkaw</groupId>
+				<artifactId>paper-nms-maven-plugin</artifactId>
+				<version>1.4.10</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>remap</goal>
 						</goals>
 					</execution>
 				</executions>

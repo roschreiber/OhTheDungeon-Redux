@@ -142,9 +142,9 @@ public class Main extends JavaPlugin {
 		instance = this;
 		main = this;
 		mainInstance = this;
-		if (MultiVersion.is121R6()) {
-			version = MultiVersion.Version.V1_21_R6;
-			ConsoleManager.logInfo(" MC Version: 1.21.10 / 1.21.9");
+		if (MultiVersion.is121R7()) {
+			version = MultiVersion.Version.V1_21_R7;
+			ConsoleManager.logInfo(" MC Version: 1.21.11");
 
 		} else {
 			ConsoleManager.logError(" Unsupported Version...");
@@ -304,7 +304,7 @@ public class Main extends JavaPlugin {
 				ConsoleManager.logWarning(" You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss");
 			}
 			if (!WorldEdit.isReady()) {
-				ConsoleManager.logWarning(" WorldEdit not installed, custom dungeon function is disabled. Don't worry, you could still use the built-in dungeons");
+				ConsoleManager.logWarning(" WorldEdit not installed, custom dungeon function is disabled. Don't worry, you can still use the built-in dungeons");
 			}
 			if (!PlaceholderAPI.isReady()) {
 				ConsoleManager.logWarning(" PlaceholderAPI not installed, will disable PlaceholderAPI related features");

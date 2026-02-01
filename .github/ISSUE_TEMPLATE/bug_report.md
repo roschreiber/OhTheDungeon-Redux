@@ -9,7 +9,7 @@ assignees: ''
 
 * **ENGLISH** only, please. Use a translator if absolutely necessary.
 * Make sure you use the diagnostic tools first (under `/otd` -> `utils`)
-* Check the README or the latest release! If I mentioned anny issues there already, do NOT report them again. 
+* Check the README or the latest release! If I mentioned any issues there already, do NOT report them again. 
 
 **Version**
 1. Spigot/Paper Version
