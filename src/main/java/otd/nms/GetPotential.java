@@ -17,10 +17,10 @@ public class GetPotential {
 		net.minecraft.nbt.CompoundTag custom_spawn_rules = new net.minecraft.nbt.CompoundTag();
 		net.minecraft.nbt.CompoundTag sky_light_limit = new net.minecraft.nbt.CompoundTag();
 		sky_light_limit.putInt("min_inclusive", 0);
-		sky_light_limit.putInt("max_exclusive", 15);
+		sky_light_limit.putInt("max_inclusive", 15);
 		net.minecraft.nbt.CompoundTag block_light_limit = new net.minecraft.nbt.CompoundTag();
 		block_light_limit.putInt("min_inclusive", 0);
-		block_light_limit.putInt("max_exclusive", 15);
+		block_light_limit.putInt("max_inclusive", 15);
 		custom_spawn_rules.put("sky_light_limit", sky_light_limit);
 		custom_spawn_rules.put("block_light_limit", block_light_limit);
 		potential.put("custom_spawn_rules", custom_spawn_rules);

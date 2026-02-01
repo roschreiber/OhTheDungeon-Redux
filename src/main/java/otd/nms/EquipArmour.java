@@ -8,17 +8,23 @@ import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 
 public class EquipArmour {
 	public Object get(Object mob, Random rand, int level, SpawnPotential sp) {
-		net.minecraft.nbt.ListTag armour = new net.minecraft.nbt.ListTag();
-		armour.add((net.minecraft.nbt.Tag) sp
+		net.minecraft.nbt.CompoundTag nbt = (net.minecraft.nbt.CompoundTag) mob;
+		net.minecraft.nbt.CompoundTag equipment;
+		if (nbt.contains("equipment")) {
+			equipment = nbt.getCompound("equipment").orElseGet(net.minecraft.nbt.CompoundTag::new);
+		} else {
+			equipment = new net.minecraft.nbt.CompoundTag();
+		}
+		
+		equipment.put("feet", (net.minecraft.nbt.Tag) sp
 				.getItem(Equipment.getName(Equipment.FEET, Quality.getArmourQuality(rand, level))));
-		armour.add((net.minecraft.nbt.Tag) sp
+		equipment.put("legs", (net.minecraft.nbt.Tag) sp
 				.getItem(Equipment.getName(Equipment.LEGS, Quality.getArmourQuality(rand, level))));
-		armour.add((net.minecraft.nbt.Tag) sp
+		equipment.put("chest", (net.minecraft.nbt.Tag) sp
 				.getItem(Equipment.getName(Equipment.CHEST, Quality.getArmourQuality(rand, level))));
-		armour.add((net.minecraft.nbt.Tag) sp
+		equipment.put("head", (net.minecraft.nbt.Tag) sp
 				.getItem(Equipment.getName(Equipment.HELMET, Quality.getArmourQuality(rand, level))));
-		((net.minecraft.nbt.CompoundTag) mob).put("ArmorItems", armour);
-
-		return mob;
+		nbt.put("equipment", equipment);
+		return nbt;
 	}
 }

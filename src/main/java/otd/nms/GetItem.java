@@ -13,7 +13,7 @@ public class GetItem {
 		if (itemName == null)
 			return item;
 		item.putString("id", itemName);
-		item.putInt("Count", 1);
+		item.putInt("count", 1);
 		return item;
 	}
 }

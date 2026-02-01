@@ -18,15 +18,15 @@ public class GetRoguelike {
 		if (!(WorldConfig.wc.rogueSpawners && sp.equip))
 			return tag;
 		net.minecraft.nbt.ListTag activeEffects = new net.minecraft.nbt.ListTag();
-		tag.put("ActiveEffects", activeEffects);
+		tag.put("active_effects", activeEffects);
 
 		net.minecraft.nbt.CompoundTag buff = new net.minecraft.nbt.CompoundTag();
 		activeEffects.add(buff);
 
-		buff.putByte("Id", (byte) 4);
-		buff.putByte("Amplifier", (byte) level);
-		buff.putInt("Duration", 10);
-		buff.putByte("Ambient", (byte) 0);
+		buff.putString("id", "minecraft:mining_fatigue");
+		buff.putByte("amplifier", (byte) level);
+		buff.putInt("duration", 10);
+		buff.putBoolean("ambient", false);
 
 		return tag;
 	}
