@@ -154,7 +154,7 @@ public class BiomeSetting extends Content {
 
 			List<String> all_biomes = new ArrayList<>();
 			Registry.BIOME.forEach(biome -> {
-				all_biomes.add(biome.toString());
+				all_biomes.add(biome.getKey().getKey());
 			});
 			Collections.sort(all_biomes);
 
