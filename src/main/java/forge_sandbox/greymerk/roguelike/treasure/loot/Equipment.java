@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Equipment {
 
-	SWORD, BOW, HELMET, CHEST, LEGS, FEET, PICK, AXE, SHOVEL;
+	SWORD, BOW, HELMET, CHEST, LEGS, FEET, PICK, AXE, SHOVEL, SPEAR;
 
 	public static Equipment[] armour = new Equipment[] { HELMET, CHEST, LEGS, FEET };
 
@@ -45,6 +45,9 @@ public enum Equipment {
 		case SHOVEL:
 			itemName = "shovel";
 			break;
+		case SPEAR:
+			itemName = "spear";
+			break;
 		default:
 			return "minecraft:stick";
 		}
@@ -56,6 +59,9 @@ public enum Equipment {
 				break;
 			case STONE:
 				qualityName = "chainmail";
+				break;
+			case COPPER:
+				qualityName = "copper";
 				break;
 			case IRON:
 				qualityName = "iron";
@@ -76,6 +82,9 @@ public enum Equipment {
 				break;
 			case STONE:
 				qualityName = "stone";
+				break;
+			case COPPER:
+				qualityName = "copper";
 				break;
 			case IRON:
 				qualityName = "iron";
@@ -102,6 +111,8 @@ public enum Equipment {
 				return new ItemStack(Material.WOODEN_SWORD);
 			case STONE:
 				return new ItemStack(Material.STONE_SWORD);
+			case COPPER:
+				return new ItemStack(Material.COPPER_SWORD);
 			case IRON:
 				return new ItemStack(Material.IRON_SWORD);
 			case GOLD:
@@ -118,6 +129,8 @@ public enum Equipment {
 				return new ItemStack(Material.LEATHER_HELMET);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_HELMET);
+			case COPPER:
+				return new ItemStack(Material.COPPER_HELMET);
 			case IRON:
 				return new ItemStack(Material.IRON_HELMET);
 			case GOLD:
@@ -132,6 +145,8 @@ public enum Equipment {
 				return new ItemStack(Material.LEATHER_CHESTPLATE);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+			case COPPER:
+				return new ItemStack(Material.COPPER_CHESTPLATE);
 			case IRON:
 				return new ItemStack(Material.IRON_CHESTPLATE);
 			case GOLD:
@@ -146,6 +161,8 @@ public enum Equipment {
 				return new ItemStack(Material.LEATHER_LEGGINGS);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_LEGGINGS);
+			case COPPER:
+				return new ItemStack(Material.COPPER_LEGGINGS);
 			case IRON:
 				return new ItemStack(Material.IRON_LEGGINGS);
 			case GOLD:
@@ -160,6 +177,8 @@ public enum Equipment {
 				return new ItemStack(Material.LEATHER_BOOTS);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_BOOTS);
+			case COPPER:
+				return new ItemStack(Material.COPPER_BOOTS);
 			case IRON:
 				return new ItemStack(Material.IRON_BOOTS);
 			case GOLD:
@@ -174,6 +193,8 @@ public enum Equipment {
 				return new ItemStack(Material.WOODEN_PICKAXE);
 			case STONE:
 				return new ItemStack(Material.STONE_PICKAXE);
+			case COPPER:
+				return new ItemStack(Material.COPPER_PICKAXE);
 			case IRON:
 				return new ItemStack(Material.IRON_PICKAXE);
 			case GOLD:
@@ -188,6 +209,8 @@ public enum Equipment {
 				return new ItemStack(Material.WOODEN_AXE);
 			case STONE:
 				return new ItemStack(Material.STONE_AXE);
+			case COPPER:
+				return new ItemStack(Material.COPPER_AXE);
 			case IRON:
 				return new ItemStack(Material.IRON_AXE);
 			case GOLD:
@@ -202,12 +225,30 @@ public enum Equipment {
 				return new ItemStack(Material.WOODEN_SHOVEL);
 			case STONE:
 				return new ItemStack(Material.STONE_SHOVEL);
+			case COPPER:
+				return new ItemStack(Material.COPPER_SHOVEL);
 			case IRON:
 				return new ItemStack(Material.IRON_SHOVEL);
 			case GOLD:
 				return new ItemStack(Material.GOLDEN_SHOVEL);
 			case DIAMOND:
 				return new ItemStack(Material.DIAMOND_SHOVEL);
+			default:
+			}
+		case SPEAR:
+			switch (quality) {
+			case WOOD:
+				return new ItemStack(Material.WOODEN_SPEAR);
+			case STONE:
+				return new ItemStack(Material.STONE_SPEAR);
+			case COPPER:
+				return new ItemStack(Material.COPPER_SPEAR);
+			case IRON:
+				return new ItemStack(Material.IRON_SPEAR);
+			case GOLD:
+				return new ItemStack(Material.GOLDEN_SPEAR);
+			case DIAMOND:
+				return new ItemStack(Material.DIAMOND_SPEAR);
 			default:
 			}
 		default:

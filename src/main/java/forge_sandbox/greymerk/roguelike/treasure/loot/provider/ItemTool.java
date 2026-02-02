@@ -104,6 +104,8 @@ public class ItemTool extends ItemBase {
 			return new ItemStack(Material.GOLDEN_AXE);
 		case IRON:
 			return new ItemStack(Material.IRON_AXE);
+		case COPPER:
+			return new ItemStack(Material.COPPER_AXE);
 		case STONE:
 			return new ItemStack(Material.STONE_AXE);
 		default:
@@ -121,6 +123,8 @@ public class ItemTool extends ItemBase {
 			return new ItemStack(Material.GOLDEN_SHOVEL);
 		case IRON:
 			return new ItemStack(Material.IRON_SHOVEL);
+		case COPPER:
+			return new ItemStack(Material.COPPER_SHOVEL);
 		case STONE:
 			return new ItemStack(Material.STONE_SHOVEL);
 		default:
@@ -138,6 +142,8 @@ public class ItemTool extends ItemBase {
 			return new ItemStack(Material.GOLDEN_PICKAXE);
 		case IRON:
 			return new ItemStack(Material.IRON_PICKAXE);
+		case COPPER:
+			return new ItemStack(Material.COPPER_PICKAXE);
 		case STONE:
 			return new ItemStack(Material.STONE_PICKAXE);
 		default:

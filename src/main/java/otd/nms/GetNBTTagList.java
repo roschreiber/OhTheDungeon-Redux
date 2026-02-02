@@ -16,7 +16,7 @@ public class GetNBTTagList {
 				mob = (net.minecraft.nbt.CompoundTag) sp.getRoguelike(level, sp.name, mob);
 
 				Equipment tool;
-				switch (rand.nextInt(3)) {
+				switch (rand.nextInt(4)) {
 				case 0:
 					tool = Equipment.SHOVEL;
 					break;
@@ -25,6 +25,9 @@ public class GetNBTTagList {
 					break;
 				case 2:
 					tool = Equipment.PICK;
+					break;
+				case 3:
+					tool = Equipment.SPEAR;
 					break;
 				default:
 					tool = Equipment.PICK;

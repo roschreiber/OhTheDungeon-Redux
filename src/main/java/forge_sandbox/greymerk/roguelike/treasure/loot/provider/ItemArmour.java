@@ -111,6 +111,8 @@ public class ItemArmour extends ItemBase {
 				return new ItemStack(Material.GOLDEN_HELMET);
 			case IRON:
 				return new ItemStack(Material.IRON_HELMET);
+			case COPPER:
+				return new ItemStack(Material.COPPER_HELMET);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_HELMET);
 			default:
@@ -128,6 +130,8 @@ public class ItemArmour extends ItemBase {
 				return new ItemStack(Material.GOLDEN_BOOTS);
 			case IRON:
 				return new ItemStack(Material.IRON_BOOTS);
+			case COPPER:
+				return new ItemStack(Material.COPPER_BOOTS);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_BOOTS);
 			default:
@@ -145,6 +149,8 @@ public class ItemArmour extends ItemBase {
 				return new ItemStack(Material.GOLDEN_CHESTPLATE);
 			case IRON:
 				return new ItemStack(Material.IRON_CHESTPLATE);
+			case COPPER:
+				return new ItemStack(Material.COPPER_CHESTPLATE);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_CHESTPLATE);
 			default:
@@ -161,6 +167,8 @@ public class ItemArmour extends ItemBase {
 				return new ItemStack(Material.GOLDEN_LEGGINGS);
 			case IRON:
 				return new ItemStack(Material.IRON_LEGGINGS);
+			case COPPER:
+				return new ItemStack(Material.COPPER_LEGGINGS);
 			case STONE:
 				return new ItemStack(Material.CHAINMAIL_LEGGINGS);
 			default:
