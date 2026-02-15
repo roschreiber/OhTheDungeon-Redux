@@ -52,6 +52,8 @@ import otd.config.storage.ConfigImpl;
 import otd.config.storage.MySqlConfig;
 import otd.config.storage.SQLiteConfig;
 import otd.util.ExceptionReporter;
+import otd.config.storage.YamlConfig;
+import otd.redux.util.ConsoleManager;
 import otd.util.I18n;
 //import static otd.config.WorldConfig.wc;
 import otd.world.WorldDefine;
@@ -91,6 +93,7 @@ public class WorldConfig {
 	public DungeonWorldConfig dungeon_world = new DungeonWorldConfig();
 
 	public static transient ConfigImpl db;
+	public static transient YamlConfig yamlStorage;
 
 	public static class CustomDungeon {
 		public UUID id = UUID.randomUUID();
@@ -219,7 +222,7 @@ public class WorldConfig {
 				}
 				actualSave();
 				Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-					Bukkit.getLogger().info("[OTD] New config saved...");
+					ConsoleManager.logInfo("New config saved");
 				}, 1L);
 			}, 20 * 1, 20 * 1);
 		}
@@ -230,16 +233,10 @@ public class WorldConfig {
 	}
 
 	public static void actualSave() {
-		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(wc);
-		JavaPlugin plugin = Main.instance;
-		// make sure file exists
-		File configDir = plugin.getDataFolder();
-		if (!configDir.exists()) {
-			configDir.mkdir();
-		}
+		File configDir = Main.instance.getDataFolder();
+		if (!configDir.exists()) configDir.mkdir();
 
-		WorldConfig.db.setValue("config", json);
+		if (yamlStorage != null) yamlStorage.saveAll(wc);
 	}
 
 	public static void saveold() {
@@ -258,63 +255,74 @@ public class WorldConfig {
 			oStreamWriter.append(json);
 			oStreamWriter.close();
 		} catch (IOException ex) {
-			Bukkit.getLogger().log(Level.SEVERE, I18n.instance.Load_Config_Err);
+			ConsoleManager.logError(I18n.instance.Load_Config_Err);
 		}
 	}
 
 	public static void loadWorldConfig() {
-		JavaPlugin plugin = Main.instance;
-		File configDir = plugin.getDataFolder();
-		if (!configDir.exists()) {
-			configDir.mkdir();
+		File configDir = Main.instance.getDataFolder();
+		if (!configDir.exists()) configDir.mkdir();
+
+		File oldFolder = new File(configDir, "old");
+		if (!oldFolder.exists()) oldFolder.mkdir();
+
+		yamlStorage = new YamlConfig(Main.instance);
+		yamlStorage.load();
+
+		if (yamlStorage.hasExistingConfig()) {
+			wc = yamlStorage.loadAll();
+			update();
+			ConsoleManager.logInfo("Loaded " + wc.dict.size() + " world configs from YAML files.");
+			return;
 		}
 
-		String old = configDir.toString() + File.separator + "old";
-		File oldFolder = new File(old);
-		if (!oldFolder.exists())
-			oldFolder.mkdir();
+		ConsoleManager.logWarning("no YAML configs found, checking for legacy data...");
 
-		String world_config_file = configDir.toString() + File.separator + "world_config.json";
-		File cfile = new File(world_config_file);
+		File jsonFile = new File(configDir, "world_config.json");
+		File dbFile = new File(configDir, "config.db");
+		boolean migrated = false;
 
-		String dat = configDir.toString() + File.separator + "config.db";
-		File datfile = new File(dat);
-
-		boolean update = false;
-		boolean datfile_exist = datfile.exists();
-
-		if (YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.SQLITE) {
-			WorldConfig.db = new SQLiteConfig(Main.instance);
-		} else {
-			WorldConfig.db = new MySqlConfig(Main.instance);
-		}
-
-		WorldConfig.db.load();
-
-		if (cfile.exists()) {
-			if (YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.SQLITE && !datfile_exist) {
-				update = true;
-				loadWorldConfigUpdate();
-			}
-			String newf = configDir.toString() + File.separator + "old" + File.separator + UUID.randomUUID().toString();
+		if (dbFile.exists() || YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.MYSQL) {
 			try {
-				Files.move(cfile, new File(newf));
-			} catch (IOException ex) {
-				Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));
+				if (YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.SQLITE) {
+					WorldConfig.db = new SQLiteConfig(Main.instance);
+				} else {
+					WorldConfig.db = new MySqlConfig(Main.instance);
+				}
+				WorldConfig.db.load();
+
+				String value = WorldConfig.db.getValue("config");
+				if (value != null) {
+					wc = (new Gson()).fromJson(value, WorldConfig.class);
+					migrated = true;
+				}
+
+				WorldConfig.db.close();
+				WorldConfig.db = null;
+			} catch (Exception e) {
+				ConsoleManager.logWarning("Couldn't read legacy database");
 			}
 		}
 
-		if (update) {
-			actualSave();
+		if (!migrated && jsonFile.exists()) {
+			try {
+				loadWorldConfigUpdate();
+				migrated = true;
+			} catch (Exception e) {
+				ConsoleManager.logWarning("Couldn't read legacy JSON config");
+			}
 		}
 
-		String value = WorldConfig.db.getValue("config");
-		if (value == null) {
+		moveLegacyFile(jsonFile, oldFolder, "world_config", ".json");
+		moveLegacyFile(dbFile, oldFolder, "config", ".db");
+
+		if (!migrated) {
 			wc.dict.put("example_otd", new SimpleWorldConfig());
-			actualSave();
-		} else {
-			wc = (new Gson()).fromJson(value, WorldConfig.class);
 		}
+
+		update();
+		actualSave();
+		ConsoleManager.logInfo("Config saved (" + wc.dict.size() + " worlds)");
 	}
 
 	public static void loadWorldConfigUpdate() {
@@ -333,7 +341,7 @@ public class WorldConfig {
 				cfile.createNewFile();
 				saveold();
 			} catch (IOException ex) {
-				Bukkit.getLogger().log(Level.SEVERE, I18n.instance.Load_Config_Err);
+				ConsoleManager.logError(I18n.instance.Load_Config_Err);
 			}
 		}
 		try (BufferedReader reader = new BufferedReader(
@@ -500,6 +508,22 @@ public class WorldConfig {
 	}
 
 	public static void close() {
-		WorldConfig.db.close();
+		if (WorldConfig.db != null) WorldConfig.db.close();
+	}
+
+	public static void reloadFromYaml() {
+		if (yamlStorage == null) return;
+		wc = yamlStorage.loadAll();
+		update();
+		ConsoleManager.logInfo("Reloaded " + wc.dict.size() + " world configs.");
+	}
+
+	private static void moveLegacyFile(File file, File destDir, String prefix, String ext) {
+		if (!file.exists()) return;
+		try {
+			Files.move(file, new File(destDir, prefix + "_" + UUID.randomUUID() + ext));
+		} catch (IOException e) {
+			ConsoleManager.logError("Couldn't move " + file.getName());
+		}
 	}
 }

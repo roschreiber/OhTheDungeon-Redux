@@ -25,8 +25,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import com.google.gson.Gson;
-
 import otd.Main;
 import otd.config.WorldConfig;
 import otd.redux.util.ChatManager;
@@ -129,14 +127,11 @@ public class Otd_Reload implements TabExecutor {
 		// If not handling chat, or if "all" or "config" is specified, reload the world config
 		if (args.length == 0 || args[0].equalsIgnoreCase("all") || args[0].equalsIgnoreCase("config")) {
 			Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
-				String value = WorldConfig.db.getValue("config");
-				if (value != null && !value.isEmpty()) {
-					WorldConfig wc = (new Gson()).fromJson(value, WorldConfig.class);
-					Bukkit.getScheduler().runTask(Main.instance, () -> {
-						WorldConfig.wc = wc;
-						sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
-					});
-				}
+				WorldConfig.reloadFromYaml();
+				Bukkit.getScheduler().runTask(Main.instance, () -> {
+					sender.sendMessage(ChatManager.getInstance().formatMessage(
+						"World configuration reloaded", MessageType.SUCCESS));
+				});
 			});
 			
 			// If "all" is specified, also reload chat config
