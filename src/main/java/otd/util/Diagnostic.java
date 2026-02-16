@@ -32,6 +32,7 @@ import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.integration.MythicMobsImpl;
 import otd.redux.util.ChatManager;
+import otd.redux.util.ConsoleManager;
 
 /**
  *
@@ -62,9 +63,7 @@ public class Diagnostic {
 
 	public static void diagnostic() {
 		if (!isWorldHookReady()) {
-			Bukkit.getLogger().log(Level.INFO,
-					"{0}[OTD] Looks like you use /reload to load this plugin.,.. You need to restart your server, otherwise it won''t work",
-					ChatColor.RED);
+			ConsoleManager.logWarning("Looks like you used /reload to load this plugin. Please restart your server, otherwise some features might be broken.");
 		}
 	}
 

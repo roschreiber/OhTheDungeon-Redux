@@ -1,5 +1,6 @@
 package otd.integration;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import otd.redux.util.ConsoleManager;
 
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
@@ -26,7 +28,7 @@ public class MythicMobsImpl {
 	public static void enable() {
 		MythicMobsImpl.inst = null;
 		if (Bukkit.getPluginManager().getPlugin("MythicMobs") != null) {
-			Bukkit.getLogger().info("Loading MythicMobs support ...");
+			ConsoleManager.logInfo("Loading MythicMobs support ...");
 
 			try {
 				Class.forName("io.lumine.xikage.mythicmobs.MythicMobs");
@@ -43,7 +45,7 @@ public class MythicMobsImpl {
 			}
 
 			if (MythicMobsImpl.inst == null) {
-				Bukkit.getLogger().info("You are using an unsupported version of MythicMobs");
+				ConsoleManager.logWarning("You are using an unsupported version of MythicMobs!");
 				ready = false;
 			} else {
 				ready = true;
@@ -64,13 +66,10 @@ public class MythicMobsImpl {
 		sb.append("otd normal boss table: [");
 		sb.append(mobs.stream().collect(Collectors.joining(",")));
 		sb.append("]");
-		Bukkit.getLogger().info(sb.toString());
+		ConsoleManager.logInfo(sb.toString());
 
-		Bukkit.getLogger()
-				.info("Lich Boss: " + (lichBossReady() ? ChatColor.GREEN + "Found" : ChatColor.RED + "Not Found"));
-		Bukkit.getLogger().info(
-				"Castle King: " + (kingCastleBossReady() ? ChatColor.GREEN + "Found" : ChatColor.RED + "Not Found"));
-
+		ConsoleManager.logInfo("Lich Boss: " + (lichBossReady() ? "Found" : "Not Found"));
+		ConsoleManager.logInfo("Castle King: " + (kingCastleBossReady() ? "Found" : "Not Found"));
 	}
 
 	public static MythicMobsOTD inst = null;
@@ -142,7 +141,7 @@ public class MythicMobsImpl {
 
 	public static class MythicMobsOTDImpl4 implements MythicMobsOTD {
 		public MythicMobsOTDImpl4() {
-			Bukkit.getLogger().info("[OTD] Hook to MythicMobs with API-4");
+			ConsoleManager.logInfo("Hook to MythicMobs with API-4");
 		}
 
 		public Collection<String> getMobNames() {
@@ -169,7 +168,7 @@ public class MythicMobsImpl {
 
 	public static class MythicMobsOTDImpl5 implements MythicMobsOTD {
 		public MythicMobsOTDImpl5() {
-			Bukkit.getLogger().info("[OTD] Hook to MythicMobs with API-5");
+			ConsoleManager.logInfo("Hook to MythicMobs with API-5");
 		}
 
 		public Collection<String> getMobNames() {

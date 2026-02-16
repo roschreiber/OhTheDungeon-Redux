@@ -1,5 +1,6 @@
 package forge_sandbox.jaredbgreat.dldungeons.themes;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -15,6 +16,7 @@ import org.bukkit.Bukkit;
 import forge_sandbox.jaredbgreat.dldungeons.builder.DBlock;
 import otd.lib.BiomeDictionary.Type;
 import otd.lib.async.AsyncWorldEditor;
+import otd.redux.util.ConsoleManager;
 
 //import net.minecraftforge.common.BiomeDictionary.Type;
 
@@ -162,7 +164,7 @@ public class Theme {
 				eliteMobs.add(mob);
 			return;
 		default:
-			Bukkit.getLogger().log(Level.WARNING, "[OTD] Failed to add mob " + mob + " to theme " + name
+			ConsoleManager.logWarning("Failed to add mob " + mob + " to theme " + name
 					+ ", illegal difficulty level " + level + " (use 0 to 3).");
 			return;
 		}
@@ -195,7 +197,7 @@ public class Theme {
 				eliteMobs.remove(mob);
 			return;
 		default:
-			Bukkit.getLogger().log(Level.WARNING, "[OTD] Failed to remove mob " + mob + " to theme " + name
+			ConsoleManager.logWarning("Failed to remove mob " + mob + " from theme " + name
 					+ ", illegal difficulty level " + level + " (use 0 to 3).");
 			return;
 		}

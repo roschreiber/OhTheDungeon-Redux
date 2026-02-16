@@ -14,6 +14,9 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+import org.checkerframework.checker.units.qual.C;
+
+import otd.redux.util.ConsoleManager;
 
 /**
  * The purpose of this class is to read internal resource, located inside the
@@ -69,14 +72,14 @@ public class Externalizer {
 					outstream.write(line + System.lineSeparator());
 				}
 			else {
-				Bukkit.getLogger().log(Level.SEVERE, "[OTD] Error! Failed to write theme file " + outFile);
+				ConsoleManager.logError("Failed to write theme file " + outFile);
 			}
 			if (instream != null)
 				instream.close();
 			if (outstream != null)
 				outstream.close();
 		} catch (IOException e) {
-			Bukkit.getLogger().log(Level.SEVERE, "[OTD] Error! Failed to write theme file " + outFile);
+			ConsoleManager.logError("Failed to write theme file " + outFile);
 			// e.printStackTrace();
 		}
 	}
@@ -105,7 +108,7 @@ public class Externalizer {
 				if (outFile.canWrite() && !outFile.isDirectory()) {
 					outFile.delete();
 				} else {
-					Bukkit.getLogger().log(Level.SEVERE, "[OTD] Warning, could not delete " + outFile);
+					ConsoleManager.logWarning("could not delete " + outFile);
 					result = false;
 				}
 			}
@@ -117,7 +120,7 @@ public class Externalizer {
 					outstream.write(line + System.lineSeparator());
 				}
 			else {
-				Bukkit.getLogger().log(Level.SEVERE, "[OTD] Error! Failed to write theme file " + outFile);
+				ConsoleManager.logError("Failed to write theme file " + outFile);
 				result = false;
 			}
 			if (instream != null)
@@ -125,7 +128,7 @@ public class Externalizer {
 			if (outstream != null)
 				outstream.close();
 		} catch (IOException e) {
-			Bukkit.getLogger().log(Level.SEVERE, "[OTD] Error! Failed to write theme file " + outFile);
+			ConsoleManager.logError("Failed to write theme file " + outFile);
 			result = false;
 			e.printStackTrace();
 		}
@@ -137,7 +140,7 @@ public class Externalizer {
 	 */
 	public void makeThemes() {
 		for (String name : themes) {
-			Bukkit.getLogger().log(Level.INFO, "[OTD] Installing file " + outDirectory + name);
+			ConsoleManager.logInfo("Installing file " + outDirectory + name);
 			copyOut(name);
 		}
 	}
@@ -148,7 +151,7 @@ public class Externalizer {
 	 */
 	public void forceThemes() {
 		for (String name : themes) {
-			Bukkit.getLogger().log(Level.INFO, "[OTD] Installing file " + outDirectory + name);
+			ConsoleManager.logInfo("Installing file " + outDirectory + name);
 			forceOut(name);
 		}
 	}
@@ -157,7 +160,7 @@ public class Externalizer {
 	 * Export the chest.cfg file if it doesn't currently exist.
 	 */
 	public void makeChestCfg() {
-		Bukkit.getLogger().log(Level.INFO, "[OTD] Installing files " + outDirectory + "chests.cfg");
+		ConsoleManager.logInfo("Installing files " + outDirectory + "chests.cfg");
 		File file = new File(outDirectory + "SpecialChests");
 		if (!file.exists())
 			file.mkdir();
@@ -170,7 +173,7 @@ public class Externalizer {
 	 * Export the chest.cfg file, over-writing it if it already exists.
 	 */
 	public void forceChestCfg() {
-		Bukkit.getLogger().log(Level.INFO, "[OTD] Installing files " + outDirectory + "chests.cfg");
+		ConsoleManager.logInfo("Installing files " + outDirectory + "chests.cfg");
 		forceOut("chests.cfg");
 		forceOut("SpecialChests" + File.separator + "oceanic_chests.cfg");
 	}
@@ -179,7 +182,7 @@ public class Externalizer {
 	 * Export the nbt.cfg file if it doesn't currently exist.
 	 */
 	public void makeNBTCfg() {
-		Bukkit.getLogger().log(Level.INFO, "[OTD] Installing files " + outDirectory + "nbt.cfg and ");
+		ConsoleManager.logInfo("Installing files " + outDirectory + "nbt.cfg and ");
 		copyOut("nbt.cfg");
 	}
 
@@ -187,7 +190,7 @@ public class Externalizer {
 	 * Export the nbt.cfg file, over-writing it if it already exists.
 	 */
 	public void forceNBTCfg() {
-		Bukkit.getLogger().log(Level.INFO, "[OTD] Installing files " + outDirectory + "nbt.cfg and ");
+		ConsoleManager.logInfo("Installing files " + outDirectory + "nbt.cfg and ");
 		forceOut("nbt.cfg");
 	}
 

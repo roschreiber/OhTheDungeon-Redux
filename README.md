@@ -22,7 +22,7 @@ No. Well, yes, you can but I don't recommend that. OTD-R is currently very buggy
 
 ### Are there any known issues?
 
-Yeah, there are. For example, mobs do not spawn with any armor right now, EcoMobs isn't implemented yet, and the UIs & commands are outdated and buggy.
+Yup. There are a few known issues rn. But I'm actively working on fixing them.
 
 ### How to manually place a dungeon?
 

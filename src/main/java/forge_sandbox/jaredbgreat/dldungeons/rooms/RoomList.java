@@ -12,6 +12,8 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 
+import otd.redux.util.ConsoleManager;
+
 /**
  * A list of rooms. This is implemented as a ArrayList, but starting with one
  * for the first room, as zero is used to represented rooms outside the dungeon
@@ -73,8 +75,7 @@ public class RoomList extends ArrayList<Room> {
 
 	@Override
 	public Room remove(int index) {
-		Bukkit.getLogger().log(Level.SEVERE,
-				"[OTD] WARNING! Trying to remove room from list " + "(Rooms cannot be removed)!");
+		ConsoleManager.logWarning("Trying to remove room from list " + "(Rooms cannot be removed)!");
 		return null; // Rooms cannot be removed
 	}
 
