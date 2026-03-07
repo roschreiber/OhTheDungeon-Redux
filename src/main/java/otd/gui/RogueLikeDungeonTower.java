@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
+import otd.redux.util.MenuHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
@@ -45,16 +46,13 @@ public class RogueLikeDungeonTower extends Content {
 	private SimpleWorldConfig swc;
 
 	private RogueLikeDungeonTower() {
-		super(I18n.instance.Roguelike_Dungeon_Tower, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Roguelike_Dungeon_Tower, SLOT);
 		world_name = null;
 		parent = null;
 	}
 
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
-
 	public RogueLikeDungeonTower(String world_name, Content parent) {
-		super(I18n.instance.Roguelike_Dungeon_Tower, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Roguelike_Dungeon_Tower, SLOT);
 		this.world_name = world_name;
 
 		if (!WorldConfig.wc.dict.containsKey(world_name)) {
@@ -199,236 +197,33 @@ public class RogueLikeDungeonTower extends Content {
 		}
 	}
 
+	private void addThemeItem(int slot, String name, boolean enabled) {
+		ItemStack is = new ItemStack(MenuHelper.toggleMaterial(enabled));
+		ItemMeta im = is.getItemMeta();
+		im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + name);
+		List<String> lores = new ArrayList<>();
+		lores.add(MenuHelper.status(enabled));
+		lores.add(MenuHelper.separator());
+		lores.add(MenuHelper.actionHint("Click to toggle"));
+		im.setLore(lores);
+		is.setItemMeta(im);
+		addItem(slot, is);
+	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void init() {
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.bunker) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Bunker);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(0, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.desert) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Desert);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(1, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.forest) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Forest);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(2, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.house) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.House);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(3, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.ice) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Ice);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(4, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.jungle) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Jungle);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(5, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.mesa) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Mesa);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(6, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.mountain) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Mountain);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(7, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.ruin) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Ruin);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(8, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.rare) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Cactus);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(9, is);
-		}
-		{
-			Material type;
-			String status;
-			if (swc.roguelike.themes.swamp) {
-				type = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				type = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(type);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Swamp);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			im.setLore(lores);
-
-			is.setItemMeta(im);
-			addItem(10, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(1, 8, is);
-		}
+		addThemeItem(0, I18n.instance.Bunker, swc.roguelike.themes.bunker);
+		addThemeItem(1, I18n.instance.Desert, swc.roguelike.themes.desert);
+		addThemeItem(2, I18n.instance.Forest, swc.roguelike.themes.forest);
+		addThemeItem(3, I18n.instance.House, swc.roguelike.themes.house);
+		addThemeItem(4, I18n.instance.Ice, swc.roguelike.themes.ice);
+		addThemeItem(5, I18n.instance.Jungle, swc.roguelike.themes.jungle);
+		addThemeItem(6, I18n.instance.Mesa, swc.roguelike.themes.mesa);
+		addThemeItem(7, I18n.instance.Mountain, swc.roguelike.themes.mountain);
+		addThemeItem(8, I18n.instance.Ruin, swc.roguelike.themes.ruin);
+		addThemeItem(9, I18n.instance.Cactus, swc.roguelike.themes.rare);
+		addThemeItem(10, I18n.instance.Swamp, swc.roguelike.themes.swamp);
+		addItem(1, 8, MenuHelper.back());
 	}
 }

@@ -17,7 +17,7 @@
 package otd.world;
 
 import org.bukkit.Difficulty;
-import org.bukkit.GameRule;
+import org.bukkit.GameRules;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldInitEvent;
@@ -32,8 +32,8 @@ public class WorldGenOptimization implements Listener {
 	public void onWorldInit(WorldInitEvent e) {
 		if (e.getWorld().getName().equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
 			e.getWorld().setTime(6000);
-			e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-			e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+			e.getWorld().setGameRule(GameRules.ADVANCE_TIME, false);
+			e.getWorld().setGameRule(GameRules.ADVANCE_WEATHER, false);
 			e.getWorld().setDifficulty(Difficulty.HARD);
 			e.getWorld().setSpawnFlags(true, false);
 		}
@@ -43,8 +43,8 @@ public class WorldGenOptimization implements Listener {
 	public void onWorldLoad(WorldLoadEvent e) {
 		if (e.getWorld().getName().equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
 			e.getWorld().setTime(6000);
-			e.getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-			e.getWorld().setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+			e.getWorld().setGameRule(GameRules.ADVANCE_TIME, false);
+			e.getWorld().setGameRule(GameRules.ADVANCE_WEATHER, false);
 			e.getWorld().setDifficulty(Difficulty.HARD);
 			e.getWorld().setSpawnFlags(true, false);
 		}

@@ -31,6 +31,7 @@ import forge_sandbox.greymerk.roguelike.treasure.loot.PotionMixture;
 import forge_sandbox.greymerk.roguelike.treasure.loot.provider.ItemNovelty;
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
+import otd.redux.util.MenuHelper;
 import otd.util.I18n;
 import otd.util.Roll;
 
@@ -43,7 +44,7 @@ public class CreativeInventory extends Content {
 	private final static int SLOT = 54;
 
 	public CreativeInventory() {
-		super(I18n.instance.Creative_Inventory, SLOT);
+		super(MenuHelper.color(MenuHelper.GOLD) + I18n.instance.Creative_Inventory, SLOT);
 	}
 
 	@EventHandler

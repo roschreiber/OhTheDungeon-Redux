@@ -30,6 +30,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import otd.config.RoguelikeLootNode;
 import otd.config.WorldConfig;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -45,16 +46,12 @@ public class RoguelikeLootItem extends Content {
 	public boolean each;
 	private final static Material ADD = Material.RED_STAINED_GLASS_PANE;
 	private final static Material SUB = Material.GREEN_STAINED_GLASS_PANE;
-	private final static Material ISO = Material.BLUE_STAINED_GLASS_PANE;
 	private final static int SLOT = 36;
-
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
 
 	public int weight;
 
 	private RoguelikeLootItem() {
-		super(I18n.instance.Loot_Config, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config, SLOT);
 		parent = null;
 		loots = null;
 		index = -1;
@@ -191,7 +188,7 @@ public class RoguelikeLootItem extends Content {
 	}
 
 	public RoguelikeLootItem(List<RoguelikeLootNode> loots, int index, Content parent) {
-		super(I18n.instance.Loot_Config, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config, SLOT);
 		this.index = index;
 		this.loots = loots;
 		this.parent = parent;
@@ -219,7 +216,7 @@ public class RoguelikeLootItem extends Content {
 		if (weight < 0)
 			weight = 0;
 		{
-			ItemStack is = new ItemStack(ISO);
+			ItemStack is = MenuHelper.filler();
 			addItem(0, 0, is);
 			addItem(0, 1, is);
 			addItem(0, 2, is);
@@ -239,9 +236,9 @@ public class RoguelikeLootItem extends Content {
 			{
 				ItemStack is = new ItemStack(Material.OAK_SIGN);
 				ItemMeta im = is.getItemMeta();
-				im.setDisplayName(I18n.instance.Current_Chance);
+				im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Current_Chance);
 				List<String> lores = new ArrayList<>();
-				lores.add(I18n.instance.Weight + " : " + Integer.toString(weight));
+				lores.add(MenuHelper.value(I18n.instance.Weight, weight));
 				im.setLore(lores);
 				is.setItemMeta(im);
 				addItem(0, 6, is);
@@ -270,77 +267,57 @@ public class RoguelikeLootItem extends Content {
 		{
 			ItemStack is = new ItemStack(Material.LAVA_BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Remove);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.muted("Remove this item"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(3, 6, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.BARRIER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Cancel);
-			is.setItemMeta(im);
-			addItem(3, 7, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			is.setItemMeta(im);
-			addItem(3, 8, is);
-		}
+		addItem(34, MenuHelper.cancel());
+		addItem(35, MenuHelper.apply());
 		{
 			ItemStack is = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Max_Item);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Max_Item);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Max_Item + " : " + Integer.toString(max));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value(I18n.instance.Max_Item, max));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(13, is);
 		}
 		{
 			for (int i = 0; i < 5; i++) {
-				Material material;
-				String status;
-				if (level == i) {
-					material = ENABLE;
-					status = I18n.instance.Enable;
-				} else {
-					material = DISABLE;
-					status = I18n.instance.Disable;
-				}
-				ItemStack is = new ItemStack(material);
+				boolean selected = (level == i);
+				ItemStack is = new ItemStack(MenuHelper.toggleMaterial(selected));
 				ItemMeta im = is.getItemMeta();
-				im.setDisplayName(I18n.instance.Dungeon_Level + " : " + i);
+				im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Dungeon_Level + " : " + i);
 				List<String> lores = new ArrayList<>();
-				lores.add(status);
-				lores.add(I18n.instance.Level_Tip);
+				lores.add(MenuHelper.status(selected));
+				lores.add(MenuHelper.desc(I18n.instance.Level_Tip));
 				if (i == 0)
-					lores.add(I18n.instance.Beginner_Level);
+					lores.add(MenuHelper.desc(I18n.instance.Beginner_Level));
 				if (i == 4)
-					lores.add(I18n.instance.Deepest_Level);
+					lores.add(MenuHelper.desc(I18n.instance.Deepest_Level));
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.actionHint("Click to select"));
 				im.setLore(lores);
 				is.setItemMeta(im);
 				addItem(3, i, is);
 			}
 		}
 		{
-			Material material;
-			String status;
-			if (this.each) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			boolean enabled = this.each;
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(enabled));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Each);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Each);
 			List<String> lores = new ArrayList<>(I18n.instance.EachTip);
-			lores.add(0, status);
+			lores.add(0, MenuHelper.status(enabled));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 

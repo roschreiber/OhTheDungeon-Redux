@@ -105,6 +105,7 @@ public class Async_Task_Pool {
 
 		final TaskHolder t = holder;
 
+		final String taskKey = key;
 		BukkitRunnable t_run = new BukkitRunnable() {
 			@Override
 			public void run() {
@@ -118,6 +119,7 @@ public class Async_Task_Pool {
 					}
 				} catch (Exception ex) {
 					AsyncErrorLogger.normalLog(t.getChunkX(), t.getChunkZ(), AsyncErrorLogger.exceptionToString(ex));
+					Bukkit.getScheduler().runTask(plugin, () -> kill(taskKey));
 				}
 			}
 		};

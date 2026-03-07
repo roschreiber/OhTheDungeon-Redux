@@ -37,6 +37,8 @@ import otd.lib.DungeonWorldManager;
 import otd.util.I18n;
 import otd.world.WorldDefine;
 
+import otd.redux.util.MenuHelper;
+
 /**
  *
  * @author
@@ -48,12 +50,12 @@ public class WorldManager extends Content {
 	public static WorldManager instance = new WorldManager();
 
 	public WorldManager() {
-		super(I18n.instance.World_Manager, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.World_Manager, SLOT);
 		parent = null;
 	}
 
 	public WorldManager(Content parent) {
-		super(I18n.instance.World_Manager, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.World_Manager, SLOT);
 		worlds = new ArrayList<>();
 		offset = 0;
 		this.parent = parent;
@@ -104,15 +106,14 @@ public class WorldManager extends Content {
 		if (slot == 8) {
 			holder.parent.openInventory(p);
 		}
-
-		if (name.equals(I18n.instance.Previous)) {
+		if (slot == 45) {
 			holder.offset--;
 			if (holder.offset < 0)
 				holder.offset = 0;
 			holder.init();
 			return;
 		}
-		if (name.equals(I18n.instance.Next)) {
+		if (slot == 53) {
 			holder.offset++;
 			holder.init();
 			return;
@@ -124,8 +125,8 @@ public class WorldManager extends Content {
 			return;
 		String keyword = lores.get(0);
 		if (keyword.equals(WORLD_KEYWORD)) {
-			String world_name = im.getDisplayName();
-			World world = Bukkit.getServer().getWorld(world_name.trim());
+			String world_name = ChatColor.stripColor(im.getDisplayName()).trim();
+            World world = Bukkit.getServer().getWorld(world_name);
 			if (world == null) {
 				p.sendMessage(
 						ChatColor.GREEN + "https://www.spigotmc.org/resources/perplayerdungeoninstance-lite.77777/");
@@ -154,49 +155,21 @@ public class WorldManager extends Content {
 		if (!include_instance)
 			worlds.add(null);
 
+		// Header row
+		MenuHelper.fillRow(this, 0);
 		{
 			ItemStack first = new ItemStack(Material.OAK_SIGN);
 			ItemMeta im = first.getItemMeta();
-			im.setDisplayName(I18n.instance.World_List);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.World_List);
 			first.setItemMeta(im);
-
 			addItem(0, 0, first);
 		}
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
+		addItem(0, 8, MenuHelper.back());
 
-			addItem(5, 0, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(5, 8, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(0, 8, is);
-		}
-//        {
-//            ItemStack is = new ItemStack(Material.BOOK);
-//            ItemMeta im = is.getItemMeta();
-//            im.setDisplayName(I18n.instance.Tip);
-//            List<String> lores = new ArrayList<>();
-//            for(String str : I18n.instance.World_Tip) lores.add(str);
-//            im.setLore(lores);
-//            is.setItemMeta(im);
-//            
-//            addItem(5, 4, is);
-//        }
+		// Footer row
+		MenuHelper.fillRow(this, 5);
+		addItem(5, 0, MenuHelper.prev(offset + 1));
+		addItem(5, 8, MenuHelper.next(offset + 1));
 		if (offset * 4 * 9 > worlds.size()) {
 			return;
 		}
@@ -232,110 +205,78 @@ public class WorldManager extends Content {
 			ItemStack is = new ItemStack(mat);
 			ItemMeta im = is.getItemMeta();
 			if (w != null) {
-				im.setDisplayName(w.getName());
+				String ncolor;
+				if (w.getName().equals(DungeonWorldManager.WORLD_NAME)) {
+					ncolor = MenuHelper.SECONDARY;
+				} else {
+					switch (w.getEnvironment()) {
+					case NORMAL:
+						ncolor = MenuHelper.SUCCESS;
+						break;
+					case NETHER:
+						ncolor = MenuHelper.DANGER;
+						break;
+					case THE_END:
+						ncolor = MenuHelper.INFO;
+						break;
+					default:
+						ncolor = MenuHelper.LIGHT;
+					}
+				}
+				im.setDisplayName(MenuHelper.color(ncolor) + w.getName());
 			} else {
-				im.setDisplayName(DungeonWorldManager.WORLD_NAME);
+				im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + DungeonWorldManager.WORLD_NAME);
 			}
 
 			if (w == null) {
 				List<String> lores = new ArrayList<>();
 				lores.add(WORLD_KEYWORD);
-				lores.add(I18n.instance.PPDI_WORLD);
-				lores.add(I18n.instance.Addon_Not_Installed);
-				lores.add(I18n.instance.Click_To_Install);
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.info(I18n.instance.PPDI_WORLD));
+				lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Addon_Not_Installed);
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Install));
 				im.setLore(lores);
 			} else if (WorldConfig.wc.dict.containsKey(w.getName())) {
 				SimpleWorldConfig config = WorldConfig.wc.dict.get(w.getName());
 				List<String> lores = new ArrayList<>();
 				lores.add(WORLD_KEYWORD);
+				lores.add(MenuHelper.separator());
 				if (w.getName().equals(DungeonWorldManager.WORLD_NAME)) {
-					lores.add(I18n.instance.PPDI_WORLD);
+					lores.add(MenuHelper.info(I18n.instance.PPDI_WORLD));
 				} else {
-					if (config.roguelike.doNaturalSpawn) {
-						lores.add(I18n.instance.Roguelike_Dungeon_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Roguelike_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.doomlike.doNaturalSpawn) {
-						lores.add(I18n.instance.Doomlike_Dungeon_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Doomlike_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.battletower.doNaturalSpawn) {
-						lores.add(I18n.instance.Battle_Tower_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Battle_Tower_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.smoofydungeon.doNaturalSpawn) {
-						lores.add(I18n.instance.Smoofy_Dungeon_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Smoofy_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.draylar_battletower.doNaturalSpawn) {
-						lores.add(I18n.instance.Draylar_Battle_Tower_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Draylar_Battle_Tower_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.ant_man_dungeon.doNaturalSpawn) {
-						lores.add(I18n.instance.Ant_Man_Dungeon_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Ant_Man_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.aether_dungeon.doNaturalSpawn) {
-						lores.add(I18n.instance.Aether_Dungeon_Natural_Spawn + " : " + ChatColor.RED
-								+ I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Aether_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-								+ I18n.instance.Disable);
-					}
-					if (config.lich_tower.doNaturalSpawn) {
-						lores.add(I18n.instance.LichTower_Natural_Spawn + " : " + ChatColor.RED + I18n.instance.Enable);
-					} else {
-						lores.add(
-								I18n.instance.LichTower_Natural_Spawn + " : " + ChatColor.GRAY + I18n.instance.Disable);
-					}
-					if (config.castle.doNaturalSpawn) {
-						lores.add(I18n.instance.Castle_Natural_Spawn + " : " + ChatColor.RED + I18n.instance.Enable);
-					} else {
-						lores.add(I18n.instance.Castle_Natural_Spawn + " : " + ChatColor.GRAY + I18n.instance.Disable);
-					}
+					lores.add(worldStatusLine(I18n.instance.Roguelike_Dungeon_Natural_Spawn, config.roguelike.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Doomlike_Dungeon_Natural_Spawn, config.doomlike.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Battle_Tower_Natural_Spawn, config.battletower.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Smoofy_Dungeon_Natural_Spawn, config.smoofydungeon.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Draylar_Battle_Tower_Natural_Spawn, config.draylar_battletower.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Ant_Man_Dungeon_Natural_Spawn, config.ant_man_dungeon.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Aether_Dungeon_Natural_Spawn, config.aether_dungeon.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.LichTower_Natural_Spawn, config.lich_tower.doNaturalSpawn));
+					lores.add(worldStatusLine(I18n.instance.Castle_Natural_Spawn, config.castle.doNaturalSpawn));
 				}
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.actionHint("Click to configure"));
 				im.setLore(lores);
 			} else {
 				List<String> lores = new ArrayList<>();
 				lores.add(WORLD_KEYWORD);
+				lores.add(MenuHelper.separator());
 				if (w.getName().equals(DungeonWorldManager.WORLD_NAME)) {
-					lores.add(I18n.instance.PPDI_WORLD);
+					lores.add(MenuHelper.info(I18n.instance.PPDI_WORLD));
 				} else {
-					lores.add(I18n.instance.Roguelike_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(I18n.instance.Doomlike_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(
-							I18n.instance.Battle_Tower_Natural_Spawn + " : " + ChatColor.GRAY + I18n.instance.Disable);
-					lores.add(I18n.instance.Smoofy_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(I18n.instance.Draylar_Battle_Tower_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(I18n.instance.Ant_Man_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(I18n.instance.Aether_Dungeon_Natural_Spawn + " : " + ChatColor.GRAY
-							+ I18n.instance.Disable);
-					lores.add(I18n.instance.LichTower_Natural_Spawn + " : " + ChatColor.GRAY + I18n.instance.Disable);
-					lores.add(I18n.instance.CastleDungeon_Config + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(worldStatusLine(I18n.instance.Roguelike_Dungeon_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Doomlike_Dungeon_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Battle_Tower_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Smoofy_Dungeon_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Draylar_Battle_Tower_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Ant_Man_Dungeon_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.Aether_Dungeon_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.LichTower_Natural_Spawn, false));
+					lores.add(worldStatusLine(I18n.instance.CastleDungeon_Config, false));
 				}
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.actionHint("Click to configure"));
 				im.setLore(lores);
 			}
 			is.setItemMeta(im);
@@ -343,6 +284,14 @@ public class WorldManager extends Content {
 			addItem(9 + count, is);
 
 			count++;
+		}
+	}
+
+	private static String worldStatusLine(String label, boolean enabled) {
+		if (enabled) {
+			return MenuHelper.color(MenuHelper.MUTED) + label + ": " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable;
+		} else {
+			return MenuHelper.color(MenuHelper.MUTED) + label + ": " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable;
 		}
 	}
 }

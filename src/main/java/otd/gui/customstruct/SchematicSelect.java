@@ -35,6 +35,7 @@ import otd.gui.Content;
 import otd.struct.SchematicLoader;
 import otd.util.FileUtils;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -50,13 +51,13 @@ public class SchematicSelect extends Content {
 	private final static Material RECORD = Material.MUSIC_DISC_WAIT;
 
 	public SchematicSelect() {
-		super(I18n.instance.Schematic_Select, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Schematic_Select, SLOT);
 		parent = null;
 		dungeon = null;
 	}
 
 	public SchematicSelect(Content parent, CustomDungeon dungeon) {
-		super(I18n.instance.Schematic_Select, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Schematic_Select, SLOT);
 		this.parent = parent;
 		this.dungeon = dungeon;
 	}
@@ -165,37 +166,18 @@ public class SchematicSelect extends Content {
 		{
 			ItemStack is = new ItemStack(Material.BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Get_Schematic);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Get_Schematic);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click for link"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(5, 7, is);
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-
-			addItem(5, 0, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(5, 1, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(5, 8, is);
-		}
+		addItem(45, MenuHelper.prev(offset + 1));
+		addItem(46, MenuHelper.next(offset + 1));
+		addItem(53, MenuHelper.back());
 	}
 }

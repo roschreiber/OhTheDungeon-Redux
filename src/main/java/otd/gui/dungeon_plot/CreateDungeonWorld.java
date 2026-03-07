@@ -39,6 +39,7 @@ import otd.world.DungeonTask;
 import otd.world.DungeonWorld;
 import otd.world.WorldDefine;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -50,12 +51,12 @@ public class CreateDungeonWorld extends Content {
 	private final Content parent;
 
 	public CreateDungeonWorld() {
-		super(I18n.instance.Menu_Remove_World, 9);
+		super(MenuHelper.color(MenuHelper.SUCCESS) + I18n.instance.Menu_Create_World, 9);
 		this.parent = null;
 	}
 
 	public CreateDungeonWorld(Content parent) {
-		super(I18n.instance.Menu_Remove_World, 9);
+		super(MenuHelper.color(MenuHelper.SUCCESS) + I18n.instance.Menu_Create_World, 9);
 		this.parent = parent;
 	}
 
@@ -67,9 +68,9 @@ public class CreateDungeonWorld extends Content {
 			ItemStack is = new ItemStack(Material.MAP);
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu_create_world_config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Menu_create_world_config);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu_create_world_config_lore);
+			lores.add(MenuHelper.desc(I18n.instance.Menu_create_world_config_lore));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -80,11 +81,12 @@ public class CreateDungeonWorld extends Content {
 			ItemStack is = new ItemStack(Material.COMPASS);
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu_create_dungeon_count);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Menu_create_dungeon_count);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Dungeon_Count + " : " + WorldConfig.wc.dungeon_world.dungeon_count);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value(I18n.instance.Current_Dungeon_Count, WorldConfig.wc.dungeon_world.dungeon_count));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -94,24 +96,16 @@ public class CreateDungeonWorld extends Content {
 			ItemStack is = new ItemStack(Material.OAK_SIGN);
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu_create);
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + I18n.instance.Menu_create);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu_create_lore);
+			lores.add(MenuHelper.desc(I18n.instance.Menu_create_lore));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
 
 			addItem(7, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-
-			im.setDisplayName(I18n.instance.Back);
-
-			is.setItemMeta(im);
-			addItem(8, is);
-		}
+		addItem(8, MenuHelper.back());
 	}
 
 	@EventHandler

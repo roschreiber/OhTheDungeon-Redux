@@ -35,6 +35,7 @@ import otd.gui.BiomeSetting;
 import otd.gui.Content;
 import otd.gui.LootManager;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -51,13 +52,13 @@ public class CustomDungeonEditor extends Content {
 //    private final static Material ENABLE = Material.MUSIC_DISC_CAT;
 
 	private CustomDungeonEditor() {
-		super(I18n.instance.Custom_Dungeon_Editor, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Custom_Dungeon_Editor, SLOT);
 		parent = null;
 		dungeon = null;
 	}
 
 	public CustomDungeonEditor(CustomDungeon dungeon, Content parent) {
-		super(I18n.instance.Custom_Dungeon_Editor, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Custom_Dungeon_Editor, SLOT);
 		this.parent = parent;
 		this.dungeon = dungeon;
 	}
@@ -191,10 +192,10 @@ public class CustomDungeonEditor extends Content {
 		{
 			ItemStack is = new ItemStack(RECORD);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Schematic_Select);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Schematic_Select);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Schematic_File + " : " + ChatColor.BLUE + dungeon.file);
-			lores.add(I18n.instance.Schematic_Select_Lore);
+			lores.add(MenuHelper.value(I18n.instance.Schematic_File, MenuHelper.color(MenuHelper.SECONDARY) + dungeon.file));
+			lores.add(MenuHelper.desc(I18n.instance.Schematic_Select_Lore));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -203,7 +204,7 @@ public class CustomDungeonEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.LILAC);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Biome_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
 			is.setItemMeta(im);
 
 			addItem(1, is);
@@ -211,9 +212,9 @@ public class CustomDungeonEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Loot_Config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Custom_Dungeon_Chest_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Custom_Dungeon_Chest_Lore));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -222,9 +223,9 @@ public class CustomDungeonEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.SPAWNER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Mob_Select);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Mob_Select);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Mob_Select_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Mob_Select_Lore));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -238,9 +239,11 @@ public class CustomDungeonEditor extends Content {
 				icon = Material.VINE;
 			ItemStack is = new ItemStack(icon);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Custom_Dungeon_Type);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon_Type);
 			List<String> lores = new ArrayList<>();
-			lores.add(dungeon.type.toString());
+			lores.add(MenuHelper.value("Type", dungeon.type.toString()));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -251,13 +254,13 @@ public class CustomDungeonEditor extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Aether_Dungeon_Height);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Aether_Dungeon_Height);
 
-			String height = "Y = " + dungeon.sky_spawn_height;
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("Y", dungeon.sky_spawn_height));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -268,13 +271,13 @@ public class CustomDungeonEditor extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Custom_Dungeon_Spawn_Offset + " : x");
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon_Spawn_Offset + " : x");
 
-			String height = "x = " + dungeon.offset[0];
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("x", dungeon.offset[0]));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -285,13 +288,13 @@ public class CustomDungeonEditor extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Custom_Dungeon_Spawn_Offset + " : y");
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon_Spawn_Offset + " : y");
 
-			String height = "y = " + dungeon.offset[1];
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("y", dungeon.offset[1]));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -302,13 +305,13 @@ public class CustomDungeonEditor extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Custom_Dungeon_Spawn_Offset + " : z");
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon_Spawn_Offset + " : z");
 
-			String height = "z = " + dungeon.offset[2];
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("z", dungeon.offset[2]));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -319,13 +322,13 @@ public class CustomDungeonEditor extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Weight);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Weight);
 
-			String height = "" + dungeon.weight;
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value(I18n.instance.Weight, dungeon.weight));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -335,18 +338,14 @@ public class CustomDungeonEditor extends Content {
 		if (WorldConfig.wc.custom_dungeon.containsKey(dungeon.id)) {
 			ItemStack is = new ItemStack(Material.LAVA_BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Remove);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.muted("Permanently removes this dungeon"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(1, 7, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(1, 8, is);
-		}
+		addItem(17, MenuHelper.back());
 	}
 }

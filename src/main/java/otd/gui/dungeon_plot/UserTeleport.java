@@ -43,6 +43,7 @@ import otd.world.DungeonTask;
 import otd.world.DungeonType;
 import otd.world.DungeonWorld;
 import otd.world.WorldDefine;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -53,7 +54,7 @@ public class UserTeleport extends Content {
 	private final static int SLOT = 54;
 
 	public UserTeleport() {
-		super(I18n.instance.Dungeon_Plot_User_Teleport, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Dungeon_Plot_User_Teleport, SLOT);
 	}
 
 	public static void teleportBed(Player p) {
@@ -120,10 +121,11 @@ public class UserTeleport extends Content {
 		for (int i = 0; i < count; i++) {
 			ItemStack is = new ItemStack(Material.COMPASS);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Dungeon_Plot + " " + i);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Dungeon_Plot + " " + i);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Click_To_Teleport);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Teleport));
 
 			im.setLore(lores);
 
@@ -135,10 +137,11 @@ public class UserTeleport extends Content {
 		{
 			ItemStack is = new ItemStack(Material.RED_BED);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back_To_Normal_World);
+			im.setDisplayName(MenuHelper.color(MenuHelper.WARNING) + I18n.instance.Back_To_Normal_World);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Click_To_Teleport);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Teleport));
 
 			im.setLore(lores);
 

@@ -32,6 +32,7 @@ import otd.config.WorldConfig;
 import otd.integration.WorldEdit;
 import otd.util.I18n;
 import otd.util.Skull;
+import otd.redux.util.MenuHelper;
 import otd.world.WorldDefine;
 
 /**
@@ -75,7 +76,7 @@ public class DungeonSpawnSetting extends Content {
 	}
 
 	public DungeonSpawnSetting(String world, Content parent) {
-		super(I18n.instance.Dungeon_Spawn_Setting, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Dungeon_Spawn_Setting, SLOT);
 		this.world = world;
 		this.parent = parent;
 
@@ -311,9 +312,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Roguelike_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.roguelike) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.roguelike, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 0, is);
@@ -323,9 +324,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Doomlike_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.doomlike) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.doomlike, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 1, is);
@@ -335,9 +336,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Battle_Tower);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.battle) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.battle, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 2, is);
@@ -347,9 +348,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Smoofy_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.smoofy) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.smoofy, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 3, is);
@@ -359,9 +360,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Draylar_Battle_Tower);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.draylar) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.draylar, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 4, is);
@@ -371,9 +372,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Ant_Man_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.ant) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.ant, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 5, is);
@@ -383,9 +384,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Aether_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.aether) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.aether, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 6, is);
@@ -395,9 +396,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.LichTower);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.lich) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.lich, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 7, is);
@@ -407,9 +408,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Custom_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.custom) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.custom, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 8, is);
@@ -419,9 +420,9 @@ public class DungeonSpawnSetting extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(I18n.instance.Castle_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(this.castle) + " / " + Integer.toString(total));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.fraction(this.castle, total));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(2, 0, is);
@@ -432,9 +433,9 @@ public class DungeonSpawnSetting extends Content {
 			im.setDisplayName(I18n.instance.Average_Dungeon_Chunk_Distance);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(Integer.toString(distance));
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("Value", distance));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -446,22 +447,15 @@ public class DungeonSpawnSetting extends Content {
 			im.setDisplayName(I18n.instance.Spawner_Rejection_Rate);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(Double.toString(rate));
+			lores.add(MenuHelper.value("Value", rate));
 			lores.add(I18n.instance.Spawner_Rejection_Rate_Lore);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(3, 1, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(3, 8, is);
-		}
+		addItem(3, 8, MenuHelper.back());
 	}
 }

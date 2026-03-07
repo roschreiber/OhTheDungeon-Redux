@@ -34,6 +34,8 @@ import otd.util.I18n;
 import otd.util.Skull;
 import otd.world.DungeonTask;
 
+import static otd.redux.util.MenuHelper.*;
+
 /**
  *
  * @author shadow
@@ -44,58 +46,61 @@ public class MainMenu extends Content {
 	public final static MainMenu instance = new MainMenu();
 
 	public MainMenu() {
-		super(I18n.instance.Main_Menu, SLOT);
+		super(color(ACCENT) + I18n.instance.Main_Menu, SLOT);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public void init() {
 		inv.clear();
-		ItemStack dummy = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-		for (int i = 0; i < SLOT; i++) {
-			addItem(i, dummy);
-		}
+		fillBorder(this, 3);
+
 		{
 			ItemStack is = Skull.EARTH.getItem();
 			ItemMeta im = is.getItemMeta();
-
-			im.setDisplayName(I18n.instance.Menu1);
+			im.setDisplayName(gradient(I18n.instance.Menu1, "#2ECC71", "#1ABC9C"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu1_Lore1);
-			lores.add(I18n.instance.Menu1_Lore2);
-			lores.add(ChatColor.YELLOW + I18n.instance.Menu1_Lore3);
-			lores.add(I18n.instance.Menu1_Lore4);
+			lores.add(separator());
+			lores.add(desc(I18n.instance.Menu1_Lore1));
+			lores.add(desc(I18n.instance.Menu1_Lore2));
+			lores.add(color(WARNING) + I18n.instance.Menu1_Lore3);
+			lores.add(desc(I18n.instance.Menu1_Lore4));
+			lores.add(separator());
+			lores.add(actionHint("Click to open"));
 			im.setLore(lores);
-
 			is.setItemMeta(im);
-			addItem(1, 1, is);
+			addItem(1, 2, is);
 		}
+
 		{
 			ItemStack is = Skull.CITY.getItem();
 			ItemMeta im = is.getItemMeta();
-
-			im.setDisplayName(I18n.instance.Menu2);
+			im.setDisplayName(gradient(I18n.instance.Menu2, "#E67E22", "#F39C12"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu2_Lore1);
-			lores.add(I18n.instance.Menu2_Lore2);
-			lores.add(ChatColor.YELLOW + I18n.instance.Menu2_Lore3);
-			lores.add(I18n.instance.Menu2_Lore4);
+			lores.add(separator());
+			lores.add(desc(I18n.instance.Menu2_Lore1));
+			lores.add(desc(I18n.instance.Menu2_Lore2));
+			lores.add(color(WARNING) + I18n.instance.Menu2_Lore3);
+			lores.add(desc(I18n.instance.Menu2_Lore4));
+			lores.add(separator());
+			lores.add(actionHint("Click to open"));
 			im.setLore(lores);
-
 			is.setItemMeta(im);
 			addItem(1, 4, is);
 		}
+
 		{
 			ItemStack is = Skull.TOOL.getItem();
 			ItemMeta im = is.getItemMeta();
-
-			im.setDisplayName(I18n.instance.Util_Menu);
+			im.setDisplayName(gradient(I18n.instance.Util_Menu, "#9B59B6", "#8E44AD"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Util_Menu_Lore);
+			lores.add(separator());
+			lores.add(desc(I18n.instance.Util_Menu_Lore));
+			lores.add(separator());
+			lores.add(actionHint("Click to open"));
 			im.setLore(lores);
-
 			is.setItemMeta(im);
-			addItem(1, 7, is);
+			addItem(1, 6, is);
 		}
 	}
 
@@ -116,7 +121,7 @@ public class MainMenu extends Content {
 		MainMenu holder = (MainMenu) e.getInventory().getHolder();
 		if (holder == null)
 			return;
-		if (slot == 10) {
+		if (slot == 11) {
 			WorldManager wm = new WorldManager(holder);
 			wm.openInventory(p);
 		}
@@ -133,7 +138,7 @@ public class MainMenu extends Content {
 				c.openInventory(p);
 			}
 		}
-		if (slot == 16) {
+		if (slot == 15) {
 			UtilMenu um = new UtilMenu(holder);
 			um.openInventory(p);
 		}

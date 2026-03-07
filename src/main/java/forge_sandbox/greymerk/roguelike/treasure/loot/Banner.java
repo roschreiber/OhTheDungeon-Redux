@@ -7,6 +7,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 
@@ -38,8 +40,9 @@ public class Banner {
 			BannerMeta bm = (BannerMeta) im;
 			List<Pattern> patterns = bm.getPatterns();
 			DyeColor[] dyes = DyeColor.values();
-			PatternType[] types = PatternType.values();
-			PatternType pt = types[rand.nextInt(types.length)];
+			java.util.List<PatternType> types = new java.util.ArrayList<>();
+			RegistryAccess.registryAccess().getRegistry(RegistryKey.BANNER_PATTERN).forEach(types::add);
+			PatternType pt = types.get(rand.nextInt(types.size()));
 			DyeColor color = dyes[rand.nextInt(dyes.length)];
 			patterns.add(new Pattern(color, pt));
 			bm.setPatterns(patterns);

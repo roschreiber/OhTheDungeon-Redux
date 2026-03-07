@@ -4,8 +4,9 @@ import java.util.Random;
 import org.bukkit.Difficulty;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
@@ -17,7 +18,7 @@ public enum Enchant {
 
 	public static Enchantment getEnchant(Enchant type) {
 		String name = getName(type);
-		Enchantment res = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(name));
+		Enchantment res = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT).get(NamespacedKey.minecraft(name));
 		if (res != null)
 			return res;
 		return Enchantment.VANISHING_CURSE;
@@ -129,9 +130,11 @@ public enum Enchant {
 		EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
 		int amount = 1 + rand.nextInt(3);
 		boolean flag = false;
+		java.util.List<Enchantment> allEnchants = new java.util.ArrayList<>();
+		RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT).forEach(allEnchants::add);
 		while (enchantLevel > 0) {
 			for (int i = 0; i < amount; i++) {
-				Enchantment randEnchant = Enchantment.values()[(int) (rand.nextFloat() * Enchantment.values().length)];
+				Enchantment randEnchant = allEnchants.get(rand.nextInt(allEnchants.size()));
 				flag = flag | meta.addStoredEnchant(randEnchant, enchantLevel, false);
 			}
 			if (!flag)

@@ -29,6 +29,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.MenuHelper;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
@@ -51,13 +52,11 @@ public class CastleDungeonConfig extends Content {
 	}
 
 	public CastleDungeonConfig(String world, Content parent) {
-		super(I18n.instance.CastleDungeon_Config, SLOT);
+		super(MenuHelper.color(MenuHelper.LIGHT) + I18n.instance.CastleDungeon_Config, SLOT);
 		this.world = world;
 		this.parent = parent;
 	}
 
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
 
 	@EventHandler
 	@Override
@@ -128,25 +127,18 @@ public class CastleDungeonConfig extends Content {
 		inv.clear();
 		SimpleWorldConfig swc = WorldConfig.wc.dict.get(world);
 		{
-			Material material;
-			String status;
-			if (swc.castle.doNaturalSpawn) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.castle.doNaturalSpawn));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Natural_Spawn);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Natural_Spawn);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.castle.doNaturalSpawn));
+			lores.add(MenuHelper.separator());
 			for (String str : I18n.instance.NaturalSpawnStr) {
-				lores.add(str);
+				lores.add(MenuHelper.desc(str));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -155,7 +147,10 @@ public class CastleDungeonConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Loot_Config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(1, is);
@@ -163,28 +158,23 @@ public class CastleDungeonConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.LILAC);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Biome_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(2, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.castle.builtinLoot) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.castle.builtinLoot));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Builtin_Loot);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Builtin_Loot);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.castle.builtinLoot));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -197,18 +187,11 @@ public class CastleDungeonConfig extends Content {
 			lores.add(I18n.instance.Preview_Lore1);
 			lores.add(I18n.instance.Preview_Lore2);
 			im.setLore(lores);
-			im.setDisplayName(I18n.instance.Preview);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);
 
 			addItem(1, 0, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(1, 8, is);
-		}
+		addItem(1, 8, MenuHelper.back());
 	}
 }

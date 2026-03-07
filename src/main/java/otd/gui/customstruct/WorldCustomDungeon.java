@@ -35,6 +35,7 @@ import otd.config.WorldConfig;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -50,13 +51,13 @@ public class WorldCustomDungeon extends Content {
 	private final static Material RECORD = Material.MUSIC_DISC_WAIT;
 
 	private WorldCustomDungeon() {
-		super(I18n.instance.World_Custom_Dungeon, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.World_Custom_Dungeon, SLOT);
 		parent = null;
 		dungeons = null;
 	}
 
 	public WorldCustomDungeon(String world, Content parent) {
-		super(I18n.instance.World_Custom_Dungeon + " : " + world, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.World_Custom_Dungeon + " : " + world, SLOT);
 		this.parent = parent;
 		if (!WorldConfig.wc.dict.containsKey(world)) {
 			WorldConfig.wc.dict.put(world, new SimpleWorldConfig());
@@ -140,22 +141,18 @@ public class WorldCustomDungeon extends Content {
 			uuids.add(entry.getKey());
 		}
 
+		MenuHelper.fillRow(this, 0);
 		{
 			ItemStack is = new ItemStack(Material.BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Add_Custom_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_Custom_Dungeon);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to add"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
-			addItem(0, 0, is);
-		}
-
-		for (int i = 1; i < 9; i++) {
-			ItemStack item = new ItemStack(Material.BLUE_STAINED_GLASS, 1);
-			ItemMeta im = item.getItemMeta();
-			im.setDisplayName("");
-			item.setItemMeta(im);
-
-			addItem(i, item);
+			addItem(0, is);
 		}
 
 		int index = offset * 36;
@@ -173,31 +170,8 @@ public class WorldCustomDungeon extends Content {
 			index++;
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-
-			addItem(5, 0, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(5, 1, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(5, 8, is);
-		}
+		addItem(45, MenuHelper.prev(offset + 1));
+		addItem(46, MenuHelper.next(offset + 1));
+		addItem(53, MenuHelper.back());
 	}
 }

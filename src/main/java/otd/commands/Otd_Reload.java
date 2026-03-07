@@ -29,6 +29,7 @@ import otd.Main;
 import otd.config.WorldConfig;
 import otd.redux.util.ChatManager;
 import otd.redux.util.ChatManager.MessageType;
+import otd.script.JSLoader;
 
 /**
  *
@@ -42,6 +43,7 @@ public class Otd_Reload implements TabExecutor {
 			options.add("all");
 			options.add("config");
 			options.add("chat");
+			options.add("scripts");
 			
 			if (args[0].isEmpty()) {
 				return options;
@@ -54,31 +56,7 @@ public class Otd_Reload implements TabExecutor {
 				}
 				return filtered;
 			}
-		}
-		
-		if (args.length == 2 && args[0].equalsIgnoreCase("chat")) {
-			List<String> options = new ArrayList<>();
-			options.add("prefix");
-			
-			if (args[1].isEmpty()) {
-				return options;
-			} else {
-				List<String> filtered = new ArrayList<>();
-				for (String option : options) {
-					if (option.startsWith(args[1].toLowerCase())) {
-						filtered.add(option);
-					}
-				}
-				return filtered;
-			}
-		}
-		
-		if (args.length == 3 && args[0].equalsIgnoreCase("chat") && args[1].equalsIgnoreCase("prefix")) {
-			List<String> options = new ArrayList<>();
-			options.add(ChatManager.getInstance().getRawPrefix());
-			return options;
-		}
-		
+		}		
 		return new ArrayList<>();
 	}
 
@@ -96,55 +74,43 @@ public class Otd_Reload implements TabExecutor {
 			}
 		}
 
-		// Handle chat prefix update
 		if (args.length >= 1 && args[0].equalsIgnoreCase("chat")) {
-			if (args.length >= 2 && args[1].equalsIgnoreCase("prefix")) {
-				if (args.length >= 3) {
-					// Update the prefix
-					StringBuilder newPrefix = new StringBuilder();
-					for (int i = 2; i < args.length; i++) {
-						if (i > 2) newPrefix.append(" ");
-						newPrefix.append(args[i]);
-					}
-					
-					ChatManager.getInstance().updatePrefix(newPrefix.toString());
-					sender.sendMessage(ChatManager.getInstance().formatMessage("Chat prefix updated successfully", MessageType.SUCCESS));
-					return true;
-				} else {
-					// Show the current prefix
-					String currentPrefix = ChatManager.getInstance().getRawPrefix();
-					sender.sendMessage(ChatManager.getInstance().formatMessage("Current chat prefix: " + currentPrefix, MessageType.INFO));
-					return true;
-				}
-			} else {
-				// Reload the chat configuration
-				ChatManager.getInstance().loadConfig();
-				sender.sendMessage(ChatManager.getInstance().formatMessage("Chat configuration reloaded", MessageType.SUCCESS));
-				return true;
-			}
+			ChatManager.getInstance().loadConfig();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Chat configuration reloaded", MessageType.SUCCESS));
+			return true;
 		}
-		
-		// If not handling chat, or if "all" or "config" is specified, reload the world config
-		if (args.length == 0 || args[0].equalsIgnoreCase("all") || args[0].equalsIgnoreCase("config")) {
+
+		if (args.length >= 1 && args[0].equalsIgnoreCase("config")) {
 			Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
 				WorldConfig.reloadFromYaml();
 				Bukkit.getScheduler().runTask(Main.instance, () -> {
-					sender.sendMessage(ChatManager.getInstance().formatMessage(
-						"World configuration reloaded", MessageType.SUCCESS));
+					sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
 				});
 			});
-			
-			// If "all" is specified, also reload chat config
-			if (args.length > 0 && args[0].equalsIgnoreCase("all")) {
-				ChatManager.getInstance().loadConfig();
-				sender.sendMessage(ChatManager.getInstance().formatMessage("Chat configuration reloaded", MessageType.SUCCESS));
-			}
-			
 			return true;
 		}
-		
-		// If we get here, the command syntax was incorrect
-		sender.sendMessage(ChatManager.getInstance().formatMessage("Usage: /otd_reload [all|config|chat] [prefix] [new_prefix]", MessageType.INFO));
+
+		if (args.length >= 1 && args[0].equalsIgnoreCase("scripts")) {
+			JSLoader.init();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("JS scripts reloaded", MessageType.SUCCESS));
+			return true;
+		}
+
+		if (args.length == 0 || args[0].equalsIgnoreCase("all")) {
+			ChatManager.getInstance().loadConfig();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Chat configuration reloaded", MessageType.SUCCESS));
+			Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
+				WorldConfig.reloadFromYaml();
+				Bukkit.getScheduler().runTask(Main.instance, () -> {
+					sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
+				});
+			});
+			JSLoader.init();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("JS scripts reloaded", MessageType.SUCCESS));
+			return true;
+		}
+
+		sender.sendMessage(ChatManager.getInstance().formatMessage("Usage: /otd_reload [all|config|chat]", MessageType.INFO));
 		return true;
 	}
 }

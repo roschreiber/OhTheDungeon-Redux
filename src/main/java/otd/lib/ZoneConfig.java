@@ -42,7 +42,7 @@ public class ZoneConfig { // NO_UCD (unused code)
 	}
 
 	public ZoneConfig(Biome b, String g, String p, ZoneDungeonType t) {
-		biome = b.toString();
+		biome = b.getKey().getKey();
 		generator = g;
 		populator = p;
 		type = t;
@@ -51,7 +51,7 @@ public class ZoneConfig { // NO_UCD (unused code)
 	public ZoneConfig(String str) {
 		String[] strs = str.split(",");
 		if (strs.length != 4) {
-			biome = Biome.PLAINS.toString();
+			biome = Biome.PLAINS.getKey().getKey();
 		} else {
 			biome = strs[0];
 			generator = strs[1];

@@ -178,16 +178,16 @@ public class I18n {
 //            }
 //    );
 
-	public String DraylarBattleTower_Config = "Draylar Battle Tower Cfg";
+	public String DraylarBattleTower_Config = "Draylar Battle Tower Settings";
 
-	public String AntManDungeon_Config = "Ant Man Dungeon Cfg";
+	public String AntManDungeon_Config = "Ant Man Dungeon Settings";
 	public String Ant_Man_Dungeon = "Ant Man Dungeon";
 
-	public String CastleDungeon_Config = "Castle Dungeon Cfg";
+	public String CastleDungeon_Config = "Castle Dungeon Settings";
 	public String Castle_Dungeon = "Castle Dungeon";
 	public String Castle_Natural_Spawn = "Castle Dungeon Natural Spawn";
 
-	public String AetherDungeon_Config = "Aether Dungeon Cfg";
+	public String AetherDungeon_Config = "Aether Dungeon Settings";
 	public String Aether_Dungeon = "Aether Dungeon";
 	public String Aether_Dungeon_Cloud = "Aether Dungeon Cloud";
 	public String Aether_Dungeon_Cloud_Lore = "Does the dungeon have cloud structure";
@@ -200,13 +200,13 @@ public class I18n {
 	public String Prevent_Dropping_Of_Dungeon_Spawner = "Prevent the dropping of dungeon spawner";
 	public String Prevent_Dropping_Of_Dungeon_Spawner_Lore = "For plugins like [SlikSpawner, Slimefun]";
 
-	public String World_Editor = "World Dungeon Cfg";
-	public String Roguelike_Config = "Roguelike Cfg";
-	public String Doomlike_Config = "Doomlike Cfg";
-	public String BattleTower_Config = "Battle Tower Cfg";
-	public String Smoofy_Config = "Smoofy Cfg";
+	public String World_Editor = "World Editor";
+	public String Roguelike_Config = "Roguelike Dungeon Settings";
+	public String Doomlike_Config = "Doomlike Dungeon Settings";
+	public String BattleTower_Config = "Battle Tower Settings";
+	public String Smoofy_Config = "Smoofy Dungeon Settings";
 
-	public String Biome_Setting = "Biome Setting";
+	public String Biome_Setting = "Biome Settings";
 
 	public String Roguelike_Dungeon = "Roguelike Dungeon";
 	public String Doomlike_Dungeon = "Doomlike Dungeon";
@@ -230,13 +230,13 @@ public class I18n {
 
 	public String Natural_Spawn = "Natural Spawn";
 	public List<String> NaturalSpawnStr = Arrays
-			.asList(new String[] { "----------------------------------", "If set to false dungeons will not ",
+			.asList(new String[] {"If set to false dungeons will not ",
 					"naturally spawn, however may still", "be spawned in using a command.", });
 
 	public String Average_Dungeon_Chunk_Distance = "Average Chunk Distance Between Dungeon";
 
 	public String Easy_Find = "Easy Find";
-	public List<String> EasyFindStr = Arrays.asList(new String[] { "---------------------------------------",
+	public List<String> EasyFindStr = Arrays.asList(new String[] {
 			"If true, all dungeons that can normally", "have an entrance will have at least one",
 			"and all entrances will have a building", "or ruin around them." });
 
@@ -244,16 +244,16 @@ public class I18n {
 
 	public String Thin_Spawners = "Thin Spawners";
 	public List<String> ThinSpawnersStr = Arrays
-			.asList(new String[] { "----------------------------------", "If true smaller dungeons will have",
+			.asList(new String[] {"If true smaller dungeons will have",
 					"some of there spawners removed to", "make them more like larger dungeons." });
 
-	public String Dungeon_Spawn_Setting = "Dungeon Spawn";
+	public String Dungeon_Spawn_Setting = "Dungeon Spawn Rates";
 	public String Dungeon_Spawn_Tip = "Set the proportion of each dungeon";
 
 	public String Encase = "Encase The Dungeon";
 	public String Generous = "Helpful Features";
 	public List<String> GenerousStr = Arrays
-			.asList(new String[] { "-----------------------------", "Whether helpful features like",
+			.asList(new String[] {"Whether helpful features like",
 					"brewing stands, ender chests,", "enchanting stations, anvils", "should generate." });
 
 	public String[] Difficulty = { "Difficulty", "NONE", "BABY", "NOOB", "NORM", "HARD", "NUTS", };
@@ -264,7 +264,7 @@ public class I18n {
 	public String Deepest_Level = "Deepest Level";
 	public String Each = "In Each Chest";
 	public List<String> EachTip = Arrays
-			.asList(new String[] { "----------------------------------", "If true, then this rule will add ",
+			.asList(new String[] {"If true, then this rule will add ",
 					"'quantity' loot to each chest of ", "this type. otherwise the specified",
 					"'quantity' will be distributed among", "all the chests of the type specified" });
 
@@ -272,7 +272,7 @@ public class I18n {
 
 	public String Random_Dungeon = "Random Theme";
 	public String Random_Dungeon_Content = "Use random dungeon theme (ignore biome)";
-	public String Loot_Config = "Loot Config";
+	public String Loot_Config = "Loot Editor";
 	public String Reduce_Loot_Chance = "Reduce Loot Chance";
 	public String Increase_Loot_Chance = "Increase Loot Chance";
 	public String Current_Chance = "Current Chance";
@@ -332,7 +332,7 @@ public class I18n {
 	public String Lich_Name = "Lich";
 	public String Lich_Head = "Head of Lich";
 	public String Lich_Head_Lore = "I will await my eternal reward.";
-	public String LichTower_Config = "Lich Tower Cfg";
+	public String LichTower_Config = "Lich Tower Settings";
 	public String LichTower = "Lich Tower";
 	public String LichTower_Art = "Generate Paintings in Lich Tower";
 	public String LichTower_Natural_Spawn = "Lich Tower Natural Spawn";
@@ -376,7 +376,7 @@ public class I18n {
 
 	public String Dungeon_Plot_In_Progress = "Dungeon plot is creating. It would finish in 10 minutes. You'll get the message once it's finished";
 
-	public String Dungeon_Plot_User_Teleport = "Choose dungeon to visit:";
+	public String Dungeon_Plot_User_Teleport = "Dungeon Teleporter";
 	public String Click_To_Teleport = "Click to teleport";
 	public String Dungeon_Plot = "Dungeon Plot";
 	public String Back_To_Normal_World = "Back to main world";
@@ -418,11 +418,11 @@ public class I18n {
 	public String Spawner_Rejection_Rate = "Spawner Rejection Rate";
 	public String Spawner_Rejection_Rate_Lore = "The higher the value, the lower the spawner count";
 
-	public String Roguelike_Dungeon_Tower = "Roguelike Dungeon Tower";
+	public String Roguelike_Dungeon_Tower = "Roguelike Dungeon Themes";
 	public String Roguelike_Dungeon_Tower_Warn = "At least one theme should be enabled";
 	public String Roguelike_Dungeon_Tower_Lore = "Select the theme of dungeon tower";
 
-	public String Schematic_Select = "Select Schematic";
+	public String Schematic_Select = "Schematic Selection";
 	public String Schematic_Select_Lore = "Support *.schem/*.schematic/*.nbt";
 	public String Schematic_File = "Current file";
 	public String Get_Schematic = "Get some sample schematics";
@@ -432,10 +432,10 @@ public class I18n {
 	public String Custom_Dungeon_Chest_Lore = "Chests in schematic will be set to these content";
 	public String Custom_Dungeon_Type = "Custom Dungeon Type";
 	public String Custom_Dungeon_Spawn_Offset = "Custom Dungeon Spawn Offset";
-	public String Mob_Select = "Mob Select";
+	public String Mob_Select = "Mob Selection";
 	public String Mob_Select_Lore = "Spawners in schematic will be set to these mobs";
-	public String Custom_Dungeon_List = "Custom Dungeon List";
-	public String World_Custom_Dungeon = "World Custom Dungeon Cfg";
+	public String Custom_Dungeon_List = "Custom Dungeons";
+	public String World_Custom_Dungeon = "World Custom Dungeons";
 	public String Require_WorldEdit = "Require WorldEdit";
 	public String Add_Custom_Dungeon = "Add Custom Dungeon";
 	public String Custom_Dungeon_Err_Msg = "You must select a schematic file";
@@ -446,7 +446,7 @@ public class I18n {
 
 	public String PerPlayerDungeonInstance = "PerPlayerDungeonInstance";
 	public String PerPlayerDungeonInstance_Lore = "Let player create their own dungeons with money/exp";
-	public String PPDI_Cfg = "PerPlayerDungeonInstance Cfg";
+	public String PPDI_Cfg = "PerPlayerDungeonInstance";
 	public String EnableMoneyPayment = "Enable Money Payment";
 	public String EnableLevelPayment = "Enable Level Payment";
 	public String Require_Vault = "Require Vault Installed";
@@ -471,7 +471,7 @@ public class I18n {
 	public String Castle_King_Head = "Head of Cinder";
 	public String Castle_King_Head_Lore = "Thou shall endeth this eternal twilight";
 
-	public String Boss_Config = "Boss_Cfg";
+	public String Boss_Config = "Boss Settings";
 	public String Small_Boss_Rate = "Small Boss Rate";
 	public String Small_Boss_Lore = "Chance of a small boss spawning from a OTD_Spawner in dungeons";
 	public String Use_Vanilla = "Use Vanilla";
@@ -495,7 +495,7 @@ public class I18n {
 	public String WorldGeneratorCompatibility_Lore3 = "* Don't change this config if you didn't see any issues in dungeon generation";
 	public String WorldGeneratorCompatibility_Lore4 = "* Left click for config, Right click for help";
 
-	public String WorldParameter = "World Parameter Cfg";
+	public String WorldParameter = "World Parameters";
 	public String WorldParameter_Sign = "Get Help";
 
 	public String WorldParameterExtra = "(Sealevel-Bottom) should be larger than 50";
@@ -503,12 +503,12 @@ public class I18n {
 	public String World_Bottom = "World Bottom";
 	public String World_Sealevel = "World Sealevel";
 
-	public String Util_Menu = "Util Menu";
+	public String Util_Menu = "Utilities";
 	public String Util_Menu_Lore = "Other Utilities/Config";
 
 	public String Dungeon_Spawn_Setting_Lore = "Set the chance of different dungeons, as well as the average distance between the dungeons";
 	public String World_Spawner_Manager_Lore = "Set the behavior of spawners in dungeons";
-	public String Boss_Cfg_Lore = "Config for the dungeon bosses";
+	public String Boss_Cfg_Lore = "Settings for the dungeon bosses";
 
 	public String Reset = "Reset";
 
@@ -627,7 +627,7 @@ public class I18n {
 		I18n.instance.WorldGeneratorCompatibility_Lore3 = "* Don't change this config if you didn't see any issues in dungeon generation";
 		I18n.instance.WorldGeneratorCompatibility_Lore4 = "* Left click for config, Right click for help";
 
-		I18n.instance.WorldParameter = "World Parameter Cfg";
+		I18n.instance.WorldParameter = "World Parameters";
 		I18n.instance.WorldParameter_Sign = "Get Help";
 
 		I18n.instance.WorldParameterExtra = "(Sealevel-Bottom) should be larger than 50";
@@ -635,12 +635,12 @@ public class I18n {
 		I18n.instance.World_Bottom = "World Bottom";
 		I18n.instance.World_Sealevel = "World Sealevel";
 
-		I18n.instance.Util_Menu = "Util Menu";
+		I18n.instance.Util_Menu = "Utilities";
 		I18n.instance.Util_Menu_Lore = "Other Utilities/Config";
 
 		I18n.instance.Dungeon_Spawn_Setting_Lore = "Set the chance of different dungeons, as well as the average distance between the dungeons";
 		I18n.instance.World_Spawner_Manager_Lore = "Set the behavior of spawners in dungeons";
-		I18n.instance.Boss_Cfg_Lore = "Config for the dungeon bosses";
+		I18n.instance.Boss_Cfg_Lore = "Settings for the dungeon bosses";
 
 		I18n.instance.Reset = "Reset";
 
@@ -648,7 +648,7 @@ public class I18n {
 	}
 
 	public static void update21() {
-		I18n.instance.CastleDungeon_Config = "Castle Dungeon Cfg";
+		I18n.instance.CastleDungeon_Config = "Castle Dungeon Settings";
 		I18n.instance.Castle_Dungeon = "Castle Dungeon";
 		I18n.instance.Castle_Natural_Spawn = "Castle Dungeon Natural Spawn";
 		I18n.instance.Aether_Description = "Aether Dungeons are located within structures resembling a parthenon in the sky. These have multiple floors, typically three, each with multiple rooms.";
@@ -665,7 +665,7 @@ public class I18n {
 		I18n.instance.Castle_King_Head = "Head of Cinder";
 		I18n.instance.Castle_King_Head_Lore = "Thou shall endeth this eternal twilight";
 
-		I18n.instance.Boss_Config = "Boss_Cfg";
+		I18n.instance.Boss_Config = "Boss Settings";
 		I18n.instance.Small_Boss_Rate = "Small Boss Rate";
 		I18n.instance.Small_Boss_Lore = "Chance of a small boss spawning from a OTD_Spawner in dungeons";
 		I18n.instance.Use_Vanilla = "Use Vanilla";
@@ -706,7 +706,7 @@ public class I18n {
 	public static void update18() {
 		I18n.instance.PerPlayerDungeonInstance = "PerPlayerDungeonInstance";
 		I18n.instance.PerPlayerDungeonInstance_Lore = "Let player create their own dungeons with money/exp";
-		I18n.instance.PPDI_Cfg = "PerPlayerDungeonInstance Cfg";
+		I18n.instance.PPDI_Cfg = "Per-Player Dungeon Instance";
 		I18n.instance.EnableMoneyPayment = "Enable Money Payment";
 		I18n.instance.EnableLevelPayment = "Enable Level Payment";
 		I18n.instance.Require_Vault = "Require Vault Installed";
@@ -776,7 +776,7 @@ public class I18n {
 
 		I18n.instance.Spawner_Rejection_Rate = "Spawner Rejection Rate";
 		I18n.instance.Spawner_Rejection_Rate_Lore = "The higher the value, the lower the spawner count";
-		I18n.instance.Roguelike_Dungeon_Tower = "Roguelike Dungeon Tower";
+		I18n.instance.Roguelike_Dungeon_Tower = "Roguelike Tower Themes";
 		I18n.instance.Roguelike_Dungeon_Tower_Warn = "At least one theme should be enabled";
 		I18n.instance.Roguelike_Dungeon_Tower_Lore = "Select the theme of dungeon tower";
 
@@ -816,7 +816,7 @@ public class I18n {
 
 		I18n.instance.Creating_World = "World creating... You may see tps drop. Please standby";
 
-		I18n.instance.Dungeon_Plot_User_Teleport = "Choose dungeon to visit:";
+		I18n.instance.Dungeon_Plot_User_Teleport = "Dungeon Teleporter";
 		I18n.instance.Click_To_Teleport = "Click to teleport";
 
 		I18n.instance.Dungeon_Plot = "Dungeon Plot";

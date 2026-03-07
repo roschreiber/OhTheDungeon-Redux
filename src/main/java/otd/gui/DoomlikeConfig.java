@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.MenuHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,9 +42,6 @@ public class DoomlikeConfig extends Content {
 	public static DoomlikeConfig instance = new DoomlikeConfig();
 	private final static int SLOT = 18;
 
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
-
 	private final static Material NONE = Material.WHITE_DYE;
 	private final static Material BABY = Material.BLUE_DYE;
 	private final static Material NOOB = Material.GREEN_DYE;
@@ -61,7 +59,7 @@ public class DoomlikeConfig extends Content {
 	public final Content parent;
 
 	public DoomlikeConfig(String world, Content parent) {
-		super(I18n.instance.Doomlike_Config, 18);
+		super(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Doomlike_Config, 18);
 		this.world = world;
 		this.parent = parent;
 	}
@@ -190,89 +188,64 @@ public class DoomlikeConfig extends Content {
 			WorldConfig.wc.dict.put(world_name, swc);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.doomlike.doNaturalSpawn) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.doomlike.doNaturalSpawn));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Natural_Spawn);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Natural_Spawn);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.doomlike.doNaturalSpawn));
+			lores.add(MenuHelper.separator());
 			for (String str : I18n.instance.NaturalSpawnStr) {
-				lores.add(str);
+				lores.add(MenuHelper.desc(str));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 0, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.doomlike.easyFind) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.doomlike.easyFind));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Easy_Find);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Easy_Find);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.doomlike.easyFind));
+			lores.add(MenuHelper.separator());
 			for (String str : I18n.instance.EasyFindStr) {
-				lores.add(str);
+				lores.add(MenuHelper.desc(str));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 1, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.doomlike.singleEntrance) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.doomlike.singleEntrance));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Single_Entrance);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Single_Entrance);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.doomlike.singleEntrance));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 2, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.doomlike.thinSpawners) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.doomlike.thinSpawners));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Thin_Spawners);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Thin_Spawners);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.doomlike.thinSpawners));
+			lores.add(MenuHelper.separator());
 			for (String str : I18n.instance.ThinSpawnersStr) {
-				lores.add(str);
+				lores.add(MenuHelper.desc(str));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -314,9 +287,11 @@ public class DoomlikeConfig extends Content {
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Difficulty[0]);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Difficulty[0]);
 			List<String> lores = new ArrayList<>();
 			lores.add(status);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to change"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(0, 4, is);
@@ -324,7 +299,10 @@ public class DoomlikeConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.LILAC);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Biome_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 5, is);
@@ -332,26 +310,22 @@ public class DoomlikeConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Loot_Config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 6, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.doomlike.builtinLoot) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.doomlike.builtinLoot));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Builtin_Loot);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Builtin_Loot);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.doomlike.builtinLoot));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -364,18 +338,11 @@ public class DoomlikeConfig extends Content {
 			lores.add(I18n.instance.Preview_Lore1);
 			lores.add(I18n.instance.Preview_Lore2);
 			im.setLore(lores);
-			im.setDisplayName(I18n.instance.Preview);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);
 
 			addItem(1, 0, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(1, 8, is);
-		}
+		addItem(1, 8, MenuHelper.back());
 	}
 }

@@ -30,6 +30,7 @@ import otd.config.WorldConfig;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -46,13 +47,13 @@ public class MobSelect extends Content {
 	private final static Material EGG = Material.EGG;
 
 	public MobSelect() {
-		super(I18n.instance.Mob_Select, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Mob_Select, SLOT);
 		parent = null;
 		dungeon = null;
 	}
 
 	public MobSelect(CustomDungeon dungeon, Content parent) {
-		super(I18n.instance.Mob_Select, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Mob_Select, SLOT);
 		this.parent = parent;
 		this.dungeon = dungeon;
 	}
@@ -85,32 +86,9 @@ public class MobSelect extends Content {
 			index++;
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-
-			addItem(5, 0, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(5, 1, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(5, 8, is);
-		}
+		addItem(45, MenuHelper.prev(offset + 1));
+		addItem(46, MenuHelper.next(offset + 1));
+		addItem(53, MenuHelper.back());
 	}
 
 	@SuppressWarnings("deprecation")

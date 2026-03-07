@@ -7,7 +7,7 @@ package otd.addon.com.ohthedungeon.storydungeon.world;
 
 import otd.addon.com.ohthedungeon.storydungeon.generator.FakeGenerator;
 import org.bukkit.Difficulty;
-import org.bukkit.GameRule;
+import org.bukkit.GameRules;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
@@ -28,8 +28,8 @@ public class WorldManager {
 		World world = wc.createWorld();
 		world.setDifficulty(Difficulty.HARD);
 		world.setSpawnFlags(true, false);
-		world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-		world.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+		world.setGameRule(GameRules.ADVANCE_TIME, false);
+		world.setGameRule(GameRules.ADVANCE_WEATHER, false);
 		world.setTime(6000);
 
 		return world;

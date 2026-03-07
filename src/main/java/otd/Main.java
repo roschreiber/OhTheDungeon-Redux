@@ -55,7 +55,6 @@ import otd.commands.Otd_Cp;
 import otd.commands.Otd_Debug;
 import otd.commands.Otd_Place;
 import otd.commands.Otd_Reload;
-import otd.commands.Otd_Reload_Scripts;
 import otd.commands.Otd_Tp;
 import otd.config.WorldConfig;
 import otd.config.YamlPluginConfig;
@@ -424,13 +423,6 @@ public class Main extends JavaPlugin {
 		command = this.getCommand("otd_debug");
 		if (command != null) {
 			Otd_Debug d = new Otd_Debug();
-			command.setExecutor(d);
-			command.setTabCompleter(d);
-		}
-
-		command = this.getCommand("otd_reload_scripts");
-		if (command != null) {
-			Otd_Reload_Scripts d = new Otd_Reload_Scripts();
 			command.setExecutor(d);
 			command.setTabCompleter(d);
 		}

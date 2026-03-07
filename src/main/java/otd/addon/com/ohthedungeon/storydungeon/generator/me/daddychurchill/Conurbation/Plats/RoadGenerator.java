@@ -17,8 +17,7 @@ public class RoadGenerator extends PlatGenerator {
 	public static final int lightpostHeight = 3;
 	public static final Material bytePavement = Material.STONE;
 	public static final Material byteSidewalk = Material.WHITE_CONCRETE;
-	@SuppressWarnings("deprecation")
-	public static final Material bytePlatwalk = Material.LEGACY_DOUBLE_STEP;
+	public static final Material bytePlatwalk = Material.SMOOTH_STONE;
 	public static final Material byteBridge = Material.STONE_BRICKS;
 	public static final Material byteRailing = Material.OAK_FENCE;
 	public static final Material byteRailingBase = RoadGenerator.bytePlatwalk;
@@ -27,8 +26,7 @@ public class RoadGenerator extends PlatGenerator {
 	public static final Material workingLampMaterial = Material.GLOWSTONE;
 	public static final Material workingTorchMaterial = Material.TORCH;
 	public static final Material brokeLampMaterial = Material.GLASS;
-	@SuppressWarnings("deprecation")
-	public static final Material brokeTorchMaterial = Material.LEGACY_REDSTONE_TORCH_OFF;
+	public static final Material brokeTorchMaterial = Material.REDSTONE_TORCH;
 	public static final int roadCellSize = 4;
 //    private static final double xIntersectionFactor = 6.0;
 //    private static final double zIntersectionFactor = 6.0;
@@ -170,10 +168,9 @@ public class RoadGenerator extends PlatGenerator {
 		return this.sidewalkLevel;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public Material getGroundSurfaceMaterial(final int chunkX, final int chunkZ) {
-		return Material.LEGACY_DOUBLE_STEP;
+		return Material.SMOOTH_STONE;
 	}
 
 	@Override

@@ -32,9 +32,6 @@ commands:
   otd_pi_debug:
     description: Show debug info
     usage: /<command>
-  otd_reload_scripts:
-    description: Reload all js scripts
-    usage: /<command>
   otd_dump_spawner:
     description: Show debug info
     usage: /<command>

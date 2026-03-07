@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.MenuHelper;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 //import otd.integration.BossImpl;
@@ -34,7 +35,7 @@ public class BossConfig extends Content {
 	}
 
 	public BossConfig(String world, Content parent) {
-		super(I18n.instance.Boss_Config, SLOT);
+		super(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Boss_Config, SLOT);
 		this.world = world;
 		this.parent = parent;
 	}
@@ -129,9 +130,7 @@ public class BossConfig extends Content {
 	private void show() {
 		inv.clear();
 		{
-			ItemStack icon = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-			for (int i = 0; i < SLOT; i++)
-				addItem(i, icon);
+			MenuHelper.fillBorder(this, 4);
 		}
 		SimpleWorldConfig swc = WorldConfig.wc.dict.get(world);
 		{
@@ -141,12 +140,12 @@ public class BossConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			{
 				for (String text : Wrap.wordWrap(I18n.instance.Small_Boss_Lore, 30)) {
-					lores.add(ChatColor.AQUA + text);
+					lores.add(MenuHelper.desc(text));
 				}
 			}
-			lores.add(ChatColor.AQUA + I18n.instance.Current_Chance + " : " + Integer.toString(swc.chance) + "%");
-			lores.add(ChatColor.YELLOW + I18n.instance.Amount_Item_Tip1);
-			lores.add(ChatColor.YELLOW + I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.desc(I18n.instance.Current_Chance) + " : " + Integer.toString(swc.chance) + "%");
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(1, 4, icon);
@@ -161,7 +160,7 @@ public class BossConfig extends Content {
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Use_Vanilla);
 			List<String> lores = new ArrayList<>();
-			lores.add(ChatColor.AQUA + I18n.instance.Use_Vanilla_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Use_Vanilla_Lore));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 2, icon);
@@ -176,8 +175,8 @@ public class BossConfig extends Content {
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Use_BossPlugin);
 			List<String> lores = new ArrayList<>();
-			lores.add(ChatColor.RED + I18n.instance.Require_BossPlugin);
-			lores.add(ChatColor.AQUA + I18n.instance.Use_BossPlugin_Lore);
+			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_BossPlugin);
+			lores.add(MenuHelper.desc(I18n.instance.Use_BossPlugin_Lore));
 			{
 				StringBuilder sb = new StringBuilder();
 				for (String lore : I18n.instance.Use_BossPlugin_Lores) {
@@ -185,7 +184,7 @@ public class BossConfig extends Content {
 					sb.append("\n");
 				}
 				for (String text : Wrap.wordWrap(sb.toString(), 30)) {
-					lores.add(ChatColor.AQUA + text);
+					lores.add(MenuHelper.desc(text));
 				}
 			}
 			im.setLore(lores);
@@ -202,8 +201,8 @@ public class BossConfig extends Content {
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Use_MythicMobs);
 			List<String> lores = new ArrayList<>();
-			lores.add(ChatColor.RED + I18n.instance.Require_MythicMobs);
-			lores.add(ChatColor.AQUA + I18n.instance.Use_MythicMobs_Lore);
+			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_MythicMobs);
+			lores.add(MenuHelper.desc(I18n.instance.Use_MythicMobs_Lore));
 			{
 				StringBuilder sb = new StringBuilder();
 				for (String lore : I18n.instance.Use_MythicMobs_Lores) {
@@ -211,7 +210,7 @@ public class BossConfig extends Content {
 					sb.append("\n");
 				}
 				for (String text : Wrap.wordWrap(sb.toString(), 30)) {
-					lores.add(ChatColor.AQUA + text);
+					lores.add(MenuHelper.desc(text));
 				}
 			}
 			im.setLore(lores);
@@ -228,8 +227,8 @@ public class BossConfig extends Content {
 			ItemMeta im = icon.getItemMeta();
 			im.setDisplayName(I18n.instance.Use_EcoBosses);
 			List<String> lores = new ArrayList<>();
-			lores.add(ChatColor.RED + I18n.instance.Require_EcoBosses);
-			lores.add(ChatColor.AQUA + I18n.instance.Use_EcoBosses_Lore);
+			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_EcoBosses);
+			lores.add(MenuHelper.desc(I18n.instance.Use_EcoBosses_Lore));
 			{
 				StringBuilder sb = new StringBuilder();
 				for (String lore : I18n.instance.Use_EcoBosses_Lores) {
@@ -237,19 +236,13 @@ public class BossConfig extends Content {
 					sb.append("\n");
 				}
 				for (String text : Wrap.wordWrap(sb.toString(), 30)) {
-					lores.add(ChatColor.AQUA + text);
+					lores.add(MenuHelper.desc(text));
 				}
 			}
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 5, icon);
 		}
-		{
-			ItemStack icon = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			icon.setItemMeta(im);
-			addItem(3, 8, icon);
-		}
+		addItem(3, 8, MenuHelper.back());
 	}
 }

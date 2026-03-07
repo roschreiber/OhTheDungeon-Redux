@@ -30,6 +30,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import otd.addon.com.ohthedungeon.storydungeon.config.DungeonConfig;
 import otd.gui.Content;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -40,11 +41,9 @@ public class PPDI_Config extends Content {
 	private final static int SLOT = 36;
 
 	public PPDI_Config() {
-		super(I18n.instance.PPDI_Cfg, SLOT);
+		super(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.PPDI_Cfg, SLOT);
 	}
 
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
 	private final static Material INC = Material.MAGMA_CREAM;
 	private final static Material DEC = Material.SLIME_BALL;
 
@@ -174,24 +173,18 @@ public class PPDI_Config extends Content {
 	private void show() {
 		inv.clear();
 		{
-			Material material;
-			String status;
-			if (DungeonConfig.instance.enableMoneyPayment) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack icon = new ItemStack(material, 1);
+			boolean enabled = DungeonConfig.instance.enableMoneyPayment;
+			ItemStack icon = new ItemStack(MenuHelper.toggleMaterial(enabled), 1);
 			ItemMeta im = icon.getItemMeta();
 
 			List<String> lores = new ArrayList<>();
-			lores.add(status);
-			lores.add(I18n.instance.Require_Vault);
+			lores.add(MenuHelper.status(enabled));
+			lores.add(MenuHelper.desc(I18n.instance.Require_Vault));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 
-			im.setDisplayName(I18n.instance.EnableMoneyPayment);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.EnableMoneyPayment);
 
 			icon.setItemMeta(im);
 
@@ -201,9 +194,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+10000");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+10000");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -214,9 +207,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+1000");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+1000");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -227,9 +220,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+100");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+100");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -240,9 +233,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+10");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+10");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -253,9 +246,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+1");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+1");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -267,9 +260,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-10000");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-10000");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -280,9 +273,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-1000");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-1000");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -293,9 +286,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-100");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-100");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -306,9 +299,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-10");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-10");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -319,9 +312,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-1");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-1");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.money);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.money)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -330,23 +323,17 @@ public class PPDI_Config extends Content {
 		}
 
 		{
-			Material material;
-			String status;
-			if (DungeonConfig.instance.enableLevelPayment) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-			ItemStack icon = new ItemStack(material, 1);
+			boolean enabled = DungeonConfig.instance.enableLevelPayment;
+			ItemStack icon = new ItemStack(MenuHelper.toggleMaterial(enabled), 1);
 			ItemMeta im = icon.getItemMeta();
 
 			List<String> lores = new ArrayList<>();
-			lores.add(status);
+			lores.add(MenuHelper.status(enabled));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 
-			im.setDisplayName(I18n.instance.EnableLevelPayment);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.EnableLevelPayment);
 
 			icon.setItemMeta(im);
 
@@ -356,9 +343,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+10");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+10");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.level);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.level)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -369,9 +356,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(INC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("+1");
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+1");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.level);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.level)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -383,9 +370,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-10");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-10");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.level);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.level)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);
@@ -396,9 +383,9 @@ public class PPDI_Config extends Content {
 			ItemStack icon = new ItemStack(DEC, 1);
 			ItemMeta im = icon.getItemMeta();
 
-			im.setDisplayName("-1");
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + "-1");
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + DungeonConfig.instance.level);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, Integer.toString(DungeonConfig.instance.level)));
 			im.setLore(lores);
 
 			icon.setItemMeta(im);

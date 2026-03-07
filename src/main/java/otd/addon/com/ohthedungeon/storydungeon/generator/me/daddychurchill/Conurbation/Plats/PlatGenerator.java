@@ -43,10 +43,8 @@ public abstract class PlatGenerator {
 	protected static final Material byteStoneWall = Material.COBBLESTONE_WALL;
 	protected static final Material byteFence = Material.OAK_FENCE;
 	protected static final Material byteFenceBase = Material.STONE_BRICKS;
-	@SuppressWarnings("deprecation")
-	protected static final Material byteSidewalk = Material.LEGACY_DOUBLE_STEP;
-	@SuppressWarnings("deprecation")
-	protected static final Material byteParkwalk = Material.LEGACY_DOUBLE_STEP;
+	protected static final Material byteSidewalk = Material.SMOOTH_STONE;
+	protected static final Material byteParkwalk = Material.SMOOTH_STONE;
 	protected static final Material intGrassBlades = Material.SHORT_GRASS;
 	protected static final Material intFlowerRed = Material.POPPY;
 	protected static final Material intFlowerYellow = Material.DANDELION;

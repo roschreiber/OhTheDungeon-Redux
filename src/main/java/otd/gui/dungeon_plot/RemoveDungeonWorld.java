@@ -36,6 +36,7 @@ import otd.util.FileUtils;
 import otd.util.I18n;
 import otd.world.ChunkList;
 import otd.world.DungeonWorld;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -47,12 +48,12 @@ public class RemoveDungeonWorld extends Content {
 	private final Content parent;
 
 	public RemoveDungeonWorld(Content parent) {
-		super(I18n.instance.Menu_Remove_World, 9);
+		super(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Menu_Remove_World, 9);
 		this.parent = parent;
 	}
 
 	public RemoveDungeonWorld() {
-		super(I18n.instance.Menu_Remove_World, 9);
+		super(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Menu_Remove_World, 9);
 		this.parent = null;
 	}
 
@@ -64,24 +65,16 @@ public class RemoveDungeonWorld extends Content {
 			ItemStack is = new ItemStack(Material.LAVA_BUCKET);
 			ItemMeta im = is.getItemMeta();
 
-			im.setDisplayName(I18n.instance.Menu_remove);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Menu_remove);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Menu_remove_lore);
+			lores.add(MenuHelper.muted(I18n.instance.Menu_remove_lore));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
 
 			addItem(4, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-
-			im.setDisplayName(I18n.instance.Back);
-
-			is.setItemMeta(im);
-			addItem(8, is);
-		}
+		addItem(8, MenuHelper.back());
 	}
 
 	@EventHandler

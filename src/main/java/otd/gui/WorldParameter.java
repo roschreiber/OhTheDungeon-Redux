@@ -19,6 +19,8 @@ import otd.config.WorldConfig;
 import otd.util.ChatUtil;
 import otd.util.I18n;
 
+import otd.redux.util.MenuHelper;
+
 public class WorldParameter extends Content {
 	private final static int SLOT = 45;
 	public static WorldParameter instance = new WorldParameter();
@@ -36,7 +38,7 @@ public class WorldParameter extends Content {
 	}
 
 	public WorldParameter(String world, Content parent) {
-		super(I18n.instance.WorldParameter, SLOT);
+		super(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.WorldParameter, SLOT);
 		this.world = world;
 		this.parent = parent;
 
@@ -131,30 +133,25 @@ public class WorldParameter extends Content {
 	@SuppressWarnings("deprecation")
 	private void show() {
 		inv.clear();
+		MenuHelper.fillBorder(this, 5);
 		{
 			ItemStack icon = new ItemStack(Material.OAK_SIGN);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.WorldParameter_Sign);
+			im.setDisplayName(MenuHelper.color(MenuHelper.INFO) + I18n.instance.WorldParameter_Sign);
 			icon.setItemMeta(im);
 
 			addItem(0, 0, icon);
 		}
-		{
-			ItemStack icon = new ItemStack(Material.WATER_BUCKET);
-			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Reset);
-			icon.setItemMeta(im);
-
-			addItem(0, 8, icon);
-		}
+		addItem(0, 8, MenuHelper.reset());
 		{
 			ItemStack icon = new ItemStack(BOTTOM);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.World_Bottom);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DARK) + I18n.instance.World_Bottom);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + this.bottom);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, this.bottom));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 
@@ -163,32 +160,19 @@ public class WorldParameter extends Content {
 		{
 			ItemStack icon = new ItemStack(SEALEVEL);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.World_Sealevel);
+			im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.World_Sealevel);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Value + " : " + this.sealevel);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value(I18n.instance.Current_Value, this.sealevel));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 
 			addItem(2, 6, icon);
 		}
-		{
-			ItemStack icon = new ItemStack(Material.LAVA_BUCKET);
-			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Cancel);
-			icon.setItemMeta(im);
-
-			addItem(4, 7, icon);
-		}
-		{
-			ItemStack icon = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			icon.setItemMeta(im);
-
-			addItem(4, 8, icon);
-		}
+		addItem(4, 7, MenuHelper.cancel());
+		addItem(4, 8, MenuHelper.apply());
 	}
 
 }

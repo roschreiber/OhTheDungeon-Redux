@@ -32,6 +32,7 @@ import otd.config.WorldConfig;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -45,12 +46,12 @@ public class CustomDungeonList extends Content {
 	public List<CustomDungeon> list = new ArrayList<>();
 
 	private CustomDungeonList() {
-		super(I18n.instance.Custom_Dungeon_List, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Custom_Dungeon_List, SLOT);
 		parent = null;
 	}
 
 	public CustomDungeonList(Content parent) {
-		super(I18n.instance.Custom_Dungeon_List, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Custom_Dungeon_List, SLOT);
 		this.parent = parent;
 	}
 
@@ -135,40 +136,20 @@ public class CustomDungeonList extends Content {
 			index++;
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-
-			addItem(0, 0, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(0, 1, is);
-		}
-
+		addItem(0, MenuHelper.prev(offset + 1));
+		addItem(1, MenuHelper.next(offset + 1));
 		{
 			ItemStack is = new ItemStack(Material.BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Add_Custom_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_Custom_Dungeon);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to add"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
-			addItem(0, 7, is);
+			addItem(7, is);
 		}
-
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(0, 8, is);
-		}
+		addItem(8, MenuHelper.back());
 	}
 }

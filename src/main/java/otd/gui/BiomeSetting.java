@@ -30,6 +30,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import otd.util.I18n;
 import otd.config.WorldConfig;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -52,7 +53,7 @@ public class BiomeSetting extends Content {
 	public static BiomeSetting instance = new BiomeSetting();
 
 	public BiomeSetting(String world, Content parent, Set<String> biomes) {
-		super(I18n.instance.Biome_Setting, SLOT);
+		super(MenuHelper.color(MenuHelper.SUCCESS) + I18n.instance.Biome_Setting, SLOT);
 		this.parent = parent;
 		this.biomes = biomes;
 	}
@@ -117,41 +118,15 @@ public class BiomeSetting extends Content {
 		holder.init();
 	}
 
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
-
 	@SuppressWarnings("deprecation")
 	@Override
 	public void init() {
 		inv.clear();
+		MenuHelper.fillRow(this, 0);
+		addItem(0, MenuHelper.prev(offset + 1));
+		addItem(1, MenuHelper.next(offset + 1));
+		addItem(8, MenuHelper.apply());
 		{
-			ItemStack is = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
-			for (int i = 2; i < 8; i++)
-				addItem(0, i, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-			addItem(0, 0, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-			addItem(0, 1, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			is.setItemMeta(im);
-			addItem(0, 8, is);
-		}
-		{
-
 			List<String> all_biomes = new ArrayList<>();
 			Registry.BIOME.forEach(biome -> {
 				all_biomes.add(biome.getKey().getKey());
@@ -164,21 +139,22 @@ public class BiomeSetting extends Content {
 			i = 0;
 			while (i + 9 < 54 && index + i < all_biomes.size()) {
 				String biome_name = all_biomes.get(index + i).toString();
-				Material material = biomes.contains(biome_name) ? DISABLE : ENABLE;
+				boolean enabled = !biomes.contains(biome_name);
 
-				ItemStack is = new ItemStack(material);
+				ItemStack is = new ItemStack(MenuHelper.toggleMaterial(enabled));
 				ItemMeta im = is.getItemMeta();
 				im.setDisplayName(biome_name);
-				String status = material == DISABLE ? I18n.instance.Disable : I18n.instance.Enable;
 
 				List<String> lores = new ArrayList<>();
-				lores.add(status);
+				lores.add(MenuHelper.status(enabled));
+				lores.add(MenuHelper.separator());
+				lores.add(MenuHelper.actionHint("Click to toggle"));
 				im.setLore(lores);
 				is.setItemMeta(im);
 
 				addItem(i + 9, is);
 				i++;
 			}
-	}
+		}
 	}
 }

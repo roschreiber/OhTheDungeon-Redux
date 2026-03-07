@@ -31,6 +31,7 @@ import net.md_5.bungee.api.ChatColor;
 import otd.config.LootNode;
 import otd.config.WorldConfig;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -45,9 +46,6 @@ public class LootManager extends Content {
 	private final static int SLOT = 54;
 	public int offset;
 
-	private final static Material PAGE = Material.END_CRYSTAL;
-	private final static Material ISO = Material.BLUE_STAINED_GLASS_PANE;
-
 	private LootManager() {
 		super("", SLOT);
 		loots = null;
@@ -58,7 +56,7 @@ public class LootManager extends Content {
 	public static LootManager instance = new LootManager();
 
 	public LootManager(List<LootNode> loots, Content parent) {
-		super(I18n.instance.Loot_Manager, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Loot_Manager, SLOT);
 		this.loots = loots;
 		offset = 0;
 		this.parent = parent;
@@ -136,7 +134,11 @@ public class LootManager extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Add_New_Loot);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_New_Loot);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to add"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 0, is);
@@ -144,9 +146,9 @@ public class LootManager extends Content {
 		{
 			ItemStack is = new ItemStack(Material.LAVA_BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Remove_All);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove_All);
 			List<String> lores = new ArrayList<>();
-			lores.add(ChatColor.RED + I18n.instance.Remove_All_Warn);
+			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove_All_Warn);
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -155,7 +157,7 @@ public class LootManager extends Content {
 		{
 			ItemStack is = new ItemStack(Material.BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Import);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Import);
 			is.setItemMeta(im);
 
 			addItem(0, 4, is);
@@ -163,47 +165,15 @@ public class LootManager extends Content {
 		{
 			ItemStack is = new ItemStack(Material.WATER_BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Export);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Export);
 			is.setItemMeta(im);
 
 			addItem(0, 5, is);
 		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 6, is);
-		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 7, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			is.setItemMeta(im);
-
-			addItem(0, 8, is);
-		}
-		{
-			for (int i = 0; i < 9; i++) {
-				ItemStack is = new ItemStack(ISO);
-				addItem(1, i, is);
-			}
-		}
+		addItem(6, MenuHelper.prev(offset + 1));
+		addItem(7, MenuHelper.next(offset + 1));
+		addItem(8, MenuHelper.apply());
+		MenuHelper.fillRow(this, 1);
 		{
 			int index = 18;
 			int i = offset * 36;
@@ -217,10 +187,11 @@ public class LootManager extends Content {
 						lores = im.getLore();
 					else
 						lores = new ArrayList<>();
-					lores.add(0, I18n.instance.Click_To_Edit);
-					lores.add(0, I18n.instance.Min_Item + " : " + Integer.toString(it.min));
-					lores.add(0, I18n.instance.Max_Item + " : " + Integer.toString(it.max));
-					lores.add(0, I18n.instance.Loot_Chance + " : " + Double.toString(it.chance));
+					lores.add(0, MenuHelper.actionHint(I18n.instance.Click_To_Edit));
+					lores.add(0, MenuHelper.separator());
+					lores.add(0, MenuHelper.value(I18n.instance.Min_Item, it.min));
+					lores.add(0, MenuHelper.value(I18n.instance.Max_Item, it.max));
+					lores.add(0, MenuHelper.value(I18n.instance.Loot_Chance, Double.toString(it.chance)));
 					im.setLore(lores);
 					is.setItemMeta(im);
 					addItem(index, is, false);

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.MenuHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,13 +52,10 @@ public class RoguelikeConfig extends Content {
 	}
 
 	public RoguelikeConfig(String world, Content parent) {
-		super(I18n.instance.Roguelike_Config + " : " + world, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Roguelike_Config + " " + world, SLOT);
 		this.world = world;
 		this.parent = parent;
 	}
-
-	private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
-	private final static Material ENABLE = Material.MUSIC_DISC_CAT;
 
 	@EventHandler
 	@Override
@@ -166,34 +164,27 @@ public class RoguelikeConfig extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Natural_Spawn);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Natural_Spawn);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, is);
 		} else {
-			Material material;
-			String status;
-			if (swc.roguelike.doNaturalSpawn) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.roguelike.doNaturalSpawn));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Natural_Spawn);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Natural_Spawn);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.roguelike.doNaturalSpawn));
+			lores.add(MenuHelper.separator());
 			for (String str : I18n.instance.NaturalSpawnStr) {
-				lores.add(str);
+				lores.add(MenuHelper.desc(str));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -203,31 +194,23 @@ public class RoguelikeConfig extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Encase);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Encase);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(1, is);
 		} else {
-			Material material;
-			String status;
-			if (swc.roguelike.encase) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.roguelike.encase));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Encase);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Encase);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.roguelike.encase));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -237,34 +220,27 @@ public class RoguelikeConfig extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Generous);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Generous);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(2, is);
 		} else {
-			Material material;
-			String status;
-			if (swc.roguelike.generous) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.roguelike.generous));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Generous);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Generous);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.roguelike.generous));
+			lores.add(MenuHelper.separator());
 			int len = I18n.instance.GenerousStr.size();
 			for (int i = 0; i < len; i++)
-				lores.add(I18n.instance.GenerousStr.get(i));
+				lores.add(MenuHelper.desc(I18n.instance.GenerousStr.get(i)));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -274,32 +250,25 @@ public class RoguelikeConfig extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Random_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Random_Dungeon);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(3, is);
 		} else {
-			Material material;
-			String status;
-			if (swc.roguelike.random) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.roguelike.random));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Random_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Random_Dungeon);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
-			lores.add(I18n.instance.Random_Dungeon_Content);
+			lores.add(MenuHelper.status(swc.roguelike.random));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.instance.Random_Dungeon_Content));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -308,7 +277,10 @@ public class RoguelikeConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Loot_Config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(4, is);
@@ -317,10 +289,10 @@ public class RoguelikeConfig extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Biome_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Biome_Setting);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -328,28 +300,23 @@ public class RoguelikeConfig extends Content {
 		} else {
 			ItemStack is = new ItemStack(Material.LILAC);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Biome_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.actionHint("Click to configure"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(5, is);
 		}
 		{
-			Material material;
-			String status;
-			if (swc.roguelike.builtinLoot) {
-				material = ENABLE;
-				status = I18n.instance.Enable;
-			} else {
-				material = DISABLE;
-				status = I18n.instance.Disable;
-			}
-
-			ItemStack is = new ItemStack(material);
+			ItemStack is = new ItemStack(MenuHelper.toggleMaterial(swc.roguelike.builtinLoot));
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Builtin_Loot);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Builtin_Loot);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Status + " : " + status);
+			lores.add(MenuHelper.status(swc.roguelike.builtinLoot));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -358,10 +325,13 @@ public class RoguelikeConfig extends Content {
 		{
 			ItemStack is = new ItemStack(Material.JUKEBOX);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Roguelike_Dungeon_Tower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Roguelike_Dungeon_Tower);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Roguelike_Dungeon_Tower_Lore);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.instance.Roguelike_Dungeon_Tower_Lore));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 
 			im.setLore(lores);
 
@@ -376,18 +346,11 @@ public class RoguelikeConfig extends Content {
 			lores.add(I18n.instance.Preview_Lore1);
 			lores.add(I18n.instance.Preview_Lore2);
 			im.setLore(lores);
-			im.setDisplayName(I18n.instance.Preview);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);
 
 			addItem(1, 0, is);
 		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(1, 8, is);
-		}
+		addItem(1, 8, MenuHelper.back());
 	}
 }

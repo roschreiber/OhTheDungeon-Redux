@@ -30,6 +30,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import otd.config.RoguelikeLootNode;
 import otd.config.WorldConfig;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -41,9 +42,6 @@ public class RoguelikeLootManager extends Content {
 	private final static int SLOT = 54;
 	public int offset;
 
-	private final static Material PAGE = Material.END_CRYSTAL;
-	private final static Material ISO = Material.BLUE_STAINED_GLASS_PANE;
-
 	private RoguelikeLootManager() {
 		super("", SLOT);
 		loots = null;
@@ -54,7 +52,7 @@ public class RoguelikeLootManager extends Content {
 	public static RoguelikeLootManager instance = new RoguelikeLootManager();
 
 	public RoguelikeLootManager(List<RoguelikeLootNode> loots, Content parent) {
-		super(I18n.instance.Loot_Manager, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Loot_Manager, SLOT);
 		this.loots = loots;
 		offset = 0;
 		this.parent = parent;
@@ -120,47 +118,19 @@ public class RoguelikeLootManager extends Content {
 		{
 			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Add_New_Loot);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_New_Loot);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to add"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 0, is);
 		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 6, is);
-		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 7, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.STONE_BUTTON);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Apply);
-			is.setItemMeta(im);
-
-			addItem(0, 8, is);
-		}
-		{
-			for (int i = 0; i < 9; i++) {
-				ItemStack is = new ItemStack(ISO);
-				addItem(1, i, is);
-			}
-		}
+		addItem(6, MenuHelper.prev(offset + 1));
+		addItem(7, MenuHelper.next(offset + 1));
+		addItem(8, MenuHelper.apply());
+		MenuHelper.fillRow(this, 1);
 		{
 			int index = 18;
 			int i = offset * 36;
@@ -174,10 +144,11 @@ public class RoguelikeLootManager extends Content {
 						lores = im.getLore();
 					else
 						lores = new ArrayList<>();
-					lores.add(0, I18n.instance.Click_To_Edit);
-					lores.add(0, I18n.instance.Min_Item + " : " + Integer.toString(it.min));
-					lores.add(0, I18n.instance.Max_Item + " : " + Integer.toString(it.max));
-					lores.add(0, I18n.instance.Loot_Weight + " : " + Double.toString(it.weight));
+					lores.add(0, MenuHelper.actionHint(I18n.instance.Click_To_Edit));
+					lores.add(0, MenuHelper.separator());
+					lores.add(0, MenuHelper.value(I18n.instance.Min_Item, it.min));
+					lores.add(0, MenuHelper.value(I18n.instance.Max_Item, it.max));
+					lores.add(0, MenuHelper.value(I18n.instance.Loot_Weight, Integer.toString(it.weight)));
 					im.setLore(lores);
 					is.setItemMeta(im);
 					addItem(index, is, false);

@@ -35,6 +35,7 @@ import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
 import otd.struct.SchematicLoader;
 import otd.util.I18n;
+import otd.redux.util.MenuHelper;
 
 /**
  *
@@ -47,7 +48,7 @@ public class CustomDungeonPlaceSelect extends Content {
 	public List<CustomDungeon> list = new ArrayList<>();
 
 	public CustomDungeonPlaceSelect() {
-		super(I18n.instance.Custom_Dungeon_List, SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.instance.Custom_Dungeon_List, SLOT);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -129,31 +130,19 @@ public class CustomDungeonPlaceSelect extends Content {
 			index++;
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			is.setItemMeta(im);
-
-			addItem(0, 0, is);
-		}
-
-		{
-			ItemStack is = new ItemStack(Material.END_CRYSTAL);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			is.setItemMeta(im);
-
-			addItem(0, 1, is);
-		}
-
+		addItem(0, MenuHelper.prev(offset + 1));
+		addItem(1, MenuHelper.next(offset + 1));
 		{
 			ItemStack is = new ItemStack(Material.BUCKET);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Add_Custom_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_Custom_Dungeon);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to add"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
-			addItem(0, 8, is);
+			addItem(8, is);
 		}
 	}
 }

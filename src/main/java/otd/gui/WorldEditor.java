@@ -39,6 +39,8 @@ import otd.util.Skull;
 import otd.util.Wrap;
 import otd.world.WorldDefine;
 
+import otd.redux.util.MenuHelper;
+
 /**
  *
  * @author
@@ -59,7 +61,6 @@ public class WorldEditor extends Content {
 	// private boolean egg;
 	private final static int SLOT = 36;
 	private final static int WRAP = 30;
-	private final ChatColor DESCRIPTION_COLOR = ChatColor.AQUA;
 
 //    private final static Material DISABLE = Material.MUSIC_DISC_BLOCKS;
 //    private final static Material ENABLE = Material.MUSIC_DISC_CAT;
@@ -74,7 +75,7 @@ public class WorldEditor extends Content {
 	public static WorldEditor instance = new WorldEditor();
 
 	public WorldEditor(String world, Environment env, Content parent) {
-		super(I18n.instance.World_Editor + " : " + world, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.World_Editor + " " + world, SLOT);
 		this.world = world;
 		this.env = env;
 		this.parent = parent;
@@ -200,6 +201,7 @@ public class WorldEditor extends Content {
 	@Override
 	public void init() {
 		inv.clear();
+		MenuHelper.fillRow(this, 0);
 		{
 			if (WorldConfig.wc.dict.containsKey(world)) {
 				SimpleWorldConfig config = WorldConfig.wc.dict.get(world);
@@ -252,49 +254,49 @@ public class WorldEditor extends Content {
 				lores.add(I18n.instance.PPDI_WORLD);
 			} else {
 				if (roguelike) {
-					lores.add(I18n.instance.Roguelike_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Roguelike_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Roguelike_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Roguelike_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (doomlike) {
-					lores.add(I18n.instance.Doomlike_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Doomlike_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Doomlike_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Doomlike_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (battletower) {
-					lores.add(I18n.instance.Battle_Tower + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Battle_Tower + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Battle_Tower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Battle_Tower + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (smoofy) {
-					lores.add(I18n.instance.Smoofy_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Smoofy_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Smoofy_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Smoofy_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (draylar) {
-					lores.add(I18n.instance.Draylar_Battle_Tower + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Draylar_Battle_Tower + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Draylar_Battle_Tower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Draylar_Battle_Tower + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (ant) {
-					lores.add(I18n.instance.Ant_Man_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Ant_Man_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Ant_Man_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Ant_Man_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (aether) {
-					lores.add(I18n.instance.Aether_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Aether_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Aether_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Aether_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (lich) {
-					lores.add(I18n.instance.LichTower + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.LichTower + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.LichTower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.LichTower + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 				if (castle) {
-					lores.add(I18n.instance.Castle_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+					lores.add(MenuHelper.muted(I18n.instance.Castle_Dungeon + " : ") + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 				} else {
-					lores.add(I18n.instance.Castle_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+					lores.add(MenuHelper.muted(I18n.instance.Castle_Dungeon + " : ") + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 				}
 			}
 			im.setLore(lores);
@@ -306,16 +308,19 @@ public class WorldEditor extends Content {
 		{
 			ItemStack is = Skull.ROGUELIKE.getItem(); /* new ItemStack(Material.DIAMOND_BLOCK); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Roguelike_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Roguelike_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (roguelike) {
-				lores.add(I18n.instance.Roguelike_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Roguelike_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Roguelike_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Roguelike_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Roguelike_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -325,9 +330,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Doomlike_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Doomlike_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -335,16 +340,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.DOOMLIKE.getItem(); /* new ItemStack(Material.GOLD_BLOCK); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Doomlike_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Doomlike_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (doomlike) {
-				lores.add(I18n.instance.Doomlike_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Doomlike_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Doomlike_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Doomlike_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Doomlike_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -354,9 +362,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Battle_Tower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Battle_Tower);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -364,16 +372,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.BATTLE.getItem(); /* new ItemStack(Material.IRON_BLOCK); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Battle_Tower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Battle_Tower);
 			List<String> lores = new ArrayList<>();
 			if (battletower) {
-				lores.add(I18n.instance.Battle_Tower + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Battle_Tower + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Battle_Tower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Battle_Tower + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.BattleTower_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -383,9 +394,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Smoofy_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Smoofy_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -393,16 +404,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.SMOOFY.getItem(); /* new ItemStack(Material.COBBLESTONE); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Smoofy_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Smoofy_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (smoofy) {
-				lores.add(I18n.instance.Smoofy_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Smoofy_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Smoofy_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Smoofy_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Smoofy_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -412,9 +426,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Draylar_Battle_Tower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Draylar_Battle_Tower);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -422,16 +436,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.DRAYLAR.getItem(); /* new ItemStack(Material.BOOKSHELF); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Draylar_Battle_Tower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Draylar_Battle_Tower);
 			List<String> lores = new ArrayList<>();
 			if (draylar) {
-				lores.add(I18n.instance.Draylar_Battle_Tower + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Draylar_Battle_Tower + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Draylar_Battle_Tower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Draylar_Battle_Tower + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.DraylarBattleTower_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -441,9 +458,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Ant_Man_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Ant_Man_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -452,16 +469,19 @@ public class WorldEditor extends Content {
 			ItemStack is = Skull.ANTMAN.getItem();
 			/* new ItemStack(Material.END_PORTAL_FRAME) */;
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Ant_Man_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Ant_Man_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (ant) {
-				lores.add(I18n.instance.Ant_Man_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Ant_Man_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Ant_Man_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Ant_Man_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Antman_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -471,9 +491,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Aether_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Aether_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -481,16 +501,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.AETHER.getItem(); /* new ItemStack(Material.GLOWSTONE); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Aether_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Aether_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (aether) {
-				lores.add(I18n.instance.Aether_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Aether_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Aether_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Aether_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Aether_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -500,9 +523,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.LichTower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.LichTower);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+			lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -510,16 +533,19 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.LICH.getItem(); /* new ItemStack(Material.PAINTING); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.LichTower);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.LichTower);
 			List<String> lores = new ArrayList<>();
 			if (lich) {
-				lores.add(I18n.instance.LichTower + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.LichTower + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.LichTower + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.LichTower + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Lich_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -530,9 +556,9 @@ public class WorldEditor extends Content {
 			if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 				ItemStack is = new ItemStack(Material.BARRIER);
 				ItemMeta im = is.getItemMeta();
-				im.setDisplayName(I18n.instance.Custom_Dungeon);
+				im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Custom_Dungeon);
 				List<String> lores = new ArrayList<>();
-				lores.add(I18n.instance.PPDI_WORLD_LORE);
+				lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 				im.setLore(lores);
 				is.setItemMeta(im);
 
@@ -540,7 +566,7 @@ public class WorldEditor extends Content {
 			} else {
 				ItemStack is = (WorldEdit.isReady() ? Skull.CUSTOM.getItem() : new ItemStack(Material.BARRIER));
 				ItemMeta im = is.getItemMeta();
-				im.setDisplayName(I18n.instance.Custom_Dungeon);
+				im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon);
 				List<String> lores = new ArrayList<>();
 				lores.add(I18n.instance.Require_WorldEdit);
 				im.setLore(lores);
@@ -553,9 +579,9 @@ public class WorldEditor extends Content {
 		if (world.equals(DungeonWorldManager.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.BARRIER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Castle_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Castle_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.PPDI_WORLD_LORE);
+					lores.add(MenuHelper.muted(I18n.instance.PPDI_WORLD_LORE));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -563,22 +589,25 @@ public class WorldEditor extends Content {
 		} else {
 			ItemStack is = Skull.CASTLE.getItem(); /* new ItemStack(Material.IRON_TRAPDOOR); */
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Castle_Dungeon);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Castle_Dungeon);
 			List<String> lores = new ArrayList<>();
 			if (castle) {
-				lores.add(I18n.instance.Castle_Dungeon + " : " + ChatColor.RED + I18n.instance.Enable);
+				lores.add(I18n.instance.Castle_Dungeon + " : " + MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.instance.Enable);
 			} else {
-				lores.add(I18n.instance.Castle_Dungeon + " : " + ChatColor.GRAY + I18n.instance.Disable);
+				lores.add(I18n.instance.Castle_Dungeon + " : " + MenuHelper.color("#555555") + "\u2718 " + I18n.instance.Disable);
 			}
+			lores.add(MenuHelper.separator());
 			List<String> wraps = Wrap.wordWrap(I18n.instance.Castle_Description, WRAP);
 			for (String str : wraps)
-				lores.add(DESCRIPTION_COLOR + str);
+				lores.add(MenuHelper.desc(str));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(2, 0, is);
 		}
-
+		MenuHelper.fillRow(this, 3);
 		{
 			ItemStack is = new ItemStack(Material.ACTIVATOR_RAIL);
 			ItemMeta im = is.getItemMeta();
@@ -651,13 +680,6 @@ public class WorldEditor extends Content {
 			addItem(3, 3, is);
 		}
 
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(3, 8, is);
-		}
+		addItem(3, 8, MenuHelper.back());
 	}
 }

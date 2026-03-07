@@ -43,6 +43,8 @@ import otd.util.GZIPUtils;
 import otd.config.WorldConfig;
 import otd.util.I18n;
 
+import otd.redux.util.MenuHelper;
+
 /**
  *
  * @author shadow
@@ -50,21 +52,19 @@ import otd.util.I18n;
 public class BackupGUI extends Content {
 	public final static BackupGUI instance = new BackupGUI();
 	private final static int SLOT = 54;
-	private final static Material PAGE = Material.END_CRYSTAL;
-	private final static Material ISO = Material.BLUE_STAINED_GLASS_PANE;
 	private final static Material BACKUP = Material.PAPER;
 	public int offset;
 	public final Content parent;
 
 	private BackupGUI() {
-		super(I18n.instance.Config_Backup, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Config_Backup, SLOT);
 		parent = null;
 
 		offset = 0;
 	}
 
 	public BackupGUI(Content parent) {
-		super(I18n.instance.Config_Backup, SLOT);
+		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Config_Backup, SLOT);
 		this.parent = parent;
 
 		offset = 0;
@@ -196,50 +196,23 @@ public class BackupGUI extends Content {
 		}
 
 		inv.clear();
+		MenuHelper.fillRow(this, 0);
 		{
 			ItemStack is = new ItemStack(Material.FEATHER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Create_New_Backup);
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+ " + I18n.instance.Create_New_Backup);
+			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to create"));
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(0, 0, is);
 		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Previous);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 6, is);
-		}
-		{
-			ItemStack is = new ItemStack(PAGE);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Next);
-			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Current_Page + " : " + Integer.toString(offset + 1));
-			im.setLore(lores);
-			is.setItemMeta(im);
-
-			addItem(0, 7, is);
-		}
-		{
-			ItemStack is = new ItemStack(Material.LEVER);
-			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Back);
-			is.setItemMeta(im);
-
-			addItem(0, 8, is);
-		}
-		{
-			for (int i = 0; i < 9; i++) {
-				ItemStack is = new ItemStack(ISO);
-				addItem(1, i, is);
-			}
-		}
+		addItem(0, 6, MenuHelper.prev(offset + 1));
+		addItem(0, 7, MenuHelper.next(offset + 1));
+		addItem(0, 8, MenuHelper.back());
+		MenuHelper.fillSeparatorRow(this, 1);
 		{
 			int index = 18;
 			int i = offset * 36;
@@ -248,10 +221,10 @@ public class BackupGUI extends Content {
 				ItemStack is = new ItemStack(BACKUP);
 				ItemMeta im = is.getItemMeta();
 				if (im != null) {
-					im.setDisplayName(f.getName());
+					im.setDisplayName(MenuHelper.color(MenuHelper.VALUE_CLR) + f.getName());
 					List<String> lores = new ArrayList<>();
-//                    lores.add(f.getAbsolutePath());
-					lores.add(0, I18n.instance.Click_To_Restore);
+					lores.add(MenuHelper.separator());
+					lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Restore));
 					im.setLore(lores);
 					is.setItemMeta(im);
 					addItem(index, is);
