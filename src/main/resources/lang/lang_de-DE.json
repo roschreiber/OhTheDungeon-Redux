@@ -1,7 +1,7 @@
 {
   "lang_version": 23,
   "GREYMERK": {
-    "Name": "Greymerk's Hatchet",
+    "Name": "Greymerks Beil",
     "Lore": "Pointlessly sharp"
   },
   "NEBRISCROWN": {
@@ -270,7 +270,7 @@
   "Draylar_Battle_Tower_Natural_Spawn": "Draylar Battle Tower Natural Spawn",
   "Ant_Man_Dungeon_Natural_Spawn": "Ant Man Dungeon Natural Spawn",
   "Load_Config_Err": "Error while saving world config file",
-  "Click_To_Toggle": "Click to toggle",
+  "Click_To_Toggle": "Zum umschalten klicken",
   "World_Config_Save": "World config is saved",
   "Builtin_Loot": "Add builtin loots to treasure chests",
   "Natural_Spawn": "Natural Spawn",
