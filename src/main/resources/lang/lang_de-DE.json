@@ -1,363 +1,383 @@
 {
   "lang_version": 23,
   "GREYMERK": {
-    "Name": "Greymerk之斧",
-    "Lore": "一塌糊涂的锋利"
+    "Name": "Greymerks Beil",
+    "Lore": "Sinnlos scharf"
   },
   "NEBRISCROWN": {
-    "Name": "内布里亚正义王冠",
-    "Lore": "镶嵌有珍贵的宝石"
+    "Name": "Nebrische Krone der Gerechtigkeit",
+    "Lore": "Verziehrt mit kostbaren Edelsteinen"
   },
   "NULL": {
-    "Name": "空指针",
-    "Lore": "异常产物"
+    "Name": "Null Pointer",
+    "Lore": "Exceptional"
   },
   "MANPANTS": {
-    "Name": "男式裤子",
-    "Lore": "纯爷们专用"
+    "Name": "Männerhosen",
+    "Lore": "Ja, Mann!"
   },
   "ZISTEAUSIGN": {
-    "Name": "战牌",
-    "Lore": "“这是你应得的”"
+    "Name": "Kampfschild",
+    "Lore": "\"Das hast du davon!\""
   },
   "AVIDYA": {
-    "Name": "White Russian",
-    "Lore": "The dude's favourite"
+    "Name": "Weißer Russe",
+    "Lore": "Der Favorit des Kerls"
   },
   "ASHLEA": {
-    "Name": "阿什莉亚牌燕麦饼干",
-    "Lore": "适合十一岁儿童"
+    "Name": "Ashleas Keks",
+    "Lore": "Ein perfekter Snack!"
   },
   "KURT": {
-    "Name": "边境之地旅行器",
-    "Lore": "货真价实！"
+    "Name": "Farland Travellers",
+    "Lore": "Allerdings!"
   },
   "AMLP": {
-    "Name": "羊毛毁灭者",
-    "Lore": "请谨慎使用"
+    "Name": "Lascerator",
+    "Lore": "Der Wollsammler"
   },
   "CLEO": {
-    "Name": "Cleophian挖掘之鱼",
-    "Lore": "显然，鱼不适合挖掘"
+    "Name": "Cleophian Digging Feesh",
+    "Lore": "Feesh are not efeeshent for digging"
   },
   "BDOUBLEO": {
-    "Name": "挖掘者",
-    "Lore": "从地狱之火中诞生"
+    "Name": "Dig Job",
+    "Lore": "Recovered from hell's blazes"
   },
   "GUUDE": {
-    "Name": "博尔德菲斯蒂安的金唱片",
+    "Name": "Boulderfistian Golden Record",
     "Lore": "\"You're Watching Guude Boulderfist...\""
   },
   "RLEAHY": {
-    "Name": "三明治",
-    "Lore": "配有五香熏牛肉"
+    "Name": "Rleahian battle sub",
+    "Lore": "With extra pastrami"
   },
   "ETHO": {
     "Name": "Your Mum",
     "Lore": "The original"
   },
   "ENIKOBOW": {
-    "Name": "恩尼科的超弦理论",
-    "Lore": "为了科学！"
+    "Name": "Eniko's String Theory",
+    "Lore": "For Science!"
   },
   "ENIKOSWORD": {
-    "Name": "恩尼科的耳环",
+    "Name": "Eniko's Earring",
     "Lore": "\"She do the loot take boogie\""
   },
   "BAJ": {
-    "Name": "巴杰的最后一招",
-    "Lore": "\"饥饿可能是致命的\""
+    "Name": "Baj's Last Resort",
+    "Lore": "\"Starvation could be fatal\""
   },
   "DOCM": {
-    "Name": "指挥棒",
-    "Lore": "\"行往受难地\""
+    "Name": "Rod of Command",
+    "Lore": "\"Get to the dang land!\""
   },
   "GINGER": {
-    "Name": "宫保鸡丁",
+    "Name": "Spice Chicken",
     "Lore": "\"Kung Pao!\""
   },
   "VECHS": {
-    "Name": "传奇棒",
-    "Lore": "\"真的吗？！\""
+    "Name": "Legendary Stick",
+    "Lore": "\"Really?!\""
   },
   "NOTCH": {
-    "Name": "Notch的苹果",
-    "Lore": "创始者的力量"
+    "Name": "Notch's apple",
+    "Lore": "Imbued with the creator's power"
   },
   "QUANTUMLEAP": {
-    "Name": "量子飞跃的之瑞士奶酪",
+    "Name": "QuantumLeap's Swiss Cheese",
     "Lore": "\"Oh boy\""
   },
   "GENERIKB": {
-    "Name": "烫手的山芋",
-    "Lore": "隐士的必需品"
+    "Name": "Hot Potato",
+    "Lore": "All a hermit needs"
   },
   "FOURLES": {
-    "Name": "无面粉烤黑豆",
-    "Lore": "\"色泽焦黑\""
+    "Name": "Fourles Darkroast Beans",
+    "Lore": "\"Mmmm... Dark Roast\""
   },
   "DINNERBONE": {
-    "Name": "Dinnerbone老先生",
+    "Name": "Old Dinnerbone",
     "Lore": "\"Dang Skellies!\""
   },
   "GRIM": {
-    "Name": "Grim咀嚼玩具",
+    "Name": "Grim chew-toy",
     "Lore": "\"Come on Grim, let's do this!\""
   },
   "MMILLSS": {
-    "Name": "MMillssian蜘蛛之祸",
-    "Lore": "\"我不需要更多的线了。。\""
+    "Name": "MMillssian spider bane",
+    "Lore": "\"I really don't need anymore string...\""
   },
   "VALANDRAH": {
-    "Name": "瓦兰德拉之吻",
-    "Lore": "\"感受我的剑吻\""
+    "Name": "Valandrah's Kiss",
+    "Lore": "\"Feel the kiss of my blade\""
   },
   "Eldritch_Blade_of_Plundering": {
-    "Name": "恶魔的掠夺之刃",
-    "Lore": "增强掠夺"
+    "Name": "Eldritch Blade of Plundering",
+    "Lore": "The loot taker"
   },
   "Eldritch_Blade_of_the_Inferno": {
-    "Name": "地狱之魔咒之刃",
-    "Lore": "来自火海深处"
+    "Name": "Eldritch Blade of the Inferno",
+    "Lore": "From the fiery depths"
   },
   "Eldritch_Blade": {
-    "Name": "魔咒之刃",
-    "Lore": "符文蚀刻"
+    "Name": "Eldritch Blade",
+    "Lore": "Rune Etched"
   },
   "Tempered_Blade": {
-    "Name": "剑刃",
-    "Lore": "增强耐久"
+    "Name": "Tempered Blade",
+    "Lore": "Highly Durable"
   },
   "Yew_Longbow": {
-    "Name": "紫杉弓",
-    "Lore": "精湛工艺"
+    "Name": "Yew Longbow",
+    "Lore": "Superior craftsmanship"
   },
   "Laminated_Bow": {
-    "Name": "叠层弓",
-    "Lore": "高度打磨"
+    "Name": "Laminated Bow",
+    "Lore": "Highly polished"
   },
   "Recurve_Bow": {
-    "Name": "反曲弓",
-    "Lore": "做工考究"
+    "Name": "Recurve Bow",
+    "Lore": "Beautifully crafted"
   },
   "Eldritch_Bow": {
-    "Name": "魔咒之弓",
-    "Lore": "温润如玉"
+    "Name": "Eldritch Bow",
+    "Lore": "Warm to the touch"
   },
   "TEQUILA": {
-    "Name": "龙舌兰酒",
+    "Name": "Tequila",
     "Lore": ""
   },
   "LAUDANUM": {
-    "Name": "劳丹姆",
-    "Lore": "药酒."
+    "Name": "Laudanum",
+    "Lore": "A medicinal tincture."
   },
   "MOONSHINE": {
-    "Name": "月光酒",
-    "Lore": "（私酿）"
+    "Name": "Moonshine",
+    "Lore": ""
   },
   "ABSINTHE": {
-    "Name": "苦艾酒",
+    "Name": "Absinthe",
     "Lore": ""
   },
   "VILE": {
-    "Name": "有害混合物",
+    "Name": "Vile Mixture",
     "Lore": ""
   },
   "RAGE": {
     "Name": "Animus",
-    "Lore": "不稳定的混合物."
+    "Lore": "An unstable mixture."
   },
   "STAMINA": {
     "Name": "Vitae",
-    "Lore": "生命的本质."
+    "Lore": "Essence of life."
   },
   "STOUT": {
     "Name": "Stout",
     "Lore": "\"It's Good for You\""
   },
   "NECTAR": {
-    "Name": "花蜜",
-    "Lore": "花瓣浸出物."
+    "Name": "Nectar",
+    "Lore": "A Floral extract."
   },
   "COFFEE": {
-    "Name": "咖啡",
-    "Lore": "深色咖啡."
+    "Name": "Coffee",
+    "Lore": "A darkroast bean brew."
   },
   "AURA": {
-    "Name": "流明",
-    "Lore": "荧石提取物."
+    "Name": "Luma",
+    "Lore": "A glowstone extract."
   },
   "armour_prefix": {
-    "Surplus": "多余的",
-    "Riveted": "铆接的",
-    "Gothic": "哥特的",
-    "Jewelled": "珠宝的",
-    "Crystal": "水晶的",
-    "Strange": "诡异的"
+    "Surplus": "Surplus",
+    "Riveted": "Riveted",
+    "Gothic": "Gothic",
+    "Jewelled": "Jewelled",
+    "Crystal": "Crystal",
+    "Strange": "Strange"
   },
-  "Nerf_Msg": "你的服务器禁用了刷怪笼AI。请查看该配置项：'nerf-spawner-mobs' https://www.spigotmc.org/wiki/spigot-configuration/",
-  "Soul_Spade": "灵魂之铲",
-  "Grave_Spade": "重力之铲",
-  "Crystal_Head_Axe": "水晶头斧",
-  "Woodland_Hatchet": "林地斧",
-  "Crystal_Pick_of_Precision": "精准水晶镐",
-  "Crystal_Pick_of_Prospecting": "勘探水晶镐",
-  "Crystal_Pick": "水晶镐",
-  "Case_Hardened_Pick_of_Precision": "精细化工具",
-  "Case_Hardened_Pick_of_Prospecting": "技术化工具",
-  "Case_Hardened_Pick": "强化镐",
-  "Bonnet": "帽子",
-  "Coif": "头巾",
-  "Sallet": "轻盔",
-  "Helm": "头盔",
-  "Of_Diving": ":水遁",
-  "Of_Deflection": ":避弹",
-  "Of_Defense": ":防护",
-  "Shoes": "便鞋",
-  "Greaves": "轻鞋",
-  "Sabatons": "板靴",
-  "Boots": "战靴",
-  "Of_Warding": ":耐热",
-  "Of_Lightness": ":轻盈",
-  "Pantaloons": "短裤",
-  "Chausses": "护腿",
-  "Leg_plates": "板腿",
-  "Leggings": "腿甲",
-  "Of_Integrity": ":防爆",
-  "Tunic": "皮甲",
-  "Hauberk": "便甲",
-  "Cuirass": "盔甲",
-  "Plate": "战袍",
-  "Of_Flamewarding": ":防火",
-  "World_Manager": "世界管理器",
-  "World_List": "世界列表",
-  "Previous": "前一页",
-  "Next": "下一页",
-  "Click_To_Edit": "单击以编辑",
-  "DraylarBattleTower_Config": "Draylar战斗高塔设置",
-  "AntManDungeon_Config": "蚁人地牢设置",
-  "Ant_Man_Dungeon": "蚁人地牢",
-  "World_Editor": "世界地牢设置",
-  "Roguelike_Config": "冒险地牢设置",
-  "Doomlike_Config": "末日地牢设置",
-  "BattleTower_Config": "战斗高塔设置",
-  "Smoofy_Config": "花园地牢设置",
-  "Biome_Setting": "生物群系修正",
-  "Roguelike_Dungeon": "冒险地牢",
-  "Doomlike_Dungeon": "末日地牢",
-  "Battle_Tower": "战斗高塔",
-  "Smoofy_Dungeon": "花园地牢",
-  "Draylar_Battle_Tower": "Draylar战斗高塔",
-  "Roguelike_Dungeon_Natural_Spawn": "冒险地牢 自然生成",
-  "Doomlike_Dungeon_Natural_Spawn": "末日地牢 自然生成",
-  "Battle_Tower_Natural_Spawn": "战斗高塔 自然生成",
-  "Smoofy_Dungeon_Natural_Spawn": "花园地牢 自然生成",
-  "Draylar_Battle_Tower_Natural_Spawn": "Draylar战斗高塔 自然生成",
-  "Ant_Man_Dungeon_Natural_Spawn": "蚁人地牢 自然生成",
-  "Load_Config_Err": "读写世界设置时出错",
-  "Click_To_Toggle": "单击调整",
-  "World_Config_Save": "已保存世界设置",
-  "Builtin_Loot": "启用内置战利品列表",
-  "Natural_Spawn": "自然生成",
+  "Nerf_Msg": "Spawner cannot work properly in your server due to your config. To solve that, check 'nerf-spawner-mobs' in https://www.spigotmc.org/wiki/spigot-configuration/",
+  "Soul_Spade": "Soul Spade",
+  "Grave_Spade": "Grave Spade",
+  "Crystal_Head_Axe": "Crystal Head Axe",
+  "Woodland_Hatchet": "Woodland Hatchet",
+  "Crystal_Pick_of_Precision": "Crystal Pick of Precision",
+  "Crystal_Pick_of_Prospecting": "Crystal Pick of Prospecting",
+  "Crystal_Pick": "Crystal Pick",
+  "Case_Hardened_Pick_of_Precision": "Case Hardened Pick of Precision",
+  "Case_Hardened_Pick_of_Prospecting": "Case Hardened Pick of Prospecting",
+  "Case_Hardened_Pick": "Case Hardened Pick",
+  "Bonnet": "Bonnet",
+  "Coif": "Coif",
+  "Sallet": "Sallet",
+  "Helm": "Helm",
+  "Of_Diving": "of Diving",
+  "Of_Deflection": "of Deflection",
+  "Of_Defense": "of Defense",
+  "Shoes": "Shoes",
+  "Greaves": "Greaves",
+  "Sabatons": "Sabatons",
+  "Boots": "Boots",
+  "Of_Warding": "of Warding",
+  "Of_Lightness": "of Lightness",
+  "Pantaloons": "Pantaloons",
+  "Chausses": "Chausses",
+  "Leg_plates": "Leg-plates",
+  "Leggings": "Leggings",
+  "Of_Integrity": "of Integrity",
+  "Tunic": "Tunic",
+  "Hauberk": "Hauberk",
+  "Cuirass": "Cuirass",
+  "Plate": "Plate",
+  "Of_Flamewarding": "of Flamewarding",
+  "World_Manager": "World Manager",
+  "World_List": "World List",
+  "Previous": "Zurück",
+  "Next": "Weiter",
+  "Click_To_Edit": "Zum Bearbeiten klicken",
+  "DraylarBattleTower_Config": "Draylar Battle Tower Einstellungen",
+  "AntManDungeon_Config": "Ant Man Dungeon Einstellungen",
+  "Ant_Man_Dungeon": "Ant-Man Dungeon",
+  "CastleDungeon_Config": "Burg Dungeon Einstellungen",
+  "Castle_Dungeon": "Burg Dungeon",
+  "Castle_Natural_Spawn": "Castle Dungeon Natural Spawn",
+  "AetherDungeon_Config": "Aether Dungeon Einstellungen",
+  "Aether_Dungeon": "Aether Dungeon",
+  "Aether_Dungeon_Cloud": "Äther Dungeon Wolke",
+  "Aether_Dungeon_Cloud_Lore": "Hat der Dungeon eine Wolkenstruktur?",
+  "Aether_Dungeon_Cloud_Material": "Äther Dungeon Wolkenmaterial",
+  "Aether_Dungeon_Height": "Höhe der Generation",
+  "Aether_Dungeon_Natural_Spawn": "Aether Dungeon Natural Spawn",
+  "Prevent_Breaking_Of_Dungeon_Spawner": "Das Zerstören von Dungeon Spawnern vermeiden?",
+  "Prevent_Breaking_Of_Dungeon_Spawner_Lore": "Der Spieler wird keine Dungeon Spawner zerstören können",
+  "Prevent_Dropping_Of_Dungeon_Spawner": "Das Fallenlassen von Dungeon Spawnern vermeiden?",
+  "Prevent_Dropping_Of_Dungeon_Spawner_Lore": "Geeignet für Plugins wie SilkSpawner oder Slimefun.",
+  "World_Editor": "Welten Editor",
+  "Roguelike_Config": "Roguelike Dungeon Settings",
+  "Doomlike_Config": "Doomlike Dungeon Settings",
+  "BattleTower_Config": "Battle Tower Settings",
+  "Smoofy_Config": "Smoofy Dungeon Settings",
+  "Biome_Setting": "Biom Einstellungen",
+  "Roguelike_Dungeon": "Roguelike Dungeon",
+  "Doomlike_Dungeon": "Doomlike Dungeon",
+  "Battle_Tower": "Battle Tower",
+  "Smoofy_Dungeon": "Smoofy Dungeon",
+  "Draylar_Battle_Tower": "Draylar Battle Tower",
+  "Roguelike_Dungeon_Natural_Spawn": "Roguelike Dungeon Natural Spawn",
+  "Doomlike_Dungeon_Natural_Spawn": "Doomlike Dungeon Natural Spawn",
+  "Battle_Tower_Natural_Spawn": "Battle Tower Natural Spawn",
+  "Smoofy_Dungeon_Natural_Spawn": "Smoofy Dungeon Natural Spawn",
+  "Draylar_Battle_Tower_Natural_Spawn": "Draylar Battle Tower Natural Spawn",
+  "Ant_Man_Dungeon_Natural_Spawn": "Ant Man Dungeon Natural Spawn",
+  "Load_Config_Err": "Error while saving world config file",
+  "Click_To_Toggle": "Zum umschalten klicken",
+  "World_Config_Save": "Weltkonfiguration wurde gespeichert",
+  "Builtin_Loot": "Add builtin loots to treasure chests",
+  "Natural_Spawn": "Natural Spawn",
   "NaturalSpawnStr": [
-    "允许地牢随世界生成而生成"
+    "If set to false dungeons will not ",
+    "naturally spawn, however may still",
+    "be spawned in using a command."
   ],
-  "Average_Dungeon_Chunk_Distance": "地牢间的平均区块距离",
-  "Easy_Find": "更易发现",
+  "Average_Dungeon_Chunk_Distance": "Average Chunk Distance Between Dungeon",
+  "Easy_Find": "Easy Find",
   "EasyFindStr": [
-    "若为真，将为每个地牢修建地上入口",
+    "If true, all dungeons that can normally",
+    "have an entrance will have at least one",
     "and all entrances will have a building",
     "or ruin around them."
   ],
-  "Single_Entrance": "单个入口",
-  "Thin_Spawners": "刷怪笼修正",
+  "Single_Entrance": "Single Entrance",
+  "Thin_Spawners": "Thin Spawners",
   "ThinSpawnersStr": [
-    "若为真，生成器将移除小型地牢中的刷怪笼，",
-    "使得地牢比例更协调"
+    "If true smaller dungeons will have",
+    "some of there spawners removed to",
+    "make them more like larger dungeons."
   ],
-  "Dungeon_Spawn_Setting": "地牢生成设置",
-  "Dungeon_Spawn_Tip": "设置每个地牢的比例",
-  "Encase": "地牢包含外壳（建议开启）",
-  "Generous": "生成额外家具",
+  "Dungeon_Spawn_Setting": "Dungeon Spawn Rates",
+  "Dungeon_Spawn_Tip": "Set the proportion of each dungeon",
+  "Encase": "Encase The Dungeon",
+  "Generous": "Helpful Features",
   "GenerousStr": [
-    "是否生成酿造台、末影箱、铁砧等家具",
+    "Whether helpful features like",
+    "brewing stands, ender chests,",
     "enchanting stations, anvils",
     "should generate."
   ],
   "Difficulty": [
-    "难度",
-    "无",
-    "菜鸟",
-    "新手",
-    "正常",
-    "困难",
-    "残酷"
+    "Difficulty",
+    "NONE",
+    "BABY",
+    "NOOB",
+    "NORM",
+    "HARD",
+    "NUTS"
   ],
-  "Dungeon_Level": "层数",
-  "Level_Tip": "战利品是否会出现在该层",
-  "Beginner_Level": "最浅层数",
-  "Deepest_Level": "最深层数",
-  "Each": "放入每个箱子",
+  "Dungeon_Level": "Level",
+  "Level_Tip": "Whether this loot will show up in dungeon level",
+  "Beginner_Level": "Beginner Level",
+  "Deepest_Level": "Deepest Level",
+  "Each": "In Each Chest",
   "EachTip": [
-    "若为真，则相应战利品会被放入地牢中的所有箱子，",
-    "否则将在地牢箱子间平均分配",
+    "If true, then this rule will add ",
+    "'quantity' loot to each chest of ",
+    "this type. otherwise the specified",
     "'quantity' will be distributed among",
     "all the chests of the type specified"
   ],
-  "Weight": "权重",
-  "Random_Dungeon": "随机主题",
-  "Random_Dungeon_Content": "采用随机的地牢主题（不推荐）",
-  "Loot_Config": "战利品设置",
-  "Reduce_Loot_Chance": "减少战利品几率",
-  "Increase_Loot_Chance": "增加战利品几率",
-  "Current_Chance": "当前几率",
-  "Apply": "应用",
-  "Cancel": "取消",
-  "Remove": "删除",
-  "Back": "返回",
-  "Loot_Chance": "战利品几率",
-  "Loot_Weight": "战利品权重",
-  "Current_Page": "当前页数",
-  "Max_Item": "物品最大数量",
-  "Min_Item": "物品最小数量",
-  "Amount_Item_Tip1": "左键增加",
-  "Amount_Item_Tip2": "右键减少",
-  "Chest_Type": "箱子类型",
-  "ChestTypeStr": "末端箱子的类型",
-  "Loot_Manager": "战利品管理器",
-  "Add_New_Loot": "添加新战利品",
+  "Weight": "Weight",
+  "Random_Dungeon": "Random Theme",
+  "Random_Dungeon_Content": "Use random dungeon theme (ignore biome)",
+  "Loot_Config": "Loot Editor",
+  "Reduce_Loot_Chance": "Reduce Loot Chance",
+  "Increase_Loot_Chance": "Increase Loot Chance",
+  "Current_Chance": "Current Chance",
+  "Apply": "Apply",
+  "Cancel": "Cancel",
+  "Remove": "Remove",
+  "Back": "Back",
+  "Loot_Chance": "Loot Chance",
+  "Loot_Weight": "Loot Weight",
+  "Current_Page": "Current Page",
+  "Max_Item": "Item Max Amount",
+  "Min_Item": "Item Min Amount",
+  "Amount_Item_Tip1": "Left Click to increase",
+  "Amount_Item_Tip2": "Right Click to decrease",
+  "Chest_Type": "Chest Type",
+  "ChestTypeStr": "Chest type on top level",
+  "Loot_Manager": "Loot Manager",
+  "Add_New_Loot": "Add new Loot",
   "Tip": "Tip",
-  "Status": "状态",
-  "Enable": "启用",
-  "Disable": "禁用",
-  "Advancement1": "进入带有地牢的服务器",
-  "Advancement2": "踏足一个拥有战斗高塔的维度",
-  "Advancement3": "踏足一个拥有末日地牢的维度",
-  "Advancement4": "踏足一个拥有冒险地牢的维度",
-  "Advancement5": "踏足一个拥有花园地牢的维度",
-  "Dice": "骰子",
-  "DiceContent": "右键Roll点",
-  "ChangeSpawner": "允许使用刷怪蛋修改刷怪笼内容",
-  "ChangeSpawnerMessage": "无法使用刷怪蛋修改刷怪笼",
-  "PPDI_WORLD": "维度地牢世界",
-  "PPDI_WORLD_LORE": "受PerPlayerDungeonInstance托管",
-  "World_Spawner_Manager": "刷怪笼管理器",
+  "Status": "Status",
+  "Enable": "Enabled",
+  "Disable": "Disabled",
+  "Advancement1": "Enter a server with dungeons",
+  "Advancement2": "Visit a world with Battle Tower",
+  "Advancement3": "Visit a world with Doomlike Dungeon",
+  "Advancement4": "Visit a world with Roguelike Dungeon",
+  "Advancement5": "Visit a world with Smoofy Dungeon",
+  "Dice": "Dice",
+  "DiceContent": "Right click to roll",
+  "ChangeSpawner": "Spawn eggs can change type of spawner",
+  "ChangeSpawnerMessage": "Spawner cannot be changed by eggs",
+  "PPDI_WORLD": "PerPlayerDungeonInstance World",
+  "PPDI_WORLD_LORE": "Managed by PerPlayerDungeonInstance",
+  "World_Spawner_Manager": "World Spawner Manager",
   "Silk_Vanilla_Spawner": "Silk Touch on Vanilla Spawner",
   "Silk_Dungeon_Spawner": "Silk Touch on OhTheDungeon Spawner",
-  "Dungeon_Spawner_Lore1": "只对由>=7.0版本创建的刷怪笼有效",
-  "Dungeon_Spawner_Lore2": "由旧版本OTD创建的刷怪笼",
-  "Dungeon_Spawner_Lore3": "将被归类为原版刷怪笼",
-  "Mob_Drop_In_Vanilla_Spawner": "原版刷怪笼掉落物",
-  "Mob_Drop_In_Dungeon_Spawner": "OhTheDungeon刷怪笼掉落物",
-  "Spawner_Disappear_Vanilla": "每次刷怪后，原版刷怪笼的消失几率",
-  "Spawner_Disappear_Dungeon": "每次刷怪后，OTD刷怪笼的消失几率",
-  "Addon_Not_Installed": "扩展未安装",
-  "Click_To_Install": "点击来获取",
+  "Dungeon_Spawner_Lore1": "Only work on dungeons created by [OTD version>=7.0]",
+  "Dungeon_Spawner_Lore2": "Dungeons which are created by old OTD version",
+  "Dungeon_Spawner_Lore3": "will be treated as vanilla spawners",
+  "Mob_Drop_In_Vanilla_Spawner": "Mob Drop In Vanilla Spawner",
+  "Mob_Drop_In_Dungeon_Spawner": "Mob Drop In OhTheDungeon Spawner",
+  "Spawner_Disappear_Vanilla": "Chance of disappearance of vanilla spawners in each spawning",
+  "Spawner_Disappear_Dungeon": "Chance of disappearance of OhTheDungeon spawners in each spawning",
+  "Addon_Not_Installed": "Addon not installed",
+  "Click_To_Install": "Click to get the URL of this addon",
   "Lich_Name": "Lich",
   "Lich_Head": "Head of Lich",
   "Lich_Head_Lore": "I will await my eternal reward.",
-  "LichTower_Config": "Lich Tower Cfg",
+  "LichTower_Config": "Lich Tower Settings",
   "LichTower": "Lich Tower",
   "LichTower_Art": "Generate Paintings in Lich Tower",
   "LichTower_Natural_Spawn": "Lich Tower Natural Spawn",
@@ -391,7 +411,7 @@
   "Must_Natural_Spawn": "You must open at least one dungeon's Natural Spawn",
   "Dungeon_Plot_Not_Working": "Dungeon plot worker is not working",
   "Dungeon_Plot_Breaking": "Dungeon plot generation will break in 30s",
-  "Dungeon_Plot_In_Progress": "Dungeon plot is creating. Please wait for its finishing",
+  "Dungeon_Plot_In_Progress": "Dungeon plot is creating. It would finish in 10 minutes. You'll get the message once it's finished",
   "Dungeon_Plot_User_Teleport": "Dungeon Teleporter",
   "Click_To_Teleport": "Click to teleport",
   "Dungeon_Plot": "Dungeon Plot",
@@ -400,7 +420,7 @@
   "No_Permission": "You don't have permission to do that",
   "Automatic_Diagnostic": "Automatic Diagnostic",
   "User_TP_Suggest": "Use /otd_tp to explore the dungeon world!",
-  "User_TP_Suggest2": "Use /otd_tp to back to normal world!",
+  "User_TP_Suggest2": "Use /otd_tp, and choose the bed to back to normal world!",
   "User_PI_Suggest": "Use /otd_pi to create your own dungeon universe with money/exp",
   "Remove_All": "Remove all loots",
   "Remove_All_Warn": "Make sure you want to do that!",
@@ -425,10 +445,10 @@
   "Swamp": "Swamp",
   "Spawner_Rejection_Rate": "Spawner Rejection Rate",
   "Spawner_Rejection_Rate_Lore": "The higher the value, the lower the spawner count",
-  "Roguelike_Dungeon_Tower": "Roguelike Tower Themes",
+  "Roguelike_Dungeon_Tower": "Roguelike Dungeon Themes",
   "Roguelike_Dungeon_Tower_Warn": "At least one theme should be enabled",
   "Roguelike_Dungeon_Tower_Lore": "Select the theme of dungeon tower",
-  "Schematic_Select": "Select Schematic",
+  "Schematic_Select": "Schematic Selection",
   "Schematic_Select_Lore": "Support *.schem/*.schematic/*.nbt",
   "Schematic_File": "Current file",
   "Get_Schematic": "Get some sample schematics",
@@ -438,10 +458,10 @@
   "Custom_Dungeon_Chest_Lore": "Chests in schematic will be set to these content",
   "Custom_Dungeon_Type": "Custom Dungeon Type",
   "Custom_Dungeon_Spawn_Offset": "Custom Dungeon Spawn Offset",
-  "Mob_Select": "Mob Select",
+  "Mob_Select": "Mob Selection",
   "Mob_Select_Lore": "Spawners in schematic will be set to these mobs",
-  "Custom_Dungeon_List": "Custom Dungeon List",
-  "World_Custom_Dungeon": "World Custom Dungeon Cfg",
+  "Custom_Dungeon_List": "Custom Dungeons",
+  "World_Custom_Dungeon": "World Custom Dungeons",
   "Require_WorldEdit": "Require WorldEdit",
   "Add_Custom_Dungeon": "Add Custom Dungeon",
   "Custom_Dungeon_Err_Msg": "You must select a schematic file",
@@ -450,7 +470,7 @@
   "PAPI_Title": "PlaceHolderAPI",
   "PerPlayerDungeonInstance": "PerPlayerDungeonInstance",
   "PerPlayerDungeonInstance_Lore": "Let player create their own dungeons with money/exp",
-  "PPDI_Cfg": "Per-Player Dungeon Instance",
+  "PPDI_Cfg": "PerPlayerDungeonInstance",
   "EnableMoneyPayment": "Enable Money Payment",
   "EnableLevelPayment": "Enable Level Payment",
   "Require_Vault": "Require Vault Installed",
