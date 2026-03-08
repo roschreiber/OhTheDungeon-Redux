@@ -76,7 +76,7 @@ public class LanguageGUI extends Content {
         {
             ItemStack is = FLAG_CN.getItem();
             ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("zhcn")) {
+            if (currentlang.equals("zh-CN")) {
                 im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "Chinese" + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
             } else {
                 im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "Chinese");
@@ -85,7 +85,7 @@ public class LanguageGUI extends Content {
             lores.add(MenuHelper.separator());
             lores.add(MenuHelper.desc("Contributors: shadow_wind"));
             lores.add(MenuHelper.separator());
-            if(currentlang.equals("zhcn")) {
+            if(currentlang.equals("zh-CN")) {
                 lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
             } else {
                 lores.add(MenuHelper.actionHint("Click to select"));
@@ -116,7 +116,7 @@ public class LanguageGUI extends Content {
 
         String picked = null;
         if (slot == 12) picked = "en";
-        if (slot == 14) picked = "zhcn";
+        if (slot == 14) picked = "zh-CN";
 
         if (picked != null) {
             WorldConfig.wc.language = picked;
