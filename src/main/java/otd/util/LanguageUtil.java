@@ -30,6 +30,9 @@ public class LanguageUtil {
 	static {
 		LANG = new ArrayList<>();
 		LANG.add("lang_zh-CN.json");
+		LANG.add("lang_de-DE.json");
+		LANG.add("lang_ru-RU.json");
+    	LANG.add("lang_es-ES.json");
 	}
 
 	public static void init() {
