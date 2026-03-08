@@ -26,6 +26,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
 import otd.Main;
+import otd.addon.com.ohthedungeon.storydungeon.util.I18n;
 import otd.config.WorldConfig;
 import otd.redux.util.ChatManager;
 import otd.redux.util.ChatManager.MessageType;
@@ -44,6 +45,7 @@ public class Otd_Reload implements TabExecutor {
 			options.add("config");
 			options.add("chat");
 			options.add("scripts");
+			options.add("lang");
 			
 			if (args[0].isEmpty()) {
 				return options;
@@ -83,10 +85,17 @@ public class Otd_Reload implements TabExecutor {
 		if (args.length >= 1 && args[0].equalsIgnoreCase("config")) {
 			Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
 				WorldConfig.reloadFromYaml();
+				WorldConfig.loadWorldConfig();
 				Bukkit.getScheduler().runTask(Main.instance, () -> {
 					sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
 				});
 			});
+			return true;
+		}
+
+		if (args.length >= 1 && args[0].equalsIgnoreCase("lang")) {
+			I18n.init();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Language config reloaded", MessageType.SUCCESS));
 			return true;
 		}
 
@@ -107,6 +116,8 @@ public class Otd_Reload implements TabExecutor {
 			});
 			JSLoader.init();
 			sender.sendMessage(ChatManager.getInstance().formatMessage("JS scripts reloaded", MessageType.SUCCESS));
+			I18n.init();
+			sender.sendMessage(ChatManager.getInstance().formatMessage("Language config reloaded", MessageType.SUCCESS));
 			return true;
 		}
 

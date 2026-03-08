@@ -32,7 +32,7 @@ public class LanguageGUI extends Content {
             "7f9bc035cdc80f1ab5e1198f29f3ad3fdd2b42d9a69aeb64de990681800b98dc");
     private static final Skull.HeadData FLAG_DE = new Skull.HeadData(
             "2afe241c-e6c4-482f-aa68-9feb676e1ad1",
-            "5e7899b4806858697e283f084d9173fe4878886453774626b24bd8cfecc77b3f");
+            "5e7899b4806858697e283f084d9173fe487886453774626b24bd8cfecc77b3f");
     private static final Skull.HeadData FLAG_RU = new Skull.HeadData(
             "fbe62a93-e7f7-46d2-ba24-b3e1c08d9ad3",
             "16eafef980d6117dabe8982ac4b4509887e2c4621f6a8fe5c9b735a83d775ad");
