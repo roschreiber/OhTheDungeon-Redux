@@ -49,7 +49,6 @@ import net.md_5.bungee.api.ChatColor;
 import otd.Main;
 import otd.config.EnumType.ChestType;
 import otd.config.storage.ConfigImpl;
-import otd.config.storage.MySqlConfig;
 import otd.config.storage.SQLiteConfig;
 import otd.util.ExceptionReporter;
 import otd.config.storage.YamlConfig;
@@ -71,6 +70,9 @@ public class WorldConfig {
 	public boolean disableAPI = false;
 	public boolean noMobChanges = false;
 	public int version = 14;
+
+	public String language = "en";
+	public String chat_prefix = "&8[&2OTD-&eREDUX&8] &8| ";
 
 	public int map_house = -1;
 	public int map_desert = -1;
@@ -282,13 +284,9 @@ public class WorldConfig {
 		File dbFile = new File(configDir, "config.db");
 		boolean migrated = false;
 
-		if (dbFile.exists() || YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.MYSQL) {
+		if (dbFile.exists()) {
 			try {
-				if (YamlPluginConfig.type == YamlPluginConfig.DATA_TYPE.SQLITE) {
-					WorldConfig.db = new SQLiteConfig(Main.instance);
-				} else {
-					WorldConfig.db = new MySqlConfig(Main.instance);
-				}
+				WorldConfig.db = new SQLiteConfig(Main.instance);
 				WorldConfig.db.load();
 
 				String value = WorldConfig.db.getValue("config");

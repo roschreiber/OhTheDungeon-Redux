@@ -46,7 +46,6 @@ public class Otd implements TabExecutor {
 		}
 		MainMenu wm = new MainMenu();
 		wm.openInventory(p);
-		sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		return true;
 	}
 }

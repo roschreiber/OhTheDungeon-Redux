@@ -317,8 +317,8 @@ public class WorldSpawnerManager extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.value("Rate", disappearance_rate_vanilla + "%"));
 			lores.add(MenuHelper.separator());
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			lores.add(MenuHelper.separator());
 			im.setLore(lores);
 
@@ -353,7 +353,7 @@ public class WorldSpawnerManager extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(prevent_spawner_break));
 			lores.add(MenuHelper.separator());
-			lores.add(I18n.instance.Prevent_Breaking_Of_Dungeon_Spawner_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Prevent_Breaking_Of_Dungeon_Spawner_Lore));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint("Click to toggle"));
 
@@ -370,7 +370,7 @@ public class WorldSpawnerManager extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(prevent_spawner_drop));
 			lores.add(MenuHelper.separator());
-			lores.add(I18n.instance.Prevent_Dropping_Of_Dungeon_Spawner_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Prevent_Dropping_Of_Dungeon_Spawner_Lore));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint("Click to toggle"));
 

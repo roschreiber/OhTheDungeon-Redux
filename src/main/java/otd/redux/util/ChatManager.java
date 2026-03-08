@@ -1,16 +1,15 @@
 package otd.redux.util;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 import otd.Main;
+import otd.config.WorldConfig;
 
 public class ChatManager {
     
@@ -29,9 +28,6 @@ public class ChatManager {
     private static ChatManager instance;
     
     private final JavaPlugin plugin;
-    
-    private File configFile;
-    private FileConfiguration config;
     
     public enum MessageType {
         NORMAL,
@@ -58,56 +54,18 @@ public class ChatManager {
     }
     
     public void loadConfig() {
-        File dataFolder = plugin.getDataFolder();
-        if (!dataFolder.exists()) {
-            dataFolder.mkdir();
-        }
-        
-        configFile = new File(dataFolder, "chat_config.yml");
-        if (!configFile.exists()) {
-            try {
-                configFile.createNewFile();
-                saveDefaultPrefix();
-            } catch (IOException e) {
-                plugin.getLogger().severe("Could not create chat_config.yml: " + e.getMessage());
-            }
-        } else {
-            config = org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(configFile);
-            if (config.contains("prefix")) {
-                String rawPrefix = config.getString("prefix", DEFAULT_PREFIX_STRING);
-                prefix = ChatColor.translateAlternateColorCodes('&', rawPrefix);
-            } else {
-                saveDefaultPrefix();
-            }
-        }
-    }
-    
-    private void saveDefaultPrefix() {
-        config = org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(configFile);
-        config.set("prefix", DEFAULT_PREFIX_STRING);
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            plugin.getLogger().warning("Failed to save default chat prefix: " + e.getMessage());
-        }
-        prefix = ChatColor.translateAlternateColorCodes('&', DEFAULT_PREFIX_STRING);
+        String rawPrefix = WorldConfig.wc.chat_prefix;
+        prefix = ChatColor.translateAlternateColorCodes('&', rawPrefix);
     }
     
     public void updatePrefix(String newPrefix) {
-        if (config == null) {
-            loadConfig();
-        }
-        config.set("prefix", newPrefix);
-        try {
-            config.save(configFile);
-            prefix = ChatColor.translateAlternateColorCodes('&', newPrefix);
-        } catch (IOException e) {
-            plugin.getLogger().warning("Failed to save chat prefix: " + e.getMessage());
-        }
+        WorldConfig.wc.chat_prefix = newPrefix;
+        prefix = ChatColor.translateAlternateColorCodes('&', newPrefix);
+        WorldConfig.actualSave();
     }
     
     public String getRawPrefix() {
-        return config.getString("prefix", DEFAULT_PREFIX_STRING);
+        return WorldConfig.wc.chat_prefix;
     }
     
     public String formatMessage(String message, MessageType type) {

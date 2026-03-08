@@ -102,6 +102,19 @@ public class MainMenu extends Content {
 			is.setItemMeta(im);
 			addItem(1, 6, is);
 		}
+		{
+			ItemStack is = new ItemStack(Material.PAPER);
+			ItemMeta im = is.getItemMeta();
+			im.setDisplayName(color(SECONDARY) + "Language");
+			List<String> lores = new ArrayList<>();
+			lores.add(separator());
+			lores.add(desc("Current " + WorldConfig.wc.language));
+			lores.add(separator());
+			lores.add(actionHint("Click to open"));
+			im.setLore(lores);
+			is.setItemMeta(im);
+			addItem(26, is);
+		}
 	}
 
 	@EventHandler
@@ -142,5 +155,9 @@ public class MainMenu extends Content {
 			UtilMenu um = new UtilMenu(holder);
 			um.openInventory(p);
 		}
+		if (slot == 26) {
+            LanguageGUI lg = new LanguageGUI(holder);
+            lg.openInventory(p);
+        }
 	}
 }

@@ -35,6 +35,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import otd.Main;
+import otd.config.WorldConfig;
+import otd.redux.util.ConsoleManager;
 
 /**
  *
@@ -520,6 +522,7 @@ public class I18n {
 			"* Mob with prefix 'otd_small_boss_' will be used for small boss." };
 
 	public static final transient String configFileName = "lang.json";
+	public static transient String curlang = "lang.json";
 
 	public static void init() {
 		String configDirName = Main.instance.getDataFolder().toString();
@@ -527,7 +530,17 @@ public class I18n {
 		if (!directory.exists()) {
 			directory.mkdir();
 		}
-		String file_path = configDirName + File.separator + configFileName;
+
+		save_english();
+
+		String language = WorldConfig.wc.language;
+		if (language.equals("en")) {
+			curlang = configFileName;
+		} else {
+			curlang = "lang" + File.separator + "lang_" + language + ".json";
+		}
+
+		String file_path = configDirName + File.separator + curlang;
 		File file = new File(file_path);
 		if (file.exists()) {
 			try (BufferedReader reader = new BufferedReader(
@@ -547,8 +560,32 @@ public class I18n {
 				Bukkit.getLogger().log(Level.SEVERE, sw.toString());
 			}
 		}
+		ConsoleManager.logInfo("Language: " + language);
+
 		check_update();
 		save();
+	}
+
+	public static void save_english() {
+    	File langFolder = new File(Main.instance.getDataFolder(), "lang");
+
+    	if (!langFolder.exists()) {
+        	langFolder.mkdir();
+    	}
+
+    	File file = new File(langFolder, "lang_en.json");
+
+    	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    	I18n defaults = new I18n();
+    	String json = gson.toJson(defaults);
+
+    	try {
+        	OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+        	writer.write(json);
+        	writer.close();
+    	} catch (IOException e) {
+        	ConsoleManager.logError("Error while saving lang_en.json");
+    	}
 	}
 
 	public static void check_update() {
@@ -987,7 +1024,7 @@ public class I18n {
 		String configDirName = Main.instance.getDataFolder().toString();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(instance);
-		String file_path = configDirName + File.separator + configFileName;
+		String file_path = configDirName + File.separator + curlang;
 		File file = new File(file_path);
 		try (OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(file), "utf-8")) {
 			oStreamWriter.append(json);

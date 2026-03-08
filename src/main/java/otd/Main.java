@@ -57,7 +57,6 @@ import otd.commands.Otd_Place;
 import otd.commands.Otd_Reload;
 import otd.commands.Otd_Tp;
 import otd.config.WorldConfig;
-import otd.config.YamlPluginConfig;
 import otd.dungeon.draylar.BattleTowerSchematics;
 import otd.gui.AetherDungeonConfig;
 import otd.gui.AntManDungeonConfig;
@@ -69,6 +68,7 @@ import otd.gui.CastleDungeonConfig;
 import otd.gui.DoomlikeConfig;
 import otd.gui.DraylarBattleTowerConfig;
 import otd.gui.DungeonSpawnSetting;
+import otd.gui.LanguageGUI;
 import otd.gui.LichTowerConfig;
 import otd.gui.LootItem;
 import otd.gui.LootManager;
@@ -107,7 +107,6 @@ import otd.script.JSLoader;
 import otd.script.listener.DungeonEventListener;
 import otd.struct.SchematicLoader;
 import otd.util.Diagnostic;
-import otd.util.ExceptionReporter;
 import otd.util.I18n;
 import otd.util.LanguageUtil;
 import otd.redux.util.ChatManager;
@@ -177,18 +176,8 @@ public class Main extends JavaPlugin {
 			throw new UnsupportedOperationException("Unsupported Server Type");
 		}
 
-		try {
-			YamlPluginConfig.init();
-		} catch (IOException ex) {
-			ConsoleManager.logError(ExceptionReporter.exceptionToString(ex));
-		}
-
 		disabled = false;
 
-		I18n.init();
-        // Initialize the ChatManager
-        ChatManager.getInstance();
-        
 		{
 			(new File(this.getDataFolder(), "schematics")).mkdirs();
 			if (WorldEdit.isReady())
@@ -197,6 +186,9 @@ public class Main extends JavaPlugin {
 
 		WorldConfig.loadWorldConfig();
 		WorldConfig.AsyncSaver.setupAsyncSaver();
+
+		I18n.init();
+		ChatManager.getInstance();
 
 		ThemeReader.setConfigDir();
 		ThemeReader.setThemesDir();
@@ -210,7 +202,7 @@ public class Main extends JavaPlugin {
 		Dungeon.init = true;
 
 		getServer().getPluginManager().registerEvents(new DLDWorldListener(), this);
-
+		getServer().getPluginManager().registerEvents(LanguageGUI.instance, this);
 		getServer().getPluginManager().registerEvents(WorldEditor.instance, this);
 		getServer().getPluginManager().registerEvents(WorldManager.instance, this);
 		getServer().getPluginManager().registerEvents(RoguelikeConfig.instance, this);

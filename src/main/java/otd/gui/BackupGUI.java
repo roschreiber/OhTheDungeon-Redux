@@ -16,20 +16,15 @@
  */
 package otd.gui;
 
-import com.google.gson.Gson;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import net.md_5.bungee.api.ChatColor;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,12 +32,11 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import otd.Main;
-import otd.redux.util.ChatManager;
-import otd.util.GZIPUtils;
-import otd.config.WorldConfig;
-import otd.util.I18n;
 
+import otd.Main;
+import otd.config.WorldConfig;
+import otd.redux.util.ChatManager;
+import otd.util.I18n;
 import otd.redux.util.MenuHelper;
 
 /**
@@ -55,18 +49,17 @@ public class BackupGUI extends Content {
 	private final static Material BACKUP = Material.PAPER;
 	public int offset;
 	public final Content parent;
+	public List<File> backupList = new ArrayList<>();
 
 	private BackupGUI() {
 		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Config_Backup, SLOT);
 		parent = null;
-
 		offset = 0;
 	}
 
 	public BackupGUI(Content parent) {
 		super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Config_Backup, SLOT);
 		this.parent = parent;
-
 		offset = 0;
 	}
 
@@ -77,50 +70,79 @@ public class BackupGUI extends Content {
 		}
 	}
 
-	private static String getFileName() {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss.SSS");
-		String str = simpleDateFormat.format(new Date());
-		return "File-" + str + ".dat";
+	private static String getFolderName() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+		return "Backup_" + sdf.format(new Date());
 	}
 
 	private static void createBackup(Player p) {
-		String file_name = getFileName();
-		String json = (new Gson()).toJson(WorldConfig.wc);
-		json = GZIPUtils.compress(json);
+		WorldConfig.actualSave();
 
-		File file = new File(Main.instance.getDataFolder() + File.separator + "backups", file_name);
-		try (OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(file), "utf-8")) {
-			oStreamWriter.append(json);
-			oStreamWriter.close();
-			ChatManager.getInstance().sendSuccess(p, "Backup created at: " + file.getAbsolutePath());
+		String folderName = getFolderName();
+		File backupDir = new File(Main.instance.getDataFolder(), "backups" + File.separator + folderName);
+		backupDir.mkdirs();
+
+		try {
+			File globalFile = new File(Main.instance.getDataFolder(), "global.yml");
+			if (globalFile.exists()) {
+				Files.copy(globalFile.toPath(), new File(backupDir, "global.yml").toPath(), StandardCopyOption.REPLACE_EXISTING);
+			}
+
+			File worldsDir = new File(Main.instance.getDataFolder(), "worlds");
+			if (worldsDir.exists()) {
+				File worldsBackup = new File(backupDir, "worlds");
+				worldsBackup.mkdirs();
+
+				File[] worldFiles = worldsDir.listFiles();
+				if (worldFiles != null) {
+					for (File f : worldFiles) {
+						if (f.getName().endsWith(".yml")) {
+							Files.copy(f.toPath(), new File(worldsBackup, f.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+						}
+					}
+				}
+			}
+
+			ChatManager.getInstance().sendSuccess(p, I18n.instance.Create_New_Backup + ": " + folderName);
 		} catch (IOException e) {
 			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Create_Backup);
 		}
 	}
 
-	private static void restoreBackup(String file_name, Player p) {
-		File file = new File(Main.instance.getDataFolder() + File.separator + "backups", file_name);
-		WorldConfig old = WorldConfig.wc;
-		if (!file.exists()) {
+	private static void restoreBackup(File backupDir, Player p) {
+		if (!backupDir.exists()) {
 			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Restore_Backup);
 			return;
 		}
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"))) {
-			StringBuilder sb = new StringBuilder();
-			String line = reader.readLine();
-			while (line != null) {
-				sb.append(line);
-				line = reader.readLine();
+
+		try {
+			File backupGlobal = new File(backupDir, "global.yml");
+			if (backupGlobal.exists()) {
+				File target = new File(Main.instance.getDataFolder(), "global.yml");
+				Files.copy(backupGlobal.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
 			}
-			String json = sb.toString();
-			json = GZIPUtils.uncompress(json);
-			WorldConfig wc = (new Gson()).fromJson(json, WorldConfig.class);
-			wc.dungeon_world = WorldConfig.wc.dungeon_world;
-			WorldConfig.wc = wc;
-			WorldConfig.save();
-			ChatManager.getInstance().sendSuccess(p, "Config restored from: " + file.getAbsolutePath());
-		} catch (IOException ex) {
-			WorldConfig.wc = old;
+
+			File backupWorlds = new File(backupDir, "worlds");
+			if (backupWorlds.exists()) {
+				File worldsDir = new File(Main.instance.getDataFolder(), "worlds");
+				if (!worldsDir.exists()) worldsDir.mkdirs();
+
+				File[] worldFiles = backupWorlds.listFiles();
+				if (worldFiles != null) {
+					for (File f : worldFiles) {
+						if (f.getName().endsWith(".yml")) {
+							Files.copy(f.toPath(), new File(worldsDir, f.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+						}
+					}
+				}
+			}
+
+			WorldConfig loaded = WorldConfig.yamlStorage.loadAll();
+			loaded.dungeon_world = WorldConfig.wc.dungeon_world;
+			WorldConfig.wc = loaded;
+
+			ChatManager.getInstance().sendSuccess(p, "Restored: " + backupDir.getName());
+		} catch (Exception e) {
 			ChatManager.getInstance().sendError(p, I18n.instance.Fail_To_Restore_Backup);
 		}
 	}
@@ -169,10 +191,9 @@ public class BackupGUI extends Content {
 			holder.parent.openInventory(p);
 		}
 		if (slot >= 18 && slot <= 53) {
-			ItemStack is = clickedItem;
-			if (is.getType() == BACKUP) {
-				String file_name = is.getItemMeta().getDisplayName();
-				restoreBackup(file_name, p);
+			int index = holder.offset * 36 + (slot - 18);
+			if (index >= 0 && index < holder.backupList.size()) {
+				restoreBackup(holder.backupList.get(index), p);
 				p.closeInventory();
 			}
 		}
@@ -181,57 +202,51 @@ public class BackupGUI extends Content {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void init() {
-		File backup = new File(Main.instance.getDataFolder(), "backups");
-		File[] files = backup.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith(".dat");
+		inv.clear();
+		backupList.clear();
+
+		File backupsDir = new File(Main.instance.getDataFolder(), "backups");
+		File[] folders = backupsDir.listFiles();
+		if (folders != null) {
+			for (int i = 0; i < folders.length; i++) {
+				if (folders[i].isDirectory()) {
+					backupList.add(folders[i]);
+				}
 			}
-		});
-
-		List<File> list = new ArrayList<>();
-
-		for (File file : files) {
-			list.add(file);
 		}
 
-		inv.clear();
 		MenuHelper.fillRow(this, 0);
+
 		{
-			ItemStack is = new ItemStack(Material.FEATHER);
+			ItemStack is = new ItemStack(Material.CHEST);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "+ " + I18n.instance.Create_New_Backup);
+			im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + I18n.instance.Create_New_Backup);
+			is.setItemMeta(im);
+			addItem(0, is);
+		}
+
+		addItem(6, MenuHelper.prev(offset + 1));
+		addItem(7, MenuHelper.next(offset + 1));
+		addItem(8, MenuHelper.back());
+
+		MenuHelper.fillSeparatorRow(this, 1);
+
+		int index = 18;
+		int i = offset * 36;
+		while (index < SLOT && i < backupList.size()) {
+			File f = backupList.get(i);
+
+			ItemStack is = new ItemStack(BACKUP);
+			ItemMeta im = is.getItemMeta();
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + f.getName());
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to create"));
+			lores.add(MenuHelper.muted(I18n.instance.Click_To_Restore));
 			im.setLore(lores);
 			is.setItemMeta(im);
+			addItem(index, is);
 
-			addItem(0, 0, is);
-		}
-		addItem(0, 6, MenuHelper.prev(offset + 1));
-		addItem(0, 7, MenuHelper.next(offset + 1));
-		addItem(0, 8, MenuHelper.back());
-		MenuHelper.fillSeparatorRow(this, 1);
-		{
-			int index = 18;
-			int i = offset * 36;
-			while (index < SLOT && i < list.size()) {
-				File f = list.get(i);
-				ItemStack is = new ItemStack(BACKUP);
-				ItemMeta im = is.getItemMeta();
-				if (im != null) {
-					im.setDisplayName(MenuHelper.color(MenuHelper.VALUE_CLR) + f.getName());
-					List<String> lores = new ArrayList<>();
-					lores.add(MenuHelper.separator());
-					lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Restore));
-					im.setLore(lores);
-					is.setItemMeta(im);
-					addItem(index, is);
-				}
-				index++;
-				i++;
-			}
+			index++;
+			i++;
 		}
 	}
 }
