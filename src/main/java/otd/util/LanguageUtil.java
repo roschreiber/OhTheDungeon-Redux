@@ -29,7 +29,7 @@ public class LanguageUtil {
 	public final static List<String> LANG;
 	static {
 		LANG = new ArrayList<>();
-		LANG.add("lang_zhcn.json");
+		LANG.add("lang_zh-CN.json");
 	}
 
 	public static void init() {
