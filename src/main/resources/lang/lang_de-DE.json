@@ -2,39 +2,39 @@
   "lang_version": 23,
   "GREYMERK": {
     "Name": "Greymerks Beil",
-    "Lore": "Pointlessly sharp"
+    "Lore": "Sinnlos scharf"
   },
   "NEBRISCROWN": {
-    "Name": "Nebrian Crown of Justice",
-    "Lore": "Adorned with precious gemstones"
+    "Name": "Nebrische Krone der Gerechtigkeit",
+    "Lore": "Verziehrt mit kostbaren Edelsteinen"
   },
   "NULL": {
     "Name": "Null Pointer",
     "Lore": "Exceptional"
   },
   "MANPANTS": {
-    "Name": "Man Pants",
-    "Lore": "Yessss, Manpants!"
+    "Name": "Männerhosen",
+    "Lore": "Ja, Mann!"
   },
   "ZISTEAUSIGN": {
-    "Name": "Battle Sign",
-    "Lore": "\"That's what you get!\""
+    "Name": "Kampfschild",
+    "Lore": "\"Das hast du davon!\""
   },
   "AVIDYA": {
-    "Name": "White Russian",
-    "Lore": "The dude's favourite"
+    "Name": "Weißer Russe",
+    "Lore": "Der Favorit des Kerls"
   },
   "ASHLEA": {
-    "Name": "Ashlea's Oatmeal Cookie",
-    "Lore": "Perfect for elevensies"
+    "Name": "Ashleas Keks",
+    "Lore": "Ein perfekter Snack!"
   },
   "KURT": {
     "Name": "Farland Travellers",
-    "Lore": "Indeed!"
+    "Lore": "Allerdings!"
   },
   "AMLP": {
     "Name": "Lascerator",
-    "Lore": "The wool collector"
+    "Lore": "Der Wollsammler"
   },
   "CLEO": {
     "Name": "Cleophian Digging Feesh",
@@ -232,32 +232,32 @@
   "Of_Flamewarding": "of Flamewarding",
   "World_Manager": "World Manager",
   "World_List": "World List",
-  "Previous": "Previous",
-  "Next": "Next",
-  "Click_To_Edit": "Click To Edit",
-  "DraylarBattleTower_Config": "Draylar Battle Tower Settings",
-  "AntManDungeon_Config": "Ant Man Dungeon Settings",
-  "Ant_Man_Dungeon": "Ant Man Dungeon",
-  "CastleDungeon_Config": "Castle Dungeon Settings",
-  "Castle_Dungeon": "Castle Dungeon",
+  "Previous": "Zurück",
+  "Next": "Weiter",
+  "Click_To_Edit": "Zum Bearbeiten klicken",
+  "DraylarBattleTower_Config": "Draylar Battle Tower Einstellungen",
+  "AntManDungeon_Config": "Ant Man Dungeon Einstellungen",
+  "Ant_Man_Dungeon": "Ant-Man Dungeon",
+  "CastleDungeon_Config": "Burg Dungeon Einstellungen",
+  "Castle_Dungeon": "Burg Dungeon",
   "Castle_Natural_Spawn": "Castle Dungeon Natural Spawn",
-  "AetherDungeon_Config": "Aether Dungeon Settings",
+  "AetherDungeon_Config": "Aether Dungeon Einstellungen",
   "Aether_Dungeon": "Aether Dungeon",
-  "Aether_Dungeon_Cloud": "Aether Dungeon Cloud",
-  "Aether_Dungeon_Cloud_Lore": "Does the dungeon have cloud structure",
-  "Aether_Dungeon_Cloud_Material": "Aether Dungeon Cloud Material",
-  "Aether_Dungeon_Height": "Height to generation",
+  "Aether_Dungeon_Cloud": "Äther Dungeon Wolke",
+  "Aether_Dungeon_Cloud_Lore": "Hat der Dungeon eine Wolkenstruktur?",
+  "Aether_Dungeon_Cloud_Material": "Äther Dungeon Wolkenmaterial",
+  "Aether_Dungeon_Height": "Höhe der Generation",
   "Aether_Dungeon_Natural_Spawn": "Aether Dungeon Natural Spawn",
-  "Prevent_Breaking_Of_Dungeon_Spawner": "Prevent the breaking of dungeon spawner",
-  "Prevent_Breaking_Of_Dungeon_Spawner_Lore": "Make player cannot break the dungeon spawner",
-  "Prevent_Dropping_Of_Dungeon_Spawner": "Prevent the dropping of dungeon spawner",
-  "Prevent_Dropping_Of_Dungeon_Spawner_Lore": "For plugins like [SlikSpawner, Slimefun]",
-  "World_Editor": "World Editor",
+  "Prevent_Breaking_Of_Dungeon_Spawner": "Das Zerstören von Dungeon Spawnern vermeiden?",
+  "Prevent_Breaking_Of_Dungeon_Spawner_Lore": "Der Spieler wird keine Dungeon Spawner zerstören können",
+  "Prevent_Dropping_Of_Dungeon_Spawner": "Das Fallenlassen von Dungeon Spawnern vermeiden?",
+  "Prevent_Dropping_Of_Dungeon_Spawner_Lore": "Geeignet für Plugins wie SilkSpawner oder Slimefun.",
+  "World_Editor": "Welten Editor",
   "Roguelike_Config": "Roguelike Dungeon Settings",
   "Doomlike_Config": "Doomlike Dungeon Settings",
   "BattleTower_Config": "Battle Tower Settings",
   "Smoofy_Config": "Smoofy Dungeon Settings",
-  "Biome_Setting": "Biome Settings",
+  "Biome_Setting": "Biom Einstellungen",
   "Roguelike_Dungeon": "Roguelike Dungeon",
   "Doomlike_Dungeon": "Doomlike Dungeon",
   "Battle_Tower": "Battle Tower",
@@ -271,7 +271,7 @@
   "Ant_Man_Dungeon_Natural_Spawn": "Ant Man Dungeon Natural Spawn",
   "Load_Config_Err": "Error while saving world config file",
   "Click_To_Toggle": "Zum umschalten klicken",
-  "World_Config_Save": "World config is saved",
+  "World_Config_Save": "Weltkonfiguration wurde gespeichert",
   "Builtin_Loot": "Add builtin loots to treasure chests",
   "Natural_Spawn": "Natural Spawn",
   "NaturalSpawnStr": [
