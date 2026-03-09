@@ -94,6 +94,7 @@ public class Otd_Reload implements TabExecutor {
 		}
 
 		if (args.length >= 1 && args[0].equalsIgnoreCase("lang")) {
+			otd.util.I18n.init();
 			I18n.init();
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Language config reloaded", MessageType.SUCCESS));
 			return true;
@@ -117,6 +118,7 @@ public class Otd_Reload implements TabExecutor {
 			JSLoader.init();
 			sender.sendMessage(ChatManager.getInstance().formatMessage("JS scripts reloaded", MessageType.SUCCESS));
 			I18n.init();
+			otd.util.I18n.init();
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Language config reloaded", MessageType.SUCCESS));
 			return true;
 		}
