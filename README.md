@@ -2,6 +2,8 @@
   <img src="media/otdredux.png" alt="Oh The Dungeons You'll Go - REDUX" width="703" height="395">
 </p>
 
+---
+
 <h3 align="center">
 <a href="https://github.com/roschreiber/OhTheDungeon-Redux"><img alt="modrinth" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/modrinth_vector.svg"></a>
 <a href="https://crowdin.com/project/otd-redux"><img alt="crowdin" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/translate/crowdin_vector.svg"></a>
@@ -10,6 +12,9 @@
 <a href="https://discord.gg/bkZfWZsrF5"><img alt="discord-plural" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/social/discord-plural_vector.svg"></a>
 <a href="https://github.com/roschreiber/OhTheDungeon-Redux"><img alt="github-singular" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/social/github-singular_vector.svg"></a>
 </h3>
+
+---
+<br>
 
 <p align="center"> <img src="https://bstats.org/signatures/bukkit/OTD-Redux.svg" /> </p>
 
