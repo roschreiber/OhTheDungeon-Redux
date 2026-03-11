@@ -2,8 +2,6 @@
   <img src="media/otdredux.png" alt="Oh The Dungeons You'll Go - REDUX" width="703" height="395">
 </p>
 
-<h1 align="center">Oh The Dungeons You'll Go<br>REDUX</h1>
-
 <h3 align="center">
 <a href="https://github.com/roschreiber/OhTheDungeon-Redux"><img alt="modrinth" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/modrinth_vector.svg"></a>
 <a href="https://crowdin.com/project/otd-redux"><img alt="crowdin" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/translate/crowdin_vector.svg"></a>
@@ -58,7 +56,6 @@ Open an [issue on Github](https://github.com/roschreiber/OhTheDungeon-Redux/issu
   <br>
 </details>
 
-
 ### Servers using OTD-R:
 
 none right now! shoot me a dm / create a PR if you want ur server to be added.
@@ -68,6 +65,6 @@ none right now! shoot me a dm / create a PR if you want ur server to be added.
 ...go out to:
 
 - shadow_wind, the original author of OhTheDungeonsYou'llGo, who deleted the plugin some years ago due to lots of criticism
-- [steve4744](https://github.com/steve4744/OhTheDungeon), who maintained and updated the plugin throughout multiple MC versions
+- [steve4744](https://github.com/steve4744/OhTheDungeon), who maintained and kept the plugin alive through multiple MC versions
 - Hex_26 & their plugin [TerraformGenerator](https://modrinth.com/plugin/terraformgenerator), which was used for images 2-5 in the gallery above
 - tr7zw's [NBT-API](https://github.com/tr7zw/Item-NBT-API) which is used for manipulating spawner NBT
