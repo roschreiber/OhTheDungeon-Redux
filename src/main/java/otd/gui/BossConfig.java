@@ -11,7 +11,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import otd.redux.util.MenuHelper;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
@@ -136,14 +135,15 @@ public class BossConfig extends Content {
 		{
 			ItemStack icon = new ItemStack(Material.MUSIC_DISC_FAR);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Small_Boss_Rate);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Small_Boss_Rate);
 			List<String> lores = new ArrayList<>();
 			{
 				for (String text : Wrap.wordWrap(I18n.instance.Small_Boss_Lore, 30)) {
 					lores.add(MenuHelper.desc(text));
 				}
 			}
-			lores.add(MenuHelper.desc(I18n.instance.Current_Chance) + " : " + Integer.toString(swc.chance) + "%");
+			lores.add(MenuHelper.value(I18n.instance.Current_Chance, swc.chance + "%"));
+			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
@@ -158,9 +158,12 @@ public class BossConfig extends Content {
 				type = Material.BARRIER;
 			ItemStack icon = new ItemStack(type);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Use_Vanilla);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Use_Vanilla);
 			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.Vanilla));
 			lores.add(MenuHelper.desc(I18n.instance.Use_Vanilla_Lore));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 2, icon);
@@ -173,8 +176,9 @@ public class BossConfig extends Content {
 				type = Material.BARRIER;
 			ItemStack icon = new ItemStack(type);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Use_BossPlugin);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Use_BossPlugin);
 			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.Boss));
 			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_BossPlugin);
 			lores.add(MenuHelper.desc(I18n.instance.Use_BossPlugin_Lore));
 			{
@@ -187,6 +191,8 @@ public class BossConfig extends Content {
 					lores.add(MenuHelper.desc(text));
 				}
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
@@ -199,8 +205,9 @@ public class BossConfig extends Content {
 				type = Material.BARRIER;
 			ItemStack icon = new ItemStack(type);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Use_MythicMobs);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Use_MythicMobs);
 			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.MythicMobs));
 			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_MythicMobs);
 			lores.add(MenuHelper.desc(I18n.instance.Use_MythicMobs_Lore));
 			{
@@ -213,6 +220,8 @@ public class BossConfig extends Content {
 					lores.add(MenuHelper.desc(text));
 				}
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 4, icon);
@@ -225,8 +234,9 @@ public class BossConfig extends Content {
 				type = Material.BARRIER;
 			ItemStack icon = new ItemStack(type);
 			ItemMeta im = icon.getItemMeta();
-			im.setDisplayName(I18n.instance.Use_EcoBosses);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Use_EcoBosses);
 			List<String> lores = new ArrayList<>();
+			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.EcoBosses));
 			lores.add(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Require_EcoBosses);
 			lores.add(MenuHelper.desc(I18n.instance.Use_EcoBosses_Lore));
 			{
@@ -239,6 +249,8 @@ public class BossConfig extends Content {
 					lores.add(MenuHelper.desc(text));
 				}
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 5, icon);

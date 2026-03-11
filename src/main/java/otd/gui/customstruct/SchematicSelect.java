@@ -29,9 +29,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
+import otd.redux.util.ChatManager;
 import otd.struct.SchematicLoader;
 import otd.util.FileUtils;
 import otd.util.I18n;
@@ -88,7 +88,7 @@ public class SchematicSelect extends Content {
 		}
 
 		if (slot == 52) {
-			p.sendMessage(ChatColor.GREEN + "https://discord.gg/bkZfWZsrF5");
+			ChatManager.getInstance().sendInfo(p, "https://discord.gg/bkZfWZsrF5");
 			return;
 		}
 

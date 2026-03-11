@@ -12,10 +12,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import otd.Main;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
+import otd.redux.util.ChatManager;
 import otd.util.ChatUtil;
 import otd.util.I18n;
 
@@ -117,7 +117,7 @@ public class WorldParameter extends Content {
 		}
 		if (slot == 44) {
 			if (holder.sealevel - holder.bottom <= 50) {
-				p.sendMessage(ChatColor.RED + I18n.instance.WorldParameterExtra);
+				ChatManager.getInstance().sendError(p, I18n.instance.WorldParameterExtra);
 			} else {
 				SimpleWorldConfig swc = WorldConfig.wc.dict.get(holder.world);
 				swc.worldParameter.bottom = holder.bottom;

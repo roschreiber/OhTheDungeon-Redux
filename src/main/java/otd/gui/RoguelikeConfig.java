@@ -19,7 +19,7 @@ package otd.gui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.ChatManager;
 import otd.redux.util.MenuHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -140,7 +140,7 @@ public class RoguelikeConfig extends Content {
 			tower.openInventory(p);
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE + dungeonURL + "#roguelike");
+			ChatManager.getInstance().sendInfo(p, dungeonURL + "#roguelike");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);
@@ -343,8 +343,11 @@ public class RoguelikeConfig extends Content {
 			ItemStack is = new ItemStack(Material.PAINTING);
 			ItemMeta im = is.getItemMeta();
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Preview_Lore1);
-			lores.add(I18n.instance.Preview_Lore2);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore1));
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore2));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to preview"));
 			im.setLore(lores);
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);

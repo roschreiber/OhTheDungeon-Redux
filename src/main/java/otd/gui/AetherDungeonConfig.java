@@ -19,7 +19,7 @@ package otd.gui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.ChatManager;
 import otd.redux.util.MenuHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -124,7 +124,7 @@ public class AetherDungeonConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE + dungeonURL + "#aether");
+			ChatManager.getInstance().sendInfo(p, dungeonURL + "#aether");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);
@@ -207,7 +207,7 @@ public class AetherDungeonConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(swc.aether_dungeon.cloud));
 			lores.add(MenuHelper.separator());
-			lores.add(I18n.instance.Aether_Dungeon_Cloud_Lore);
+			lores.add(MenuHelper.desc(I18n.instance.Aether_Dungeon_Cloud_Lore));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint("Click to toggle"));
 			im.setLore(lores);
@@ -224,9 +224,10 @@ public class AetherDungeonConfig extends Content {
 
 			String height = "Y = " + swc.aether_dungeon.height;
 			List<String> lores = new ArrayList<>();
-			lores.add(height);
-			lores.add(I18n.instance.Amount_Item_Tip1);
-			lores.add(I18n.instance.Amount_Item_Tip2);
+			lores.add(MenuHelper.value("Y", swc.aether_dungeon.height));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
+			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -236,8 +237,11 @@ public class AetherDungeonConfig extends Content {
 			ItemStack is = new ItemStack(Material.PAINTING);
 			ItemMeta im = is.getItemMeta();
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Preview_Lore1);
-			lores.add(I18n.instance.Preview_Lore2);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore1));
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore2));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to preview"));
 			im.setLore(lores);
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);

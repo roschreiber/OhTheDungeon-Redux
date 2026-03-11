@@ -35,6 +35,7 @@ import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.Content;
 import otd.struct.SchematicLoader;
 import otd.util.I18n;
+import otd.redux.util.ChatManager;
 import otd.redux.util.MenuHelper;
 
 /**
@@ -106,7 +107,7 @@ public class CustomDungeonPlaceSelect extends Content {
 				SchematicLoader.createInWorldAsync(dungeon, loc.getWorld(), loc.getBlockX(), loc.getBlockZ(),
 						new Random());
 
-				p.sendMessage("Done");
+				ChatManager.getInstance().sendSuccess(p, "Done");
 				p.closeInventory();
 			}
 		}

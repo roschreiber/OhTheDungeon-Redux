@@ -28,7 +28,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.ChatManager;
 import otd.redux.util.MenuHelper;
 import otd.config.LootNode;
 import otd.config.SimpleWorldConfig;
@@ -105,7 +105,7 @@ public class CastleDungeonConfig extends Content {
 			holder.init();
 		}
 		if (slot == 9) {
-			p.sendMessage(ChatColor.BLUE + dungeonURL + "#castle");
+			ChatManager.getInstance().sendInfo(p, dungeonURL + "#castle");
 		}
 		if (slot == 17) {
 			holder.parent.openInventory(p);
@@ -184,8 +184,11 @@ public class CastleDungeonConfig extends Content {
 			ItemStack is = new ItemStack(Material.PAINTING);
 			ItemMeta im = is.getItemMeta();
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.instance.Preview_Lore1);
-			lores.add(I18n.instance.Preview_Lore2);
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore1));
+			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore2));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to preview"));
 			im.setLore(lores);
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);

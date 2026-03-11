@@ -28,7 +28,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import otd.config.SimpleWorldConfig;
 import otd.config.WorldConfig;
 import otd.gui.customstruct.WorldCustomDungeon;
@@ -611,12 +610,14 @@ public class WorldEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.ACTIVATOR_RAIL);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Dungeon_Spawn_Setting);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Dungeon_Spawn_Setting);
 
 			List<String> lores = new ArrayList<>();
 			for (String line : Wrap.wordWrap(I18n.instance.Dungeon_Spawn_Setting_Lore, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -627,12 +628,14 @@ public class WorldEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.COMMAND_BLOCK);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.World_Spawner_Manager);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.World_Spawner_Manager);
 
 			List<String> lores = new ArrayList<>();
 			for (String line : Wrap.wordWrap(I18n.instance.World_Spawner_Manager_Lore, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -643,12 +646,14 @@ public class WorldEditor extends Content {
 		{
 			ItemStack is = new ItemStack(Material.WITHER_SKELETON_SKULL);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.Boss_Config);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Boss_Config);
 
 			List<String> lores = new ArrayList<>();
 			for (String line : Wrap.wordWrap(I18n.instance.Boss_Cfg_Lore, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.actionHint("Click to configure"));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -659,21 +664,21 @@ public class WorldEditor extends Content {
 		if (!world.equals(WorldDefine.WORLD_NAME)) {
 			ItemStack is = new ItemStack(Material.CARTOGRAPHY_TABLE);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.instance.WorldGeneratorCompatibility);
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.WorldGeneratorCompatibility);
 			is.setItemMeta(im);
 
 			List<String> lores = new ArrayList<>();
 			for (String line : Wrap.wordWrap(I18n.instance.WorldGeneratorCompatibility_Lore1, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
 			for (String line : Wrap.wordWrap(I18n.instance.WorldGeneratorCompatibility_Lore2, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
 			for (String line : Wrap.wordWrap(I18n.instance.WorldGeneratorCompatibility_Lore3, 30)) {
-				lores.add(ChatColor.RED + line);
+				lores.add(MenuHelper.color(MenuHelper.DANGER) + line);
 			}
 			for (String line : Wrap.wordWrap(I18n.instance.WorldGeneratorCompatibility_Lore4, 30)) {
-				lores.add(line);
+				lores.add(MenuHelper.desc(line));
 			}
 			im.setLore(lores);
 

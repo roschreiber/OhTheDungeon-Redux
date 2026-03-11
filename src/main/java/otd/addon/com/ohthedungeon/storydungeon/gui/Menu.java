@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import otd.redux.util.ChatManager;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
@@ -32,6 +32,7 @@ import org.bukkit.generator.BlockPopulator;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import otd.redux.util.MenuHelper;
 
 public class Menu extends Content {
 	private final static int SLOT = 6 * 9;
@@ -46,7 +47,7 @@ public class Menu extends Content {
 	}
 
 	private static void send_create(Player p) {
-		p.sendMessage(ChatColor.YELLOW + I18n.get("Creating"));
+		ChatManager.getInstance().sendInfo(p, I18n.get("Creating"));
 	}
 
 	public static void registerEvent(JavaPlugin plugin) {
@@ -54,7 +55,7 @@ public class Menu extends Content {
 	}
 
 	public Menu() {
-		super(I18n.get("Private_Dungeon_Menu"), SLOT);
+		super(MenuHelper.color(MenuHelper.PRIMARY) + I18n.get("Private_Dungeon_Menu"), SLOT);
 		generator = "Nordic";
 		populator = "Oak";
 		tower = "Forest";
@@ -96,14 +97,14 @@ public class Menu extends Content {
 				return;
 			}
 			if (!playerHasEmptySlot(p)) {
-				p.sendMessage(ChatColor.RED + I18n.get("NoEmpty"));
+				ChatManager.getInstance().sendError(p, I18n.get("NoEmpty"));
 				return;
 			}
 
 			double amount = DungeonConfig.getMoney();
 			double player_amount = PerPlayerDungeonInstance.getInstance().getVault().getBalance(p);
 			if (player_amount < amount) {
-				p.sendMessage(ChatColor.YELLOW + I18n.get("NotEnoughMoney"));
+				ChatManager.getInstance().sendWarning(p, I18n.get("NotEnoughMoney"));
 				return;
 			}
 
@@ -119,7 +120,7 @@ public class Menu extends Content {
 				return;
 			}
 			if (!playerHasEmptySlot(p)) {
-				p.sendMessage(ChatColor.RED + I18n.get("NoEmpty"));
+				ChatManager.getInstance().sendError(p, I18n.get("NoEmpty"));
 				return;
 			}
 
@@ -127,7 +128,7 @@ public class Menu extends Content {
 			int player_level = p.getLevel();
 
 			if (player_level < level) {
-				p.sendMessage(ChatColor.YELLOW + I18n.get("NotEnoughLevel"));
+				ChatManager.getInstance().sendWarning(p, I18n.get("NotEnoughLevel"));
 				return;
 			}
 
@@ -208,14 +209,25 @@ public class Menu extends Content {
 			slot[0]++;
 		}
 		for (String str : list) {
-			Material material = Material.BARRIER;
+			Material material = Material.GRAY_DYE;
 			if (str.equals(choose)) {
 				material = enabled;
 			}
 
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.get(str));
+			if (str.equals(choose)) {
+				im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "\u2714 " + I18n.get(str));
+			} else {
+				im.setDisplayName(MenuHelper.color(MenuHelper.MUTED) + I18n.get(str));
+			}
+			List<String> lores = new ArrayList<>();
+			if (str.equals(choose)) {
+				lores.add(MenuHelper.color(MenuHelper.SUCCESS) + "Currently selected");
+			} else {
+				lores.add(MenuHelper.actionHint("Click to select"));
+			}
+			im.setLore(lores);
 			is.setItemMeta(im);
 
 			addItem(slot[0], is);
@@ -251,9 +263,11 @@ public class Menu extends Content {
 		ItemStack terrain = new ItemStack(Material.OAK_SIGN);
 		{
 			ItemMeta im = terrain.getItemMeta();
-			im.setDisplayName(I18n.get("Terrain"));
+			im.setDisplayName(MenuHelper.color(MenuHelper.PRIMARY) + I18n.get("Terrain"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.get("TerrainLore"));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.get("TerrainLore")));
+			lores.add(MenuHelper.separator());
 			im.setLore(lores);
 			terrain.setItemMeta(im);
 		}
@@ -262,9 +276,11 @@ public class Menu extends Content {
 		ItemStack decoration = new ItemStack(Material.OAK_SIGN);
 		{
 			ItemMeta im = decoration.getItemMeta();
-			im.setDisplayName(I18n.get("Decoration"));
+			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.get("Decoration"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.get("DecorationLore"));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.get("DecorationLore")));
+			lores.add(MenuHelper.separator());
 			im.setLore(lores);
 			decoration.setItemMeta(im);
 		}
@@ -273,9 +289,11 @@ public class Menu extends Content {
 		ItemStack tow = new ItemStack(Material.OAK_SIGN);
 		{
 			ItemMeta im = tow.getItemMeta();
-			im.setDisplayName(I18n.get("Tower"));
+			im.setDisplayName(MenuHelper.color(MenuHelper.INFO) + I18n.get("Tower"));
 			List<String> lores = new ArrayList<>();
-			lores.add(I18n.get("TowerLore"));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(I18n.get("TowerLore")));
+			lores.add(MenuHelper.separator());
 			im.setLore(lores);
 			tow.setItemMeta(im);
 		}
@@ -291,13 +309,13 @@ public class Menu extends Content {
 				material = Material.CHEST;
 				lore = I18n.get("PAY_MONEY") + DungeonConfig.getMoney();
 			}
+
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.get("MONEY"));
+			im.setDisplayName(MenuHelper.color(MenuHelper.GOLD) + I18n.get("MONEY"));
 			List<String> lores = new ArrayList<>();
-			lores.add(lore);
-			lores.add("");
-			lores.add(ChatColor.YELLOW + I18n.get("CLICK"));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(lore));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -313,13 +331,13 @@ public class Menu extends Content {
 				material = Material.EXPERIENCE_BOTTLE;
 				lore = I18n.get("PAY_LEVEL") + DungeonConfig.getLevel();
 			}
+
 			ItemStack is = new ItemStack(material);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(I18n.get("LEVEL"));
+			im.setDisplayName(MenuHelper.color(MenuHelper.INFO) + I18n.get("LEVEL"));
 			List<String> lores = new ArrayList<>();
-			lores.add(lore);
-			lores.add("");
-			lores.add(ChatColor.YELLOW + I18n.get("CLICK"));
+			lores.add(MenuHelper.separator());
+			lores.add(MenuHelper.desc(lore));
 			im.setLore(lores);
 			is.setItemMeta(im);
 

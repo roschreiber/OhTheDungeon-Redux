@@ -10,6 +10,7 @@ import otd.addon.com.ohthedungeon.storydungeon.generator.BaseGenerator;
 import otd.addon.com.ohthedungeon.storydungeon.generator.FakeGenerator;
 import otd.addon.com.ohthedungeon.storydungeon.gui.Menu;
 import otd.addon.com.ohthedungeon.storydungeon.util.I18n;
+import otd.redux.util.ChatManager;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.DungeonSettings;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -80,7 +80,7 @@ public class CommandCreate implements TabExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 			if (!p.hasPermission("perplayerdungeoninstance.admin")) {
-				p.sendMessage(ChatColor.RED + I18n.get("NoPermission"));
+				ChatManager.getInstance().sendError(p, I18n.get("NoPermission"));
 				return true;
 			}
 		}

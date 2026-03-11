@@ -7,7 +7,7 @@ package otd.addon.com.ohthedungeon.storydungeon.commands;
 
 import otd.addon.com.ohthedungeon.storydungeon.PerPlayerDungeonInstance;
 import otd.addon.com.ohthedungeon.storydungeon.util.I18n;
-import net.md_5.bungee.api.ChatColor;
+import otd.redux.util.ChatManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -41,7 +41,7 @@ public class CommandBack implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 			if (!p.hasPermission("perplayerdungeoninstance.back")) {
-				p.sendMessage(ChatColor.RED + I18n.get("NoPermission"));
+				ChatManager.getInstance().sendError(p, I18n.get("NoPermission"));
 				return true;
 			}
 			p.teleport(world.getSpawnLocation());

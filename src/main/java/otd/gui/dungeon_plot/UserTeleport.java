@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
+import otd.redux.util.ChatManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -94,7 +94,7 @@ public class UserTeleport extends Content {
 		p.teleport(new Location(DungeonWorld.world, x, y, z));
 
 		Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-			p.sendMessage(ChatColor.GREEN + I18n.instance.User_TP_Suggest2);
+			ChatManager.getInstance().sendSuccess(p, I18n.instance.User_TP_Suggest2);
 		}, 1L);
 	}
 
@@ -109,7 +109,7 @@ public class UserTeleport extends Content {
 		p.teleport(new Location(DungeonWorld.world, x, y, z));
 
 		Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-			p.sendMessage(ChatColor.GREEN + I18n.instance.User_TP_Suggest2);
+			ChatManager.getInstance().sendSuccess(p, I18n.instance.User_TP_Suggest2);
 		}, 1L);
 	}
 

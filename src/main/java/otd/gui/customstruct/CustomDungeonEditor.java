@@ -27,8 +27,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import otd.config.CustomDungeonType;
+import otd.redux.util.ChatManager;
 import otd.config.WorldConfig;
 import otd.config.WorldConfig.CustomDungeon;
 import otd.gui.BiomeSetting;
@@ -175,7 +175,7 @@ public class CustomDungeonEditor extends Content {
 		}
 		if (slot == 17) {
 			if (holder.dungeon.file == null || holder.dungeon.file.isEmpty()) {
-				p.sendMessage(ChatColor.RED + I18n.instance.Custom_Dungeon_Err_Msg);
+				ChatManager.getInstance().sendError(p, I18n.instance.Custom_Dungeon_Err_Msg);
 				return;
 			}
 			if (!WorldConfig.wc.custom_dungeon.containsKey(holder.dungeon.id)) {

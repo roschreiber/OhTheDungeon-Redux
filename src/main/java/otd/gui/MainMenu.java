@@ -26,8 +26,8 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import net.md_5.bungee.api.ChatColor;
 import otd.config.WorldConfig;
+import otd.redux.util.ChatManager;
 import otd.gui.dungeon_plot.CreateDungeonWorld;
 import otd.gui.dungeon_plot.RemoveDungeonWorld;
 import otd.util.I18n;
@@ -140,7 +140,7 @@ public class MainMenu extends Content {
 		}
 		if (slot == 13) {
 			if (DungeonTask.isGenerating()) {
-				p.sendMessage(ChatColor.BLUE + I18n.instance.Dungeon_Plot_In_Progress);
+				ChatManager.getInstance().sendInfo(p, I18n.instance.Dungeon_Plot_In_Progress);
 				return;
 			}
 			if (WorldConfig.wc.dungeon_world.finished) {

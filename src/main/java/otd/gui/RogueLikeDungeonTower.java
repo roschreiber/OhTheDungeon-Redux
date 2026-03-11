@@ -18,8 +18,7 @@ package otd.gui;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Material;
+import otd.redux.util.ChatManager;
 import otd.redux.util.MenuHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -97,7 +96,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.bunker = !holder.swc.roguelike.themes.bunker;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.bunker = !holder.swc.roguelike.themes.bunker;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -106,7 +105,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.desert = !holder.swc.roguelike.themes.desert;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.desert = !holder.swc.roguelike.themes.desert;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -115,7 +114,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.forest = !holder.swc.roguelike.themes.forest;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.forest = !holder.swc.roguelike.themes.forest;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -124,7 +123,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.house = !holder.swc.roguelike.themes.house;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.house = !holder.swc.roguelike.themes.house;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -133,7 +132,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.ice = !holder.swc.roguelike.themes.ice;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.ice = !holder.swc.roguelike.themes.ice;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -142,7 +141,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.jungle = !holder.swc.roguelike.themes.jungle;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.jungle = !holder.swc.roguelike.themes.jungle;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -151,7 +150,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.mesa = !holder.swc.roguelike.themes.mesa;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.mesa = !holder.swc.roguelike.themes.mesa;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -160,7 +159,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.mountain = !holder.swc.roguelike.themes.mountain;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.mountain = !holder.swc.roguelike.themes.mountain;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -169,7 +168,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.ruin = !holder.swc.roguelike.themes.ruin;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.ruin = !holder.swc.roguelike.themes.ruin;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -178,7 +177,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.rare = !holder.swc.roguelike.themes.rare;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.rare = !holder.swc.roguelike.themes.rare;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();
@@ -187,7 +186,7 @@ public class RogueLikeDungeonTower extends Content {
 			holder.swc.roguelike.themes.swamp = !holder.swc.roguelike.themes.swamp;
 			if (holder.isAllDisabled()) {
 				holder.swc.roguelike.themes.swamp = !holder.swc.roguelike.themes.swamp;
-				p.sendMessage(ChatColor.RED + I18n.instance.Roguelike_Dungeon_Tower_Warn);
+				ChatManager.getInstance().sendWarning(p, I18n.instance.Roguelike_Dungeon_Tower_Warn);
 			}
 			WorldConfig.save();
 			holder.init();

@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import otd.redux.util.ChatManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
@@ -104,9 +104,9 @@ public class RemoveDungeonWorld extends Content {
 				boolean nres = FileUtils.deleteDirectory(fw);
 //				nres = nres | res;
 				if (nres)
-					p.sendMessage(ChatColor.RED + I18n.instance.Menu_remove_click);
+					ChatManager.getInstance().sendSuccess(p, I18n.instance.Menu_remove_click);
 				else
-					p.sendMessage(ChatColor.RED + I18n.instance.Menu_remove_click_fail);
+					ChatManager.getInstance().sendError(p, I18n.instance.Menu_remove_click_fail);
 			}, 10L);
 		}
 		if (slot == 8) {

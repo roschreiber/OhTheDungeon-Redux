@@ -19,9 +19,9 @@ package otd.gui.dungeon_plot;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
+import otd.redux.util.ChatManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.ClickType;
@@ -146,19 +146,19 @@ public class CreateDungeonWorld extends Content {
 		}
 		if (slot == 7) {
 			if (!checkEnabled()) {
-				p.sendMessage(ChatColor.RED + I18n.instance.Must_Natural_Spawn);
+				ChatManager.getInstance().sendError(p, I18n.instance.Must_Natural_Spawn);
 			} else {
 				if (!DungeonTask.isGenerating()) {
 					ChunkList.initChunksMap(WorldConfig.wc.dungeon_world);
 					p.closeInventory();
-					p.sendMessage(ChatColor.BLUE + I18n.instance.Dungeon_Plot_In_Progress);
-					p.sendMessage(ChatColor.BLUE + I18n.instance.Creating_World);
+					ChatManager.getInstance().sendInfo(p, I18n.instance.Dungeon_Plot_In_Progress);
+					ChatManager.getInstance().sendInfo(p, I18n.instance.Creating_World);
 					Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
 						DungeonWorld.generateDungeonWorld();
 						DungeonTask.start();
 					}, 1L);
 				} else {
-					p.sendMessage(ChatColor.BLUE + I18n.instance.Dungeon_Plot_In_Progress);
+					ChatManager.getInstance().sendInfo(p, I18n.instance.Dungeon_Plot_In_Progress);
 					p.closeInventory();
 				}
 			}
