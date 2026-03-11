@@ -64,7 +64,7 @@ none right now! shoot me a dm / create a PR if you want ur server to be added.
 
 ...go out to:
 
-- shadow_wind, the original author of OhTheDungeonsYou'llGo, who deleted the plugin some years ago due to lots of criticism
+- [shadow_wind](https://www.spigotmc.org/members/shadow_wind.865275/), the original author of OhTheDungeonsYou'llGo, who deleted the plugin some years ago due to lots of criticism
 - [steve4744](https://github.com/steve4744/OhTheDungeon), who maintained and kept the plugin alive through multiple MC versions
 - Hex_26 & their plugin [TerraformGenerator](https://modrinth.com/plugin/terraformgenerator), which was used for images 2-5 in the gallery above
 - tr7zw's [NBT-API](https://github.com/tr7zw/Item-NBT-API) which is used for manipulating spawner NBT
