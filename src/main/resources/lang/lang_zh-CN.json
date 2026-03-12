@@ -275,23 +275,23 @@
   "Builtin_Loot": "启用内置战利品列表",
   "Natural_Spawn": "自然生成",
   "NaturalSpawnStr": [
-    "--------------------",
+    "允许地牢随世界生成而生成",
     "允许地牢随世界生成而生成",
     "be spawned in using a command."
   ],
   "Average_Dungeon_Chunk_Distance": "地牢间的平均区块距离",
   "Easy_Find": "更易发现",
   "EasyFindStr": [
-    "--------------------------",
     "若为真，将为每个地牢修建地上入口",
     "and all entrances will have a building",
+    "or ruin around them.",
     "or ruin around them."
   ],
   "Single_Entrance": "单个入口",
   "Thin_Spawners": "刷怪笼修正",
   "ThinSpawnersStr": [
-    "---------------------------------",
     "若为真，生成器将移除小型地牢中的刷怪笼，",
+    "使得地牢比例更协调",
     "使得地牢比例更协调"
   ],
   "Dungeon_Spawn_Setting": "地牢生成设置",
@@ -299,9 +299,9 @@
   "Encase": "地牢包含外壳（建议开启）",
   "Generous": "生成额外家具",
   "GenerousStr": [
-    "-----------------------------",
     "是否生成酿造台、末影箱、铁砧等家具",
     "enchanting stations, anvils",
+    "should generate.",
     "should generate."
   ],
   "Difficulty": [
@@ -319,10 +319,10 @@
   "Deepest_Level": "最深层数",
   "Each": "放入每个箱子",
   "EachTip": [
-    "----------------------------------",
     "若为真，则相应战利品会被放入地牢中的所有箱子，",
     "否则将在地牢箱子间平均分配",
     "'quantity' will be distributed among",
+    "all the chests of the type specified",
     "all the chests of the type specified"
   ],
   "Weight": "权重",
