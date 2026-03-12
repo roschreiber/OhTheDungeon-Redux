@@ -154,7 +154,7 @@
   },
   "MOONSHINE": {
     "Name": "月光酒",
-    "Lore": "（私酿）"
+    "Lore": ""
   },
   "ABSINTHE": {
     "Name": "苦艾酒",
@@ -238,6 +238,20 @@
   "DraylarBattleTower_Config": "Draylar战斗高塔设置",
   "AntManDungeon_Config": "蚁人地牢设置",
   "Ant_Man_Dungeon": "蚁人地牢",
+  "CastleDungeon_Config": "Castle Dungeon Settings",
+  "Castle_Dungeon": "Castle Dungeon",
+  "Castle_Natural_Spawn": "Castle Dungeon Natural Spawn",
+  "AetherDungeon_Config": "Aether Dungeon Cfg",
+  "Aether_Dungeon": "Aether Dungeon",
+  "Aether_Dungeon_Cloud": "Aether Dungeon Cloud",
+  "Aether_Dungeon_Cloud_Lore": "Does the dungeon have cloud structure",
+  "Aether_Dungeon_Cloud_Material": "Aether Dungeon Cloud Material",
+  "Aether_Dungeon_Height": "Height to generation",
+  "Aether_Dungeon_Natural_Spawn": "Aether Dungeon Natural Spawn",
+  "Prevent_Breaking_Of_Dungeon_Spawner": "Prevent the breaking of dungeon spawner",
+  "Prevent_Breaking_Of_Dungeon_Spawner_Lore": "Make player cannot break the dungeon spawner",
+  "Prevent_Dropping_Of_Dungeon_Spawner": "Prevent the dropping of dungeon spawner",
+  "Prevent_Dropping_Of_Dungeon_Spawner_Lore": "For plugins like [SlikSpawner, Slimefun]",
   "World_Editor": "世界地牢设置",
   "Roguelike_Config": "冒险地牢设置",
   "Doomlike_Config": "末日地牢设置",
@@ -261,11 +275,14 @@
   "Builtin_Loot": "启用内置战利品列表",
   "Natural_Spawn": "自然生成",
   "NaturalSpawnStr": [
-    "允许地牢随世界生成而生成"
+    "--------------------",
+    "允许地牢随世界生成而生成",
+    "be spawned in using a command."
   ],
   "Average_Dungeon_Chunk_Distance": "地牢间的平均区块距离",
   "Easy_Find": "更易发现",
   "EasyFindStr": [
+    "--------------------------",
     "若为真，将为每个地牢修建地上入口",
     "and all entrances will have a building",
     "or ruin around them."
@@ -273,6 +290,7 @@
   "Single_Entrance": "单个入口",
   "Thin_Spawners": "刷怪笼修正",
   "ThinSpawnersStr": [
+    "---------------------------------",
     "若为真，生成器将移除小型地牢中的刷怪笼，",
     "使得地牢比例更协调"
   ],
@@ -281,6 +299,7 @@
   "Encase": "地牢包含外壳（建议开启）",
   "Generous": "生成额外家具",
   "GenerousStr": [
+    "-----------------------------",
     "是否生成酿造台、末影箱、铁砧等家具",
     "enchanting stations, anvils",
     "should generate."
@@ -300,6 +319,7 @@
   "Deepest_Level": "最深层数",
   "Each": "放入每个箱子",
   "EachTip": [
+    "----------------------------------",
     "若为真，则相应战利品会被放入地牢中的所有箱子，",
     "否则将在地牢箱子间平均分配",
     "'quantity' will be distributed among",
