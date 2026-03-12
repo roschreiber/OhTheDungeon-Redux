@@ -21,6 +21,9 @@
 > [!WARNING]
 > I try my best to extensively test each release of this plugin. But due to my limited time, some bugs might still occur. OTD-R is tested on both **Paper** and **Leaf** server software and works fine there.
 
+> [!TIP]
+> Current version: **1.21.11**
+
 ### What is this plugin?
 
 This plugin is a fork of Oh The Dungeons You'll Go, which was a minecraft plugin that added various, procedurally generated dungeons to the game. It was abandoned by its original creator in late 2021, and this is a fork which aims to update it and make it more user friendly.
@@ -31,6 +34,13 @@ It has **70** dungeon themes, Custom Loot (with support for plugins like Oraxen 
 
 Yes! Feel free to contact me on [Discord](https://discord.gg/bkZfWZsrF5) or look through the plugin's [Github Wiki](https://github.com/roschreiber/OhTheDungeon-Redux/wiki). 
 
+### Soft dependencies
+
+- [MythicMobs](https://modrinth.com/plugin/mythicmobs) for adding custom bosses to dungeons
+- [EcoMobs](https://www.spigotmc.org/resources/ecomobs-%E2%AD%95-create-custom-mobs-%E2%9C%85-custom-mob-ai-%E2%9C%A8-natural-spawns-custom-model-support.86576/) ^^
+- [WorldEdit](https://modrinth.com/plugin/worldedit) for the custom, schematic based dungeons
+- [Vault](https://www.spigotmc.org/resources/vault.34315/) for buying PerPlayerDungeonInstances using Money
+- [PAPI](https://modrinth.com/plugin/placeholderapi)
 
 ### How can I suggest features / report bugs?
 
@@ -63,7 +73,7 @@ Open an [issue on Github](https://github.com/roschreiber/OhTheDungeon-Redux/issu
 
 ### Servers using OTD-R:
 
-none right now! shoot me a dm / create a PR if you want ur server to be added.
+none known right now! shoot me a dm / create a PR if you want ur server to be added.
 
 ### Big Thanks...
 
@@ -73,3 +83,4 @@ none right now! shoot me a dm / create a PR if you want ur server to be added.
 - [steve4744](https://github.com/steve4744/OhTheDungeon), who maintained and kept the plugin alive through multiple MC versions
 - Hex_26 & their plugin [TerraformGenerator](https://modrinth.com/plugin/terraformgenerator), which was used for images 2-5 in the gallery above
 - tr7zw's [NBT-API](https://github.com/tr7zw/Item-NBT-API) which is used for manipulating spawner NBT
+- [MinecraftHeads](https://minecraft-heads.com/) for having such a good and extensive head library
