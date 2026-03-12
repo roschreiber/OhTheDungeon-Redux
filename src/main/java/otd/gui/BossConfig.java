@@ -86,22 +86,13 @@ public class BossConfig extends Content {
 			}
 			holder.init();
 		}
-		if (slot == 20) {
+		if (slot == 21) {
 			if (swc.boss != SimpleWorldConfig.BossType.Vanilla) {
 				swc.boss = SimpleWorldConfig.BossType.Vanilla;
 				WorldConfig.save();
 				holder.init();
 			}
 		}
-		/*if (slot == 21) {
-			if (BossImpl.isBossReady()) {
-				if (swc.boss != SimpleWorldConfig.BossType.Boss) {
-					swc.boss = SimpleWorldConfig.BossType.Boss;
-					WorldConfig.save();
-					holder.init();
-				}
-			}
-		}*/
 		if (slot == 22) {
 			if (MythicMobsImpl.isMythicMobsReady()) {
 				if (swc.boss != SimpleWorldConfig.BossType.MythicMobs) {
@@ -166,9 +157,9 @@ public class BossConfig extends Content {
 			lores.add(MenuHelper.actionHint("Click to select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
-			addItem(2, 2, icon);
+			addItem(2, 3, icon);
 		}
-		{
+		/*{
 			Material type;
 			if (swc.boss == SimpleWorldConfig.BossType.Boss)
 				type = Material.ARROW;
@@ -196,7 +187,7 @@ public class BossConfig extends Content {
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
-		}
+		}*/
 		{
 			Material type;
 			if (swc.boss == SimpleWorldConfig.BossType.MythicMobs)

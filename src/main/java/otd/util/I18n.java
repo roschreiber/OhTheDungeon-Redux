@@ -484,12 +484,6 @@ public class I18n {
 	public String Use_MythicMobs_Lores[] = { "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
 			"* Mob with name 'otd_castle_king' will be used for boss of Castle.",
 			"* Mob with prefix 'otd_small_boss_' will be used for small boss." };
-	public String Use_BossPlugin = "Use BossPlugin";
-	public String Require_BossPlugin = "Require BossPlugin installed";
-	public String Use_BossPlugin_Lore = "Use BossPlugin to create Boss";
-	public String Use_BossPlugin_Lores[] = { "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
-			"* Mob with name 'otd_castle_king' will be used for boss of Castle.",
-			"* Mob with prefix 'otd_small_boss_' will be used for small boss." };
 
 	public String WorldGeneratorCompatibility = "World Generator Compatibility";
 	public String WorldGeneratorCompatibility_Lore1 = "* Config for world generator compatibility";
@@ -711,13 +705,6 @@ public class I18n {
 		I18n.instance.Require_MythicMobs = "Require MythicMobs installed";
 		I18n.instance.Use_MythicMobs_Lore = "Use MythicMobs to create Boss";
 		I18n.instance.Use_MythicMobs_Lores = new String[] {
-				"* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
-				"* Mob with name 'otd_castle_king' will be used for boss of Castle.",
-				"* Mob with prefix 'otd_small_boss_' will be used for small boss." };
-		I18n.instance.Use_BossPlugin = "Use BossPlugin";
-		I18n.instance.Require_BossPlugin = "Require BossPlugin installed";
-		I18n.instance.Use_BossPlugin_Lore = "Use BossPlugin to create Boss";
-		I18n.instance.Use_BossPlugin_Lores = new String[] {
 				"* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
 				"* Mob with name 'otd_castle_king' will be used for boss of Castle.",
 				"* Mob with prefix 'otd_small_boss_' will be used for small boss." };

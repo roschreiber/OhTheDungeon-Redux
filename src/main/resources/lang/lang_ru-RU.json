@@ -504,14 +504,6 @@
     "* Mob with name 'otd_castle_king' will be used for boss of Castle.",
     "* Mob with prefix 'otd_small_boss_' will be used for small boss."
   ],
-  "Use_BossPlugin": "Use BossPlugin",
-  "Require_BossPlugin": "Require BossPlugin installed",
-  "Use_BossPlugin_Lore": "Use BossPlugin to create Boss",
-  "Use_BossPlugin_Lores": [
-    "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
-    "* Mob with name 'otd_castle_king' will be used for boss of Castle.",
-    "* Mob with prefix 'otd_small_boss_' will be used for small boss."
-  ],
   "WorldGeneratorCompatibility": "World Generator Compatibility",
   "WorldGeneratorCompatibility_Lore1": "* Config for world generator compatibility",
   "WorldGeneratorCompatibility_Lore2": "* This is not needed for most of world generator, but you may need this for some world generators with usual bottom/sealevel",
