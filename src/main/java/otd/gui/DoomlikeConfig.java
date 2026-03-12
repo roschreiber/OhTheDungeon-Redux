@@ -198,7 +198,7 @@ public class DoomlikeConfig extends Content {
 				lores.add(MenuHelper.desc(str));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -215,7 +215,7 @@ public class DoomlikeConfig extends Content {
 				lores.add(MenuHelper.desc(str));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -228,7 +228,7 @@ public class DoomlikeConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(swc.doomlike.singleEntrance));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -245,7 +245,7 @@ public class DoomlikeConfig extends Content {
 				lores.add(MenuHelper.desc(str));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -301,7 +301,7 @@ public class DoomlikeConfig extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -312,7 +312,7 @@ public class DoomlikeConfig extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -325,7 +325,7 @@ public class DoomlikeConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(swc.doomlike.builtinLoot));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -339,7 +339,7 @@ public class DoomlikeConfig extends Content {
 			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore1));
 			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore2));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to preview"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Preview));
 			im.setLore(lores);
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);

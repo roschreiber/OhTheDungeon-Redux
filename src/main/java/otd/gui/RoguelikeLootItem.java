@@ -303,7 +303,7 @@ public class RoguelikeLootItem extends Content {
 				if (i == 4)
 					lores.add(MenuHelper.desc(I18n.instance.Deepest_Level));
 				lores.add(MenuHelper.separator());
-				lores.add(MenuHelper.actionHint("Click to select"));
+				lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 				im.setLore(lores);
 				is.setItemMeta(im);
 				addItem(3, i, is);
@@ -317,7 +317,7 @@ public class RoguelikeLootItem extends Content {
 			List<String> lores = new ArrayList<>(I18n.instance.EachTip);
 			lores.add(0, MenuHelper.status(enabled));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 

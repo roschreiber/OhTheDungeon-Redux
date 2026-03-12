@@ -319,7 +319,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -351,7 +351,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -383,7 +383,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -415,7 +415,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -447,7 +447,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -480,7 +480,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -512,7 +512,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -544,7 +544,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -600,7 +600,7 @@ public class WorldEditor extends Content {
 			for (String str : wraps)
 				lores.add(MenuHelper.desc(str));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -617,7 +617,7 @@ public class WorldEditor extends Content {
 				lores.add(MenuHelper.desc(line));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -635,7 +635,7 @@ public class WorldEditor extends Content {
 				lores.add(MenuHelper.desc(line));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -653,7 +653,7 @@ public class WorldEditor extends Content {
 				lores.add(MenuHelper.desc(line));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 
 			is.setItemMeta(im);

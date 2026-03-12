@@ -120,7 +120,7 @@ public class MenuHelper {
 		ItemMeta im = is.getItemMeta();
 		im.setDisplayName(color(SUCCESS) + "✔ " + I18n.instance.Apply);
 		List<String> lore = new ArrayList<>();
-		lore.add(muted("Click to save changes"));
+		lore.add(muted(I18n.instance.Click_To_Save));
 		im.setLore(lore);
 		is.setItemMeta(im);
 		return is;
@@ -131,7 +131,7 @@ public class MenuHelper {
 		ItemMeta im = is.getItemMeta();
 		im.setDisplayName(color(DANGER) + "✘ " + I18n.instance.Cancel);
 		List<String> lore = new ArrayList<>();
-		lore.add(muted("Click to cancel"));
+		lore.add(muted(I18n.instance.Click_To_Cancel));
 		im.setLore(lore);
 		is.setItemMeta(im);
 		return is;
@@ -142,7 +142,7 @@ public class MenuHelper {
 		ItemMeta im = is.getItemMeta();
 		im.setDisplayName(color(WARNING) + "⟳ " + I18n.instance.Reset);
 		List<String> lore = new ArrayList<>();
-		lore.add(muted("Click to reset to defaults"));
+		lore.add(muted(I18n.instance.Click_To_Reset));
 		im.setLore(lore);
 		is.setItemMeta(im);
 		return is;

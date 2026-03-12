@@ -184,7 +184,7 @@ public class RoguelikeConfig extends Content {
 				lores.add(MenuHelper.desc(str));
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -210,7 +210,7 @@ public class RoguelikeConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(swc.roguelike.encase));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -240,7 +240,7 @@ public class RoguelikeConfig extends Content {
 			for (int i = 0; i < len; i++)
 				lores.add(MenuHelper.desc(I18n.instance.GenerousStr.get(i)));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -268,7 +268,7 @@ public class RoguelikeConfig extends Content {
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.desc(I18n.instance.Random_Dungeon_Content));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -279,7 +279,7 @@ public class RoguelikeConfig extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Loot_Config);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -302,7 +302,7 @@ public class RoguelikeConfig extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Biome_Setting);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -316,7 +316,7 @@ public class RoguelikeConfig extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(swc.roguelike.builtinLoot));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -331,7 +331,7 @@ public class RoguelikeConfig extends Content {
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.desc(I18n.instance.Roguelike_Dungeon_Tower_Lore));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to configure"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 
 			im.setLore(lores);
 
@@ -347,7 +347,7 @@ public class RoguelikeConfig extends Content {
 			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore1));
 			lores.add(MenuHelper.desc(I18n.instance.Preview_Lore2));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to preview"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Preview));
 			im.setLore(lores);
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Preview);
 			is.setItemMeta(im);

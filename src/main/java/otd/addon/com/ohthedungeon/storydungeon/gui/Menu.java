@@ -225,7 +225,7 @@ public class Menu extends Content {
 			if (str.equals(choose)) {
 				lores.add(MenuHelper.color(MenuHelper.SUCCESS) + "Currently selected");
 			} else {
-				lores.add(MenuHelper.actionHint("Click to select"));
+				lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 			}
 			im.setLore(lores);
 			is.setItemMeta(im);

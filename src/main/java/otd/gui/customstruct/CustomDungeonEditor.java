@@ -243,7 +243,7 @@ public class CustomDungeonEditor extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.value("Type", dungeon.type.toString()));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			is.setItemMeta(im);
 

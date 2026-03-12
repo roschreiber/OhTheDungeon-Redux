@@ -77,7 +77,7 @@ public class LanguageGUI extends Content {
             if(currentlang.equals("en")) {
                 lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
             } else {
-                lores.add(MenuHelper.actionHint("Click to select"));
+                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
             }
             im.setLore(lores);
             is.setItemMeta(im);
@@ -99,7 +99,7 @@ public class LanguageGUI extends Content {
             if(currentlang.equals("zh-CN")) {
                 lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
             } else {
-                lores.add(MenuHelper.actionHint("Click to select"));
+                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
             }
             im.setLore(lores);
             is.setItemMeta(im);
@@ -121,7 +121,7 @@ public class LanguageGUI extends Content {
             if(currentlang.equals("de-DE")) {
                 lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
             } else {
-                lores.add(MenuHelper.actionHint("Click to select"));
+                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
             }
             im.setLore(lores);
             is.setItemMeta(im);
@@ -140,7 +140,7 @@ public class LanguageGUI extends Content {
             lores.add(MenuHelper.desc("Contributors: none"));
             lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This language is unfinished! *");
             lores.add(MenuHelper.separator());
-            lores.add(currentlang.equals("ru-RU") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("Click to select"));
+            lores.add(currentlang.equals("ru-RU") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("I18n.instance.Click_To_Select"));
             im.setLore(lores);
             is.setItemMeta(im);
             addItem(2, 3, is);
@@ -158,7 +158,7 @@ public class LanguageGUI extends Content {
             lores.add(MenuHelper.desc("Contributors: none"));
             lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This language is unfinished! *");
             lores.add(MenuHelper.separator());
-            lores.add(currentlang.equals("es-ES") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("Click to select"));
+            lores.add(currentlang.equals("es-ES") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("I18n.instance.Click_To_Select"));
             im.setLore(lores);
             is.setItemMeta(im);
             addItem(2, 5, is);

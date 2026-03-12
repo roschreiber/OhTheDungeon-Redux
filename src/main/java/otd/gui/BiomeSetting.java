@@ -143,12 +143,12 @@ public class BiomeSetting extends Content {
 
 				ItemStack is = new ItemStack(MenuHelper.toggleMaterial(enabled));
 				ItemMeta im = is.getItemMeta();
-				im.setDisplayName(biome_name);
+				im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + biome_name.toUpperCase());
 
 				List<String> lores = new ArrayList<>();
 				lores.add(MenuHelper.status(enabled));
 				lores.add(MenuHelper.separator());
-				lores.add(MenuHelper.actionHint("Click to toggle"));
+				lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 				im.setLore(lores);
 				is.setItemMeta(im);
 

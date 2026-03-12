@@ -64,7 +64,7 @@ public class UtilMenu extends Content {
 			
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to open"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -79,7 +79,7 @@ public class UtilMenu extends Content {
 
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to open"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -95,7 +95,7 @@ public class UtilMenu extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(I18n.instance.Require_WorldEdit);
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to open"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -125,7 +125,7 @@ public class UtilMenu extends Content {
 			lores.add(MenuHelper.separator());
         	lores.add(MenuHelper.desc(I18n.instance.PerPlayerDungeonInstance_Lore));
         	lores.add(MenuHelper.separator());
-        	lores.add(MenuHelper.actionHint("Click to open"));
+        	lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 
 			is.setItemMeta(im);

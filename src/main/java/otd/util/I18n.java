@@ -226,6 +226,14 @@ public class I18n {
 	public String Load_Config_Err = "Error while saving world config file";
 
 	public String Click_To_Toggle = "Click to toggle";
+	public String Click_To_Select = "Click to select";
+	public String Click_To_Configure = "Click to configure";
+	public String Click_To_Preview = "Click to preview";
+	public String Click_To_Add = "Click to add";
+	public String Click_To_Open = "Click to open";
+	public String Click_To_Save = "Click to save changes";
+	public String Click_To_Cancel = "Click to cancel";
+	public String Click_To_Reset = "Click to reset to defaults";
 	public String World_Config_Save = "World config is saved";
 
 	public String Builtin_Loot = "Add builtin loots to treasure chests";

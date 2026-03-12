@@ -66,7 +66,7 @@ public class MainMenu extends Content {
 			lores.add(color(WARNING) + I18n.instance.Menu1_Lore3);
 			lores.add(desc(I18n.instance.Menu1_Lore4));
 			lores.add(separator());
-			lores.add(actionHint("Click to open"));
+			lores.add(actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 2, is);
@@ -83,7 +83,7 @@ public class MainMenu extends Content {
 			lores.add(color(WARNING) + I18n.instance.Menu2_Lore3);
 			lores.add(desc(I18n.instance.Menu2_Lore4));
 			lores.add(separator());
-			lores.add(actionHint("Click to open"));
+			lores.add(actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 4, is);
@@ -97,7 +97,7 @@ public class MainMenu extends Content {
 			lores.add(separator());
 			lores.add(desc(I18n.instance.Util_Menu_Lore));
 			lores.add(separator());
-			lores.add(actionHint("Click to open"));
+			lores.add(actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(1, 6, is);
@@ -110,7 +110,7 @@ public class MainMenu extends Content {
 			lores.add(separator());
 			lores.add(desc("Current " + WorldConfig.wc.language));
 			lores.add(separator());
-			lores.add(actionHint("Click to open"));
+			lores.add(actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(26, is);

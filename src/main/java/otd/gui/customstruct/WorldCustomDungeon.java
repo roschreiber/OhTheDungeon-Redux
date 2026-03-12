@@ -148,7 +148,7 @@ public class WorldCustomDungeon extends Content {
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Add_Custom_Dungeon);
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to add"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Add));
 			im.setLore(lores);
 			is.setItemMeta(im);
 

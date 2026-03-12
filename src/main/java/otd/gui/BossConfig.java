@@ -154,7 +154,7 @@ public class BossConfig extends Content {
 			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.Vanilla));
 			lores.add(MenuHelper.desc(I18n.instance.Use_Vanilla_Lore));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to select"));
+			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
@@ -183,7 +183,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to select"));
+			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
@@ -212,7 +212,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to select"));
+			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 4, icon);
@@ -241,7 +241,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to select"));
+			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 5, icon);

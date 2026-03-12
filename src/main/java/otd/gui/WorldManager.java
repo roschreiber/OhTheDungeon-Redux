@@ -254,7 +254,7 @@ public class WorldManager extends Content {
 					lores.add(worldStatusLine(I18n.instance.Castle_Natural_Spawn, config.castle.doNaturalSpawn));
 				}
 				lores.add(MenuHelper.separator());
-				lores.add(MenuHelper.actionHint("Click to configure"));
+				lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 				im.setLore(lores);
 			} else {
 				List<String> lores = new ArrayList<>();
@@ -274,7 +274,7 @@ public class WorldManager extends Content {
 					lores.add(worldStatusLine(I18n.instance.CastleDungeon_Config, false));
 				}
 				lores.add(MenuHelper.separator());
-				lores.add(MenuHelper.actionHint("Click to configure"));
+				lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
 				im.setLore(lores);
 			}
 			is.setItemMeta(im);

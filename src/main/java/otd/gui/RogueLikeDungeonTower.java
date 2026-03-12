@@ -203,7 +203,7 @@ public class RogueLikeDungeonTower extends Content {
 		List<String> lores = new ArrayList<>();
 		lores.add(MenuHelper.status(enabled));
 		lores.add(MenuHelper.separator());
-		lores.add(MenuHelper.actionHint("Click to toggle"));
+		lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 		im.setLore(lores);
 		is.setItemMeta(im);
 		addItem(slot, is);

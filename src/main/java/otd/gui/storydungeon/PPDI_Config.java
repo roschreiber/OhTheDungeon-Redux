@@ -136,7 +136,7 @@ public class PPDI_Config extends Content {
 			lores.add(MenuHelper.status(enabled));
 			lores.add(MenuHelper.desc(I18n.instance.Require_Vault));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.EnableMoneyPayment);
@@ -177,7 +177,7 @@ public class PPDI_Config extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(enabled));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(3, 0, icon);

@@ -225,7 +225,7 @@ public class WorldSpawnerManager extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(egg_change_spawner));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -283,7 +283,7 @@ public class WorldSpawnerManager extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(MenuHelper.status(mob_drop_in_vanilla_spawner));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -301,7 +301,7 @@ public class WorldSpawnerManager extends Content {
 			lores.add(MenuHelper.desc(I18n.instance.Dungeon_Spawner_Lore2));
 			lores.add(MenuHelper.desc(I18n.instance.Dungeon_Spawner_Lore3));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -354,7 +354,7 @@ public class WorldSpawnerManager extends Content {
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.desc(I18n.instance.Prevent_Breaking_Of_Dungeon_Spawner_Lore));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 
 			im.setLore(lores);
 
@@ -371,7 +371,7 @@ public class WorldSpawnerManager extends Content {
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.desc(I18n.instance.Prevent_Dropping_Of_Dungeon_Spawner_Lore));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to toggle"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Toggle));
 
 			im.setLore(lores);
 
