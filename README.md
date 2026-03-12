@@ -22,7 +22,7 @@
 > I try my best to extensively test each release of this plugin. But due to my limited time, some bugs might still occur. OTD-R is tested on both **Paper** and **Leaf** server software and works fine there.
 
 > [!TIP]
-> Current version: **1.21.11**
+> OTD-R currently only supports minecraft version **1.21.11**!
 
 ### What is this plugin?
 
@@ -59,21 +59,21 @@ Open an [issue on Github](https://github.com/roschreiber/OhTheDungeon-Redux/issu
   <br><br>
 
   <img src="media/screenshots/3.png" alt="Feature Showcase" width="700">
-  <p><em>a draylar battle tower on a mountain</em></p>
+  <p><em>a Draylar Battle Tower on a mountain</em></p>
   <br><br>
 
   <img src="media/screenshots/4.png" alt="Detailed View" width="700">
-  <p><em>a battle tower in a sea</em></p>
+  <p><em>a Battle Tower in a sea</em></p>
   <br><br>
 
   <img src="media/screenshots/5.png" alt="Final Result" width="700">
-  <p><em>a roguelike dungeon in a desert</em></p>
+  <p><em>a Roguelike Dungeon in a desert</em></p>
   <br>
 </details>
 
 ### Servers using OTD-R:
 
-none known right now! shoot me a dm / create a PR if you want ur server to be added.
+none known right now! shoot me a dm / create a PR and edit this README if you want ur server to be added.
 
 ### Big Thanks...
 

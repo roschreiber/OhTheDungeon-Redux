@@ -5,7 +5,7 @@ load: STARTUP
 api-version: 1.21.6
 version: "${project.version}"
 api: forge_sandbox
-softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoBosses]
+softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoMobs]
 commands:
   oh_the_dungeons:
     aliases: [otd]

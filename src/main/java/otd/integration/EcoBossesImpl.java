@@ -10,13 +10,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
-// TODO: Fix these imports
-// import com.willfp.ecomobs.mobs.Mobs;
-// import com.willfp.ecomobs.mobs.EcoMob;
-// import com.willfp.ecomobs.mobs.LivingEcoMob;
+import com.willfp.ecomobs.mob.EcoMob;
+import com.willfp.ecomobs.mob.EcoMobs;
+import com.willfp.ecomobs.mob.LivingMob;
+import com.willfp.ecomobs.mob.SpawnReason;
 
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
+
+import otd.redux.util.ConsoleManager;
 
 public class EcoBossesImpl {
 	private static boolean ready = false;
@@ -27,13 +29,14 @@ public class EcoBossesImpl {
 
 	public static void enable() {
 		try {
-			// TODO: Fix these imports
-			// if (Class.forName("com.willfp.ecomobs.EcoMobsPlugin") != null) {
-			// 	Bukkit.getLogger().info("Loading EcoMobs support ...");
-			// 	EcoBossesImpl.inst = new EcoBossesOTDImpl();
-			// 	ready = true;
-			// }
-			ready = false; // Temporarily disabled until EcoMobs API is fixed
+			if (Class.forName("com.willfp.ecomobs.EcoMobsPlugin") != null
+					&& Bukkit.getPluginManager().isPluginEnabled("EcoMobs")) {
+				ConsoleManager.logInfo("Loading EcoMobs support ...");
+				EcoBossesImpl.inst = new EcoBossesOTDImpl();
+				ready = true;
+			} else {
+				ready = false;
+			}
 		} catch (Exception e) {
 			ready = false;
 		}
@@ -101,28 +104,26 @@ public class EcoBossesImpl {
 	public static class EcoBossesOTDImpl implements BossOTD {
 		public Set<String> getMobNames() {
 			Set<String> res = new HashSet<>();
-			// TODO: Fix these imports
-			// for (EcoMob mob : Mobs.values()) {
-			// 	String id = mob.getID();
-			// 	res.add(id);
-			// }
+			for (EcoMob mob : EcoMobs.INSTANCE.values()) {
+				String id = mob.getID();
+				res.add(id);
+			}
 			return res;
 		}
 
 		public Entity spawnMob(String type, Location loc) {
-			// TODO: Fix these imports
-			// EcoMob mob = Mobs.getByID(type);
-			// if (mob != null) {
-			// 	LivingEcoMob e = mob.spawn(loc);
-			// 	return e.getEntity();
-			// }
+			EcoMob mob = EcoMobs.INSTANCE.getByID(type);
+			if (mob != null) {
+				LivingMob e = mob.spawn(loc, SpawnReason.COMMAND);
+				if (e != null) {
+					return e.getEntity();
+				}
+			}
 			return null;
 		}
 
 		public boolean isMobExist(String type) {
-			// TODO: Fix these imports
-			// return Mobs.getByID(type) != null;
-			return false;
+			return EcoMobs.INSTANCE.getByID(type) != null;
 		}
 	}
 }

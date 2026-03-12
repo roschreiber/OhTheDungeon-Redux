@@ -268,6 +268,7 @@ public class Main extends JavaPlugin {
 
 		PlaceholderAPI.enable();
 		MythicMobsImpl.enable();
+		EcoBossesImpl.enable();
 		//BossImpl.enable();
 
 		AsyncRoguelikeDungeon.init();
