@@ -31,10 +31,10 @@ public class DungeonSettings implements ISettings {
 
 	public static final int MAX_NUM_LEVELS = 5;
 	protected SettingIdentifier id;
-	protected List<SettingIdentifier> inherit;
+	public List<SettingIdentifier> inherit;
 	protected boolean exclusive;
-	protected TowerSettings towerSettings;
-	protected Map<Integer, LevelSettings> levels;
+	public TowerSettings towerSettings;
+	public Map<Integer, LevelSettings> levels;
 	protected SpawnCriteria criteria;
 	protected LootRuleManager lootRules;
 	protected List<LootTableRule> lootTables;

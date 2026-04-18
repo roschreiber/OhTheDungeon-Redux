@@ -60,6 +60,14 @@ import otd.util.I18n;
 import otd.world.DungeonType;
 import otd.redux.util.ChatManager;
 import otd.redux.util.ChatManager.MessageType;
+import forge_sandbox.greymerk.roguelike.theme.Theme;
+import forge_sandbox.greymerk.roguelike.theme.ITheme;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.TowerSettings;
+import forge_sandbox.greymerk.roguelike.dungeon.towers.Tower;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.DungeonSettings;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.base.SettingsBase;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.*;
+import forge_sandbox.greymerk.roguelike.dungeon.Dungeon;
 
 public class Otd_Place implements TabExecutor {
 
@@ -83,6 +91,11 @@ public class Otd_Place implements TabExecutor {
 				res.add("lich");
 				res.add("castle");
 				res.add("custom");
+			}
+			if (args.length == 2 && args[0].equalsIgnoreCase("roguelike")) {
+				for (Theme t : Theme.values()) {
+					res.add(t.name().toLowerCase());
+				}
 			}
 		}
 		return res;
@@ -154,7 +167,26 @@ public class Otd_Place implements TabExecutor {
 			}
 			avg_y /= 9;
 			editor.setVirtualGroundHeight(avg_y);
-			boolean flag = AsyncRoguelikeDungeon.generateAsync(rand, editor, x, z);
+			boolean flag;
+			if (args.length >= 2) {
+				String tName = args[1].toUpperCase();
+				if (!Theme.contains(tName)) {
+					sender.sendMessage(ChatManager.getInstance().formatMessage("Unknown theme: " + args[1], MessageType.ERROR));
+					players.remove(p);
+					return true;
+				}
+				Theme tEnum = Theme.valueOf(tName);
+				ITheme theme = Theme.getTheme(tEnum);
+				DungeonSettings override = getBuiltinForTheme(tEnum);
+				if (override == null) {
+					override = new DungeonSettings();
+					override.inherit.add(SettingsBase.ID);
+					override.towerSettings = new TowerSettings(Tower.ROGUE, theme);
+				}
+				flag = AsyncRoguelikeDungeon.generateAsync(rand, editor, x, z, null, override, 0);
+			} else {
+				flag = AsyncRoguelikeDungeon.generateAsync(rand, editor, x, z);
+			}
 
 			if (!flag)
 				sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk...", MessageType.ERROR));
@@ -227,5 +259,23 @@ public class Otd_Place implements TabExecutor {
 		} else
 			return false;
 		return true;
+	}
+
+	private static DungeonSettings getBuiltinForTheme(Theme theme) {
+		return switch (theme) {
+			case OAK, SPRUCE -> new SettingsForestTheme();
+			case JUNGLE -> new SettingsJungleTheme();
+			case DARKOAK -> new SettingsSwampTheme();
+			case MUDDY -> new SettingsSwampTheme();
+			case PYRAMID, SANDSTONE, SANDSTONERED -> new SettingsDesertTheme();
+			case ENIKO, ENIKO2 -> new SettingsMountainTheme();
+			case ETHOTOWER -> new SettingsMesaTheme();
+			case ICE -> new SettingsIceTheme();
+			case HOUSE -> new SettingsHouseTheme();
+			case BUMBO -> new SettingsRareTheme();
+			case GREY -> new SettingsRuinTheme();
+			case STONE -> new SettingsBunkerTheme();
+			default -> null;
+		};
 	}
 }
