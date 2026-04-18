@@ -140,9 +140,9 @@ public class Main extends JavaPlugin {
 		instance = this;
 		main = this;
 		mainInstance = this;
-		if (MultiVersion.is121R7()) {
-			version = MultiVersion.Version.V1_21_R7;
-			ConsoleManager.logInfo(" MC Version: 1.21.11");
+		if (MultiVersion.is26_1()) {
+			version = MultiVersion.Version.V26_1;
+			ConsoleManager.logInfo(" MC Version: 26.1");
 
 		} else {
 			ConsoleManager.logError(" Unsupported Version...");

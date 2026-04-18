@@ -16,6 +16,7 @@
  */
 package otd;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import otd.nms.CompoundParse;
@@ -39,16 +40,12 @@ import otd.nms.SpawnerLightRule;
 public class MultiVersion {
 
 	public static enum Version {
-		V1_21_R7, UNKNOWN
+		V26_1, UNKNOWN
 	};
 
-	public static boolean is121R7() {
-		try {
-			Class<?> clazz = Class.forName("org.bukkit.craftbukkit.v1_21_R7.CraftWorld");
-			return clazz != null;
-		} catch (ClassNotFoundException ex) {
-			return false;
-		}
+	public static boolean is26_1() {
+		String mcVersion = Bukkit.getMinecraftVersion();
+		return mcVersion.startsWith("26.1");
 	}
 
 	private static Boolean newBiome = null;
