@@ -189,10 +189,12 @@ public class Otd_Place implements TabExecutor {
 				flag = AsyncRoguelikeDungeon.generateAsync(rand, editor, x, z);
 			}
 
-			if (!flag)
+			if (!flag) {
 				sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk...", MessageType.ERROR));
+			} else {
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done, Dungeon should be placed in this chunk", MessageType.SUCCESS));
 			players.remove(p);
+			}
 		} else if (type.equals("battletower")) {
 			BattleTowerPopulator g = new BattleTowerPopulator();
 			g.generateDungeon(world, new Random(), chunk);

@@ -123,7 +123,7 @@ public class Otd_Reload implements TabExecutor {
 			return true;
 		}
 
-		sender.sendMessage(ChatManager.getInstance().formatMessage("Usage: /otd_reload [all|config|chat]", MessageType.INFO));
+		sender.sendMessage(ChatManager.getInstance().formatMessage("Usage: /otd_reload [all|config|chat|lang|scripts]", MessageType.INFO));
 		return true;
 	}
 }

@@ -65,8 +65,7 @@ public class Otd_Tp implements TabExecutor {
 			return false;
 
 		UserTeleport ut = new UserTeleport();
-		ut.openInventory(p);
-		sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));	
+		ut.openInventory(p);	
 
 		return true;
 	}
