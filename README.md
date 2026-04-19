@@ -50,23 +50,23 @@ Open an [issue on Github](https://github.com/roschreiber/OhTheDungeon-Redux/issu
   <summary><h3>Gallery</h3></summary>
   <br>
 
-  <img src="media/screenshots/1.png" alt="Home Screen" width="700">
+  <img src="media/screenshots/1.png" alt="a Roguelike Dungeon in a birch forest" width="700">
     <p><em>a Roguelike Dungeon in a birch forest</em></p>
   <br><br>
 
-  <img src="media/screenshots/2.png" alt="Settings Panel" width="700">
+  <img src="media/screenshots/2.png" alt="a Roguelike Dungeon in a plains forest" width="700">
     <p><em>a Roguelike Dungeon in a plains forest</em></p>
   <br><br>
 
-  <img src="media/screenshots/3.png" alt="Feature Showcase" width="700">
+  <img src="media/screenshots/3.png" alt="a Draylar Battle Tower on a mountain" width="700">
   <p><em>a Draylar Battle Tower on a mountain</em></p>
   <br><br>
 
-  <img src="media/screenshots/4.png" alt="Detailed View" width="700">
+  <img src="media/screenshots/4.png" alt="a Battle Tower in a sea" width="700">
   <p><em>a Battle Tower in a sea</em></p>
   <br><br>
 
-  <img src="media/screenshots/5.png" alt="Final Result" width="700">
+  <img src="media/screenshots/5.png" alt="a Roguelike Dungeon in a desert" width="700">
   <p><em>a Roguelike Dungeon in a desert</em></p>
   <br>
 </details>
@@ -77,9 +77,9 @@ none known right now! shoot me a dm / create a PR and edit this README if you wa
 
 ### Big Thanks...
 
-...go out to:
+...go to:
 
-- [shadow_wind](https://www.spigotmc.org/members/shadow_wind.865275/), the original author of OhTheDungeonsYou'llGo, who deleted the plugin some years ago due to lots of criticism
+- [shadow_wind](https://www.spigotmc.org/members/shadow_wind.865275/), the original author of OhTheDungeonsYou'llGo, who deleted the plugin some years ago due to criticism
 - [steve4744](https://github.com/steve4744/OhTheDungeon), who maintained and kept the plugin alive through multiple MC versions
 - Hex_26 & their plugin [TerraformGenerator](https://modrinth.com/plugin/terraformgenerator), which was used for images 2-5 in the gallery above
 - tr7zw's [NBT-API](https://github.com/tr7zw/Item-NBT-API) which is used for manipulating spawner NBT
