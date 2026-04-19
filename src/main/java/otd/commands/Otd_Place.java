@@ -44,6 +44,7 @@ import forge_sandbox.ChunkPos;
 import forge_sandbox.com.someguyssoftware.dungeons2.BukkitDungeonGenerator;
 import forge_sandbox.team.cqr.cqrepoured.BukkitCastleGenerator;
 import forge_sandbox.twilightforest.TFBukkitGenerator;
+import otd.addon.com.ohthedungeon.storydungeon.themes.SettingsBirthdayTheme;
 import otd.dungeon.aetherlegacy.AetherBukkitGenerator;
 import otd.dungeon.draylar.BattleTowerSchematics;
 import otd.gui.customstruct.CustomDungeonPlaceSelect;
@@ -275,6 +276,7 @@ public class Otd_Place implements TabExecutor {
 			case BUMBO -> new SettingsRareTheme();
 			case GREY -> new SettingsRuinTheme();
 			case STONE -> new SettingsBunkerTheme();
+			case BIRTHDAY -> new SettingsBirthdayTheme();
 			default -> null;
 		};
 	}
