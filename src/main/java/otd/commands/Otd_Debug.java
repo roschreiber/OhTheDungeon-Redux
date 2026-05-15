@@ -12,9 +12,11 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import forge_sandbox.ChunkPos;
 import otd.script.JSLoader;
@@ -32,6 +34,9 @@ public class Otd_Debug implements TabExecutor {
 	public boolean onCommand(final CommandSender sender, final Command command, final String label,
 			final String[] args) {
 		Map<String, Script> scripts = JSLoader.getScripts("on_dungeon_placed");
+		if (scripts == null)
+			return true;
+		World world = sender instanceof Player ? ((Player) sender).getWorld() : Bukkit.getWorlds().get(0);
 		for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 			try {
 				ScriptEngine engine = JSLoader.engine;
@@ -40,7 +45,7 @@ public class Otd_Debug implements TabExecutor {
 
 				Set<ChunkPos> tmp = new HashSet<>();
 				tmp.add(new ChunkPos(-1, -2));
-				invocable.invokeFunction("on_dungeon_placed", 3, 4, tmp, DungeonType.CustomDungeon, "ac");
+				invocable.invokeFunction("on_dungeon_placed", world, 0, 64, 0, tmp, DungeonType.CustomDungeon, "ac");
 			} catch (NoSuchMethodException | ScriptException ex) {
 				Bukkit.getLogger().log(Level.SEVERE, "Found errors while executing js script : " + entry.getKey());
 				Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));

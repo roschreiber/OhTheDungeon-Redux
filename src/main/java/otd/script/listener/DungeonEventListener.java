@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.logging.Level;
 
 import javax.script.Invocable;
-import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 import org.bukkit.Bukkit;
@@ -124,11 +123,9 @@ public class DungeonEventListener implements Listener {
 			if (scripts != null) {
 				for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 					try {
-						ScriptEngine engine = JSLoader.engine;
-						Invocable invocable = (Invocable) engine;
-						engine.setContext(entry.getValue().context);
-						Location loc = entity.getLocation();
-						invocable.invokeFunction("on_dungeon_mob_killed", p, le, loc, isBoss);
+					Invocable invocable = (Invocable) entry.getValue().engine;
+					Location loc = entity.getLocation();
+					invocable.invokeFunction("on_dungeon_mob_killed", p, le, loc, isBoss);
 					} catch (NoSuchMethodException | ScriptException ex) {
 						Bukkit.getLogger().log(Level.SEVERE,
 								"Found errors while executing js script : " + entry.getKey());
@@ -153,9 +150,7 @@ public class DungeonEventListener implements Listener {
 
 			for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 				try {
-					ScriptEngine engine = JSLoader.engine;
-					Invocable invocable = (Invocable) engine;
-					engine.setContext(entry.getValue().context);
+					Invocable invocable = (Invocable) entry.getValue().engine;
 					invocable.invokeFunction("on_dungeon_placed", e.getWorld(), centerx, centery, centerz, chunks, type,
 							custom);
 				} catch (NoSuchMethodException | ScriptException ex) {
@@ -192,9 +187,7 @@ public class DungeonEventListener implements Listener {
 			if (script != null) {
 				Script s = JSLoader.getScript("spawner_scripts", script);
 				if (s != null) {
-					ScriptEngine engine = JSLoader.engine;
-					Invocable invocable = (Invocable) engine;
-					engine.setContext(s.context);
+						Invocable invocable = (Invocable) s.engine;
 
 					try {
 						invocable.invokeFunction("spawner_action", loc);

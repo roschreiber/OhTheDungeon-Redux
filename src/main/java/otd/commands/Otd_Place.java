@@ -52,7 +52,6 @@ import otd.lib.async.AsyncRoguelikeDungeon;
 import otd.lib.async.AsyncWorldEditor;
 import otd.populator.BattleTowerPopulator;
 import otd.populator.SmoofyPopulator;
-import otd.script.JSEngine;
 import otd.script.JSLoader;
 import otd.script.JSLoader.Script;
 import otd.util.ActualHeight;
@@ -244,15 +243,17 @@ public class Otd_Place implements TabExecutor {
 			players.remove(p);
 		} else if (type.equals("text")) {
 			Map<String, Script> scripts = JSLoader.getScripts("on_dungeon_placed");
+			if (scripts == null)
+				return true;
 			for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 				try {
-					ScriptEngine engine = JSEngine.getEngine();
+					ScriptEngine engine = JSLoader.engine;
 					Invocable invocable = (Invocable) engine;
 					engine.setContext(entry.getValue().context);
 
 					Set<ChunkPos> tmp = new HashSet<>();
 					tmp.add(new ChunkPos(-1, -2));
-					invocable.invokeFunction("on_dungeon_placed", 3, 4, tmp, DungeonType.CustomDungeon, "ac");
+					invocable.invokeFunction("on_dungeon_placed", p.getWorld(), 0, p.getLocation().getBlockY(), 0, tmp, DungeonType.CustomDungeon, "ac");
 				} catch (NoSuchMethodException | ScriptException ex) {
 					Bukkit.getLogger().log(Level.SEVERE, "Found errors while executing js script : " + entry.getKey());
 					Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));

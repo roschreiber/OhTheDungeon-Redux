@@ -188,14 +188,6 @@
 				<groupId>ca.bkaw</groupId>
 				<artifactId>paper-nms-maven-plugin</artifactId>
 				<version>1.4.11-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>remap</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

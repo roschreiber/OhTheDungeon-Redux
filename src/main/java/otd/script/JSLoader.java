@@ -76,6 +76,8 @@ public class JSLoader {
 
 	private static void loadInDirectory(String item, File path) {
 		File[] listOfFiles = path.listFiles();
+		if (listOfFiles == null)
+			return;
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				if (FileUtils.getExtension(file).equals("js")) {
