@@ -1,32 +1,28 @@
 package otd.nms;
 
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBTCompoundList;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import otd.config.WorldConfig;
 
 public class GetRoguelike {
 	public Object get(int level, String type, Object otag, SpawnPotential sp) {
-		Object obj = null;
-		obj = getInner(level, type, otag, sp);
-
-		return obj;
+		return getInner(level, type, otag, sp);
 	}
 
 	private Object getInner(int level, String type, Object otag, SpawnPotential sp) {
-		net.minecraft.nbt.CompoundTag tag = (net.minecraft.nbt.CompoundTag) otag;
-		tag.putString("id", type);
+		ReadWriteNBT tag = (ReadWriteNBT) otag;
+		tag.setString("id", type);
 
 		if (!(WorldConfig.wc.rogueSpawners && sp.equip))
 			return tag;
-		net.minecraft.nbt.ListTag activeEffects = new net.minecraft.nbt.ListTag();
-		tag.put("active_effects", activeEffects);
 
-		net.minecraft.nbt.CompoundTag buff = new net.minecraft.nbt.CompoundTag();
-		activeEffects.add(buff);
-
-		buff.putString("id", "minecraft:mining_fatigue");
-		buff.putByte("amplifier", (byte) level);
-		buff.putInt("duration", 10);
-		buff.putBoolean("ambient", false);
+		ReadWriteNBTCompoundList activeEffects = tag.getCompoundList("active_effects");
+		ReadWriteNBT buff = activeEffects.addCompound();
+		buff.setString("id", "minecraft:mining_fatigue");
+		buff.setByte("amplifier", (byte) level);
+		buff.setInteger("duration", 10);
+		buff.setBoolean("ambient", false);
 
 		return tag;
 	}

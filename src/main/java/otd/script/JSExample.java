@@ -61,9 +61,6 @@ public class JSExample {
 
 			File out = new File(f, "test1.js");
 			loadFile("example/on_dungeon_mob_killed/test1.js", out);
-
-			File out2 = new File(f, "dungeon_rewards.js");
-			loadFile("example/on_dungeon_mob_killed/dungeon_rewards.js", out2);
 		}
 	}
 }

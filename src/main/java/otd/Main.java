@@ -142,16 +142,18 @@ public class Main extends JavaPlugin {
 		mainInstance = this;
 		if (MultiVersion.is26_1()) {
 			version = MultiVersion.Version.V26_1;
-			ConsoleManager.logInfo(" MC Version: 26.1");
-
+			ConsoleManager.logInfo("MC Version: 26.1");
+		} else if (MultiVersion.is26_2()) {
+			version = MultiVersion.Version.V26_2;
+			ConsoleManager.logInfo("MC Version: 26.2");
+		} else if (MultiVersion.isSupported()) {
+			version = MultiVersion.Version.V26_2;
+			ConsoleManager.logWarning("Untested 26.x version " + MultiVersion.mcVersion());
 		} else {
-			ConsoleManager.logError(" Unsupported Version...");
 			version = MultiVersion.Version.UNKNOWN;
+			ConsoleManager.logWarning("Untested version " + MultiVersion.mcVersion());
 		}
 		MultiVersion.has3DBiome();
-		if (version == MultiVersion.Version.UNKNOWN) {
-			throw new UnsupportedOperationException("Unknown server version...");
-		}
 		MultiVersion.init();
 
 		Sandbox.mkdir();
@@ -162,7 +164,7 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		WorldConfig.AsyncSaver.cancelAsyncSaver();
 		WorldConfig.close();
-		ConsoleManager.logWarning(" Plugin is disabled");
+		ConsoleManager.logWarning("Plugin is disabled");
 
 		disabled = true;
 	}
@@ -172,7 +174,7 @@ public class Main extends JavaPlugin {
 		try {
 			Class.forName("org.spigotmc.SpigotConfig");
 		} catch (ClassNotFoundException ex) {
-			ConsoleManager.logError(" Requires Spigot (or a fork such as Paper) in order to run.");
+			ConsoleManager.logError("Requires Spigot (or a fork such as Paper) in order to run.");
 			throw new UnsupportedOperationException("Unsupported Server Type");
 		}
 
@@ -293,16 +295,16 @@ public class Main extends JavaPlugin {
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
 			if (!PaperLib.isPaper()) {
-				ConsoleManager.logWarning(" You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss");
+				ConsoleManager.logWarning("You are not using Paper, async chunk generator is disabled. Dungeon generation may cause tps loss");
 			}
 			if (!WorldEdit.isReady()) {
-				ConsoleManager.logWarning(" WorldEdit not installed, custom dungeon function is disabled. Don't worry, you can still use the built-in dungeons");
+				ConsoleManager.logWarning("WorldEdit not installed, custom dungeon function is disabled. Don't worry, you can still use the built-in dungeons");
 			}
 			if (!PlaceholderAPI.isReady()) {
-				ConsoleManager.logWarning(" PlaceholderAPI not installed, will disable PlaceholderAPI related features");
+				ConsoleManager.logWarning("PlaceholderAPI not installed, will disable PlaceholderAPI related features");
 			}
 			if (!MythicMobsImpl.isMythicMobsReady()) {
-				ConsoleManager.logWarning(" MythicMobs not installed, will disable MythicMobs related features");
+				ConsoleManager.logWarning("MythicMobs not installed, will disable MythicMobs related features");
 			} else {
 				MythicMobsImpl.report();
 			}
@@ -312,7 +314,7 @@ public class Main extends JavaPlugin {
 						ChatColor.RED);
 			}*/
 			if (!EcoBossesImpl.isEcoBossesReady()) {
-				ConsoleManager.logWarning(" EcoMobs not installed, will disable EcoMobs related features");
+				ConsoleManager.logWarning("EcoMobs not installed, will disable EcoMobs related features");
 			}
 
 			JSLoader.init();
@@ -323,13 +325,13 @@ public class Main extends JavaPlugin {
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
 			if (WorldConfig.wc.dungeon_world.finished) {
-				ConsoleManager.logInfo(" Loading dungeon plot world...");
+				ConsoleManager.logInfo("Loading dungeon plot world...");
 				DungeonWorld.loadDungeonWorld();
 			}
 		}, 1L);
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
-			ConsoleManager.logInfo(" Loading PerPlayerDungeonInstance...");
+			ConsoleManager.logInfo("Loading PerPlayerDungeonInstance...");
 			ppdi = new PerPlayerDungeonInstance();
 		}, 1L);
 

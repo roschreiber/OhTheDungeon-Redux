@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/otdredux.png" alt="Oh The Dungeons You'll Go - REDUX" width="703" height="395">
+  <img src="media/otdreduxnew.png" alt="Oh The Dungeons You'll Go - REDUX" width="842" height="574">
 </p>
 
 ---
@@ -22,7 +22,7 @@
 > I try my best to extensively test each release of this plugin. But due to my limited time, some bugs might still occur. OTD-R is tested on both **Paper** and **Leaf** server software and works fine there.
 
 > [!TIP]
-> OTD-R currently only supports minecraft version **26.1.1** / **26.1.2**!
+> OTD-R currently targets minecraft version **26.2**, but runs the **26.x** with best-effort support.
 
 ### What is this plugin?
 

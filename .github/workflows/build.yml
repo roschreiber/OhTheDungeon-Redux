@@ -22,9 +22,6 @@ jobs:
           java-version: '25'
           cache: maven
 
-      - name: init paper-nms
-        run: mvn -B -ntp paper-nms:init -DgameVersion=1.21.11
-
       - name: Build with Maven
         run: mvn -B -ntp -e -DskipTests package
 

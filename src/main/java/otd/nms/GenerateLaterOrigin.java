@@ -7,8 +7,8 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 
-import de.tr7zw.changeme.nbtapi.NBTContainer;
 import de.tr7zw.changeme.nbtapi.NBTTileEntity;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
 import forge_sandbox.greymerk.roguelike.worldgen.Coord;
 import forge_sandbox.greymerk.roguelike.worldgen.IWorldEditor;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawnable;
@@ -33,12 +33,10 @@ public class GenerateLaterOrigin {
 			return;
 
 		NBTTileEntity nbt = new NBTTileEntity(blockState);
-		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
+		ReadWriteNBT base = (ReadWriteNBT) s.getSpawnPotentials(rand, level);
 
 		if (base != null) {
-			net.minecraft.nbt.CompoundTag temp = new net.minecraft.nbt.CompoundTag();
-			temp.put("SpawnPotentials", base);
-			nbt.mergeCompound(new NBTContainer(temp));
+			nbt.mergeCompound(base);
 		}
 
 		SpawnerDecryAPI.setSpawnerDecry(tileentity, Main.instance, DungeonType.Roguelike, false);
@@ -51,12 +49,10 @@ public class GenerateLaterOrigin {
 			return;
 
 		NBTTileEntity nbt = new NBTTileEntity(blockState);
-		net.minecraft.nbt.Tag base = (net.minecraft.nbt.Tag) s.getSpawnPotentials(rand, level);
+		ReadWriteNBT base = (ReadWriteNBT) s.getSpawnPotentials(rand, level);
 
 		if (base != null) {
-			net.minecraft.nbt.CompoundTag temp = new net.minecraft.nbt.CompoundTag();
-			temp.put("SpawnPotentials", base);
-			nbt.mergeCompound(new NBTContainer(temp));
+			nbt.mergeCompound(base);
 		}
 
 		SpawnerDecryAPI.setSpawnerDecry(tileentity, Main.instance, DungeonType.Roguelike, false);

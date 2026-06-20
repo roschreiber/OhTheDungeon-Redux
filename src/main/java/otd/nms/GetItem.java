@@ -1,19 +1,20 @@
 package otd.nms;
 
+import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+
 public class GetItem {
 
 	public Object get(String itemName) {
-		Object obj = null;
-		obj = getInner(itemName);
-		return obj;
+		return getInner(itemName);
 	}
 
 	private Object getInner(String itemName) {
-		net.minecraft.nbt.CompoundTag item = new net.minecraft.nbt.CompoundTag();
+		ReadWriteNBT item = NBT.createNBTObject();
 		if (itemName == null)
 			return item;
-		item.putString("id", itemName);
-		item.putInt("count", 1);
+		item.setString("id", itemName);
+		item.setInteger("count", 1);
 		return item;
 	}
 }

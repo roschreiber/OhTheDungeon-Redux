@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>otd</groupId>
 	<artifactId>OTD-Redux</artifactId>
-	<version>26.1-0.4.0</version>
+	<version>26.2-0.5.0</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>25</maven.compiler.source>
@@ -31,7 +31,7 @@
 			<name>Lumine Releases</name>
 			<url>https://mvn.lumine.io/repository/maven-public/</url>
 		</repository>
-		<!-- EcoBosses Repo -->
+		<!-- EcoMobs Repo -->
 		<repository>
 			<id>auxilor-repo</id>
 			<url>https://repo.auxilor.io/repository/maven-public/</url>
@@ -65,14 +65,7 @@
 		<dependency>
 			<groupId>io.papermc.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>26.1.1.build.29-alpha</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- Run 'mvn paper-nms:init' once after cloning! I do not want to change the whole plugin to Gradle to use paperweight-userdev. -->
-		<dependency>
-			<groupId>ca.bkaw</groupId>
-			<artifactId>paper-nms</artifactId>
-			<version>26.1.1.build.14-alpha-SNAPSHOT</version>
+			<version>26.2.build.25-alpha</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -183,11 +176,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>ca.bkaw</groupId>
-				<artifactId>paper-nms-maven-plugin</artifactId>
-				<version>1.4.11-SNAPSHOT</version>
 			</plugin>
 		</plugins>
 	</build>

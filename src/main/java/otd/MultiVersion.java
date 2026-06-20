@@ -19,7 +19,6 @@ package otd;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import otd.nms.CompoundParse;
 import otd.nms.EquipArmour;
 import otd.nms.EquipHands;
 import otd.nms.GenerateLaterOrigin;
@@ -29,8 +28,6 @@ import otd.nms.GetNBTTagList;
 import otd.nms.GetPotential;
 import otd.nms.GetRoguelike;
 import otd.nms.GetSpawnPotentials;
-import otd.nms.ListParse;
-import otd.nms.PrimitiveParse;
 import otd.nms.SpawnerLightRule;
 
 /**
@@ -40,12 +37,23 @@ import otd.nms.SpawnerLightRule;
 public class MultiVersion {
 
 	public static enum Version {
-		V26_1, UNKNOWN
+		V26_1, V26_2, UNKNOWN
 	};
 
+	public static String mcVersion() {
+		return Bukkit.getMinecraftVersion();
+	}
+
 	public static boolean is26_1() {
-		String mcVersion = Bukkit.getMinecraftVersion();
-		return mcVersion.startsWith("26.1");
+		return Bukkit.getMinecraftVersion().startsWith("26.1");
+	}
+
+	public static boolean is26_2() {
+		return Bukkit.getMinecraftVersion().startsWith("26.2");
+	}
+
+	public static boolean isSupported() {
+		return Bukkit.getMinecraftVersion().startsWith("26.");
 	}
 
 	private static Boolean newBiome = null;
@@ -78,9 +86,6 @@ public class MultiVersion {
 	public static GenerateLaterOrigin generateLaterOrigin = null;
 	public static GetSpawnPotentials getSpawnPotentials = null;
 	//public static Get get = null;
-	public static CompoundParse compoundParse = null;
-	public static ListParse listParse = null;
-	public static PrimitiveParse primitiveParse = null;
 	public static SpawnerLightRule spawnerLightRule = null;
 
 	private static BiomeHelper biomeHelper = null;
@@ -97,9 +102,6 @@ public class MultiVersion {
 		generateLaterOrigin = new GenerateLaterOrigin();
 		getSpawnPotentials = new GetSpawnPotentials();
 		//get = new Get120R4();
-		compoundParse = new CompoundParse();
-		listParse = new ListParse();
-		primitiveParse = new PrimitiveParse();
 		spawnerLightRule = new SpawnerLightRule();
 	}
 

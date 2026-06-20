@@ -123,7 +123,7 @@ public class DungeonEventListener implements Listener {
 			if (scripts != null) {
 				for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 					try {
-					Invocable invocable = (Invocable) entry.getValue().engine;
+					Invocable invocable = (Invocable) JSLoader.engine;
 					Location loc = entity.getLocation();
 					invocable.invokeFunction("on_dungeon_mob_killed", p, le, loc, isBoss);
 					} catch (NoSuchMethodException | ScriptException ex) {
@@ -150,7 +150,7 @@ public class DungeonEventListener implements Listener {
 
 			for (Map.Entry<String, Script> entry : scripts.entrySet()) {
 				try {
-					Invocable invocable = (Invocable) entry.getValue().engine;
+					Invocable invocable = (Invocable) JSLoader.engine;
 					invocable.invokeFunction("on_dungeon_placed", e.getWorld(), centerx, centery, centerz, chunks, type,
 							custom);
 				} catch (NoSuchMethodException | ScriptException ex) {
@@ -187,7 +187,7 @@ public class DungeonEventListener implements Listener {
 			if (script != null) {
 				Script s = JSLoader.getScript("spawner_scripts", script);
 				if (s != null) {
-						Invocable invocable = (Invocable) s.engine;
+						Invocable invocable = (Invocable) JSLoader.engine;
 
 					try {
 						invocable.invokeFunction("spawner_action", loc);

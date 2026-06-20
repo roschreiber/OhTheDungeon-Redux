@@ -2,6 +2,9 @@ package otd.nms;
 
 import java.util.Random;
 
+import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBTCompoundList;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawnable;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawner;
@@ -14,21 +17,19 @@ public class GetSpawnPotentials {
 	private Object getInner(Random rand, int level, Spawnable s) {
 		if (s.type != null) {
 			SpawnPotential potential = new SpawnPotential(Spawner.getName(s.type));
-			Object res = potential.getNBTTagList(rand, level);
-			return res;
+			return potential.getNBTTagList(rand, level);
 		}
 
-		net.minecraft.nbt.ListTag potentials = new net.minecraft.nbt.ListTag();
+		ReadWriteNBT root = NBT.createNBTObject();
+		ReadWriteNBTCompoundList potentials = root.getCompoundList("SpawnPotentials");
 
 		for (SpawnPotential potential : s.potentials) {
-			net.minecraft.nbt.CompoundTag nbt = (net.minecraft.nbt.CompoundTag) potential
-					.getNBTTagCompound(level);
-			net.minecraft.nbt.CompoundTag holder = new net.minecraft.nbt.CompoundTag();
-			holder.put("data", nbt);
-			holder.putInt("weight", potential.weight);
-			potentials.add(holder);
+			ReadWriteNBT nbt = (ReadWriteNBT) potential.getNBTTagCompound(level);
+			ReadWriteNBT holder = potentials.addCompound();
+			holder.getOrCreateCompound("data").mergeCompound(nbt);
+			holder.setInteger("weight", potential.weight);
 		}
 
-		return potentials;
+		return root;
 	}
 }

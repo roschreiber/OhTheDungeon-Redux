@@ -2,6 +2,9 @@ package otd.nms;
 
 import java.util.Random;
 
+import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBTCompoundList;
 import forge_sandbox.greymerk.roguelike.treasure.loot.Equipment;
 import forge_sandbox.greymerk.roguelike.treasure.loot.Quality;
 import forge_sandbox.greymerk.roguelike.worldgen.spawners.SpawnPotential;
@@ -9,11 +12,13 @@ import forge_sandbox.greymerk.roguelike.worldgen.spawners.Spawner;
 
 public class GetNBTTagList {
 	public Object get(Random rand, int level, SpawnPotential sp) {
-		net.minecraft.nbt.ListTag potentials = new net.minecraft.nbt.ListTag();
+		ReadWriteNBT root = NBT.createNBTObject();
+		ReadWriteNBTCompoundList potentials = root.getCompoundList("SpawnPotentials");
+
 		if (sp.name.equals(Spawner.getName(Spawner.ZOMBIE))) {
 			for (int i = 0; i < 24; ++i) {
-				net.minecraft.nbt.CompoundTag mob = new net.minecraft.nbt.CompoundTag();
-				mob = (net.minecraft.nbt.CompoundTag) sp.getRoguelike(level, sp.name, mob);
+				ReadWriteNBT mob = NBT.createNBTObject();
+				mob = (ReadWriteNBT) sp.getRoguelike(level, sp.name, mob);
 
 				Equipment tool;
 				switch (rand.nextInt(4)) {
@@ -34,47 +39,39 @@ public class GetNBTTagList {
 					break;
 				}
 
-				mob = (net.minecraft.nbt.CompoundTag) sp.equipHands(mob,
+				mob = (ReadWriteNBT) sp.equipHands(mob,
 						Equipment.getName(tool, Quality.getToolQuality(rand, level)), "minecraft:shield");
-				mob = (net.minecraft.nbt.CompoundTag) sp.equipArmour(mob, rand, level);
+				mob = (ReadWriteNBT) sp.equipArmour(mob, rand, level);
 
-				net.minecraft.nbt.CompoundTag data = new net.minecraft.nbt.CompoundTag();
-				data.put("data", (net.minecraft.nbt.Tag) sp.getPotential(mob));
-				data.putInt("weight", sp.weight);
-
-				potentials.add(data);
+				ReadWriteNBT data = potentials.addCompound();
+				data.getOrCreateCompound("data").mergeCompound((ReadWriteNBT) sp.getPotential(mob));
+				data.setInteger("weight", sp.weight);
 			}
 
-			return potentials;
+			return root;
 		}
 
 		if (sp.name.equals(Spawner.getName(Spawner.SKELETON))) {
 			for (int i = 0; i < 12; ++i) {
-				net.minecraft.nbt.CompoundTag mob = new net.minecraft.nbt.CompoundTag();
-				mob = (net.minecraft.nbt.CompoundTag) sp.getRoguelike(level, sp.name, mob);
-				mob = (net.minecraft.nbt.CompoundTag) sp.equipHands(mob, "minecraft:bow", null);
-				mob = (net.minecraft.nbt.CompoundTag) sp.equipArmour(mob, rand, level);
+				ReadWriteNBT mob = NBT.createNBTObject();
+				mob = (ReadWriteNBT) sp.getRoguelike(level, sp.name, mob);
+				mob = (ReadWriteNBT) sp.equipHands(mob, "minecraft:bow", null);
+				mob = (ReadWriteNBT) sp.equipArmour(mob, rand, level);
 
-				net.minecraft.nbt.CompoundTag data = new net.minecraft.nbt.CompoundTag();
-				data.put("data", (net.minecraft.nbt.Tag) sp.getPotential(mob));
-				data.putInt("weight", sp.weight);
-
-				if (data != null)
-					potentials.add(data);
+				ReadWriteNBT data = potentials.addCompound();
+				data.getOrCreateCompound("data").mergeCompound((ReadWriteNBT) sp.getPotential(mob));
+				data.setInteger("weight", sp.weight);
 			}
 
-			return potentials;
+			return root;
 		}
 
 		{
-			net.minecraft.nbt.CompoundTag data = new net.minecraft.nbt.CompoundTag();
-			data.put("data", (net.minecraft.nbt.Tag) sp
-					.getPotential(sp.getRoguelike(level, sp.name, new net.minecraft.nbt.CompoundTag())));
-			data.putInt("weight", sp.weight);
-
-			if (data != null)
-				potentials.add(data);
-			return potentials;
+			ReadWriteNBT data = potentials.addCompound();
+			data.getOrCreateCompound("data")
+					.mergeCompound((ReadWriteNBT) sp.getPotential(sp.getRoguelike(level, sp.name, NBT.createNBTObject())));
+			data.setInteger("weight", sp.weight);
+			return root;
 		}
 	}
 }
