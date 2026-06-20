@@ -94,7 +94,9 @@ public class Otd_Place implements TabExecutor {
 			}
 			if (args.length == 2 && args[0].equalsIgnoreCase("roguelike")) {
 				for (Theme t : Theme.values()) {
-					res.add(t.name().toLowerCase());
+					if (Theme.isCompatible(t)) {
+						res.add(t.name().toLowerCase());
+					}
 				}
 			}
 		}

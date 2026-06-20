@@ -1,8 +1,11 @@
 package forge_sandbox.greymerk.roguelike.theme;
 
+import java.util.EnumSet;
 import java.util.Random;
 
 import com.google.gson.JsonObject;
+
+import otd.redux.util.ConsoleManager;
 
 public enum Theme {
 
@@ -10,7 +13,42 @@ public enum Theme {
 	ICE, ENIKO, ENIKO2, ENIQUARTZ, ENIICE, TOWER, ETHO, CAVE, SEWER, ENDER, MINESHAFT, ETHOTOWER, PYRAMID, DARKHALL,
 	TEMPLE, SANDSTONERED, HOUSE, GREY, PURPUR, HELL, TERRACOTTA, STONE, BUMBO, BIRTHDAY, COPPER_OXIDIZED, COPPER;
 
+	/** the STONE theme is a safe fallback in this case since stone blocks exist in all minecraft versions */
+	private static final Theme DEFAULT = STONE;
+
+	private static final EnumSet<Theme> incompatible = EnumSet.noneOf(Theme.class);
+
+	/** Builds a theme, falling back to {@link #DEFAULT} if the theme references blocks that are missing on this version */
 	public static ITheme getTheme(Theme type) {
+		ITheme theme = tryBuild(type);
+		return theme != null ? theme : tryBuild(DEFAULT);
+	}
+
+	/** @return whether this theme can be built on the running MC version*/
+	public static boolean isCompatible(Theme type) {
+		return !incompatible.contains(type);
+	}
+
+	public static void probeCompatibility() {
+		for (Theme t : values()) {
+			tryBuild(t);
+		}
+	}
+
+	private static ITheme tryBuild(Theme type) {
+		if (type == null || incompatible.contains(type)) {
+			return null;
+		}
+		try {
+			return build(type);
+		} catch (LinkageError e) {
+			incompatible.add(type);
+			ConsoleManager.logWarning("Theme " + type + " uses blocks not present in this Minecraft version. It won't be generated.");
+			return null;
+		}
+	}
+
+	private static ITheme build(Theme type) {
 
 		ITheme theme;
 
@@ -216,7 +254,19 @@ public enum Theme {
 	}
 
 	public static ITheme getRandom(Random rand) {
-		return Theme.getTheme(Theme.values()[rand.nextInt(Theme.values().length)]);
+		Theme[] all = values();
+		// Keep rolling until we hit a theme that builds on this version, then return it.
+		for (int i = 0; i < all.length; i++) {
+			Theme pick = all[rand.nextInt(all.length)];
+			if (incompatible.contains(pick)) {
+				continue;
+			}
+			ITheme theme = tryBuild(pick);
+			if (theme != null) {
+				return theme;
+			}
+		}
+		return getTheme(DEFAULT);
 	}
 
 }

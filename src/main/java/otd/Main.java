@@ -203,6 +203,8 @@ public class Main extends JavaPlugin {
 
 		Dungeon.init = true;
 
+		forge_sandbox.greymerk.roguelike.theme.Theme.probeCompatibility();
+
 		getServer().getPluginManager().registerEvents(new DLDWorldListener(), this);
 		getServer().getPluginManager().registerEvents(LanguageGUI.instance, this);
 		getServer().getPluginManager().registerEvents(WorldEditor.instance, this);
