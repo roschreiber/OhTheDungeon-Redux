@@ -69,6 +69,8 @@ public class WorldConfig {
 	public boolean rogueSpawners = true;
 	public boolean disableAPI = false;
 	public boolean noMobChanges = false;
+	public boolean enable_bluemap_markers = false;
+	public boolean enable_squaremap_markers = false;
 	public int version = 14;
 
 	public String language = "en";

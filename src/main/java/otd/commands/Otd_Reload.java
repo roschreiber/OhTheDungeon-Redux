@@ -87,6 +87,7 @@ public class Otd_Reload implements TabExecutor {
 				WorldConfig.reloadFromYaml();
 				WorldConfig.loadWorldConfig();
 				Bukkit.getScheduler().runTask(Main.instance, () -> {
+					otd.locate.DungeonLog.load();
 					sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
 				});
 			});
@@ -112,6 +113,7 @@ public class Otd_Reload implements TabExecutor {
 			Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
 				WorldConfig.reloadFromYaml();
 				Bukkit.getScheduler().runTask(Main.instance, () -> {
+					otd.locate.DungeonLog.load();
 					sender.sendMessage(ChatManager.getInstance().formatMessage("World configuration reloaded", MessageType.SUCCESS));
 				});
 			});

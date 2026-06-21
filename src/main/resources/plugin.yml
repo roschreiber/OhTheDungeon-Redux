@@ -5,7 +5,7 @@ load: STARTUP
 api-version: '26.1'
 version: "${project.version}"
 api: forge_sandbox
-softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoMobs]
+softdepend: [WorldEdit,Vault,PlaceholderAPI,MythicMobs,Boss,EcoMobs,BlueMap,squaremap]
 commands:
   oh_the_dungeons:
     aliases: [otd]
@@ -41,6 +41,10 @@ commands:
   otd_pi_create:
     description: Create a dungeon universe with command
     usage: /<command> [player] [generator] [populator] [tower]
+  otd_locate:
+    aliases: [otd_loc]
+    description: Locate the nearest dungeon
+    usage: /<command> [type]
 permissions:
   oh_the_dungeons.admin:
     default: op
@@ -57,3 +61,6 @@ permissions:
   perplayerdungeoninstance.menu:
     default: true
     description: Permission for otd_pi
+  oh_the_dungeons.locate:
+    default: op
+    description: use /otd_locate

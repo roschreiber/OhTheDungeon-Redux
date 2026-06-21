@@ -53,6 +53,7 @@ import otd.addon.com.ohthedungeon.storydungeon.PerPlayerDungeonInstance;
 import otd.commands.Otd;
 import otd.commands.Otd_Cp;
 import otd.commands.Otd_Debug;
+import otd.commands.Otd_Locate;
 import otd.commands.Otd_Place;
 import otd.commands.Otd_Reload;
 import otd.commands.Otd_Tp;
@@ -323,6 +324,9 @@ public class Main extends JavaPlugin {
 			JSExample.init();
 			getServer().getPluginManager().registerEvents(new DungeonEventListener(), this);
 
+			otd.integration.MapMarkerService.enable();
+			otd.locate.DungeonLog.load();
+
 		}, 3L);
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
@@ -422,6 +426,13 @@ public class Main extends JavaPlugin {
 			Otd_Debug d = new Otd_Debug();
 			command.setExecutor(d);
 			command.setTabCompleter(d);
+		}
+
+		command = this.getCommand("otd_locate");
+		if (command != null) {
+			Otd_Locate l = new Otd_Locate();
+			command.setExecutor(l);
+			command.setTabCompleter(l);
 		}
 	}
 }

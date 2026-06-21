@@ -42,5 +42,9 @@ public class AsyncLog {
 			} catch (IOException e) {
 			}
 		});
+		try {
+			otd.locate.DungeonLog.parse(message).ifPresent(otd.locate.DungeonLog::record);
+		} catch (Throwable ignored) {
+		}
 	}
 }

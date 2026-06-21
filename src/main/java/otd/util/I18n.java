@@ -68,7 +68,7 @@ public class I18n {
 		}
 	}
 
-	public int lang_version = 23;
+	public int lang_version = 24;
 
 	public SpecialItem GREYMERK = new SpecialItem("Greymerk's Hatchet", "Pointlessly sharp");
 	public SpecialItem NEBRISCROWN = new SpecialItem("Nebrian Crown of Justice", "Adorned with precious gemstones");
@@ -523,6 +523,11 @@ public class I18n {
 			"* Mob with name 'otd_castle_king' will be used for boss of Castle.",
 			"* Mob with prefix 'otd_small_boss_' will be used for small boss." };
 
+	public String Player_Only_Command = "This is a player only command";
+	public String Locate_None = "No dungeons found.";
+	public String Locate_Result = "Nearest %s is %s blocks away";
+	public String Locate_Teleported = "Teleported to x=%s z=%s in %s.";
+
 	public static final transient String configFileName = "lang.json";
 	public static transient String curlang = "lang.json";
 
@@ -657,6 +662,18 @@ public class I18n {
 		if (I18n.instance.lang_version == 22) {
 			update22();
 		}
+		if (I18n.instance.lang_version == 23) {
+			update23();
+		}
+	}
+
+	public static void update23() {
+		I18n.instance.Player_Only_Command = "This is a player only command";
+		I18n.instance.Locate_None = "No dungeons found.";
+		I18n.instance.Locate_Result = "Nearest %s is %s blocks away";
+		I18n.instance.Locate_Teleported = "Teleported to x=%s z=%s in %s.";
+
+		I18n.instance.lang_version = 24;
 	}
 
 	public static void update22() {

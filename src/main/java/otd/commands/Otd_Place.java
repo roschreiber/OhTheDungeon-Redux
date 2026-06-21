@@ -144,6 +144,7 @@ public class Otd_Place implements TabExecutor {
 				if (!res) {
 					sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk", MessageType.ERROR));
 				} else {
+					otd.util.AsyncLog.logMessage("[Doomlike Dungeon @ " + world.getName() + "] x=" + (chunk.getX() * 16) + ", z=" + (chunk.getZ() * 16));
 					sender.sendMessage(ChatManager.getInstance().formatMessage("Done, Dungeon should be placed in this chunk", MessageType.SUCCESS));
 				}
 			} catch (Throwable ex) {
@@ -193,6 +194,7 @@ public class Otd_Place implements TabExecutor {
 			if (!flag) {
 				sender.sendMessage(ChatManager.getInstance().formatMessage("Fail: No theme available for this chunk...", MessageType.ERROR));
 			} else {
+			otd.util.AsyncLog.logMessage("[Roguelike Dungeon @ " + world.getName() + "] x=" + x + ", z=" + z);
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done, Dungeon should be placed in this chunk", MessageType.SUCCESS));
 			players.remove(p);
 			}
@@ -202,10 +204,12 @@ public class Otd_Place implements TabExecutor {
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("smoofy")) {
 			SmoofyPopulator.halfAsyncGenerate(world, chunk, new Random());
+				otd.util.AsyncLog.logMessage("[Smoofy Dungeon @ " + world.getName() + "] x=" + (chunk.getX() * 16) + ", z=" + (chunk.getZ() * 16));
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("draylar")) {
 			Location location = p.getLocation();
 			BattleTowerSchematics.place(world, new Random(), location.getBlockX(), location.getBlockZ());
+				otd.util.AsyncLog.logMessage("[DraylarBattleTower Dungeon @ " + world.getName() + "] x=" + location.getBlockX() + ", z=" + location.getBlockZ());
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 		} else if (type.equals("antman")) {
 			Location location = p.getLocation();
@@ -214,6 +218,7 @@ public class Otd_Place implements TabExecutor {
 
 			try {
 				BukkitDungeonGenerator.generate(world, location, new Random());
+					otd.util.AsyncLog.logMessage("[Ant Man Dungeon @ " + world.getName() + "] x=" + location.getBlockX() + ", z=" + location.getBlockZ());
 				sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			} catch (Exception ex) {
 				Bukkit.getLogger().log(Level.SEVERE, ExceptionReporter.exceptionToString(ex));
@@ -222,6 +227,7 @@ public class Otd_Place implements TabExecutor {
 		} else if (type.equals("aether")) {
 			Location location = p.getLocation();
 			AetherBukkitGenerator.generate(world, new Random(), location.getBlockX(), location.getBlockZ());
+				otd.util.AsyncLog.logMessage("[Aether Dungeon @ " + world.getName() + "] x=" + location.getBlockX() + ", z=" + location.getBlockZ());
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("lich")) {
@@ -229,6 +235,7 @@ public class Otd_Place implements TabExecutor {
 			location = location.getWorld().getHighestBlockAt(location).getLocation();
 			location = ActualHeight.getHeight(location);
 			TFBukkitGenerator.generateLichTower(world, location, new Random());
+				otd.util.AsyncLog.logMessage("[Lich Tower @ " + world.getName() + "] x=" + location.getBlockX() + ", z=" + location.getBlockZ());
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("custom")) {
@@ -241,6 +248,7 @@ public class Otd_Place implements TabExecutor {
 			location = location.getWorld().getHighestBlockAt(location).getLocation();
 			location = ActualHeight.getHeight(location);
 			BukkitCastleGenerator.generate(world, location, new Random());
+				otd.util.AsyncLog.logMessage("[Castle Dungeon @ " + world.getName() + "] x=" + location.getBlockX() + ", z=" + location.getBlockZ());
 			sender.sendMessage(ChatManager.getInstance().formatMessage("Done", MessageType.SUCCESS));
 			players.remove(p);
 		} else if (type.equals("text")) {
