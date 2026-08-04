@@ -314,7 +314,7 @@ public class WorldSpawnerManager extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Spawner_Disappear_Vanilla);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.value("Rate", disappearance_rate_vanilla + "%"));
+			lores.add(MenuHelper.value(I18n.instance.Rate, disappearance_rate_vanilla + "%"));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
@@ -331,7 +331,7 @@ public class WorldSpawnerManager extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Spawner_Disappear_Dungeon);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.value("Rate", disappearance_rate_dungeon + "%"));
+			lores.add(MenuHelper.value(I18n.instance.Rate, disappearance_rate_dungeon + "%"));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.desc(I18n.instance.Dungeon_Spawner_Lore1));
 			lores.add(MenuHelper.desc(I18n.instance.Dungeon_Spawner_Lore2));

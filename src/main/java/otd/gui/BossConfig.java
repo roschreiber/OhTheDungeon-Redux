@@ -72,14 +72,12 @@ public class BossConfig extends Content {
 		SimpleWorldConfig swc = WorldConfig.wc.dict.get(holder.world);
 
 		if (slot == 13) {
-			if (e.getClick().equals(ClickType.LEFT)) {
-				swc.chance++;
+			ClickType click = e.getClick();
+			if (click.isLeftClick() || click.isRightClick()) {
+				int step = click.isShiftClick() ? 10 : 1;
+				swc.chance += click.isRightClick() ? -step : step;
 				if (swc.chance > 100)
 					swc.chance = 100;
-				WorldConfig.save();
-			}
-			if (e.getClick().equals(ClickType.RIGHT)) {
-				swc.chance--;
 				if (swc.chance < 0)
 					swc.chance = 0;
 				WorldConfig.save();
@@ -137,6 +135,7 @@ public class BossConfig extends Content {
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
+			lores.add(MenuHelper.actionHint(I18n.instance.Shift_Click_Tip));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(1, 4, icon);
@@ -154,7 +153,7 @@ public class BossConfig extends Content {
 			lores.add(MenuHelper.status(swc.boss == SimpleWorldConfig.BossType.Vanilla));
 			lores.add(MenuHelper.desc(I18n.instance.Use_Vanilla_Lore));
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
@@ -183,7 +182,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 3, icon);
@@ -212,7 +211,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 4, icon);
@@ -241,7 +240,7 @@ public class BossConfig extends Content {
 				}
 			}
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
 			im.setLore(lores);
 			icon.setItemMeta(im);
 			addItem(2, 5, icon);

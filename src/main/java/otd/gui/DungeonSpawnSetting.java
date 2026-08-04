@@ -115,7 +115,7 @@ public class DungeonSpawnSetting extends Content {
 		ClickType type = e.getClick();
 
 		int slot = e.getRawSlot();
-		if (slot < 0 && slot >= 27) {
+		if (slot < 0 || slot >= SLOT) {
 			return;
 		}
 		DungeonSpawnSetting holder = (DungeonSpawnSetting) e.getInventory().getHolder();
@@ -223,12 +223,10 @@ public class DungeonSpawnSetting extends Content {
 		}
 		if (slot == 27) {
 			if (!holder.world.equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
-				if (type == ClickType.LEFT) {
-					holder.distance++;
-					holder.init();
-				}
-				if (type == ClickType.RIGHT) {
-					holder.distance--;
+				if (type == ClickType.LEFT || type == ClickType.RIGHT || type == ClickType.SHIFT_LEFT
+						|| type == ClickType.SHIFT_RIGHT) {
+					int step = type.isShiftClick() ? 10 : 1;
+					holder.distance += type.isRightClick() ? -step : step;
 					if (holder.distance < 15)
 						holder.distance = 15;
 					holder.init();
@@ -237,14 +235,11 @@ public class DungeonSpawnSetting extends Content {
 		}
 		if (slot == 28) {
 			if (!holder.world.equalsIgnoreCase(WorldDefine.WORLD_NAME)) {
-				if (type == ClickType.LEFT) {
-					holder.rate = holder.rate + 0.1;
+				if (type == ClickType.LEFT || type == ClickType.RIGHT) {
+					holder.rate = holder.rate + (type == ClickType.LEFT ? 0.1 : -0.1);
+					holder.rate = Math.round(holder.rate * 10) / 10.0;
 					if (holder.rate > 1)
 						holder.rate = 1;
-					holder.init();
-				}
-				if (type == ClickType.RIGHT) {
-					holder.rate = holder.rate - 0.1;
 					if (holder.rate < 0)
 						holder.rate = 0;
 					holder.init();
@@ -282,7 +277,7 @@ public class DungeonSpawnSetting extends Content {
 		if (this.doomlike < 0)
 			this.doomlike = 0;
 		if (this.roguelike < 0)
-			this.doomlike = 0;
+			this.roguelike = 0;
 		if (this.smoofy < 0)
 			this.smoofy = 0;
 		if (this.draylar < 0)
@@ -443,10 +438,11 @@ public class DungeonSpawnSetting extends Content {
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Average_Dungeon_Chunk_Distance);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.value("Value", distance));
+			lores.add(MenuHelper.value(I18n.instance.Value, distance));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip2));
+			lores.add(MenuHelper.actionHint(I18n.instance.Shift_Click_Tip));
 			im.setLore(lores);
 			is.setItemMeta(im);
 
@@ -458,7 +454,7 @@ public class DungeonSpawnSetting extends Content {
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Spawner_Rejection_Rate);
 
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.value("Value", rate));
+			lores.add(MenuHelper.value(I18n.instance.Value, rate));
 			lores.add(MenuHelper.desc(I18n.instance.Spawner_Rejection_Rate_Lore));
 			lores.add(MenuHelper.separator());
 			lores.add(MenuHelper.actionHint(I18n.instance.Amount_Item_Tip1));
@@ -468,6 +464,6 @@ public class DungeonSpawnSetting extends Content {
 
 			addItem(3, 1, is);
 		}
-		addItem(3, 8, MenuHelper.back());
+		addItem(3, 8, MenuHelper.apply());
 	}
 }

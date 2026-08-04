@@ -481,12 +481,6 @@ public class WorldConfig {
 				entry.getValue().initCastle();
 				entry.getValue().boss = SimpleWorldConfig.BossType.Vanilla;
 				entry.getValue().chance = 5;
-			}
-			wc.version = 13;
-			saves = true;
-		}
-		if (wc.version == 12) {
-			for (Map.Entry<String, SimpleWorldConfig> entry : wc.dict.entrySet()) {
 				entry.getValue().initWorldParameter();
 			}
 			wc.version = 13;

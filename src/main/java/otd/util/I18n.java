@@ -532,6 +532,7 @@ public class I18n {
 	public String Language_Set = "Language set to:";
 	public String Currently_Selected = "Currently selected";
 	public String Shift_Click_Tip = "Shift + Click to change by 10";
+	public String Rate = "Rate";
 	public String Value = "Value";
 	public String Remove_Item = "Remove this item";
 
