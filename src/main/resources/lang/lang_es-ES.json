@@ -101,7 +101,7 @@
     "Lore": "\"Dang Skellies!\""
   },
   "GRIM": {
-    "Name": "Grim chew-toy",
+    "Name": "",
     "Lore": "\"Come on Grim, let's do this!\""
   },
   "MMILLSS": {
@@ -110,7 +110,7 @@
   },
   "VALANDRAH": {
     "Name": "Valandrah's Kiss",
-    "Lore": "\"Feel the kiss of my blade\""
+    "Lore": "\"Siente el abrazo de mi espada\""
   },
   "Eldritch_Blade_of_Plundering": {
     "Name": "Eldritch Blade of Plundering",
@@ -178,7 +178,7 @@
   },
   "NECTAR": {
     "Name": "Nectar",
-    "Lore": "A Floral extract."
+    "Lore": "Un extracto floral."
   },
   "COFFEE": {
     "Name": "Coffee",
