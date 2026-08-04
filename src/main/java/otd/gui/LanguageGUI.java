@@ -1,8 +1,5 @@
 package otd.gui;
 
-import static otd.redux.util.MenuHelper.color;
-import static otd.redux.util.MenuHelper.separator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,130 +37,56 @@ public class LanguageGUI extends Content {
             "d44b2ac7-561e-42e1-ade7-399f8d4d192b",
             "c2d730b6dda16b584783b63d082a80049b5fa70228aba4ae884c2c1fc0c3a8bc");
 
-
     private final Content parent;
 
     private LanguageGUI() {
-        super(MenuHelper.color(MenuHelper.SECONDARY) + "Language", 36);
+        super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Language, 36);
         parent = null;
     }
 
     public LanguageGUI(Content parent) {
-        super(MenuHelper.color(MenuHelper.SECONDARY) + "Language", 36);
+        super(MenuHelper.color(MenuHelper.SECONDARY) + I18n.instance.Language, 36);
         this.parent = parent;
     }
 
     @SuppressWarnings("deprecation")
+    private void addLanguage(int row, int col, Skull.HeadData flag, String code, String nativeName, String contributors, boolean unfinished) {
+        ItemStack is = flag.getItem();
+        ItemMeta im = is.getItemMeta();
+        boolean selected = WorldConfig.wc.language.equals(code);
+        if (selected) {
+            im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + nativeName + " "
+                    + MenuHelper.color(MenuHelper.MUTED) + "[" + I18n.instance.Currently_Selected + "]");
+        } else {
+            im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + nativeName);
+        }
+        List<String> lores = new ArrayList<>();
+        lores.add(MenuHelper.separator());
+        lores.add(MenuHelper.desc("Contributors: " + contributors));
+        if (unfinished) {
+            lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This translation is unfinished! *");
+        }
+        lores.add(MenuHelper.separator());
+        if (selected) {
+            lores.add(MenuHelper.color(MenuHelper.MUTED) + I18n.instance.Currently_Selected);
+        } else {
+            lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
+        }
+        im.setLore(lores);
+        is.setItemMeta(im);
+        addItem(row, col, is);
+    }
+
     @Override
     public void init() {
         inv.clear();
         MenuHelper.fillBorder(this, 4);
 
-        String currentlang = WorldConfig.wc.language;
-
-        {
-            ItemStack is = FLAG_US.getItem();
-            ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("en")) {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "English " + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
-            } else {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "English");
-            }
-            List<String> lores = new ArrayList<>();
-            lores.add(MenuHelper.separator());
-            lores.add(MenuHelper.desc("Default language"));
-            lores.add(MenuHelper.desc("Contributors: shadow_wind, roschreiber"));
-            lores.add(MenuHelper.separator());
-            if(currentlang.equals("en")) {
-                lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
-            } else {
-                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
-            }
-            im.setLore(lores);
-            is.setItemMeta(im);
-            addItem(1, 2, is);
-        }
-        {
-            ItemStack is = FLAG_CN.getItem();
-            ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("zh-CN")) {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "Chinese " + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
-            } else {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "Chinese");
-            }
-            List<String> lores = new ArrayList<>();
-            lores.add(MenuHelper.separator());
-            lores.add(MenuHelper.desc("Contributors: shadow_wind"));
-            lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This translation is unfinished! *");
-            lores.add(MenuHelper.separator());
-            if(currentlang.equals("zh-CN")) {
-                lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
-            } else {
-                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
-            }
-            im.setLore(lores);
-            is.setItemMeta(im);
-            addItem(1, 4, is);
-        }
-        {
-            ItemStack is = FLAG_DE.getItem();
-            ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("de-DE")) {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "German " + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
-            } else {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "German");
-            }
-            List<String> lores = new ArrayList<>();
-            lores.add(MenuHelper.separator());
-            lores.add(MenuHelper.desc("Contributors: roschreiber"));
-            lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This translation is unfinished! *");
-            lores.add(MenuHelper.separator());
-            if(currentlang.equals("de-DE")) {
-                lores.add(MenuHelper.color(MenuHelper.MUTED) + "Currently selected");
-            } else {
-                lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
-            }
-            im.setLore(lores);
-            is.setItemMeta(im);
-            addItem(1, 6, is);
-        }
-        {
-            ItemStack is = FLAG_RU.getItem();
-            ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("ru-RU")) {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "Russian " + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
-            } else {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "Russian");
-            }
-            List<String> lores = new ArrayList<>();
-            lores.add(MenuHelper.separator());
-            lores.add(MenuHelper.desc("Contributors: none"));
-            lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This language is unfinished! *");
-            lores.add(MenuHelper.separator());
-            lores.add(currentlang.equals("ru-RU") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("I18n.instance.Click_To_Select"));
-            im.setLore(lores);
-            is.setItemMeta(im);
-            addItem(2, 3, is);
-        }
-        {
-            ItemStack is = FLAG_ES.getItem();
-            ItemMeta im = is.getItemMeta();
-            if (currentlang.equals("es-ES")) {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SUCCESS) + "Spanish " + MenuHelper.color(MenuHelper.MUTED) + "[Selected]");
-            } else {
-                im.setDisplayName(MenuHelper.color(MenuHelper.SECONDARY) + "Spanish");
-            }
-            List<String> lores = new ArrayList<>();
-            lores.add(MenuHelper.separator());
-            lores.add(MenuHelper.desc("Contributors: none"));
-            lores.add(MenuHelper.color(MenuHelper.WARNING) + "* This language is unfinished! *");
-            lores.add(MenuHelper.separator());
-            lores.add(currentlang.equals("es-ES") ? MenuHelper.color(MenuHelper.MUTED) + "Currently selected" : MenuHelper.actionHint("I18n.instance.Click_To_Select"));
-            im.setLore(lores);
-            is.setItemMeta(im);
-            addItem(2, 5, is);
-        }
-
+        addLanguage(1, 2, FLAG_US, "en", "English", "shadow_wind, roschreiber", false);
+        addLanguage(1, 4, FLAG_CN, "zh-CN", "简体中文 (Chinese)", "shadow_wind", true);
+        addLanguage(1, 6, FLAG_DE, "de-DE", "Deutsch (German)", "roschreiber", true);
+        addLanguage(2, 3, FLAG_RU, "ru-RU", "Русский (Russian)", "none", true);
+        addLanguage(2, 5, FLAG_ES, "es-ES", "Español (Spanish)", "mananite", true);
 
         addItem(3, 4, MenuHelper.back());
     }
@@ -171,7 +94,7 @@ public class LanguageGUI extends Content {
     @EventHandler
     @Override
     public void onInventoryClick(InventoryClickEvent e) {
-        if (!(e.getInventory().getHolder() instanceof LanguageGUI)) 
+        if (!(e.getInventory().getHolder() instanceof LanguageGUI))
             return;
         if (e.getClick().equals(ClickType.NUMBER_KEY)) {
             kcancel(e);
@@ -195,7 +118,7 @@ public class LanguageGUI extends Content {
             WorldConfig.wc.language = picked;
             WorldConfig.actualSave();
             I18n.init();
-            ChatManager.getInstance().sendSuccess(p, "Language set to: " + picked);
+            ChatManager.getInstance().sendSuccess(p, I18n.instance.Language_Set + " " + picked);
             p.closeInventory();
             return;
         }
