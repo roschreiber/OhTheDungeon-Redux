@@ -1,5 +1,5 @@
 {
-  "lang_version": 23,
+  "lang_version": 25,
   "GREYMERK": {
     "Name": "Greymerk之斧",
     "Lore": "一塌糊涂的锋利"
@@ -535,5 +535,15 @@
     "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
     "* Mob with name 'otd_castle_king' will be used for boss of Castle.",
     "* Mob with prefix 'otd_small_boss_' will be used for small boss."
-  ]
+  ],
+  "Player_Only_Command": "This is a player only command",
+  "Locate_None": "No dungeons found.",
+  "Locate_Result": "Nearest %s is %s blocks away",
+  "Locate_Teleported": "Teleported to x=%s z=%s in %s.",
+  "Language": "Language",
+  "Language_Set": "Language set to:",
+  "Currently_Selected": "Currently selected",
+  "Shift_Click_Tip": "Shift + Click to change by 10",
+  "Value": "Value",
+  "Remove_Item": "Remove this item"
 }
