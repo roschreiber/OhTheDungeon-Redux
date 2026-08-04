@@ -49,7 +49,7 @@ public class UtilMenu extends Content {
 			List<String> lores = new ArrayList<>();
 			lores.add(I18n.instance.Automatic_Diagnostic_Lore);
 			lores.add(MenuHelper.separator());
-			lores.add(MenuHelper.actionHint("Click to run"));
+			lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);
 
 			is.setItemMeta(im);
@@ -109,7 +109,7 @@ public class UtilMenu extends Content {
 
 			List<String> lores = new ArrayList<>();
         	lores.add(MenuHelper.separator());
-        	lores.add(MenuHelper.actionHint("Click to view"));
+        	lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Open));
         	im.setLore(lores);
 
 			is.setItemMeta(im);

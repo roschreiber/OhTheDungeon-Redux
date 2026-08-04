@@ -316,7 +316,7 @@ public class LootItem extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.muted("Remove this item"));
+			lores.add(MenuHelper.muted(I18n.instance.Remove_Item));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(3, 6, is);

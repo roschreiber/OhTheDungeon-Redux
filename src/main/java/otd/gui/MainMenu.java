@@ -105,10 +105,10 @@ public class MainMenu extends Content {
 		{
 			ItemStack is = new ItemStack(Material.PAPER);
 			ItemMeta im = is.getItemMeta();
-			im.setDisplayName(color(SECONDARY) + "Language");
+			im.setDisplayName(color(SECONDARY) + I18n.instance.Language);
 			List<String> lores = new ArrayList<>();
 			lores.add(separator());
-			lores.add(desc("Current " + WorldConfig.wc.language));
+			lores.add(value(I18n.instance.Language, WorldConfig.wc.language));
 			lores.add(separator());
 			lores.add(actionHint(I18n.instance.Click_To_Open));
 			im.setLore(lores);

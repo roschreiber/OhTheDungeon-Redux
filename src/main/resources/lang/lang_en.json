@@ -1,7 +1,7 @@
 {
-  "lang_version": 23,
+  "lang_version": 25,
   "GREYMERK": {
-    "Name": "Greymerk\u0027s Hatchet",
+    "Name": "Greymerk's Hatchet",
     "Lore": "Pointlessly sharp"
   },
   "NEBRISCROWN": {
@@ -18,14 +18,14 @@
   },
   "ZISTEAUSIGN": {
     "Name": "Battle Sign",
-    "Lore": "\"That\u0027s what you get!\""
+    "Lore": "\"That's what you get!\""
   },
   "AVIDYA": {
     "Name": "White Russian",
-    "Lore": "The dude\u0027s favourite"
+    "Lore": "The dude's favourite"
   },
   "ASHLEA": {
-    "Name": "Ashlea\u0027s Oatmeal Cookie",
+    "Name": "Ashlea's Oatmeal Cookie",
     "Lore": "Perfect for elevensies"
   },
   "KURT": {
@@ -42,11 +42,11 @@
   },
   "BDOUBLEO": {
     "Name": "Dig Job",
-    "Lore": "Recovered from hell\u0027s blazes"
+    "Lore": "Recovered from hell's blazes"
   },
   "GUUDE": {
     "Name": "Boulderfistian Golden Record",
-    "Lore": "\"You\u0027re Watching Guude Boulderfist...\""
+    "Lore": "\"You're Watching Guude Boulderfist...\""
   },
   "RLEAHY": {
     "Name": "Rleahian battle sub",
@@ -57,15 +57,15 @@
     "Lore": "The original"
   },
   "ENIKOBOW": {
-    "Name": "Eniko\u0027s String Theory",
+    "Name": "Eniko's String Theory",
     "Lore": "For Science!"
   },
   "ENIKOSWORD": {
-    "Name": "Eniko\u0027s Earring",
+    "Name": "Eniko's Earring",
     "Lore": "\"She do the loot take boogie\""
   },
   "BAJ": {
-    "Name": "Baj\u0027s Last Resort",
+    "Name": "Baj's Last Resort",
     "Lore": "\"Starvation could be fatal\""
   },
   "DOCM": {
@@ -81,11 +81,11 @@
     "Lore": "\"Really?!\""
   },
   "NOTCH": {
-    "Name": "Notch\u0027s apple",
-    "Lore": "Imbued with the creator\u0027s power"
+    "Name": "Notch's apple",
+    "Lore": "Imbued with the creator's power"
   },
   "QUANTUMLEAP": {
-    "Name": "QuantumLeap\u0027s Swiss Cheese",
+    "Name": "QuantumLeap's Swiss Cheese",
     "Lore": "\"Oh boy\""
   },
   "GENERIKB": {
@@ -102,14 +102,14 @@
   },
   "GRIM": {
     "Name": "Grim chew-toy",
-    "Lore": "\"Come on Grim, let\u0027s do this!\""
+    "Lore": "\"Come on Grim, let's do this!\""
   },
   "MMILLSS": {
     "Name": "MMillssian spider bane",
-    "Lore": "\"I really don\u0027t need anymore string...\""
+    "Lore": "\"I really don't need anymore string...\""
   },
   "VALANDRAH": {
-    "Name": "Valandrah\u0027s Kiss",
+    "Name": "Valandrah's Kiss",
     "Lore": "\"Feel the kiss of my blade\""
   },
   "Eldritch_Blade_of_Plundering": {
@@ -174,7 +174,7 @@
   },
   "STOUT": {
     "Name": "Stout",
-    "Lore": "\"It\u0027s Good for You\""
+    "Lore": "\"It's Good for You\""
   },
   "NECTAR": {
     "Name": "Nectar",
@@ -196,7 +196,7 @@
     "Crystal": "Crystal",
     "Strange": "Strange"
   },
-  "Nerf_Msg": "Spawner cannot work properly in your server due to your config. To solve that, check \u0027nerf-spawner-mobs\u0027 in https://www.spigotmc.org/wiki/spigot-configuration/",
+  "Nerf_Msg": "Spawner cannot work properly in your server due to your config. To solve that, check 'nerf-spawner-mobs' in https://www.spigotmc.org/wiki/spigot-configuration/",
   "Soul_Spade": "Soul Spade",
   "Grave_Spade": "Grave Spade",
   "Crystal_Head_Axe": "Crystal Head Axe",
@@ -328,9 +328,9 @@
   "Each": "In Each Chest",
   "EachTip": [
     "If true, then this rule will add ",
-    "\u0027quantity\u0027 loot to each chest of ",
+    "'quantity' loot to each chest of ",
     "this type. otherwise the specified",
-    "\u0027quantity\u0027 will be distributed among",
+    "'quantity' will be distributed among",
     "all the chests of the type specified"
   ],
   "Weight": "Weight",
@@ -373,7 +373,7 @@
   "World_Spawner_Manager": "World Spawner Manager",
   "Silk_Vanilla_Spawner": "Silk Touch on Vanilla Spawner",
   "Silk_Dungeon_Spawner": "Silk Touch on OhTheDungeon Spawner",
-  "Dungeon_Spawner_Lore1": "Only work on dungeons created by [OTD version\u003e\u003d7.0]",
+  "Dungeon_Spawner_Lore1": "Only work on dungeons created by [OTD version>=7.0]",
   "Dungeon_Spawner_Lore2": "Dungeons which are created by old OTD version",
   "Dungeon_Spawner_Lore3": "will be treated as vanilla spawners",
   "Mob_Drop_In_Vanilla_Spawner": "Mob Drop In Vanilla Spawner",
@@ -416,16 +416,16 @@
   "Menu_create_lore": "If you want to create dungeon plot world",
   "Current_Dungeon_Count": "Current Dungeon Count",
   "Creating_World": "World creating... You may see tps drop. Please standby",
-  "Must_Natural_Spawn": "You must open at least one dungeon\u0027s Natural Spawn",
+  "Must_Natural_Spawn": "You must open at least one dungeon's Natural Spawn",
   "Dungeon_Plot_Not_Working": "Dungeon plot worker is not working",
   "Dungeon_Plot_Breaking": "Dungeon plot generation will break in 30s",
-  "Dungeon_Plot_In_Progress": "Dungeon plot is creating. It would finish in 10 minutes. You\u0027ll get the message once it\u0027s finished",
+  "Dungeon_Plot_In_Progress": "Dungeon plot is creating. It would finish in 10 minutes. You'll get the message once it's finished",
   "Dungeon_Plot_User_Teleport": "Dungeon Teleporter",
   "Click_To_Teleport": "Click to teleport",
   "Dungeon_Plot": "Dungeon Plot",
   "Back_To_Normal_World": "Back to main world",
-  "Dungeon_Plot_Not_Ready": "Dungeon Plot World is not actived or it\u0027s still under generation. Contact the OPs for help",
-  "No_Permission": "You don\u0027t have permission to do that",
+  "Dungeon_Plot_Not_Ready": "Dungeon Plot World is not actived or it's still under generation. Contact the OPs for help",
+  "No_Permission": "You don't have permission to do that",
   "Automatic_Diagnostic": "Automatic Diagnostic",
   "User_TP_Suggest": "Use /otd_tp to explore the dungeon world!",
   "User_TP_Suggest2": "Use /otd_tp, and choose the bed to back to normal world!",
@@ -508,14 +508,14 @@
   "Require_MythicMobs": "Require MythicMobs installed",
   "Use_MythicMobs_Lore": "Use MythicMobs to create Boss",
   "Use_MythicMobs_Lores": [
-    "* Mob with name \u0027otd_lich_boss\u0027 will be used for boss of Lich Tower.",
-    "* Mob with name \u0027otd_castle_king\u0027 will be used for boss of Castle.",
-    "* Mob with prefix \u0027otd_small_boss_\u0027 will be used for small boss."
+    "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
+    "* Mob with name 'otd_castle_king' will be used for boss of Castle.",
+    "* Mob with prefix 'otd_small_boss_' will be used for small boss."
   ],
   "WorldGeneratorCompatibility": "World Generator Compatibility",
   "WorldGeneratorCompatibility_Lore1": "* Config for world generator compatibility",
   "WorldGeneratorCompatibility_Lore2": "* This is not needed for most of world generator, but you may need this for some world generators with usual bottom/sealevel",
-  "WorldGeneratorCompatibility_Lore3": "* Don\u0027t change this config if you didn\u0027t see any issues in dungeon generation",
+  "WorldGeneratorCompatibility_Lore3": "* Don't change this config if you didn't see any issues in dungeon generation",
   "WorldGeneratorCompatibility_Lore4": "* Left click for config, Right click for help",
   "WorldParameter": "World Parameters",
   "WorldParameter_Sign": "Get Help",
@@ -532,8 +532,18 @@
   "Require_EcoBosses": "Require EcoBosses installed",
   "Use_EcoBosses_Lore": "Use EcoBosses to create Boss",
   "Use_EcoBosses_Lores": [
-    "* Mob with name \u0027otd_lich_boss\u0027 will be used for boss of Lich Tower.",
-    "* Mob with name \u0027otd_castle_king\u0027 will be used for boss of Castle.",
-    "* Mob with prefix \u0027otd_small_boss_\u0027 will be used for small boss."
-  ]
+    "* Mob with name 'otd_lich_boss' will be used for boss of Lich Tower.",
+    "* Mob with name 'otd_castle_king' will be used for boss of Castle.",
+    "* Mob with prefix 'otd_small_boss_' will be used for small boss."
+  ],
+  "Player_Only_Command": "This is a player only command",
+  "Locate_None": "No dungeons found.",
+  "Locate_Result": "Nearest %s is %s blocks away",
+  "Locate_Teleported": "Teleported to x=%s z=%s in %s.",
+  "Language": "Language",
+  "Language_Set": "Language set to:",
+  "Currently_Selected": "Currently selected",
+  "Shift_Click_Tip": "Shift + Click to change by 10",
+  "Value": "Value",
+  "Remove_Item": "Remove this item"
 }

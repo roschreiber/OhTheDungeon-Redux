@@ -269,7 +269,7 @@ public class RoguelikeLootItem extends Content {
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.DANGER) + I18n.instance.Remove);
 			List<String> lores = new ArrayList<>();
-			lores.add(MenuHelper.muted("Remove this item"));
+			lores.add(MenuHelper.muted(I18n.instance.Remove_Item));
 			im.setLore(lores);
 			is.setItemMeta(im);
 			addItem(3, 6, is);
@@ -303,7 +303,7 @@ public class RoguelikeLootItem extends Content {
 				if (i == 4)
 					lores.add(MenuHelper.desc(I18n.instance.Deepest_Level));
 				lores.add(MenuHelper.separator());
-				lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+				lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Select));
 				im.setLore(lores);
 				is.setItemMeta(im);
 				addItem(3, i, is);

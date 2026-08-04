@@ -93,7 +93,7 @@ public class WorldEditor extends Content {
 		kcancel(e);
 
 		int slot = e.getRawSlot();
-		if (slot < 0 && slot >= 27) {
+		if (slot < 0 || slot >= SLOT) {
 			return;
 		}
 
@@ -568,6 +568,10 @@ public class WorldEditor extends Content {
 				im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.Custom_Dungeon);
 				List<String> lores = new ArrayList<>();
 				lores.add(I18n.instance.Require_WorldEdit);
+				if (WorldEdit.isReady()) {
+					lores.add(MenuHelper.separator());
+					lores.add(MenuHelper.actionHint(I18n.instance.Click_To_Configure));
+				}
 				im.setLore(lores);
 				is.setItemMeta(im);
 
@@ -665,7 +669,6 @@ public class WorldEditor extends Content {
 			ItemStack is = new ItemStack(Material.CARTOGRAPHY_TABLE);
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(MenuHelper.color(MenuHelper.ACCENT) + I18n.instance.WorldGeneratorCompatibility);
-			is.setItemMeta(im);
 
 			List<String> lores = new ArrayList<>();
 			for (String line : Wrap.wordWrap(I18n.instance.WorldGeneratorCompatibility_Lore1, 30)) {
@@ -681,6 +684,7 @@ public class WorldEditor extends Content {
 				lores.add(MenuHelper.desc(line));
 			}
 			im.setLore(lores);
+			is.setItemMeta(im);
 
 			addItem(3, 3, is);
 		}

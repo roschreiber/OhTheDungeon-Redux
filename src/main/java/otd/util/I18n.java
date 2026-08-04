@@ -68,7 +68,7 @@ public class I18n {
 		}
 	}
 
-	public int lang_version = 24;
+	public int lang_version = 25;
 
 	public SpecialItem GREYMERK = new SpecialItem("Greymerk's Hatchet", "Pointlessly sharp");
 	public SpecialItem NEBRISCROWN = new SpecialItem("Nebrian Crown of Justice", "Adorned with precious gemstones");
@@ -528,6 +528,13 @@ public class I18n {
 	public String Locate_Result = "Nearest %s is %s blocks away";
 	public String Locate_Teleported = "Teleported to x=%s z=%s in %s.";
 
+	public String Language = "Language";
+	public String Language_Set = "Language set to:";
+	public String Currently_Selected = "Currently selected";
+	public String Shift_Click_Tip = "Shift + Click to change by 10";
+	public String Value = "Value";
+	public String Remove_Item = "Remove this item";
+
 	public static final transient String configFileName = "lang.json";
 	public static transient String curlang = "lang.json";
 
@@ -665,6 +672,20 @@ public class I18n {
 		if (I18n.instance.lang_version == 23) {
 			update23();
 		}
+		if (I18n.instance.lang_version == 24) {
+			update24();
+		}
+	}
+
+	public static void update24() {
+		I18n.instance.Language = "Language";
+		I18n.instance.Language_Set = "Language set to:";
+		I18n.instance.Currently_Selected = "Currently selected";
+		I18n.instance.Shift_Click_Tip = "Shift + Click to change by 10";
+		I18n.instance.Value = "Value";
+		I18n.instance.Remove_Item = "Remove this item";
+
+		I18n.instance.lang_version = 25;
 	}
 
 	public static void update23() {

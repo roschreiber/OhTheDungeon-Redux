@@ -223,9 +223,9 @@ public class Menu extends Content {
 			}
 			List<String> lores = new ArrayList<>();
 			if (str.equals(choose)) {
-				lores.add(MenuHelper.color(MenuHelper.SUCCESS) + "Currently selected");
+				lores.add(MenuHelper.color(MenuHelper.SUCCESS) + otd.util.I18n.instance.Currently_Selected);
 			} else {
-				lores.add(MenuHelper.actionHint("I18n.instance.Click_To_Select"));
+				lores.add(MenuHelper.actionHint(otd.util.I18n.instance.Click_To_Select));
 			}
 			im.setLore(lores);
 			is.setItemMeta(im);
