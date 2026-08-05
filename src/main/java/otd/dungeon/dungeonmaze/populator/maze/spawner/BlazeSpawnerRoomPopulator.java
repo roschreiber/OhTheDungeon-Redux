@@ -39,7 +39,6 @@ import otd.lib.async.later.smoofy.Spawner_Later;
 
 public class BlazeSpawnerRoomPopulator extends MazeRoomBlockPopulator {
 
-	// TODO: Fix the treasure chests not spawning!
 	public boolean const_room = true;
 
 	@Override
@@ -63,9 +62,6 @@ public class BlazeSpawnerRoomPopulator extends MazeRoomBlockPopulator {
 
 	/** Populator constants. */
 	private static final double SPAWN_DISTANCE_MIN = 5; // Chunks
-
-	// TODO: Implement this!
-	public static final double CHANCE_SPANWER_ROOM_ADDITION_EACH_LEVEL = -0.167; /* to 1 */
 
 	@Override
 	public void populateRoom(MazeRoomBlockPopulatorArgs args) {
