@@ -127,7 +127,6 @@ public class Main extends JavaPlugin {
 	public static boolean disabled = false;
 	@SuppressWarnings("unused")
 	private static Integer api_version = 7;
-	public static MultiVersion.Version version = MultiVersion.Version.UNKNOWN;
 	private final static int metric_pluginId = 26538;
 	@SuppressWarnings("unused")
 	private static PerPlayerDungeonInstance ppdi;
@@ -141,18 +140,10 @@ public class Main extends JavaPlugin {
 		instance = this;
 		main = this;
 		mainInstance = this;
-		if (MultiVersion.is26_1()) {
-			version = MultiVersion.Version.V26_1;
-			ConsoleManager.logInfo("MC Version: 26.1");
-		} else if (MultiVersion.is26_2()) {
-			version = MultiVersion.Version.V26_2;
-			ConsoleManager.logInfo("MC Version: 26.2");
-		} else if (MultiVersion.isSupported()) {
-			version = MultiVersion.Version.V26_2;
-			ConsoleManager.logWarning("Untested 26.x version " + MultiVersion.mcVersion());
+		if (MultiVersion.isSupported()) {
+			ConsoleManager.logInfo("MC Version: " + MultiVersion.mcVersion());
 		} else {
-			version = MultiVersion.Version.UNKNOWN;
-			ConsoleManager.logWarning("Untested version " + MultiVersion.mcVersion());
+			ConsoleManager.logWarning("Unsupported version " + MultiVersion.mcVersion() + " - OTD-R needs 26.1 or newer");
 		}
 		MultiVersion.has3DBiome();
 		MultiVersion.init();

@@ -27,7 +27,6 @@ import org.bukkit.block.TileState;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import otd.Main;
 import otd.MultiVersion;
 import otd.api.SpawnerManager;
 import otd.config.SimpleWorldConfig;
@@ -46,7 +45,7 @@ public class SpawnerDecryAPI {
 
 	public static boolean hasLightRuleUpdate(TileState ts, JavaPlugin plugin) {
 		if (otd == null) {
-			otd = new NamespacedKey(plugin, "ohthedungeon_" + Main.version.toString());
+			otd = new NamespacedKey(plugin, PluginKeys.otd);
 			lightrule = new NamespacedKey(plugin, PluginKeys.lightrule);
 		}
 		{
@@ -62,7 +61,7 @@ public class SpawnerDecryAPI {
 
 	public static void setSpawnerDecry(Block block, JavaPlugin plugin, DungeonType type, boolean light_update) {
 		if (otd == null) {
-			otd = new NamespacedKey(plugin, "ohthedungeon_" + Main.version.toString());
+			otd = new NamespacedKey(plugin, PluginKeys.otd);
 			lightrule = new NamespacedKey(plugin, PluginKeys.lightrule);
 		}
 
@@ -103,7 +102,7 @@ public class SpawnerDecryAPI {
 
 	public static void updateSpawnerLightRule(Block tileentity, JavaPlugin plugin) {
 		if (otd == null) {
-			otd = new NamespacedKey(plugin, "ohthedungeon_" + Main.version.toString());
+			otd = new NamespacedKey(plugin, PluginKeys.otd);
 			lightrule = new NamespacedKey(plugin, PluginKeys.lightrule);
 		}
 

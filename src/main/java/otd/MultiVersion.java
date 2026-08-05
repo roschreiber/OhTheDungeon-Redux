@@ -36,20 +36,8 @@ import otd.nms.SpawnerLightRule;
  */
 public class MultiVersion {
 
-	public static enum Version {
-		V26_1, V26_2, UNKNOWN
-	};
-
 	public static String mcVersion() {
 		return Bukkit.getMinecraftVersion();
-	}
-
-	public static boolean is26_1() {
-		return Bukkit.getMinecraftVersion().startsWith("26.1");
-	}
-
-	public static boolean is26_2() {
-		return Bukkit.getMinecraftVersion().startsWith("26.2");
 	}
 
 	public static boolean isSupported() {
