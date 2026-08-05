@@ -41,6 +41,7 @@ Yes! Feel free to contact me on [Discord](https://discord.gg/bkZfWZsrF5) or look
 - [WorldEdit](https://modrinth.com/plugin/worldedit) for the custom, schematic based dungeons
 - [Vault](https://www.spigotmc.org/resources/vault.34315/) for buying PerPlayerDungeonInstances using Money
 - [PAPI](https://modrinth.com/plugin/placeholderapi)
+- [BlueMap](https://modrinth.com/project/swbUV1cr) or [SquareMap](https://modrinth.com/project/PFb7ZqK6) to have dungeons appear as map markers
 
 ### How can I suggest features / report bugs?
 
