@@ -4,29 +4,34 @@ import org.bukkit.Bukkit;
 import otd.locate.DungeonRecord;
 import otd.redux.util.ConsoleManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class MapMarkerService {
 
-    private static final MapIntegration[] all = new MapIntegration[]{
-            new BlueMapImpl(), new SquaremapImpl()
-    };
+    private static final List<MapIntegration> all = new ArrayList<>();
 
     private MapMarkerService() {
     }
 
     public static void enable() {
-        for (MapIntegration impl : all) {
-            try {
-                if (impl.isReady()) {
-                    impl.enable();
-                    if (impl.isEnabled()) {
-                        ConsoleManager.logInfo("Map integration enabled: " + impl.name());
-                    }
-                }
-            } catch (Throwable t) {
-                ConsoleManager.logWarning("Failed to enable map integration " + impl.name() + ": " + t.getMessage());
-            }
+        all.clear();
+        register("BlueMap");
+        register("squaremap");
+    }
+
+    private static void register(String plugin) {
+        if (Bukkit.getPluginManager().getPlugin(plugin) == null) {
+            ConsoleManager.logWarning(plugin + " not installed, will disable map markers for  " + plugin);
+            return;
+        }
+        try {
+            MapIntegration impl = plugin.equals("BlueMap") ? new BlueMapImpl() : new SquaremapImpl();
+            all.add(impl);
+            impl.enable();
+            ConsoleManager.logInfo("Map integration enabled: " + impl.name());
+        } catch (Throwable t) {
+            ConsoleManager.logWarning("Failed to enable map integration " + plugin + ": " + t);
         }
     }
 
