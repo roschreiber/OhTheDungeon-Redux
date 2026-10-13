@@ -22,7 +22,7 @@
 > I try my best to extensively test each release of this plugin. But due to my limited time, some bugs might still occur. OTD-R is tested on both **Paper** and **Leaf** server software and works fine there.
 
 > [!TIP]
-> OTD-R currently targets minecraft version **26.2**, but runs the **26.x** with best-effort support.
+> OTD-R currently targets minecraft version **26.3**, but runs the **26.x** with best-effort support.
 
 ### What is this plugin?
 
