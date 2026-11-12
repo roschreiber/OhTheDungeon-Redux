@@ -19,6 +19,7 @@ import forge_sandbox.greymerk.roguelike.dungeon.settings.base.SettingsSecrets;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.base.SettingsSegments;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.base.SettingsTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsBunkerTheme;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsDappledForestTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsDesertTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsForestTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsHouseTheme;
@@ -47,6 +48,7 @@ public class SettingsContainer implements ISettingsContainer {
 	public final static SettingsSwampTheme swamp = new SettingsSwampTheme();
 	public final static SettingsMountainTheme mountain = new SettingsMountainTheme();
 	public final static SettingsForestTheme forest = new SettingsForestTheme();
+	public final static SettingsDappledForestTheme dappledForest = new SettingsDappledForestTheme();
 	public final static SettingsMesaTheme mesa = new SettingsMesaTheme();
 	public final static SettingsIceTheme ice = new SettingsIceTheme();
 	public final static SettingsRuinTheme ruin = new SettingsRuinTheme();
@@ -73,6 +75,7 @@ public class SettingsContainer implements ISettingsContainer {
 		this.put(swamp); // WITCH
 		this.put(mountain); // ENIKO
 		this.put(forest); // ROGUE
+		this.put(dappledForest);
 		this.put(mesa); // ETHO
 		this.put(ice); // PYRAMID
 		this.put(ruin); // PYRAMID

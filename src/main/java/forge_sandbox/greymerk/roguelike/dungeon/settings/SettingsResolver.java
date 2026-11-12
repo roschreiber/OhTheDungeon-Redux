@@ -1,6 +1,7 @@
 package forge_sandbox.greymerk.roguelike.dungeon.settings;
 
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsBunkerTheme;
+import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsDappledForestTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsDesertTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsForestTheme;
 import forge_sandbox.greymerk.roguelike.dungeon.settings.builtin.SettingsHouseTheme;
@@ -162,6 +163,8 @@ public class SettingsResolver {
 
 			if (!forest && (setting instanceof SettingsForestTheme))
 				continue;
+			if (!forest && (setting instanceof SettingsDappledForestTheme))
+				continue;
 			if (!house && (setting instanceof SettingsHouseTheme))
 				continue;
 			if (!desert && (setting instanceof SettingsDesertTheme))
@@ -184,6 +187,12 @@ public class SettingsResolver {
 				continue;
 
 			Biome biome = editor.getBiome(pos);
+			if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.DAPPLED)) {
+				if (setting instanceof SettingsDappledForestTheme) {
+					settingsRandomizer.add(new WeightedChoice<>(setting, setting.criteria.weight));
+				}
+				continue;
+			}
 			if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)) {
 				if (setting instanceof SettingsForestTheme) {
 					settingsRandomizer.add(new WeightedChoice<>(setting, setting.criteria.weight));
