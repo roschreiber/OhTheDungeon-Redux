@@ -278,6 +278,7 @@ public class Otd_Place implements TabExecutor {
 	private static DungeonSettings getBuiltinForTheme(Theme theme) {
 		return switch (theme) {
 			case OAK, SPRUCE -> new SettingsForestTheme();
+			case POPLAR -> new SettingsDappledForestTheme();
 			case JUNGLE -> new SettingsJungleTheme();
 			case DARKOAK -> new SettingsSwampTheme();
 			case MUDDY -> new SettingsSwampTheme();
