@@ -18,10 +18,15 @@ package otd.world;
 
 import org.bukkit.Difficulty;
 import org.bukkit.GameRules;
+import org.bukkit.entity.Animals;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.event.world.WorldLoadEvent;
+
+import otd.lib.DungeonWorldManager;
 
 /**
  *
@@ -35,7 +40,6 @@ public class WorldGenOptimization implements Listener {
 			e.getWorld().setGameRule(GameRules.ADVANCE_TIME, false);
 			e.getWorld().setGameRule(GameRules.ADVANCE_WEATHER, false);
 			e.getWorld().setDifficulty(Difficulty.HARD);
-			e.getWorld().setSpawnFlags(true, false);
 		}
 	}
 
@@ -46,7 +50,18 @@ public class WorldGenOptimization implements Listener {
 			e.getWorld().setGameRule(GameRules.ADVANCE_TIME, false);
 			e.getWorld().setGameRule(GameRules.ADVANCE_WEATHER, false);
 			e.getWorld().setDifficulty(Difficulty.HARD);
-			e.getWorld().setSpawnFlags(true, false);
+		}
+	}
+
+	@EventHandler
+	public void onCreatureSpawn(CreatureSpawnEvent e) {
+		String name = e.getEntity().getWorld().getName();
+		if (name.equalsIgnoreCase(WorldDefine.WORLD_NAME) || name.equals(DungeonWorldManager.WORLD_NAME)) {
+			if (e.getSpawnReason() == SpawnReason.NATURAL) {
+				if (e.getEntity() instanceof Animals) {
+					e.setCancelled(true);
+				}
+			}
 		}
 	}
 }

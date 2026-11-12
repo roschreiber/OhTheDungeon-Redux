@@ -27,7 +27,6 @@ public class WorldManager {
 
 		World world = wc.createWorld();
 		world.setDifficulty(Difficulty.HARD);
-		world.setSpawnFlags(true, false);
 		world.setGameRule(GameRules.ADVANCE_TIME, false);
 		world.setGameRule(GameRules.ADVANCE_WEATHER, false);
 		world.setTime(6000);
