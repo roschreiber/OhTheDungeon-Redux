@@ -15,7 +15,6 @@ import otd.redux.util.ConsoleManager;
 import forge_sandbox.team.cqr.cqrepoured.boss.CastleKing;
 import forge_sandbox.twilightforest.structures.lichtower.boss.Lich;
 import io.lumine.mythic.bukkit.MythicBukkit;
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import net.md_5.bungee.api.ChatColor;
 
 public class MythicMobsImpl {
@@ -29,13 +28,6 @@ public class MythicMobsImpl {
 		MythicMobsImpl.inst = null;
 		if (Bukkit.getPluginManager().getPlugin("MythicMobs") != null) {
 			ConsoleManager.logInfo("Loading MythicMobs support ...");
-
-			try {
-				Class.forName("io.lumine.xikage.mythicmobs.MythicMobs");
-				MythicMobsImpl.inst = new MythicMobsOTDImpl4();
-			} catch (ClassNotFoundException ex) {
-
-			}
 
 			try {
 				Class.forName("io.lumine.mythic.bukkit.MythicBukkit");
@@ -138,33 +130,6 @@ public class MythicMobsImpl {
 	public final static String OTD_LICH = "otd_lich_boss";
 	public final static String OTD_CASTLE_KING = "otd_castle_king";
 	public final static String OTD_SMALL_BOSS = "otd_small_boss_";
-
-	public static class MythicMobsOTDImpl4 implements MythicMobsOTD {
-		public MythicMobsOTDImpl4() {
-			ConsoleManager.logInfo("Hook to MythicMobs with API-4");
-		}
-
-		public Collection<String> getMobNames() {
-			io.lumine.xikage.mythicmobs.mobs.MobManager mm = MythicMobs.inst().getMobManager();
-			return mm.getMobNames();
-		}
-
-		public Entity spawnMob(String type, Location loc) {
-			io.lumine.xikage.mythicmobs.mobs.ActiveMob ab = MythicMobs.inst().getMobManager().spawnMob(type, loc);
-			if (ab != null) {
-				io.lumine.xikage.mythicmobs.adapters.AbstractEntity ae = ab.getEntity();
-				if (ae != null) {
-					Entity entity = io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter.adapt(ae);
-					return entity;
-				}
-			}
-			return null;
-		}
-
-		public boolean isMobExist(String type) {
-			return MythicMobs.inst().getMobManager().getMythicMob(type) != null;
-		}
-	}
 
 	public static class MythicMobsOTDImpl5 implements MythicMobsOTD {
 		public MythicMobsOTDImpl5() {
