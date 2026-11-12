@@ -4,6 +4,7 @@ import static otd.lib.BiomeDictionary.Type.BEACH;
 import static otd.lib.BiomeDictionary.Type.CAVE;
 import static otd.lib.BiomeDictionary.Type.COLD;
 import static otd.lib.BiomeDictionary.Type.CONIFEROUS;
+import static otd.lib.BiomeDictionary.Type.DAPPLED;
 import static otd.lib.BiomeDictionary.Type.DENSE;
 import static otd.lib.BiomeDictionary.Type.DRY;
 import static otd.lib.BiomeDictionary.Type.END;
@@ -42,6 +43,8 @@ import java.util.Set;
 
 //import java.util.stream.Collectors;
 //import javax.annotation.Nonnull;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.block.Biome;
 
 /*
@@ -123,6 +126,7 @@ public class BiomeDictionary {
 		public static final Type CAVE = new Type("CAVE");
 		public static final Type MESA = new Type("MESA");
 		public static final Type FOREST = new Type("FOREST");
+		public static final Type DAPPLED = new Type("DAPPLED");
 		public static final Type PLAINS = new Type("PLAINS");
 		public static final Type MOUNTAIN = new Type("MOUNTAIN");
 		public static final Type HILLS = new Type("HILLS");
@@ -309,6 +313,15 @@ public class BiomeDictionary {
 		addTypes(Biome.WINDSWEPT_HILLS, MOUNTAIN, HILLS, OVERWORLD);
 		addTypes(Biome.WINDSWEPT_SAVANNA, HOT, DRY, SPARSE, SAVANNA, MOUNTAIN, RARE, OVERWORLD);
 		addTypes(Biome.WOODED_BADLANDS, MESA, SANDY, DRY, SPARSE, OVERWORLD, PLATEAU);
+
+		Biome sulfurCaves = Registry.BIOME.get(NamespacedKey.minecraft("sulfur_caves"));
+		if (sulfurCaves != null) {
+			addTypes(sulfurCaves, CAVE, OVERWORLD);
+		}
+		Biome dappledForest = Registry.BIOME.get(NamespacedKey.minecraft("dappled_forest"));
+		if (dappledForest != null) {
+			addTypes(dappledForest, FOREST, OVERWORLD, DAPPLED);
+		}
 
 	}
 
