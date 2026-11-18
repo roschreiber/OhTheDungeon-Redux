@@ -206,9 +206,9 @@ public class Dungeon {
 		growthCycle();
 		if (thinSpawners && (difficulty != Difficulty.NONE)) {
 			spawners.fixSpawners(world, this, rnd);
-			for (Room room : rooms) {
-				room.addChests(this);
-			}
+		}
+		for (Room room : rooms) {
+			room.addChests(this);
 		}
 	}
 
